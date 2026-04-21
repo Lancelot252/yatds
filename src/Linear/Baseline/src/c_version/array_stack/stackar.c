@@ -1,6 +1,13 @@
         #include "stackar.h"
-        #include "../common/fatal.h"
+        #include <stdio.h>
         #include <stdlib.h>
+
+        static void
+        Die( const char *Message )
+        {
+            fprintf( stderr, "%s\n", Message );
+            exit( EXIT_FAILURE );
+        }
 
         #define EmptyTOS ( -1 )
         #define MinStackSize ( 5 )
@@ -33,15 +40,15 @@
             Stack S;
 
 /* 1*/      if( MaxElements < MinStackSize )
-/* 2*/          Error( "Stack size is too small" );
+/* 2*/          Die( "Stack size is too small" );
 
 /* 3*/      S = malloc( sizeof( struct StackRecord ) );
 /* 4*/      if( S == NULL )
-/* 5*/          FatalError( "Out of space!!!" );
+/* 5*/          Die( "Out of space!!!" );
 
 /* 6*/      S->Array = malloc( sizeof( ElementType ) * MaxElements );
 /* 7*/      if( S->Array == NULL )
-/* 8*/          FatalError( "Out of space!!!" );
+/* 8*/          Die( "Out of space!!!" );
 /* 9*/      S->Capacity = MaxElements;
 /*10*/      MakeEmpty( S );
 
@@ -74,7 +81,7 @@
         Push( ElementType X, Stack S )
         {
             if( IsFull( S ) )
-                Error( "Full stack" );
+                Die( "Full stack" );
             else
                 S->Array[ ++S->TopOfStack ] = X;
         }
@@ -87,7 +94,7 @@
         {
             if( !IsEmpty( S ) )
                 return S->Array[ S->TopOfStack ];
-            Error( "Empty stack" );
+            Die( "Empty stack" );
             return 0;  /* Return value used to avoid warning */
         }
 /* END */
@@ -97,7 +104,7 @@
         Pop( Stack S )
         {
             if( IsEmpty( S ) )
-                Error( "Empty stack" );
+                Die( "Empty stack" );
             else
                 S->TopOfStack--;
         }
@@ -109,7 +116,7 @@
         {
             if( !IsEmpty( S ) )
                 return S->Array[ S->TopOfStack-- ];
-            Error( "Empty stack" );
+            Die( "Empty stack" );
             return 0;  /* Return value used to avoid warning */
         }
 /* END */

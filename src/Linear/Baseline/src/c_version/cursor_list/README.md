@@ -18,7 +18,7 @@
 - 游标值 `0` 表示 `NULL`，同时 `CursorSpace[0]` 用作空闲表头，不存放业务元素。
 - 使用本结构前必须先调用 `InitializeCursorSpace`。
 - `Find` 找不到元素时返回 `0`。
-- 当空闲空间耗尽时，插入或建表应调用 `FatalError` 报错。
+- 当空闲空间耗尽时，插入或建表应使用 `fprintf(stderr, ...)` 输出错误并调用 `exit(EXIT_FAILURE)`。
 
 ## 验证方式
 

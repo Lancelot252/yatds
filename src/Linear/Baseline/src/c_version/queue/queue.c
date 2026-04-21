@@ -1,6 +1,13 @@
         #include "queue.h"
-        #include "../common/fatal.h"
+        #include <stdio.h>
         #include <stdlib.h>
+
+        static void
+        Die( const char *Message )
+        {
+            fprintf( stderr, "%s\n", Message );
+            exit( EXIT_FAILURE );
+        }
 
         #define MinQueueSize ( 5 )
 
@@ -33,15 +40,15 @@
             Queue Q;
 
 /* 1*/      if( MaxElements < MinQueueSize )
-/* 2*/          Error( "Queue size is too small" );
+/* 2*/          Die( "Queue size is too small" );
 
 /* 3*/      Q = malloc( sizeof( struct QueueRecord ) );
 /* 4*/      if( Q == NULL )
-/* 5*/          FatalError( "Out of space!!!" );
+/* 5*/          Die( "Out of space!!!" );
 
 /* 6*/      Q->Array = malloc( sizeof( ElementType ) * MaxElements );
 /* 7*/      if( Q->Array == NULL )
-/* 8*/          FatalError( "Out of space!!!" );
+/* 8*/          Die( "Out of space!!!" );
 /* 9*/      Q->Capacity = MaxElements;
 /*10*/      MakeEmpty( Q );
 
@@ -82,7 +89,7 @@
         Enqueue( ElementType X, Queue Q )
         {
             if( IsFull( Q ) )
-                Error( "Full queue" );
+                Die( "Full queue" );
             else
             {
                 Q->Size++;
@@ -99,7 +106,7 @@
         {
             if( !IsEmpty( Q ) )
                 return Q->Array[ Q->Front ];
-            Error( "Empty queue" );
+            Die( "Empty queue" );
             return 0;  /* Return value used to avoid warning */
         }
 
@@ -107,7 +114,7 @@
         Dequeue( Queue Q )
         {
             if( IsEmpty( Q ) )
-                Error( "Empty queue" );
+                Die( "Empty queue" );
             else
             {
                 Q->Size--;
@@ -121,7 +128,7 @@
             ElementType X = 0;
 
             if( IsEmpty( Q ) )
-                Error( "Empty queue" );
+                Die( "Empty queue" );
             else
             {
                 Q->Size--;

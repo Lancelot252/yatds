@@ -5,7 +5,7 @@
 ## 需要完成的内容
 
 - 在 `list.c` 中定义链表结点 `struct Node`，结点需要保存 `ElementType Element` 和后继指针 `Next`。
-- 实现 `MakeEmpty`：创建或清空一个带头结点的空链表，内存申请失败时调用 `FatalError`。
+- 实现 `MakeEmpty`：创建或清空一个带头结点的空链表，内存申请失败时使用 `fprintf(stderr, ...)` 输出错误并调用 `exit(EXIT_FAILURE)`。
 - 实现状态判断函数 `IsEmpty` 和 `IsLast`。
 - 实现查找相关函数 `Find`、`FindPrevious`、`Header`、`First`、`Advance`、`Retrieve`。
 - 实现 `Insert`：在合法位置 `P` 之后插入新元素，并正确维护后继指针。

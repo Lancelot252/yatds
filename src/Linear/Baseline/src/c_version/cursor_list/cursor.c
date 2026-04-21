@@ -1,6 +1,13 @@
         #include "cursor.h"
+        #include <stdio.h>
         #include <stdlib.h>
-        #include "../common/fatal.h"
+
+        static void
+        Die( const char *Message )
+        {
+            fprintf( stderr, "%s\n", Message );
+            exit( EXIT_FAILURE );
+        }
 
         /* Place in the interface file */
         struct Node
@@ -48,7 +55,7 @@
                 DeleteList( L );
             L = CursorAlloc( );
             if( L == 0 )
-                FatalError( "Out of memory!" );
+                Die( "Out of memory!" );
             CursorSpace[ L ].Next = 0;
             return L;
         }
@@ -139,7 +146,7 @@
 
 /* 1*/      TmpCell = CursorAlloc( );
 /* 2*/      if( TmpCell == 0 )
-/* 3*/          FatalError( "Out of space!!!" );
+/* 3*/          Die( "Out of space!!!" );
 
 /* 4*/      CursorSpace[ TmpCell ].Element = X;
 /* 5*/      CursorSpace[ TmpCell ].Next = CursorSpace[ P ].Next;

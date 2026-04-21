@@ -1,6 +1,13 @@
         #include "stackli.h"
-        #include "../common/fatal.h"
+        #include <stdio.h>
         #include <stdlib.h>
+
+        static void
+        Die( const char *Message )
+        {
+            fprintf( stderr, "%s\n", Message );
+            exit( EXIT_FAILURE );
+        }
 
         struct Node
         {
@@ -24,7 +31,7 @@
 
             S = malloc( sizeof( struct Node ) );
             if( S == NULL )
-                FatalError( "Out of space!!!" );
+                Die( "Out of space!!!" );
             S->Next = NULL;
             MakeEmpty( S );
             return S;
@@ -34,7 +41,7 @@
         MakeEmpty( Stack S )
         {
             if( S == NULL )
-                Error( "Must use CreateStack first" );
+                Die( "Must use CreateStack first" );
             else
                 while( !IsEmpty( S ) )
                     Pop( S );
@@ -56,7 +63,7 @@
 
             TmpCell = malloc( sizeof( struct Node ) );
             if( TmpCell == NULL )
-                FatalError( "Out of space!!!" );
+                Die( "Out of space!!!" );
             else
             {
                 TmpCell->Element = X;
@@ -72,7 +79,7 @@
         {
             if( !IsEmpty( S ) )
                 return S->Next->Element;
-            Error( "Empty stack" );
+            Die( "Empty stack" );
             return 0;  /* Return value used to avoid warning */
         }
 /* END */
@@ -84,7 +91,7 @@
             PtrToNode FirstCell;
 
             if( IsEmpty( S ) )
-                Error( "Empty stack" );
+                Die( "Empty stack" );
             else
             {
                 FirstCell = S->Next;

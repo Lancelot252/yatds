@@ -1,7 +1,15 @@
 /* This code doesn't really do much */
 /* Thus I haven't bothered testing it */
 
-#include "../common/fatal.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+static void
+Die( const char *Message )
+{
+    fprintf( stderr, "%s\n", Message );
+    exit( EXIT_FAILURE );
+}
 
 #define MaxDegree 100
 
@@ -59,7 +67,7 @@ Max( int A, int B )
             PolyProd->HighPower = Poly1->HighPower + Poly2->HighPower;
 
             if( PolyProd->HighPower > MaxDegree )
-                Error( "Exceeded array size" );
+                Die( "Exceeded array size" );
             else
                 for( i = 0; i <= Poly1->HighPower; i++ )
                     for( j = 0; j <= Poly2->HighPower; j++ )

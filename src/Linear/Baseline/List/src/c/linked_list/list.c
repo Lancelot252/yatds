@@ -1,6 +1,13 @@
         #include "list.h"
+        #include <stdio.h>
         #include <stdlib.h>
-        #include "../common/fatal.h"
+
+        static void
+        Die( const char *Message )
+        {
+            fprintf( stderr, "%s\n", Message );
+            exit( EXIT_FAILURE );
+        }
 
         /* Place in the interface file */
         struct Node
@@ -16,7 +23,7 @@
                 DeleteList( L );
             L = malloc( sizeof( struct Node ) );
             if( L == NULL )
-                FatalError( "Out of memory!" );
+                Die( "Out of memory!" );
             L->Next = NULL;
             return L;
         }
@@ -108,7 +115,7 @@
 
 /* 1*/      TmpCell = malloc( sizeof( struct Node ) );
 /* 2*/      if( TmpCell == NULL )
-/* 3*/          FatalError( "Out of space!!!" );
+/* 3*/          Die( "Out of space!!!" );
 
 /* 4*/      TmpCell->Element = X;
 /* 5*/      TmpCell->Next = P->Next;

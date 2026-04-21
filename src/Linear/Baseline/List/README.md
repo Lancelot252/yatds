@@ -11,9 +11,25 @@
 
 链表的设计使得各个节点可以分散存储在内存各处，它们的内存地址无须连续。
 
-下面的 HTML 示意图分步展示了链表节点的定义、逻辑连接关系，以及链表节点在内存中可以分散存储的特点。
+![链表定义与存储方式](../../Source/linked_list_definition_storage.png)
 
-[打开链表定义与存储方式示意图](../../Source/linked_list_definition_storage.html)
+链表的组成单位是节点（node）对象。每个节点都包含两项数据：节点的“值”和指向下一节点的“引用”（指针）。
 
-<iframe src="../../Source/linked_list_definition_storage.html" width="100%" height="860" style="border: 1px solid #d8ded9; border-radius: 12px;"></iframe>
+一般而言，一个常见的 C++ 链表结构体定义如下：
+
+```cpp
+struct Node {
+    ElementType Element; // 节点的值
+    Node* Next;         // 指向下一个节点的指针
+};
+```
+在 C 语言中，链表节点的定义类似：
+
+```c
+struct Node {  
+    ElementType Element; // 节点的值
+    struct Node* Next;  // 指向下一个节点的指针
+};
+```
+注：`ElementType` 代表节点中存储的数据类型，实际定义中一般为 `int`、`float`、`char*` 等。
 
