@@ -18,17 +18,19 @@
 一般而言，一个常见的 C++ 链表结构体定义如下：
 
 ```cpp
-struct Node {
-    ElementType Element; // 节点的值
-    Node* Next;         // 指向下一个节点的指针
+/* 链表节点结构体 */
+struct ListNode {
+    ElementType val;         // 节点值
+    ListNode *next;  // 指向下一节点的指针
+    ListNode(int x) : val(x), next(nullptr) {}  // 构造函数
 };
 ```
 在 C 语言中，链表节点的定义类似：
 
 ```c
-struct Node {  
-    ElementType Element; // 节点的值
-    struct Node* Next;  // 指向下一个节点的指针
+struct ListNode {  
+    ElementType val; // 节点的值
+    struct ListNode* next;  // 指向下一个节点的指针
 };
 ```
 <small>注：`ElementType` 代表节点中存储的数据类型，实际定义中一般为 `int`、`float`、`char*` 等。</small>
