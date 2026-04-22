@@ -10,17 +10,17 @@ class LinkedList {
 public:
     using value_type = T;
 
-    LinkedList();
-    LinkedList(const LinkedList& rhs);
-    LinkedList& operator=(const LinkedList& rhs);
-    ~LinkedList();
+    LinkedList();// 默认构造函数
+    LinkedList(const LinkedList& rhs);// 拷贝构造函数
+    LinkedList& operator=(const LinkedList& rhs);// 赋值运算符
+    ~LinkedList();// 析构函数
 
-    bool empty() const;
-    void clear();
-    void push_back(const T& value);
-    bool contains(const T& value) const;
-    bool erase(const T& value);
-    std::vector<T> to_vector() const;
+    bool empty() const;// 判断链表是否为空
+    void clear();// 清空链表
+    void push_back(const T& value);// 在链表末尾添加元素
+    bool contains(const T& value) const;// 判断链表是否包含某个元素
+    bool erase(const T& value);// 从链表中删除某个元素
+    std::vector<T> to_vector() const;// 将链表转换为向量
 
 private:
     struct Node {
