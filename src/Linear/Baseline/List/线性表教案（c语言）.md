@@ -204,14 +204,16 @@ int main(void) {
 ```c
 typedef int ElemType;
 
-typedef struct LNode {
-    ElemType data;             /* 数据域 */
-    struct LNode *next;        /* 指针域 */
-} LNode, *LinkList;
+typedef struct ListNode {
+    ElemType val;              /* 节点的值 */
+    struct ListNode *next;     /* 指向下一个节点的指针 */
+} ListNode;
+
+typedef ListNode *LinkList;
 ```
 
-> 💡 **C 语言要点**：`LNode` 是结构体类型名，`LinkList` 是 `LNode *`（指向结点的指针）类型名。两者本质相同，但语义不同：
-> - `LNode *p`：强调 p 是一个**结点指针**
+> 💡 **C 语言要点**：`ListNode` 是结构体类型名，`LinkList` 是 `ListNode *`（指向结点的指针）类型名。两者本质相同，但语义不同：
+> - `ListNode *p`：强调 p 是一个**结点指针**
 > - `LinkList L`：强调 L 是一个**链表**（通常指头指针）
 
 #### 头指针 vs 头结点
@@ -221,7 +223,7 @@ typedef struct LNode {
 #### ① 初始化（带头结点）
 ```c
 int InitList(LinkList *L) {
-    *L = (LNode *)malloc(sizeof(LNode));
+    *L = (ListNode *)malloc(sizeof(ListNode));
     if (*L == NULL) return 0;
     (*L)->next = NULL;
     return 1;
@@ -232,10 +234,10 @@ int InitList(LinkList *L) {
 ```c
 void CreateList_Head(LinkList L, int n) {
     int i;
-    LNode *p;
+    ListNode *p;
     for (i = 0; i < n; i++) {
-        p = (LNode *)malloc(sizeof(LNode));
-        scanf("%d", &p->data);
+        p = (ListNode *)malloc(sizeof(ListNode));
+        scanf("%d", &p->val);
         p->next = L->next;        /* 新结点指向原首元结点 */
         L->next = p;              /* 头结点指向新结点 */
     }
@@ -246,11 +248,11 @@ void CreateList_Head(LinkList L, int n) {
 ```c
 void CreateList_Tail(LinkList L, int n) {
     int i;
-    LNode *p, *r;
+    ListNode *p, *r;
     r = L;                                 /* r 始终指向尾结点 */
     for (i = 0; i < n; i++) {
-        p = (LNode *)malloc(sizeof(LNode));
-        scanf("%d", &p->data);
+        p = (ListNode *)malloc(sizeof(ListNode));
+        scanf("%d", &p->val);
         p->next = NULL;
         r->next = p;
         r = p;
@@ -260,9 +262,9 @@ void CreateList_Tail(LinkList L, int n) {
 
 #### ④ 按位查找（取第 i 个结点）
 ```c
-LNode* GetElem(LinkList L, int i) {
+ListNode *GetElem(LinkList L, int i) {
     int j = 1;
-    LNode *p = L->next;          /* 指向首元结点 */
+    ListNode *p = L->next;       /* 指向首元结点 */
     if (i == 0) return L;        /* 返回头结点 */
     if (i < 1) return NULL;
     while (p != NULL && j < i) {
@@ -276,11 +278,11 @@ LNode* GetElem(LinkList L, int i) {
 #### ⑤ 插入第 i 个位置
 ```c
 int ListInsert(LinkList L, int i, ElemType e) {
-    LNode *p, *s;
+    ListNode *p, *s;
     p = GetElem(L, i - 1);       /* 找到第 i-1 个结点 */
     if (p == NULL) return 0;
-    s = (LNode *)malloc(sizeof(LNode));
-    s->data = e;
+    s = (ListNode *)malloc(sizeof(ListNode));
+    s->val = e;
     s->next = p->next;
     p->next = s;
     return 1;
@@ -291,11 +293,11 @@ int ListInsert(LinkList L, int i, ElemType e) {
 #### ⑥ 删除第 i 个结点
 ```c
 int ListDelete(LinkList L, int i, ElemType *e) {
-    LNode *p, *q;
+    ListNode *p, *q;
     p = GetElem(L, i - 1);
     if (p == NULL || p->next == NULL) return 0;
     q = p->next;
-    *e = q->data;
+    *e = q->val;
     p->next = q->next;
     free(q);                     /* C 语言必须手动释放内存！*/
     return 1;
@@ -307,9 +309,9 @@ int ListDelete(LinkList L, int i, ElemType *e) {
 #### ⑦ 遍历输出
 ```c
 void ListTraverse(LinkList L) {
-    LNode *p = L->next;
+    ListNode *p = L->next;
     while (p != NULL) {
-        printf("%d ", p->data);
+        printf("%d ", p->val);
         p = p->next;
     }
     printf("\n");
@@ -319,7 +321,7 @@ void ListTraverse(LinkList L) {
 #### ⑧ 销毁链表
 ```c
 void DestroyList(LinkList L) {
-    LNode *p = L, *q;
+    ListNode *p = L, *q;
     while (p != NULL) {
         q = p->next;
         free(p);
@@ -333,7 +335,7 @@ void DestroyList(LinkList L) {
 #### 节点定义
 ```c
 typedef struct DNode {
-    ElemType data;
+    ElemType val;
     struct DNode *prior;     /* 前驱指针 */
     struct DNode *next;      /* 后继指针 */
 } DNode, *DLinkList;
@@ -394,9 +396,9 @@ void Reverse(SqList *L) {
 ### 例 2：删除单链表中所有值为 x 的结点
 ```c
 void DeleteX(LinkList L, ElemType x) {
-    LNode *pre = L, *p = L->next, *q;
+    ListNode *pre = L, *p = L->next, *q;
     while (p != NULL) {
-        if (p->data == x) {
+        if (p->val == x) {
             q = p;
             pre->next = p->next;
             p = p->next;
@@ -412,11 +414,11 @@ void DeleteX(LinkList L, ElemType x) {
 ### 例 3：合并两个有序链表（升序，带头结点）
 ```c
 LinkList MergeList(LinkList La, LinkList Lb) {
-    LNode *pa = La->next, *pb = Lb->next, *r = La;
+    ListNode *pa = La->next, *pb = Lb->next, *r = La;
     LinkList Lc = La;
     free(Lb);                    /* 不再需要 Lb 的头结点 */
     while (pa != NULL && pb != NULL) {
-        if (pa->data <= pb->data) {
+        if (pa->val <= pb->val) {
             r->next = pa; r = pa; pa = pa->next;
         } else {
             r->next = pb; r = pb; pb = pb->next;
@@ -430,7 +432,7 @@ LinkList MergeList(LinkList La, LinkList Lb) {
 ### 例 4：判断单链表是否有环（快慢指针法）
 ```c
 int HasCycle(LinkList L) {
-    LNode *slow = L, *fast = L;
+    ListNode *slow = L, *fast = L;
     while (fast != NULL && fast->next != NULL) {
         slow = slow->next;
         fast = fast->next->next;
@@ -449,8 +451,8 @@ int HasCycle(LinkList L) {
 | 易错点 | 错误示例 | 正确做法 |
 |--------|---------|---------|
 | **忘记 `&` 取地址** | `InitList(L)` | `InitList(&L)` |
-| **`->` 与 `.` 混用** | `p.data` | `p->data`（p 是指针）|
-| **未初始化指针** | `LNode *p; p->data=1;` | 先 `malloc` 再使用 |
+| **`->` 与 `.` 混用** | `p.val` | `p->val`（p 是指针）|
+| **未初始化指针** | `ListNode *p; p->val = 1;` | 先 `malloc` 再使用 |
 | **野指针** | `free(p)` 后继续用 `p` | `free(p); p = NULL;` |
 | **内存泄漏** | 忘记 `free` | 每个 `malloc` 都要配 `free` |
 | **越界访问** | `L.data[L.length]` 当成最后一个 | 应是 `L.data[L.length-1]` |
@@ -521,4 +523,3 @@ main: src/main.c src/sqlist.c src/linklist.c
 clean:
 	rm -f main *.o
 ```
-

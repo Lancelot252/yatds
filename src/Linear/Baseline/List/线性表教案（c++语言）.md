@@ -35,14 +35,14 @@ $$
 template <typename T>
 class List {
 public:
-    virtual ~List() = default;                       // 虚析构函数
-    virtual bool empty() const = 0;                  // 判空
-    virtual int size() const = 0;                    // 求长度
-    virtual T get(int i) const = 0;                  // 取第 i 个元素
-    virtual int locate(const T& e) const = 0;        // 按值查找
-    virtual void insert(int i, const T& e) = 0;     // 插入
-    virtual void remove(int i) = 0;                  // 删除
-    virtual void traverse() const = 0;               // 遍历
+    virtual ~List() = default;                  // 虚析构函数
+    virtual bool empty() const = 0;             // 判空
+    virtual int size() const = 0;               // 求长度
+    virtual T get(int i) const = 0;             // 取第 i 个元素
+    virtual int locate(const T &e) const = 0;   // 按值查找
+    virtual void insert(int i, const T &e) = 0; // 插入
+    virtual void remove(int i) = 0;             // 删除
+    virtual void traverse() const = 0;          // 遍历
 };
 ```
 
@@ -61,24 +61,24 @@ public:
 template <typename T>
 class SqList : public List<T> {
 private:
-    T* data;            // 指向动态数组的指针
-    int length;         // 当前长度
-    int capacity;       // 容量
+    T *data;      // 指向动态数组的指针
+    int length;   // 当前长度
+    int capacity; // 容量
 
-    void expand();      // 私有方法：扩容
+    void expand(); // 私有方法：扩容
 
 public:
     // 构造函数
     explicit SqList(int cap = 100);
     
     // 拷贝构造函数（深拷贝）
-    SqList(const SqList& other);
+    SqList(const SqList &other);
     
     // 移动构造函数（C++11）
     SqList(SqList&& other) noexcept;
     
     // 拷贝赋值运算符
-    SqList& operator=(const SqList& other);
+    SqList &operator=(const SqList &other);
     
     // 移动赋值运算符
     SqList& operator=(SqList&& other) noexcept;
@@ -90,14 +90,14 @@ public:
     bool empty() const override { return length == 0; }
     int size() const override { return length; }
     T get(int i) const override;
-    int locate(const T& e) const override;
-    void insert(int i, const T& e) override;
+    int locate(const T &e) const override;
+    void insert(int i, const T &e) override;
     void remove(int i) override;
     void traverse() const override;
     
     // 运算符重载
-    T& operator[](int i);
-    const T& operator[](int i) const;
+    T &operator[](int i);
+    const T &operator[](int i) const;
 };
 ```
 
@@ -124,7 +124,7 @@ SqList<T>::~SqList() {
 #### （3）拷贝构造（深拷贝）
 ```cpp
 template <typename T>
-SqList<T>::SqList(const SqList& other) 
+SqList<T>::SqList(const SqList &other)
     : length(other.length), capacity(other.capacity) {
     data = new T[capacity];
     for (int i = 0; i < length; i++)
@@ -146,7 +146,7 @@ SqList<T>::SqList(SqList&& other) noexcept
 #### （5）插入操作
 ```cpp
 template <typename T>
-void SqList<T>::insert(int i, const T& e) {
+void SqList<T>::insert(int i, const T &e) {
     if (i < 1 || i > length + 1)
         throw std::out_of_range("插入位置非法");
     if (length >= capacity)
@@ -163,7 +163,7 @@ void SqList<T>::insert(int i, const T& e) {
 template <typename T>
 void SqList<T>::expand() {
     capacity *= 2;
-    T* newData = new T[capacity];
+    T *newData = new T[capacity];
     for (int i = 0; i < length; i++)
         newData[i] = data[i];
     delete[] data;
@@ -196,7 +196,7 @@ T SqList<T>::get(int i) const {
 #### （9）按值查找
 ```cpp
 template <typename T>
-int SqList<T>::locate(const T& e) const {
+int SqList<T>::locate(const T &e) const {
     for (int i = 0; i < length; i++)
         if (data[i] == e) return i + 1;
     return 0;
@@ -216,7 +216,7 @@ void SqList<T>::traverse() const {
 #### （11）下标运算符重载（让顺序表"像数组"）
 ```cpp
 template <typename T>
-T& SqList<T>::operator[](int i) {
+T &SqList<T>::operator[](int i) {
     if (i < 0 || i >= length)
         throw std::out_of_range("下标越界");
     return data[i];                // 返回引用，可读可写
@@ -270,12 +270,11 @@ int main() {
 #### 节点类
 ```cpp
 template <typename T>
-struct Node {
-    T data;
-    Node<T>* next;
-    
-    Node() : next(nullptr) {}
-    explicit Node(const T& e, Node<T>* n = nullptr) : data(e), next(n) {}
+struct ListNode {
+    T val;
+    ListNode *next;
+
+    ListNode(const T &x, ListNode *n = nullptr) : val(x), next(n) {}
 };
 ```
 
@@ -284,31 +283,31 @@ struct Node {
 #### 链表类
 ```cpp
 template <typename T>
-class LinkList : public List<T> {
+class LinkedList : public List<T> {
 private:
-    Node<T>* head;            // 头结点指针
+    ListNode<T> *head; // 头结点指针
     int length;
 
 public:
-    LinkList();
-    LinkList(const LinkList& other);             // 深拷贝
-    LinkList(LinkList&& other) noexcept;         // 移动构造
-    LinkList& operator=(const LinkList& other);
-    LinkList& operator=(LinkList&& other) noexcept;
-    ~LinkList() override;
+    LinkedList();
+    LinkedList(const LinkedList &other);              // 深拷贝
+    LinkedList(LinkedList &&other) noexcept;          // 移动构造
+    LinkedList &operator=(const LinkedList &other);
+    LinkedList &operator=(LinkedList &&other) noexcept;
+    ~LinkedList() override;
     
     bool empty() const override { return length == 0; }
     int size() const override { return length; }
     T get(int i) const override;
-    int locate(const T& e) const override;
-    void insert(int i, const T& e) override;
+    int locate(const T &e) const override;
+    void insert(int i, const T &e) override;
     void remove(int i) override;
     void traverse() const override;
     
     // 特色操作
-    void reverse();                              // 链表逆置
-    void createHead(const T arr[], int n);       // 头插法建立
-    void createTail(const T arr[], int n);       // 尾插法建立
+    void reverse();                         // 链表逆置
+    void createHead(const T arr[], int n); // 头插法建立
+    void createTail(const T arr[], int n); // 尾插法建立
 };
 ```
 
@@ -317,18 +316,18 @@ public:
 #### ① 构造函数（建立头结点）
 ```cpp
 template <typename T>
-LinkList<T>::LinkList() : length(0) {
-    head = new Node<T>();         // 头结点
+LinkedList<T>::LinkedList() : length(0) {
+    head = new ListNode<T>(T{}); // 头结点
 }
 ```
 
 #### ② 析构函数（释放所有结点）
 ```cpp
 template <typename T>
-LinkList<T>::~LinkList() {
-    Node<T>* p = head;
+LinkedList<T>::~LinkedList() {
+    ListNode<T> *p = head;
     while (p != nullptr) {
-        Node<T>* q = p->next;
+        ListNode<T> *q = p->next;
         delete p;
         p = q;
     }
@@ -338,9 +337,9 @@ LinkList<T>::~LinkList() {
 #### ③ 头插法
 ```cpp
 template <typename T>
-void LinkList<T>::createHead(const T arr[], int n) {
+void LinkedList<T>::createHead(const T arr[], int n) {
     for (int i = 0; i < n; i++) {
-        Node<T>* p = new Node<T>(arr[i]);
+        ListNode<T> *p = new ListNode<T>(arr[i]);
         p->next = head->next;
         head->next = p;
         length++;
@@ -351,11 +350,11 @@ void LinkList<T>::createHead(const T arr[], int n) {
 #### ④ 尾插法
 ```cpp
 template <typename T>
-void LinkList<T>::createTail(const T arr[], int n) {
-    Node<T>* r = head;
+void LinkedList<T>::createTail(const T arr[], int n) {
+    ListNode<T> *r = head;
     while (r->next != nullptr) r = r->next;   // 找到尾结点
     for (int i = 0; i < n; i++) {
-        Node<T>* p = new Node<T>(arr[i]);
+        ListNode<T> *p = new ListNode<T>(arr[i]);
         r->next = p;
         r = p;
         length++;
@@ -366,12 +365,12 @@ void LinkList<T>::createTail(const T arr[], int n) {
 #### ⑤ 插入第 i 个位置
 ```cpp
 template <typename T>
-void LinkList<T>::insert(int i, const T& e) {
+void LinkedList<T>::insert(int i, const T &e) {
     if (i < 1 || i > length + 1)
         throw std::out_of_range("插入位置非法");
-    Node<T>* p = head;
+    ListNode<T> *p = head;
     for (int j = 1; j < i; j++) p = p->next;
-    Node<T>* s = new Node<T>(e, p->next);
+    ListNode<T> *s = new ListNode<T>(e, p->next);
     p->next = s;
     length++;
 }
@@ -380,12 +379,12 @@ void LinkList<T>::insert(int i, const T& e) {
 #### ⑥ 删除第 i 个结点
 ```cpp
 template <typename T>
-void LinkList<T>::remove(int i) {
+void LinkedList<T>::remove(int i) {
     if (i < 1 || i > length)
         throw std::out_of_range("删除位置非法");
-    Node<T>* p = head;
+    ListNode<T> *p = head;
     for (int j = 1; j < i; j++) p = p->next;
-    Node<T>* q = p->next;
+    ListNode<T> *q = p->next;
     p->next = q->next;
     delete q;                       // C++ 用 delete
     length--;
@@ -395,12 +394,12 @@ void LinkList<T>::remove(int i) {
 #### ⑦ 链表逆置（经典面试题）
 ```cpp
 template <typename T>
-void LinkList<T>::reverse() {
-    Node<T>* prev = nullptr;
-    Node<T>* curr = head->next;
+void LinkedList<T>::reverse() {
+    ListNode<T> *prev = nullptr;
+    ListNode<T> *curr = head->next;
     head->next = nullptr;
     while (curr != nullptr) {
-        Node<T>* next = curr->next;
+        ListNode<T> *next = curr->next;
         curr->next = prev;
         prev = curr;
         curr = next;
@@ -412,10 +411,10 @@ void LinkList<T>::reverse() {
 #### ⑧ 遍历
 ```cpp
 template <typename T>
-void LinkList<T>::traverse() const {
-    Node<T>* p = head->next;
+void LinkedList<T>::traverse() const {
+    ListNode<T> *p = head->next;
     while (p != nullptr) {
-        std::cout << p->data << " ";
+        std::cout << p->val << " ";
         p = p->next;
     }
     std::cout << std::endl;
@@ -426,7 +425,7 @@ void LinkList<T>::traverse() const {
 
 ```cpp
 int main() {
-    LinkList<int> L;
+    LinkedList<int> L;
     int arr[] = {10, 20, 30, 40, 50};
     L.createTail(arr, 5);
     
@@ -454,18 +453,18 @@ int main() {
 ```cpp
 template <typename T>
 struct DNode {
-    T data;
-    DNode<T>* prior;
-    DNode<T>* next;
+    T val;
+    DNode<T> *prior;
+    DNode<T> *next;
     
-    explicit DNode(const T& e = T()) 
-        : data(e), prior(nullptr), next(nullptr) {}
+    explicit DNode(const T &e = T())
+        : val(e), prior(nullptr), next(nullptr) {}
 };
 ```
 
 **插入操作（在 p 之后插入 e）**
 ```cpp
-DNode<T>* s = new DNode<T>(e);
+DNode<T> *s = new DNode<T>(e);
 s->next = p->next;
 if (p->next != nullptr) p->next->prior = s;
 s->prior = p;
@@ -519,8 +518,8 @@ int main() {
 ### 例 2：合并两个有序链表
 ```cpp
 template <typename T>
-LinkList<T> merge(LinkList<T>& La, LinkList<T>& Lb) {
-    LinkList<T> Lc;
+LinkedList<T> merge(LinkedList<T> &La, LinkedList<T> &Lb) {
+    LinkedList<T> Lc;
     // ... 实现归并逻辑
     return Lc;                       // 利用移动语义自动优化
 }
@@ -529,9 +528,9 @@ LinkList<T> merge(LinkList<T>& La, LinkList<T>& Lb) {
 ### 例 3：判断链表是否有环（快慢指针）
 ```cpp
 template <typename T>
-bool hasCycle(Node<T>* head) {
-    Node<T>* slow = head;
-    Node<T>* fast = head;
+bool hasCycle(ListNode<T> *head) {
+    ListNode<T> *slow = head;
+    ListNode<T> *fast = head;
     while (fast != nullptr && fast->next != nullptr) {
         slow = slow->next;
         fast = fast->next->next;
@@ -547,9 +546,9 @@ bool hasCycle(Node<T>* head) {
 
 template <typename T>
 struct SmartNode {
-    T data;
-    std::shared_ptr<SmartNode<T>> next;     // 自动管理内存
-    explicit SmartNode(const T& e) : data(e), next(nullptr) {}
+    T val;
+    std::shared_ptr<SmartNode<T>> next; // 自动管理内存
+    explicit SmartNode(const T &e) : val(e), next(nullptr) {}
 };
 ```
 
@@ -610,7 +609,7 @@ struct SmartNode {
 | **改错题** | 给出含浅拷贝 bug 的链表代码，让学生改正为深拷贝 |
 | **算法题** | 用模板实现一个去重函数，能处理 `SqList<int>` 和 `SqList<string>` |
 | **综合题** | 用链表 + 模板实现一元多项式 `P(x)` 的加减乘运算 |
-| **拓展题** | 把 `LinkList` 改用 `std::shared_ptr` 重写，对比内存安全性 |
+| **拓展题** | 把 `LinkedList` 改用 `std::shared_ptr` 重写，对比内存安全性 |
 | **STL 题** | 用 `std::vector` 和 `std::list` 解决相同问题，对比性能 |
 
 ---
@@ -622,7 +621,7 @@ LinearList/
 ├── include/
 │   ├── List.hpp            // 抽象基类（模板）
 │   ├── SqList.hpp          // 顺序表（模板）
-│   └── LinkList.hpp        // 链表（模板）
+│   └── LinkedList.hpp      // 链表（模板）
 ├── src/
 │   └── main.cpp            // 测试主程序
 ├── tests/
@@ -680,7 +679,7 @@ make
 template <typename T>
 class SqList {
 private:
-    T* data;
+    T *data;
     int length, capacity;
 public:
     explicit SqList(int cap = 100) : length(0), capacity(cap) {
@@ -688,7 +687,7 @@ public:
     }
     ~SqList() { delete[] data; }
     
-    void insert(int i, const T& e) {
+    void insert(int i, const T &e) {
         if (i < 1 || i > length + 1) throw std::out_of_range("位置非法");
         if (length >= capacity) throw std::overflow_error("表已满");
         for (int j = length; j >= i; j--) data[j] = data[j - 1];
@@ -764,10 +763,10 @@ g++ -std=c++17 linear_list.cpp -o linear_list
 
 template <typename T>
 struct SmartNode {
-    T data;
-    std::unique_ptr<SmartNode<T>> next;     // 独占所有权
+    T val;
+    std::unique_ptr<SmartNode<T>> next; // 独占所有权
     
-    explicit SmartNode(const T& e) : data(e), next(nullptr) {}
+    explicit SmartNode(const T &e) : val(e), next(nullptr) {}
 };
 ```
 
@@ -775,21 +774,21 @@ struct SmartNode {
 
 ```cpp
 template <typename T>
-class SmartLinkList {
+class SmartLinkedList {
 private:
     std::unique_ptr<SmartNode<T>> head;
     int length;
     
 public:
-    SmartLinkList() : head(std::make_unique<SmartNode<T>>(T())), length(0) {}
+    SmartLinkedList() : head(std::make_unique<SmartNode<T>>(T())), length(0) {}
     
     // 不需要写析构函数！智能指针自动释放整条链表
     
-    void insert(int i, const T& e) {
+    void insert(int i, const T &e) {
         if (i < 1 || i > length + 1)
             throw std::out_of_range("位置非法");
         
-        SmartNode<T>* p = head.get();
+        SmartNode<T> *p = head.get();
         for (int j = 1; j < i; j++) p = p->next.get();
         
         auto newNode = std::make_unique<SmartNode<T>>(e);
@@ -802,7 +801,7 @@ public:
         if (i < 1 || i > length)
             throw std::out_of_range("位置非法");
         
-        SmartNode<T>* p = head.get();
+        SmartNode<T> *p = head.get();
         for (int j = 1; j < i; j++) p = p->next.get();
         
         p->next = std::move(p->next->next);     // 旧节点自动释放
@@ -810,9 +809,9 @@ public:
     }
     
     void traverse() const {
-        SmartNode<T>* p = head->next.get();
+        SmartNode<T> *p = head->next.get();
         while (p != nullptr) {
-            std::cout << p->data << " ";
+            std::cout << p->val << " ";
             p = p->next.get();
         }
         std::cout << std::endl;
@@ -843,7 +842,7 @@ public:
 | **第 1 课时** | 线性表概念 | 定义、ADT、C++ 类设计 | 写出 ADT 类声明 |
 | **第 2 课时** | 顺序表（一）| 类定义、构造析构、插入删除 | 实现 `SqList` 基本操作 |
 | **第 3 课时** | 顺序表（二）| 拷贝控制、模板化、运算符重载 | 模板化改造 |
-| **第 4 课时** | 链表（一）| 节点定义、单链表类、头/尾插法 | 实现 `LinkList` 基本操作 |
+| **第 4 课时** | 链表（一）| 节点定义、单链表类、头/尾插法 | 实现 `LinkedList` 基本操作 |
 | **第 5 课时** | 链表（二）| 插入删除、链表逆置、双向链表 | 链表逆置 + 合并 |
 | **第 6 课时** | 进阶专题 | 智能指针、移动语义、STL 对比 | 用 `vector`/`list` 重写 |
 | **第 7 课时** | 综合应用 | 一元多项式、约瑟夫环、LRU | 综合项目 |
@@ -902,4 +901,3 @@ C++ 版的"线性表"完整教学内容涵盖：
 ✅ 完整可运行示例代码
 
 ---
-
