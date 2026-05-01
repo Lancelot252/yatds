@@ -191,4 +191,174 @@ class ArrayStack {
 - 你对性能差异的分析（注：分析需要能够体现你对两种实现的理解，不能仅仅是简单的结果描述）
 
 ## Baseline 任务 2: 队列的基本实现
+队列（queue）是一种遵循先入先出规则的线性数据结构。顾名思义，队列模拟了排队现象，即新来的人不断加入队列尾部，而位于队列头部的人逐个离开。
+
+如图所示，我们将队列头部称为“队首”，尾部称为“队尾”，将把元素加入队尾的操作称为“入队”，删除队首元素的操作称为“出队”。
+
+![queue](../../Source/queue.png)
+
+### 队列的基本操作
+队列的常见操作如表所示（以 C++ 中 `<queue>` 库的对应方法为例）：
+
+| 方法 | 描述 | 时间复杂度 |
+| --- | --- | --- |
+| `push()` | 元素入队（添加至队尾） | $O(1)$ |
+| `pop()` | 队首元素出队 | $O(1)$ |
+| `front()` | 访问队首元素 | $O(1)$ |
+
+我们可以直接使用 C++ 中现成的队列类：
+```cpp
+/* 初始化队列 */
+queue<int> queue;
+
+/* 元素入队 */
+queue.push(1);
+queue.push(3);
+queue.push(2);
+queue.push(5);
+queue.push(4);
+
+/* 访问队首元素 */
+int front = queue.front();
+
+/* 元素出队 */
+queue.pop();
+
+/* 获取队列的长度 */
+int size = queue.size();
+
+/* 判断队列是否为空 */
+bool empty = queue.empty();
+```
+<small>注：上述代码需要包含头文件 `#include <queue>`</small>
+
+### 队列的实现
+为了实现队列，我们需要一种数据结构，可以在一端添加元素，并在另一端删除元素，链表和数组都符合要求。
+#### 1.基于链表的实现
+如下图所示，我们可以将链表的“头节点”和“尾节点”分别视为“队首”和“队尾”，规定队尾仅可添加节点，队首仅可删除节点。
+![queue_linked_list_1](../../Source/linkedlist_queue_step1.png)
+![queue_linked_list_2](../../Source/linkedlist_queue_step2_push.png)
+![queue_linked_list_3](../../Source/linkedlist_queue_step3_pop.png)
+
+```cpp
+/* 基于链表实现的队列 */
+class LinkedListQueue {
+  private:
+    ListNode *front, *rear; // 头节点 front ，尾节点 rear
+    int queSize;
+
+  public:
+    LinkedListQueue() {
+        front = nullptr;
+        rear = nullptr;
+        queSize = 0;
+    }
+
+    ~LinkedListQueue() {
+        // 遍历链表删除节点，释放内存
+        freeMemoryLinkedList(front);
+    }
+
+    /* 获取队列的长度 */
+    int size() {
+        return queSize;
+    }
+
+    /* 判断队列是否为空 */
+    bool isEmpty() {
+        return queSize == 0;
+    }
+
+    /* 入队 */
+    void push(int num) {
+        // 在尾节点后添加 num
+        ListNode *node = new ListNode(num);
+        // 如果队列为空，则令头、尾节点都指向该节点
+        if (front == nullptr) {
+            front = node;
+            rear = node;
+        }
+        // 如果队列不为空，则将该节点添加到尾节点后
+        else {
+            rear->next = node;
+            rear = node;
+        }
+        queSize++;
+    }
+
+    /* 出队 */
+    int pop() {
+        int num = peek();
+        // 删除头节点
+        ListNode *tmp = front;
+        front = front->next;
+        // 释放内存
+        delete tmp;
+        queSize--;
+        return num;
+    }
+
+    /* 访问队首元素 */
+    int peek() {
+        if (size() == 0)
+            throw out_of_range("队列为空");
+        return front->val;
+    }
+
+    /* 将链表转化为 Vector 并返回 */
+    vector<int> toVector() {
+        ListNode *node = front;
+        vector<int> res(size());
+        for (int i = 0; i < res.size(); i++) {
+            res[i] = node->val;
+            node = node->next;
+        }
+        return res;
+    }
+};
+```
+<small>注：上述代码中的 `ListNode` 是链表节点的定义。</small>
+
+#### 2.基于数组的实现
+
+在数组中删除首元素的时间复杂度为 $O(n)$ ，这会导致出队操作效率较低。然而，我们可以采用以下巧妙方法来避免这个问题。
+
+我们可以使用一个变量 `front` 指向队首元素的索引，并维护一个变量 `size` 用于记录队列长度。定义 `rear = front + size` ，这个公式计算出的 `rear` 指向队尾元素之后的下一个位置。
+
+基于此设计，**数组中包含元素的有效区间为 `[front, rear - 1]`**，各种操作的实现方法如下图所示。
+
+- 入队操作：将输入元素赋值给 `rear` 索引处，并将 `size` 增加 1 。
+- 出队操作：只需将 `front` 增加 1 ，并将 `size` 减少 1 。
+
+可以看到，入队和出队操作都只需进行一次操作，时间复杂度均为 $O(1)$ 。
+
+![queue_array_1](../../Source/array_queue_step1.png)
+![queue_array_2](../../Source/array_queue_step2_push.png)
+![queue_array_3](../../Source/array_queue_step3_pop.png)
+
+你可能会发现一个问题：在不断进行入队和出队的过程中，`front` 和 `rear` 都在向右移动，**当它们到达数组尾部时就无法继续移动了**。
+
+### 任务内容
+- 完成链表实现的队列类和数组实现的队列类，要求可以通过给出的测试程序（你在这一部分不可以修改测试程序）。
+- 我们在**基于数组的实现**中提到，当 `front` 和 `rear` 到达数组尾部时就无法继续移动了。请你设计至少两种方法来解决这个问题，在代码中实现它并测试。
+- 评估两种实现的性能差异，分析它们在不同场景下的优缺点，你需要使用完整的测试程序来评估性能差异，并在报告中进行分析。
+- 参考 C++ 标准库中的 `<queue>` 实现，在之前实现的队列类上添加更多的功能，如获取队列的长度、判断队列是否为空等（五个更多的功能即可），并比较你的队列和 `<queue>` 库中队列的性能差异（需要查阅`<queue>`库的相关资料）。
+
+你提交的材料中这部分内容需要包含：
+- 四个小任务分别的代码（注意：代码的文件结构和注释也是评分的一部分）
+- 对于**基于数组的实现**中设计的至少两种解决 `front` 和 `rear` 到达数组尾部问题解决方案思路的详细说明。
+- 对你程序和结果的分析（注：分析需要能够体现你对这些功能的理解，不能仅仅是简单的结果描述）
+- 你对性能差异的分析（注：分析需要能够体现你对两种实现的理解，不能仅仅是简单的结果描述）
+
 ## Baseline 任务 3: 栈和队列的综合应用
+
+事实上，我们发现栈和队列其实很像，一个是先入后出（LIFO），一个是先入先出（FIFO）。本质上，二者只是对数据的存取顺序进行了限制，而底层的数据结构可以是相同的。
+
+接下来，我们希望你可以思考，有没有什么方式可以使这二者之间相互转换呢？也就是说，我们是否可以使用队列来实现一个栈，或者使用栈来实现一个队列呢？
+
+### 任务内容
+- 设计并实现一个类，使用队列来实现一个栈，要求该类支持栈的基本操作（入栈、出栈、访问栈顶元素等）。你需要编写测试程序来验证你的实现。
+- 设计并实现一个类，使用栈来实现一个队列，要求该类支持队列的基本操作（入队、出队、访问队首元素等）。你需要编写测试程序来验证你的实现。
+- 使用`<vector>`库中来实现上述两个类，其中各自需要一个函数可以使其可以相互转换（即栈类中需要一个函数可以将其转换为队列类，队列类中需要一个函数可以将其转换为栈类）。你需要编写测试程序来验证这些函数的正确性。
+- 评估对比栈实现队列和`<vector>`实现队列的差异，你需要使用完整的测试程序来体现差异，并在报告中进行分析。
+- 评估对比队列实现栈和`<vector>`实现栈的差异，你需要使用完整的测试程序来体现差异，并在报告中进行分析。
