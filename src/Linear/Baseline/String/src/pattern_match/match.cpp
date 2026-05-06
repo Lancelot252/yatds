@@ -44,7 +44,14 @@ std::vector<int> dsaac::getNext(const std::string& pattern)
 int dsaac::kmpMatch(const std::string& text, const std::string& pattern)
 {
     // 学生自行实现完整的 KMP 匹配流程...
+    // 提示：可直接调用 getNext 或 getNextVal 函数获取 next 数组
     return -1;
+}
+
+std::vector<int> dsaac::getNextVal(const std::string& pattern)
+{
+    // Step 3 进阶优化要求：学生自行实现求解 nextval 数组的流程...
+    return std::vector<int>();
 }
 
 /* END */
