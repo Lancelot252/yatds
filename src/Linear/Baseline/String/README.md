@@ -12,7 +12,7 @@
 
 如图所示，由于字符串中的字符在内存中是连续存取的，我们可以使用下标来快速访问对应的字符。
 
-![string_array](../../../Source/string_array.png)
+![string_array](../../Source/string_array.png)
 
 ### 字符串的基本操作
 字符串的常用操作如表所示，具体的方法名需要根据所使用的编程语言来确定。在此，我们以常见的求长度、拼接、求子串等命名为例（即 C++ 中`<string>`库中对应方法）。
@@ -128,7 +128,7 @@ class MyString {
 朴素算法使用双指针，逐个字符向后比对。如果发现不匹配，主串退回到上一次比对起点的下一个字符，模式串退回到开头。
 如图所示，每次发现失配，都“笨拙”地仅仅向右移动一位重新开始。
 
-![string_naive1](../../../Source/string_naive1.png)
+
 
 ```cpp
 /* 朴素模式匹配算法 */
@@ -148,7 +148,7 @@ int naiveMatch(const string& text, const string& pattern) {
 ### 2. KMP 算法
 KMP 算法（Knuth-Morris-Pratt Algorithm）消除了主串指针的回溯。它通过对模式串的分析，得到了一个 `next` 数组（或称为失败函数），指示在发生失配时，模式串可以向右滑动的最大安全距离，从而保证主串指针只需一直向前移动。
 
-![string_kmp1](../../../Source/string_kmp1.png)
+这个视频可以帮助同学们直观理解：https://www.bilibili.com/video/BV1AY4y157yL
 
 KMP 算法的实现核心在于 `next` 数组的求解：
 ```cpp
