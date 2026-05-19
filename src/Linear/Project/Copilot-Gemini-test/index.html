@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Zuma Web Game</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 40px; background-color: #f0f0f0; }
+        .board { display: flex; justify-content: center; gap: 5px; margin: 20px 0; min-height: 50px; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); flex-wrap: wrap;}
+        .ball {
+            width: 40px; height: 40px; border-radius: 50%; display: inline-block; cursor: pointer;
+            box-shadow: inset -5px -5px 10px rgba(0,0,0,0.3); transition: transform 0.2s;
+        }
+        .ball:hover { transform: scale(1.1); }
+        .gap { width: 20px; height: 40px; display: inline-block; cursor: pointer; border-radius: 10px; }
+        .gap.hovered { background: #ddd; }
+        .color-R { background-color: #e74c3c; }
+        .color-B { background-color: #3498db; }
+        .color-G { background-color: #2ecc71; }
+        .color-Y { background-color: #f1c40f; }
+        .panel { margin: 20px; padding: 20px; background: white; border-radius: 10px; display: inline-block;}
+        button { padding: 10px 20px; margin: 5px; font-size: 16px; cursor: pointer; border: none; border-radius: 5px; background: #34495e; color: white;}
+        button:hover { background: #2c3e50; }
+    </style>
+</head>
+<body>
+    <h1>Zuma</h1>
+    <div class="panel">
+        <h3>Next Balls</h3>
+        <div id="nextBalls" class="board"></div>
+        <button onclick="undo()">Undo</button>
+        <button onclick="restart()">Restart</button>
+    </div>
+
+    <h3>Track (Click between balls to insert)</h3>
+    <div id="board" class="board"></div>
+
+    <script>
+        async function fetchState() {
+            const res = await fetch('/api/state');
+            const data = await res.json();
+            renderBoard(data.board);
+            renderNextBalls(data.next);
+        }
+
+        function createBall(color) {
+            const div = document.createElement('div');
+            div.className = `ball color-${color}`;
+            return div;
+        }
+
+        function createGap(index) {
+            const div = document.createElement('div');
+            div.className = 'gap';
+            div.onmouseover = () => div.classList.add('hovered');
+            div.onmouseout = () => div.classList.remove('hovered');
+            div.onclick = () => insertBall(index);
+            return div;
+        }
+
+        function renderBoard(boardStr) {
+            const container = document.getElementById('board');
+            container.innerHTML = '';
+            
+            if (boardStr.length === 0) {
+                container.innerHTML = '<h2>You Win!</h2>';
+                return;
+            }
+
+            container.appendChild(createGap(0));
+            for (let i = 0; i < boardStr.length; i++) {
+                container.appendChild(createBall(boardStr[i]));
+                container.appendChild(createGap(i + 1));
+            }
+        }
+
+        function renderNextBalls(nextStr) {
+            const container = document.getElementById('nextBalls');
+            container.innerHTML = '';
+            for (let i = 0; i < nextStr.length; i++) {
+                container.appendChild(createBall(nextStr[i]));
+            }
+        }
+
+        async function insertBall(index) {
+            await fetch('/api/insert', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `index=${index}`
+            });
+            fetchState();
+        }
+
+        async function undo() {
+            await fetch('/api/undo', { method: 'POST' });
+            fetchState();
+        }
+
+        async function restart() {
+            await fetch('/api/restart', { method: 'POST' });
+            fetchState();
+        }
+
+        window.onload = fetchState;
+    </script>
+</body>
+</html>

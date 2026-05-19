@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zuma Linked-List Lab</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+
+    <main class="app">
+      <header class="hero">
+        <div class="hero-text">
+          <p class="eyebrow">stack + queue + linked list</p>
+          <h1>Zuma Chain Lab</h1>
+          <p class="sub">Insert balls, trigger chains, and manage the queue.</p>
+        </div>
+        <div class="hero-panel">
+          <div class="stat">
+            <span class="stat-label">Score</span>
+            <span id="score" class="stat-value">0</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Bombs</span>
+            <span id="bombs" class="stat-value">0</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Status</span>
+            <span id="status" class="stat-value">Ready</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="board">
+        <div class="track" id="track"></div>
+        <div class="queue" id="queue"></div>
+      </section>
+
+      <section class="controls">
+        <button id="undoBtn" class="btn ghost">Undo</button>
+        <button id="bombBtn" class="btn">Bomb Mode</button>
+        <button id="resetBtn" class="btn danger">Reset</button>
+      </section>
+
+      <section class="hint">
+        <div class="next-ball" id="nextBall"></div>
+        <p>Click a slot to insert the next ball. Bomb mode removes one ball.</p>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

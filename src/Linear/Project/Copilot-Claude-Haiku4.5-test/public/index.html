@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>祖玛游戏</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>祖玛游戏</h1>
+        
+        <div class="game-section">
+            <div class="controls">
+                <div class="init-section">
+                    <h3>游戏初始化</h3>
+                    <div class="input-group">
+                        <label for="trackInput">轨道初始状态 (如: R B B B G):</label>
+                        <input type="text" id="trackInput" placeholder="R B B B G" value="R B B B G">
+                    </div>
+                    <div class="input-group">
+                        <label for="queueInput">待发射队列 (如: R G B):</label>
+                        <input type="text" id="queueInput" placeholder="R G B" value="R G B">
+                    </div>
+                    <button onclick="initGame()">初始化游戏</button>
+                </div>
+                
+                <div class="action-section">
+                    <h3>游戏操作</h3>
+                    <div class="input-group">
+                        <label for="posInput">插入位置 (0-N):</label>
+                        <input type="number" id="posInput" value="2" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="colorSelect">选择颜色:</label>
+                        <select id="colorSelect">
+                            <option value="R">红色 (R)</option>
+                            <option value="B">蓝色 (B)</option>
+                            <option value="G">绿色 (G)</option>
+                            <option value="Y">黄色 (Y)</option>
+                            <option value="P">紫色 (P)</option>
+                        </select>
+                    </div>
+                    <button onclick="insertBall()">发射球</button>
+                    <button onclick="undoAction()">撤销</button>
+                    <button onclick="resetGame()">重置</button>
+                    <button onclick="refreshStatus()">刷新状态</button>
+                </div>
+            </div>
+            
+            <div class="game-status">
+                <h3>游戏状态</h3>
+                
+                <div class="status-item">
+                    <strong>轨道:</strong>
+                    <div id="trackDisplay" class="track-display">
+                        <span class="empty-state">(未初始化)</span>
+                    </div>
+                </div>
+                
+                <div class="status-item">
+                    <strong>待发射队列:</strong>
+                    <div id="queueDisplay" class="queue-display">
+                        <span class="empty-state">(未初始化)</span>
+                    </div>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat">
+                        <label>轨道球数:</label>
+                        <span id="trackSize">0</span>
+                    </div>
+                    <div class="stat">
+                        <label>队列球数:</label>
+                        <span id="queueSize">0</span>
+                    </div>
+                    <div class="stat">
+                        <label>消除次数:</label>
+                        <span id="eliminations">0</span>
+                    </div>
+                    <div class="stat">
+                        <label>游戏状态:</label>
+                        <span id="gameState">未初始化</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="message-section">
+            <div id="message" class="message"></div>
+        </div>
+        
+        <div class="help-section">
+            <h3>游戏说明</h3>
+            <ul>
+                <li>轨道上相同颜色的球如果连续3个或以上，会被自动消除</li>
+                <li>消除后，两侧的球会重新连接，可能产生连锁消除</li>
+                <li>消除所有的球即赢得游戏</li>
+                <li>如果轨道上的球超过50个，游戏失败</li>
+                <li>可以使用"撤销"功能回到之前的状态</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
