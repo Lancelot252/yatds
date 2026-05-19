@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>祖玛数据结构实验</title>
+    <style>
+        :root {
+            --bg1: #0b1020;
+            --bg2: #17203b;
+            --panel: rgba(15, 23, 42, 0.82);
+            --line: rgba(255, 255, 255, 0.12);
+            --text: #e5eefb;
+            --muted: #9fb0cf;
+            --accent: #66e3c4;
+            --danger: #ff6b6b;
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(102, 227, 196, 0.20), transparent 28%),
+                radial-gradient(circle at bottom right, rgba(100, 126, 255, 0.22), transparent 30%),
+                linear-gradient(160deg, var(--bg1), var(--bg2));
+        }
+
+        .app {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 32px 20px 40px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 18px;
+            align-items: stretch;
+            margin-bottom: 22px;
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(12px);
+        }
+
+        .intro {
+            padding: 26px 28px;
+        }
+
+        .intro h1 {
+            margin: 0 0 12px;
+            font-size: 38px;
+            letter-spacing: 0.03em;
+        }
+
+        .intro p {
+            margin: 0;
+            line-height: 1.8;
+            color: var(--muted);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .stat {
+            padding: 18px 18px 16px;
+            min-height: 110px;
+        }
+
+        .stat .label {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .stat .value {
+            margin-top: 10px;
+            font-size: 34px;
+            font-weight: 700;
+        }
+
+        .workspace {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+
+        .board {
+            padding: 22px;
+        }
+
+        .panel-title {
+            margin: 0 0 12px;
+            font-size: 16px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .supply {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .track-wrap {
+            padding: 16px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .track {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            min-height: 92px;
+        }
+
+        .ball,
+        .slot {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            user-select: none;
+        }
+
+        .ball {
+            color: #fff;
+            box-shadow: inset -6px -8px 18px rgba(0, 0, 0, 0.28), 0 8px 18px rgba(0, 0, 0, 0.16);
+            transform: translateY(0);
+            transition: transform 0.18s ease, filter 0.18s ease;
+        }
+
+        .ball:hover { transform: translateY(-2px) scale(1.03); }
+
+        .ball.R { background: radial-gradient(circle at 30% 30%, #ffb0a8, #e74c3c 50%, #b42318); }
+        .ball.G { background: radial-gradient(circle at 30% 30%, #b4ffcb, #31c86e 50%, #177b43); }
+        .ball.B { background: radial-gradient(circle at 30% 30%, #b8e1ff, #3c94e8 50%, #1b5caa); }
+        .ball.Y { background: radial-gradient(circle at 30% 30%, #fff2a8, #f4c542 55%, #a97e10); color: #261d00; }
+        .ball.X { background: radial-gradient(circle at 30% 30%, #666, #111 60%, #000); color: #ff9d9d; border: 1px solid rgba(255, 120, 120, 0.6); }
+
+        .slot {
+            border: 2px dashed rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.04);
+            cursor: pointer;
+            transition: all 0.16s ease;
+        }
+
+        .slot:hover {
+            border-color: rgba(102, 227, 196, 0.8);
+            background: rgba(102, 227, 196, 0.12);
+            transform: scale(1.08);
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #06111a;
+            background: linear-gradient(135deg, #84f1d8, #60d6ff);
+            cursor: pointer;
+            transition: transform 0.16s ease, opacity 0.16s ease;
+        }
+
+        button:hover { transform: translateY(-1px); }
+        button:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+        button.secondary {
+            background: linear-gradient(135deg, #f0f4ff, #c9d6ff);
+        }
+
+        .message {
+            margin-top: 12px;
+            min-height: 28px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .hint {
+            margin-top: 12px;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        @media (max-width: 920px) {
+            .hero { grid-template-columns: 1fr; }
+            .intro h1 { font-size: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div class="hero">
+            <div class="card intro">
+                <h1>祖玛数据结构实验</h1>
+                <p>使用链表维护彩球轨道、队列维护待发射彩球、栈记录历史状态，实现插入、自动消除、连锁消除、撤销和胜负判断。额外加入炸弹球 X 作为道具。</p>
+            </div>
+            <div class="stats">
+                <div class="card stat">
+                    <div class="label">Score</div>
+                    <div class="value" id="score">0</div>
+                </div>
+                <div class="card stat">
+                    <div class="label">Pending</div>
+                    <div class="value" id="pendingCount">0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="workspace">
+            <div class="card board">
+                <div class="panel-title">Next Balls</div>
+                <div class="supply" id="supply"></div>
+
+                <div class="panel-title">Track</div>
+                <div class="track-wrap">
+                    <div class="track" id="track"></div>
+                </div>
+
+                <div class="message" id="message"></div>
+                <div class="hint">点击两个彩球之间的圆形空位即可插入当前待发射彩球。R/G/B/Y 为普通彩球，X 为炸弹球。</div>
+
+                <div class="actions" style="margin-top: 18px;">
+                    <button id="undoBtn" onclick="undo()" disabled>撤销</button>
+                    <button class="secondary" onclick="resetGame()">重新开始</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API = '';
+
+        async function request(url, options = {}) {
+            const response = await fetch(API + url, options);
+            return response.json();
+        }
+
+        function makeBall(color) {
+            const node = document.createElement('div');
+            node.className = `ball ${color}`;
+            node.textContent = color;
+            return node;
+        }
+
+        function makeSlot(position) {
+            const node = document.createElement('div');
+            node.className = 'slot';
+            node.title = `在位置 ${position} 插入`;
+            node.addEventListener('click', () => insertBall(position));
+            return node;
+        }
+
+        function render(state) {
+            document.getElementById('score').textContent = state.score;
+            document.getElementById('pendingCount').textContent = state.supply.length;
+            document.getElementById('undoBtn').disabled = !state.canUndo;
+
+            const message = document.getElementById('message');
+            if (state.won) {
+                message.textContent = '胜利：轨道已清空。';
+                message.style.color = '#66e3c4';
+            } else if (state.lost) {
+                message.textContent = '失败：轨道长度达到上限。';
+                message.style.color = '#ff6b6b';
+            } else {
+                message.textContent = '';
+            }
+
+            const supply = document.getElementById('supply');
+            supply.innerHTML = '';
+            state.supply.forEach(color => supply.appendChild(makeBall(color)));
+
+            const track = document.getElementById('track');
+            track.innerHTML = '';
+            track.appendChild(makeSlot(0));
+            state.track.forEach((color, index) => {
+                track.appendChild(makeBall(color));
+                track.appendChild(makeSlot(index + 1));
+            });
+        }
+
+        async function refresh() {
+            render(await request('/api/state'));
+        }
+
+        async function insertBall(position) {
+            render(await request('/api/insert', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                body: new URLSearchParams({ pos: String(position) })
+            }));
+        }
+
+        async function undo() {
+            render(await request('/api/undo', { method: 'POST' }));
+        }
+
+        async function resetGame() {
+            render(await request('/api/reset', { method: 'POST' }));
+        }
+
+        refresh();
+    </script>
+</body>
+</html>
