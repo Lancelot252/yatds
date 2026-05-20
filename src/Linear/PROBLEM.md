@@ -3,6 +3,7 @@
 ## project
 
 - 需要增加失败条件
+- ai喜欢用list直接完成链表，违背初衷
 
 ### Copilot-Gemini-test（NPC）
 - 文件结构不明晰，缺乏模块划分和注释说明。
@@ -29,3 +30,6 @@
 ### Copilot-gpt4.1-test（拉完了）
 - 干脆没咋实现
 - 文件结构清晰有个鬼用
+
+### Codex-gpt5.5-xhigh-test（夯）
+- 就是没注释罢了（
