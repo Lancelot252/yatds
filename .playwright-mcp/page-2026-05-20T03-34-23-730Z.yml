@@ -1,0 +1,93 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - heading "链式祖玛" [level=1] [ref=e5]
+      - paragraph [ref=e6]: 栈保存撤销历史，队列管理发射彩球，链表承载轨道消除。
+    - region "游戏统计" [ref=e7]:
+      - generic [ref=e8]:
+        - generic [ref=e9]: 得分
+        - strong [ref=e10]: "0"
+      - generic [ref=e11]:
+        - generic [ref=e12]: 步数
+        - strong [ref=e13]: "0"
+      - generic [ref=e14]:
+        - generic [ref=e15]: 轨道
+        - strong [ref=e16]: 16/28
+      - generic [ref=e17]:
+        - generic [ref=e18]: 队列
+        - strong [ref=e19]: "40"
+  - generic [ref=e20]:
+    - generic [ref=e21]:
+      - generic [ref=e22]: 新游戏开始。选择插入槽位并发射当前彩球。
+      - generic [ref=e23]: 进行中
+    - generic "彩球轨道" [ref=e24]:
+      - generic [ref=e25]:
+        - button "0" [ref=e26] [cursor=pointer]
+        - button "R" [ref=e27] [cursor=pointer]
+        - button "1" [ref=e28] [cursor=pointer]
+        - button "G" [ref=e29] [cursor=pointer]
+        - button "2" [ref=e30] [cursor=pointer]
+        - button "B" [ref=e31] [cursor=pointer]
+        - button "3" [ref=e32] [cursor=pointer]
+        - button "B" [ref=e33] [cursor=pointer]
+        - button "4" [ref=e34] [cursor=pointer]
+        - button "Y" [ref=e35] [cursor=pointer]
+        - button "5" [ref=e36] [cursor=pointer]
+        - button "P" [ref=e37] [cursor=pointer]
+        - button "6" [ref=e38] [cursor=pointer]
+        - button "G" [ref=e39] [cursor=pointer]
+        - button "7" [ref=e40] [cursor=pointer]
+        - button "R" [ref=e41] [cursor=pointer]
+        - button "8" [ref=e42] [cursor=pointer]
+        - button "C" [ref=e43] [cursor=pointer]
+        - button "9" [ref=e44] [cursor=pointer]
+        - button "Y" [ref=e45] [cursor=pointer]
+        - button "10" [ref=e46] [cursor=pointer]
+        - button "P" [ref=e47] [cursor=pointer]
+        - button "11" [ref=e48] [cursor=pointer]
+        - button "P" [ref=e49] [cursor=pointer]
+        - button "12" [ref=e50] [cursor=pointer]
+        - button "C" [ref=e51] [cursor=pointer]
+        - button "13" [ref=e52] [cursor=pointer]
+        - button "B" [ref=e53] [cursor=pointer]
+        - button "14" [ref=e54] [cursor=pointer]
+        - button "G" [ref=e55] [cursor=pointer]
+        - button "15" [ref=e56] [cursor=pointer]
+        - button "R" [ref=e57] [cursor=pointer]
+        - button "16" [ref=e58] [cursor=pointer]
+    - generic [ref=e59]:
+      - complementary [ref=e60]:
+        - heading "发射队列" [level=2] [ref=e61]
+        - generic [ref=e62]:
+          - button "B" [ref=e64]
+          - generic [ref=e66]:
+            - generic [ref=e67]: 当前彩球
+            - strong [ref=e68]: 蓝 (B)
+        - generic [ref=e69]:
+          - button "B" [ref=e70]
+          - button "Y" [ref=e71]
+          - button "P" [ref=e72]
+          - button "R" [ref=e73]
+          - button "R" [ref=e74]
+          - button "G" [ref=e75]
+          - button "C" [ref=e76]
+          - button "C" [ref=e77]
+          - button "B" [ref=e78]
+          - button "B" [ref=e79]
+        - generic "轨道容量" [ref=e80]
+      - generic [ref=e82]:
+        - heading "操作" [level=2] [ref=e83]
+        - generic [ref=e84]:
+          - generic [ref=e85]:
+            - generic [ref=e86]: 插入槽位
+            - strong [ref=e87]: "0"
+          - generic [ref=e88]:
+            - generic [ref=e89]: 道具目标
+            - strong [ref=e90]: "0"
+        - generic [ref=e91]:
+          - button "发射" [ref=e92] [cursor=pointer]
+          - button "撤销" [disabled] [ref=e93]
+          - button "重开" [ref=e94] [cursor=pointer]
+          - button "换球" [ref=e95] [cursor=pointer]
+          - button "爆破 x2" [ref=e96] [cursor=pointer]
+          - button "同色清除 x1" [ref=e97] [cursor=pointer]
