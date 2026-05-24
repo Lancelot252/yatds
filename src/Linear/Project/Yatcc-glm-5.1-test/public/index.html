@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>祖玛游戏 - Zuma Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 游戏标题 -->
+        <header id="game-header">
+            <h1>🎯 祖玛游戏</h1>
+            <div id="game-info">
+                <span id="score-display">分数: 0</span>
+                <span id="undo-display">可撤销: 0</span>
+                <span id="track-info">轨道: 0/15</span>
+            </div>
+        </header>
+
+        <!-- 游戏状态提示 -->
+        <div id="game-status" class="hidden">
+            <div id="status-message"></div>
+            <button id="restart-btn" onclick="initGame()">重新开始</button>
+        </div>
+
+        <!-- 消除动画提示 -->
+        <div id="elimination-info" class="hidden">
+            <span id="elimination-text"></span>
+        </div>
+
+        <!-- 轨道区域 -->
+        <section id="track-section">
+            <h2>彩球轨道</h2>
+            <div id="track-container">
+                <!-- 轨道彩球将动态生成 -->
+            </div>
+            <div id="track-positions">
+                <!-- 位置标记将动态生成 -->
+            </div>
+        </section>
+
+        <!-- 待发射区域 -->
+        <section id="fire-section">
+            <h2>待发射彩球</h2>
+            <div id="current-ball-container">
+                <div id="current-ball" class="ball"></div>
+                <span id="current-ball-label">当前彩球</span>
+            </div>
+            <div id="queue-container">
+                <!-- 队列彩球将动态生成 -->
+            </div>
+        </section>
+
+        <!-- 操作区域 -->
+        <section id="action-section">
+            <h2>操作</h2>
+            <div id="fire-controls">
+                <label for="fire-position">插入位置:</label>
+                <input type="number" id="fire-position" min="0" max="0" value="0">
+                <button id="fire-btn" onclick="fireBall()">发射</button>
+            </div>
+            <div id="other-controls">
+                <button id="undo-btn" onclick="undoAction()">撤销</button>
+                <button id="restart-btn2" onclick="initGame()">重新开始</button>
+            </div>
+        </section>
+
+        <!-- 道具区域 -->
+        <section id="item-section">
+            <h2>道具</h2>
+            <div id="item-container">
+                <!-- 道具按钮将动态生成 -->
+            </div>
+            <div id="item-detail" class="hidden">
+                <div id="item-detail-content"></div>
+            </div>
+        </section>
+
+        <!-- 游戏规则 -->
+        <section id="rules-section">
+            <h2>游戏规则</h2>
+            <div id="rules-content">
+                <p>🎯 <strong>目标</strong>: 消除轨道上所有彩球!</p>
+                <p>📌 <strong>规则</strong>: 从待发射队列中取出彩球，插入到轨道指定位置。当出现连续3个及以上相同颜色彩球时，自动消除。消除后可能触发连锁消除。</p>
+                <p>⚠️ <strong>注意</strong>: 轨道彩球数量超过最大容量时游戏失败!</p>
+                <p>🛠️ <strong>道具</strong>:</p>
+                <ul>
+                    <li><strong>随机重排</strong>: 随机打乱轨道彩球顺序</li>
+                    <li><strong>炸弹</strong>: 消除指定位置前后各2个彩球</li>
+                    <li><strong>颜色炸弹</strong>: 消除轨道上所有指定颜色的彩球</li>
+                    <li><strong>反转</strong>: 反转轨道彩球顺序</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
