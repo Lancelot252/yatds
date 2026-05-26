@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>栈和队列教程与任务</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Cpath d='M18 20h28M18 32h22M18 44h28' stroke='%23187990' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <div class="nav-item has-submenu">
+          <a class="active" href="linear.html">线性结构</a>
+          <div class="submenu" aria-label="线性结构子页面">
+            <a href="linear-list.html">线性表</a>
+            <a href="linear-stack-queue.html">栈和队列</a>
+            <a href="linear-project.html">Project</a>
+            <a href="linear-string.html">字符串</a>
+          </div>
+        </div>
+        <a href="index.html#tree-placeholder">树结构</a>
+        <a href="index.html#graph-placeholder">图结构</a>
+        <a href="index.html#hash-placeholder">哈希</a>
+        <a href="index.html#sort-placeholder">排序查找</a>
+      </div>
+    </nav>
+  </header>
+  <main class="page-shell">
+<aside class="toc toc-chapters">
+  <a class="toc-root" href="#栈和队列"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c3-1 6-4 7-7l5-5-2-2-5 5c-3 1-6 4-7 7l2 2Z"/><path d="m14 4 6 6"/></svg></span><span>栈和队列</span></a>
+  <a class="toc-chapter" href="#baseline-任务-1-栈的基本实现"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务 1: 栈的基本实现</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#栈的基本操作"><span>1.1</span><strong>栈的基本操作</strong></a>
+    <a class="toc-subitem" href="#栈的实现"><span>1.2</span><strong>栈的实现</strong></a>
+    <a class="toc-subitem" href="#任务内容"><span>1.3</span><strong>任务内容</strong></a>
+  </div>
+  <a class="toc-chapter" href="#baseline-任务-2-队列的基本实现"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务 2: 队列的基本实现</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#队列的基本操作"><span>2.1</span><strong>队列的基本操作</strong></a>
+    <a class="toc-subitem" href="#队列的实现"><span>2.2</span><strong>队列的实现</strong></a>
+    <a class="toc-subitem" href="#任务内容-2"><span>2.3</span><strong>任务内容</strong></a>
+  </div>
+  <a class="toc-chapter" href="#baseline-任务-3-栈和队列的综合应用"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务 3: 栈和队列的综合应用</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#任务内容-3"><span>3.1</span><strong>任务内容</strong></a>
+  </div>
+</aside>
+    <article class="content">
+      <h1 id="栈和队列">栈和队列</h1>
+<blockquote><p><small>栈如同叠猫猫，而队列就像猫猫排队。</small></p><p><small>两者分别代表先入后出和先入先出的逻辑关系。</small></p></blockquote>
+<p>所有依赖代码位于 <code>StackAndQueue\src</code> 目录下。</p>
+<h2 id="baseline-任务-1-栈的基本实现">Baseline 任务 1: 栈的基本实现</h2>
+<p>栈（stack）是一种遵循先入后出逻辑的线性数据结构。</p>
+<p>我们可以将栈类比为桌面上的一摞盘子，规定每次只能移动一个盘子，那么想取出底部的盘子，则需要先将上面的盘子依次移走。我们将盘子替换为各种类型的元素（如整数、字符、对象等），就得到了栈这种数据结构。</p>
+<p>如图所示，我们把堆叠元素的顶部称为“栈顶”，底部称为“栈底”。将把元素添加到栈顶的操作叫作“入栈”，删除栈顶元素的操作叫作“出栈”。</p>
+<figure><img src="assets/images/stack.png" alt="stack"><figcaption>stack</figcaption></figure>
+<h3 id="栈的基本操作">栈的基本操作</h3>
+<p>栈的常用操作如表所示，具体的方法名需要根据所使用的编程语言来确定。在此，我们以常见的 push()、pop()、top() 命名为例（即 C++ 中<code>&lt;stack&gt;</code>库中栈的对应方法）。</p>
+<table><thead><tr><th>方法</th><th>描述</th><th>时间复杂度</th></tr></thead><tbody><tr><td><code>push()</code></td><td>元素入栈（添加至栈顶）</td><td>$O(1)$</td></tr><tr><td><code>pop()</code></td><td>栈顶元素出栈</td><td>$O(1)$</td></tr><tr><td><code>top()</code></td><td>访问栈顶元素</td><td>$O(1)$</td></tr></tbody></table>
+<p>没错，在 C++ 语言中，栈的数据结构已经被封装在 <code>&lt;stack&gt;</code> 库中，我们可以直接使用它来创建和操作栈。以下是一个简单的示例：</p>
+<pre><code>/* 初始化栈 */
+stack&lt;int&gt; stack;
+
+/* 元素入栈 */
+stack.push(1);
+stack.push(3);
+stack.push(2);
+stack.push(5);
+stack.push(4);
+
+/* 访问栈顶元素 */
+int top = stack.top();
+
+/* 元素出栈 */
+stack.pop(); // 无返回值
+
+/* 获取栈的长度 */
+int size = stack.size();
+
+/* 判断是否为空 */
+bool empty = stack.empty();</code></pre>
+<p><small>注：上述代码需要包含头文件 <code>#include &lt;stack&gt;</code></small></p>
+<p>当然，实际上<code>&lt;stack&gt;</code>库中的栈包含的函数远超过上述三种基本操作，大家可以参考 C++ 官方文档来了解更多细节：https://en.cppreference.com/w/cpp/container/stack 。</p>
+<h3 id="栈的实现">栈的实现</h3>
+<p>为了深入了解栈的运行机制，我们来尝试自己实现一个栈类。</p>
+<p>栈遵循先入后出的原则，因此我们只能在栈顶添加或删除元素。然而，数组和链表都可以在任意位置添加和删除元素，<strong>因此栈可以视为一种受限制的数组或链表</strong>。换句话说，我们可以“屏蔽”数组或链表的部分无关操作，使其对外表现的逻辑符合栈的特性。</p>
+<h4 id="1-基于链表的栈实现">1.基于链表的栈实现</h4>
+<p>使用链表实现栈时，我们可以将链表的头节点视为栈顶，尾节点视为栈底。</p>
+<p>如图所示，对于入栈操作，我们只需将元素插入链表头部，这种节点插入方法被称为“头插法”。而对于出栈操作，只需将头节点从链表中删除即可。</p>
+<section class="slide-deck" aria-label="步骤图幻灯片">
+  <div class="slide-stage"><img src="" alt=""></div>
+  <div class="slide-controls">
+    <button type="button" data-slide-prev aria-label="上一张">‹</button>
+    <div class="slide-meta"><div class="slide-title"></div><div class="slide-count"></div><div class="slide-dots"></div></div>
+    <button type="button" data-slide-next aria-label="下一张">›</button>
+  </div>
+  <span data-slide-src="assets/images/linkedlist_stack_step1.png" data-slide-title="基于链表的栈：初始结构"></span>
+<span data-slide-src="assets/images/linkedlist_stack_step2_push.png" data-slide-title="基于链表的栈：入栈"></span>
+<span data-slide-src="assets/images/linkedlist_stack_step3_pop.png" data-slide-title="基于链表的栈：出栈"></span>
+</section>
+<p>以下是基于链表实现栈的示例代码：</p>
+<pre><code>/* 基于链表实现的栈 */
+class LinkedListStack {
+  private:
+    ListNode *stackTop; // 将头节点作为栈顶
+    int stkSize;        // 栈的长度
+
+  public:
+    LinkedListStack() {
+        stackTop = nullptr;
+        stkSize = 0;
+    }
+
+    ~LinkedListStack() {
+        // 遍历链表删除节点，释放内存
+        freeMemoryLinkedList(stackTop);
+    }
+
+    /* 获取栈的长度 */
+    int size() {
+        return stkSize;
+    }
+
+    /* 判断栈是否为空 */
+    bool isEmpty() {
+        return size() == 0;
+    }
+
+    /* 入栈 */
+    void push(int num) {
+        ListNode *node = new ListNode(num);
+        node-&gt;next = stackTop;
+        stackTop = node;
+        stkSize++;
+    }
+
+    /* 出栈 */
+    int pop() {
+        int num = top();
+        ListNode *tmp = stackTop;
+        stackTop = stackTop-&gt;next;
+        // 释放内存
+        delete tmp;
+        stkSize--;
+        return num;
+    }
+
+    /* 访问栈顶元素 */
+    int top() {
+        if (isEmpty())
+            throw out_of_range(&quot;栈为空&quot;);
+        return stackTop-&gt;val;
+    }
+};</code></pre>
+<p><small>注：上述代码中的 <code>ListNode</code> 是链表节点的定义。</small></p>
+<h4 id="2-基于数组的栈实现">2.基于数组的栈实现</h4>
+<p>使用数组实现栈时，我们可以将数组的尾部作为栈顶。如图所示，入栈与出栈操作分别对应在数组尾部添加元素与删除元素，时间复杂度都为 $O(1)$。</p>
+<section class="slide-deck" aria-label="步骤图幻灯片">
+  <div class="slide-stage"><img src="" alt=""></div>
+  <div class="slide-controls">
+    <button type="button" data-slide-prev aria-label="上一张">‹</button>
+    <div class="slide-meta"><div class="slide-title"></div><div class="slide-count"></div><div class="slide-dots"></div></div>
+    <button type="button" data-slide-next aria-label="下一张">›</button>
+  </div>
+  <span data-slide-src="assets/images/array_stack_step1.png" data-slide-title="基于数组的栈：初始结构"></span>
+<span data-slide-src="assets/images/array_stack_step2_push.png" data-slide-title="基于数组的栈：入栈"></span>
+<span data-slide-src="assets/images/array_stack_step3_pop.png" data-slide-title="基于数组的栈：出栈"></span>
+</section>
+<pre><code>/* 基于数组实现的栈 */
+class ArrayStack {
+  private:
+    vector&lt;int&gt; stack;
+
+  public:
+    /* 获取栈的长度 */
+    int size() {
+        return stack.size();
+    }
+
+    /* 判断栈是否为空 */
+    bool isEmpty() {
+        return stack.size() == 0;
+    }
+
+    /* 入栈 */
+    void push(int num) {
+        stack.push_back(num);
+    }
+
+    /* 出栈 */
+    int pop() {
+        int num = top();
+        stack.pop_back();
+        return num;
+    }
+
+    /* 访问栈顶元素 */
+    int top() {
+        if (isEmpty())
+            throw out_of_range(&quot;栈为空&quot;);
+        return stack.back();
+    }
+
+    /* 返回 Vector */
+    vector&lt;int&gt; toVector() {
+        return stack;
+    }
+};</code></pre>
+<p><small>注：上述代码中的 <code>vector</code> 是 C++ 标准库中的动态数组。</small></p>
+<h3 id="任务内容">任务内容</h3>
+<ul><li>完成链表实现的栈类和数组实现的栈类，要求可以通过给出的测试程序（你在这一部分不可以修改测试程序）。</li><li>评估两种实现的性能差异，分析它们在不同场景下的优缺点，你需要使用完整的测试程序来评估性能差异，并在报告中进行分析。</li><li>参考 C++ 标准库中的 <code>&lt;stack&gt;</code> 实现，在之前实现的栈类上添加更多的功能，如获取栈的长度、判断栈是否为空等（五个更多的功能即可），并比较你的栈和 <code>&lt;stack&gt;</code> 库中栈的性能差异（需要查阅<code>&lt;stack&gt;</code>库的相关资料）。</li></ul>
+<p>你提交的材料中这部分内容需要包含：</p>
+<ul><li>三个小任务分别的代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对你程序和结果的分析（注：分析需要能够体现你对这些功能的理解，不能仅仅是简单的结果描述）</li><li>你对性能差异的分析（注：分析需要能够体现你对两种实现的理解，不能仅仅是简单的结果描述）</li></ul>
+<h2 id="baseline-任务-2-队列的基本实现">Baseline 任务 2: 队列的基本实现</h2>
+<p>队列（queue）是一种遵循先入先出规则的线性数据结构。顾名思义，队列模拟了排队现象，即新来的人不断加入队列尾部，而位于队列头部的人逐个离开。</p>
+<p>如图所示，我们将队列头部称为“队首”，尾部称为“队尾”，将把元素加入队尾的操作称为“入队”，删除队首元素的操作称为“出队”。</p>
+<figure><img src="assets/images/queue.png" alt="queue"><figcaption>queue</figcaption></figure>
+<h3 id="队列的基本操作">队列的基本操作</h3>
+<p>队列的常见操作如表所示（以 C++ 中 <code>&lt;queue&gt;</code> 库的对应方法为例）：</p>
+<table><thead><tr><th>方法</th><th>描述</th><th>时间复杂度</th></tr></thead><tbody><tr><td><code>push()</code></td><td>元素入队（添加至队尾）</td><td>$O(1)$</td></tr><tr><td><code>pop()</code></td><td>队首元素出队</td><td>$O(1)$</td></tr><tr><td><code>front()</code></td><td>访问队首元素</td><td>$O(1)$</td></tr></tbody></table>
+<p>我们可以直接使用 C++ 中现成的队列类：</p>
+<pre><code>/* 初始化队列 */
+queue&lt;int&gt; queue;
+
+/* 元素入队 */
+queue.push(1);
+queue.push(3);
+queue.push(2);
+queue.push(5);
+queue.push(4);
+
+/* 访问队首元素 */
+int front = queue.front();
+
+/* 元素出队 */
+queue.pop();
+
+/* 获取队列的长度 */
+int size = queue.size();
+
+/* 判断队列是否为空 */
+bool empty = queue.empty();</code></pre>
+<p><small>注：上述代码需要包含头文件 <code>#include &lt;queue&gt;</code></small></p>
+<h3 id="队列的实现">队列的实现</h3>
+<p>为了实现队列，我们需要一种数据结构，可以在一端添加元素，并在另一端删除元素，链表和数组都符合要求。</p>
+<h4 id="1-基于链表的实现">1.基于链表的实现</h4>
+<p>如下图所示，我们可以将链表的“头节点”和“尾节点”分别视为“队首”和“队尾”，规定队尾仅可添加节点，队首仅可删除节点。</p>
+<section class="slide-deck" aria-label="步骤图幻灯片">
+  <div class="slide-stage"><img src="" alt=""></div>
+  <div class="slide-controls">
+    <button type="button" data-slide-prev aria-label="上一张">‹</button>
+    <div class="slide-meta"><div class="slide-title"></div><div class="slide-count"></div><div class="slide-dots"></div></div>
+    <button type="button" data-slide-next aria-label="下一张">›</button>
+  </div>
+  <span data-slide-src="assets/images/linkedlist_queue_step1.png" data-slide-title="基于链表的队列：初始结构"></span>
+<span data-slide-src="assets/images/linkedlist_queue_step2_push.png" data-slide-title="基于链表的队列：入队"></span>
+<span data-slide-src="assets/images/linkedlist_queue_step3_pop.png" data-slide-title="基于链表的队列：出队"></span>
+</section>
+<pre><code>/* 基于链表实现的队列 */
+class LinkedListQueue {
+  private:
+    ListNode *front, *rear; // 头节点 front ，尾节点 rear
+    int queSize;
+
+  public:
+    LinkedListQueue() {
+        front = nullptr;
+        rear = nullptr;
+        queSize = 0;
+    }
+
+    ~LinkedListQueue() {
+        // 遍历链表删除节点，释放内存
+        freeMemoryLinkedList(front);
+    }
+
+    /* 获取队列的长度 */
+    int size() {
+        return queSize;
+    }
+
+    /* 判断队列是否为空 */
+    bool isEmpty() {
+        return queSize == 0;
+    }
+
+    /* 入队 */
+    void push(int num) {
+        // 在尾节点后添加 num
+        ListNode *node = new ListNode(num);
+        // 如果队列为空，则令头、尾节点都指向该节点
+        if (front == nullptr) {
+            front = node;
+            rear = node;
+        }
+        // 如果队列不为空，则将该节点添加到尾节点后
+        else {
+            rear-&gt;next = node;
+            rear = node;
+        }
+        queSize++;
+    }
+
+    /* 出队 */
+    int pop() {
+        int num = peek();
+        // 删除头节点
+        ListNode *tmp = front;
+        front = front-&gt;next;
+        // 释放内存
+        delete tmp;
+        queSize--;
+        return num;
+    }
+
+    /* 访问队首元素 */
+    int peek() {
+        if (size() == 0)
+            throw out_of_range(&quot;队列为空&quot;);
+        return front-&gt;val;
+    }
+
+    /* 将链表转化为 Vector 并返回 */
+    vector&lt;int&gt; toVector() {
+        ListNode *node = front;
+        vector&lt;int&gt; res(size());
+        for (int i = 0; i &lt; res.size(); i++) {
+            res[i] = node-&gt;val;
+            node = node-&gt;next;
+        }
+        return res;
+    }
+};</code></pre>
+<p><small>注：上述代码中的 <code>ListNode</code> 是链表节点的定义。</small></p>
+<h4 id="2-基于数组的实现">2.基于数组的实现</h4>
+<p>在数组中删除首元素的时间复杂度为 $O(n)$ ，这会导致出队操作效率较低。然而，我们可以采用以下巧妙方法来避免这个问题。</p>
+<p>我们可以使用一个变量 <code>front</code> 指向队首元素的索引，并维护一个变量 <code>size</code> 用于记录队列长度。定义 <code>rear = front + size</code> ，这个公式计算出的 <code>rear</code> 指向队尾元素之后的下一个位置。</p>
+<p>基于此设计，<strong>数组中包含元素的有效区间为 <code>[front, rear - 1]</code></strong>，各种操作的实现方法如下图所示。</p>
+<ul><li>入队操作：将输入元素赋值给 <code>rear</code> 索引处，并将 <code>size</code> 增加 1 。</li><li>出队操作：只需将 <code>front</code> 增加 1 ，并将 <code>size</code> 减少 1 。</li></ul>
+<p>可以看到，入队和出队操作都只需进行一次操作，时间复杂度均为 $O(1)$ 。</p>
+<section class="slide-deck" aria-label="步骤图幻灯片">
+  <div class="slide-stage"><img src="" alt=""></div>
+  <div class="slide-controls">
+    <button type="button" data-slide-prev aria-label="上一张">‹</button>
+    <div class="slide-meta"><div class="slide-title"></div><div class="slide-count"></div><div class="slide-dots"></div></div>
+    <button type="button" data-slide-next aria-label="下一张">›</button>
+  </div>
+  <span data-slide-src="assets/images/array_queue_step1.png" data-slide-title="基于数组的队列：初始结构"></span>
+<span data-slide-src="assets/images/array_queue_step2_push.png" data-slide-title="基于数组的队列：入队"></span>
+<span data-slide-src="assets/images/array_queue_step3_pop.png" data-slide-title="基于数组的队列：出队"></span>
+</section>
+<p>你可能会发现一个问题：在不断进行入队和出队的过程中，<code>front</code> 和 <code>rear</code> 都在向右移动，<strong>当它们到达数组尾部时就无法继续移动了</strong>。</p>
+<h3 id="任务内容-2">任务内容</h3>
+<ul><li>完成链表实现的队列类和数组实现的队列类，要求可以通过给出的测试程序（你在这一部分不可以修改测试程序）。</li><li>我们在<strong>基于数组的实现</strong>中提到，当 <code>front</code> 和 <code>rear</code> 到达数组尾部时就无法继续移动了。请你设计至少两种方法来解决这个问题，在代码中实现它并测试。</li><li>评估两种实现的性能差异，分析它们在不同场景下的优缺点，你需要使用完整的测试程序来评估性能差异，并在报告中进行分析。</li><li>参考 C++ 标准库中的 <code>&lt;queue&gt;</code> 实现，在之前实现的队列类上添加更多的功能，如获取队列的长度、判断队列是否为空等（五个更多的功能即可），并比较你的队列和 <code>&lt;queue&gt;</code> 库中队列的性能差异（需要查阅<code>&lt;queue&gt;</code>库的相关资料）。</li></ul>
+<p>你提交的材料中这部分内容需要包含：</p>
+<ul><li>四个小任务分别的代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对于<strong>基于数组的实现</strong>中设计的至少两种解决 <code>front</code> 和 <code>rear</code> 到达数组尾部问题解决方案思路的详细说明。</li><li>对你程序和结果的分析（注：分析需要能够体现你对这些功能的理解，不能仅仅是简单的结果描述）</li><li>你对性能差异的分析（注：分析需要能够体现你对两种实现的理解，不能仅仅是简单的结果描述）</li></ul>
+<h2 id="baseline-任务-3-栈和队列的综合应用">Baseline 任务 3: 栈和队列的综合应用</h2>
+<p>事实上，我们发现栈和队列其实很像，一个是先入后出（LIFO），一个是先入先出（FIFO）。本质上，二者只是对数据的存取顺序进行了限制，而底层的数据结构可以是相同的。</p>
+<p>接下来，我们希望你可以思考，有没有什么方式可以使这二者之间相互转换呢？也就是说，我们是否可以使用队列来实现一个栈，或者使用栈来实现一个队列呢？</p>
+<h3 id="任务内容-3">任务内容</h3>
+<ul><li>设计并实现一个类，使用队列来实现一个栈，要求该类支持栈的基本操作（入栈、出栈、访问栈顶元素等）。你需要编写测试程序来验证你的实现。</li><li>设计并实现一个类，使用栈来实现一个队列，要求该类支持队列的基本操作（入队、出队、访问队首元素等）。你需要编写测试程序来验证你的实现。</li><li>使用<code>&lt;vector&gt;</code>库来实现上述两个类，其中各自需要一个函数可以使其可以相互转换（即栈类中需要一个函数可以将其转换为队列类，队列类中需要一个函数可以将其转换为栈类）。你需要编写测试程序来验证这些函数的正确性。</li><li>评估对比栈实现队列和<code>&lt;vector&gt;</code>实现队列的差异，你需要使用完整的测试程序来体现差异，并在报告中进行分析。</li><li>评估对比队列实现栈和<code>&lt;vector&gt;</code>实现栈的差异，你需要使用完整的测试程序来体现差异，并在报告中进行分析。</li></ul>
+<p>你提交的材料中这部分内容需要包含：</p>
+<ul><li>你的所有代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对你前两个小任务实现原理的解释</li><li>对你程序和测试结果的分析</li></ul>
+    </article>
+  </main>
+  <footer class="footer">内容来源于仓库 src 下的课程资料。Linear 页面完整转写自指定 README。</footer>
+  <script src="assets/slides.js"></script>
+</body>
+</html>

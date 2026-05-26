@@ -31,7 +31,7 @@
 - 干脆没咋实现
 - 文件结构清晰有个鬼用
 
-### Copilot-gemini-3.1-pro（还行）
+### Copilot-gemini-3.1-pro（NPC）
 - 炸弹道具 (Bomb) 取消了连击可能仅仅抹去了插入点前后的球，但并没有额外调用 checkElimination 去检测“炸弹炸出的缺口合拢后，两侧的球是否碰巧构成了三个同色”。
 - 注释较少
 - 文件结构不明确
@@ -49,3 +49,8 @@
 
 ### Yatcc-deepseek-v4-flash-test（夯）
 - 文件结构比较差
+
+### Yatcc-kimi-k2.5-test（NPC）
+- 没有代码结构
+- 英文界面
+- 注释很少

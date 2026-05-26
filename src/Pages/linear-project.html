@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>祖玛项目任务说明</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Cpath d='M18 20h28M18 32h22M18 44h28' stroke='%23187990' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <div class="nav-item has-submenu">
+          <a class="active" href="linear.html">线性结构</a>
+          <div class="submenu" aria-label="线性结构子页面">
+            <a href="linear-list.html">线性表</a>
+            <a href="linear-stack-queue.html">栈和队列</a>
+            <a href="linear-project.html">Project</a>
+            <a href="linear-string.html">字符串</a>
+          </div>
+        </div>
+        <a href="index.html#tree-placeholder">树结构</a>
+        <a href="index.html#graph-placeholder">图结构</a>
+        <a href="index.html#hash-placeholder">哈希</a>
+        <a href="index.html#sort-placeholder">排序查找</a>
+      </div>
+    </nav>
+  </header>
+  <main class="page-shell">
+<aside class="toc toc-chapters toc-flat">
+  <a class="toc-root" href="#栈-队列和链表的综合应用"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c3-1 6-4 7-7l5-5-2-2-5 5c-3 1-6 4-7 7l2 2Z"/><path d="m14 4 6 6"/></svg></span><span>综合应用项目</span></a>
+  <a class="toc-chapter" href="#项目简介"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h14a2 2 0 0 1 2 2v12H6a2 2 0 0 1-2-2V5Z"/><path d="M8 8h7M8 12h8M8 16h5"/></svg></span><span class="toc-chapter-title">项目简介</span></a>
+  <a class="toc-chapter" href="#项目要求"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h14a2 2 0 0 1 2 2v12H6a2 2 0 0 1-2-2V5Z"/><path d="M8 8h7M8 12h8M8 16h5"/></svg></span><span class="toc-chapter-title">项目要求</span></a>
+  <a class="toc-chapter" href="#报告内容"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h14a2 2 0 0 1 2 2v12H6a2 2 0 0 1-2-2V5Z"/><path d="M8 8h7M8 12h8M8 16h5"/></svg></span><span class="toc-chapter-title">报告内容</span></a>
+  <a class="toc-chapter" href="#评分标准"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h14a2 2 0 0 1 2 2v12H6a2 2 0 0 1-2-2V5Z"/><path d="M8 8h7M8 12h8M8 16h5"/></svg></span><span class="toc-chapter-title">评分标准</span></a>
+</aside>
+    <article class="content">
+      <h1 id="栈-队列和链表的综合应用">栈、队列和链表的综合应用</h1>
+<h2 id="项目简介">项目简介</h2>
+<p>接下来我们希望大家利用栈、队列和链表的知识，来实现一个经典的游戏——祖玛。</p>
+<p>祖玛是一种经典的休闲益智类消除游戏。游戏中，若干带有不同颜色的彩球会沿着固定轨道依次排列或移动，玩家需要不断发射新的彩球，并将其插入到轨道上的彩球序列中。</p>
+<p>当轨道上出现连续三个或三个以上相同颜色的彩球时，这些彩球会被自动消除。消除后，原本分开的两段彩球会重新连接，如果连接后再次形成连续三个或三个以上相同颜色的彩球，则会继续发生消除，这种现象称为连锁消除。</p>
+<p>例如，当前轨道为：</p>
+<pre><code>R R B B B R R</code></pre>
+<p>其中 B B B 是连续三个相同颜色的彩球，会被消除。消除后，左右两边的 R R 会连接起来，形成：</p>
+<pre><code>R R R R</code></pre>
+<p>此时又出现了连续四个 R，因此会继续消除。最终轨道变为空。</p>
+<p>在真实的祖玛游戏中，彩球通常会沿轨道不断前进，玩家需要在彩球到达终点前尽可能消除它们。本项目为了突出数据结构的使用，对游戏规则进行简化：轨道上的彩球不自动移动，玩家每次从待发射彩球队列中取出一个彩球，并选择插入到轨道的指定位置。如果插入后形成连续三个或三个以上相同颜色彩球，则执行消除和连锁消除。</p>
+<p>程序应至少支持彩球轨道初始化、彩球发射、指定位置插入、自动消除、连锁消除、撤销操作以及游戏胜负判断。我们希望你可以设计一些自己的小道具功能来增加游戏性和数据结构的运用。</p>
+<h2 id="项目要求">项目要求</h2>
+<ol><li><strong>数据结构设计</strong>：合理设计数据结构来表示彩球轨道、待发射彩球队列以及游戏状态。</li><li><strong>功能实现</strong>：实现彩球轨道初始化、彩球发射、指定位置插入、自动消除、连锁消除、撤销操作以及游戏胜负判断等功能。</li><li><strong>用户交互</strong>：设计简单的用户界面（命令行或图形界面）来与玩家进行交互（我们鼓励大家探索图形化的用户界面，但并不强制要求）。</li><li><strong>代码质量</strong>：编写清晰、可维护的代码，并添加适当的注释和文档。</li></ol>
+<h2 id="报告内容">报告内容</h2>
+<p>你的实验报告需要至少包含以下要点：</p>
+<ul><li>你的设计思路（可以直接给出你的prompt）</li><li>各个核心功能函数的代码原理解释</li><li>运行说明</li></ul>
+<h2 id="评分标准">评分标准</h2>
+<ul><li><strong>功能实现（30%）</strong>：根据项目要求设计功能，并实现。你需要提供你的功能设计思路在实验报告中。<small>注：要求中的额外小道具功能属于评分的一部分。</small></li><li><strong>数据结构设计（30%）</strong>：合理设计数据结构来支持游戏功能的实现，你需要在报告中说明选择此类数据结构的原因和优点。</li><li><strong>用户交互（20%）</strong>：设计友好的用户界面来与玩家进行交互。</li><li><strong>代码质量（20%）</strong>：编写清晰、可维护的代码，并添加适当的注释和文档。</li></ul>
+<p>注：以上评分标准同时基于你的报告和实际程序内容进行评估。</p>
+    </article>
+  </main>
+  <footer class="footer">内容来源于仓库 src 下的课程资料。Linear 页面完整转写自指定 README。</footer>
+  <script src="assets/slides.js"></script>
+</body>
+</html>

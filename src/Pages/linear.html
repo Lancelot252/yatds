@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>线性结构导航</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Cpath d='M18 20h28M18 32h22M18 44h28' stroke='%23187990' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <div class="nav-item has-submenu">
+          <a class="active" href="linear.html">线性结构</a>
+          <div class="submenu" aria-label="线性结构子页面">
+            <a href="linear-list.html">线性表</a>
+            <a href="linear-stack-queue.html">栈和队列</a>
+            <a href="linear-project.html">Project</a>
+            <a href="linear-string.html">字符串</a>
+          </div>
+        </div>
+        <a href="index.html#tree-placeholder">树结构</a>
+        <a href="index.html#graph-placeholder">图结构</a>
+        <a href="index.html#hash-placeholder">哈希</a>
+        <a href="index.html#sort-placeholder">排序查找</a>
+      </div>
+    </nav>
+  </header>
+  <main class="hero home linear-home">
+    <section class="home-intro" aria-labelledby="linear-title">
+      <div>
+        <p class="kicker">Linear Structures</p>
+        <h1 id="linear-title">线性结构</h1>
+      </div>
+      <p class="lede">线性结构关注元素按顺序组织、访问和更新的方式。本部分从线性表出发，逐步过渡到栈、队列、字符串及综合项目，帮助理解连续存储、链式存储和受限访问规则之间的关系。</p>
+    </section>
+
+    <section class="course-board" aria-label="线性结构内容导航">
+      <div class="board-heading">
+        <span>内容导航</span>
+        <small>List / Stack & Queue / Project / String</small>
+      </div>
+
+      <a class="module-row module-row-ready" href="linear-list.html">
+        <span class="module-index">01</span>
+        <span class="module-main"><strong>线性表</strong><small>数组、链表、可变数组，以及链表进阶算法任务。</small></span>
+        <span class="module-status">教程</span>
+        <span class="module-action">进入</span>
+      </a>
+      <a class="module-row module-row-ready" href="linear-stack-queue.html">
+        <span class="module-index">02</span>
+        <span class="module-main"><strong>栈和队列</strong><small>先入后出、先入先出，以及栈队列之间的结构转换。</small></span>
+        <span class="module-status">教程</span>
+        <span class="module-action">进入</span>
+      </a>
+      <a class="module-row module-row-ready" href="linear-project.html">
+        <span class="module-index">03</span>
+        <span class="module-main"><strong>Project</strong><small>使用栈、队列和链表完成祖玛综合应用项目。</small></span>
+        <span class="module-status">项目</span>
+        <span class="module-action">查看</span>
+      </a>
+      <a class="module-row module-row-ready" href="linear-string.html">
+        <span class="module-index">04</span>
+        <span class="module-main"><strong>字符串</strong><small>顺序存储字符串、模式匹配、KMP 与 nextval 优化。</small></span>
+        <span class="module-status">教程</span>
+        <span class="module-action">进入</span>
+      </a>
+    </section>
+  </main>
+  <footer class="footer">线性结构内容来源于 src/Linear 下的课程资料。</footer>
+</body>
+</html>

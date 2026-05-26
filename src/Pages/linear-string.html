@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>字符串教程与任务</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Cpath d='M18 20h28M18 32h22M18 44h28' stroke='%23187990' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <div class="nav-item has-submenu">
+          <a class="active" href="linear.html">线性结构</a>
+          <div class="submenu" aria-label="线性结构子页面">
+            <a href="linear-list.html">线性表</a>
+            <a href="linear-stack-queue.html">栈和队列</a>
+            <a href="linear-project.html">Project</a>
+            <a href="linear-string.html">字符串</a>
+          </div>
+        </div>
+        <a href="index.html#tree-placeholder">树结构</a>
+        <a href="index.html#graph-placeholder">图结构</a>
+        <a href="index.html#hash-placeholder">哈希</a>
+        <a href="index.html#sort-placeholder">排序查找</a>
+      </div>
+    </nav>
+  </header>
+  <main class="page-shell">
+<aside class="toc toc-chapters">
+  <a class="toc-root" href="#字符串-string"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c3-1 6-4 7-7l5-5-2-2-5 5c-3 1-6 4-7 7l2 2Z"/><path d="m14 4 6 6"/></svg></span><span>字符串 (String)</span></a>
+  <a class="toc-chapter" href="#baseline-任务-1-字符串的基本实现"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务 1: 字符串的基本实现</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#字符串的基本操作"><span>1.1</span><strong>字符串的基本操作</strong></a>
+    <a class="toc-subitem" href="#字符串的实现"><span>1.2</span><strong>字符串的实现</strong></a>
+    <a class="toc-subitem" href="#任务内容"><span>1.3</span><strong>任务内容</strong></a>
+  </div>
+  <a class="toc-chapter" href="#baseline-任务-2-字符串的模式匹配"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务 2: 字符串的模式匹配</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#1-朴素模式匹配算法"><span>2.1</span><strong>1. 朴素模式匹配算法</strong></a>
+    <a class="toc-subitem" href="#2-kmp-算法"><span>2.2</span><strong>2. KMP 算法</strong></a>
+    <a class="toc-subitem" href="#任务内容-2"><span>2.3</span><strong>任务内容</strong></a>
+  </div>
+</aside>
+    <article class="content">
+      <h1 id="字符串-string">字符串 (String)</h1>
+<blockquote><p><small>字符串就如同由字符穿成的一串珍珠。</small></p><p><small>在文海中寻找特征，就如同在这串珍珠中寻找特定的花纹。</small></p></blockquote>
+<p>所有依赖代码位于 <code>String\src</code> 目录下。</p>
+<h2 id="baseline-任务-1-字符串的基本实现">Baseline 任务 1: 字符串的基本实现</h2>
+<p>字符串（String）是由零个或多个字符组成的有限序列。</p>
+<p>我们可以将字符串类比为一段连续存放的文字，虽然在很多高级语言中它已经被封装成基本的数据类型或者对象，但从存储结构上看，字符串本质上是一个元素类型为字符的线性表。最常见的存储形式就是顺序存储（即字符数组）。</p>
+<p>如图所示，由于字符串中的字符在内存中是连续存取的，我们可以使用下标来快速访问对应的字符。</p>
+<figure><img src="assets/images/string_array.png" alt="string_array"><figcaption>string_array</figcaption></figure>
+<h3 id="字符串的基本操作">字符串的基本操作</h3>
+<p>字符串的常用操作如表所示，具体的方法名需要根据所使用的编程语言来确定。在此，我们以常见的求长度、拼接、求子串等命名为例（即 C++ 中<code>&lt;string&gt;</code>库中对应方法）。</p>
+<table><thead><tr><th>方法</th><th>描述</th><th>时间复杂度</th></tr></thead><tbody><tr><td><code>length()</code></td><td>获取字符串长度</td><td>$O(1)$</td></tr><tr><td><code>append()</code></td><td>在字符串末尾拼接另一个字符串</td><td>$O(m)$</td></tr><tr><td><code>substr()</code></td><td>从指定位置截取指定长度的子串</td><td>$O(k)$</td></tr></tbody></table>
+<p>在 C++ 语言中，字符串的数据结构已经被封装在 <code>&lt;string&gt;</code> 库中，我们可以直接使用它来创建和操作字符串。以下是一个简单的示例：</p>
+<pre><code>/* 初始化字符串 */
+string str1 = &quot;Hello&quot;;
+string str2 = &quot; World&quot;;
+
+/* 字符串拼接 */
+string str3 = str1 + str2; // &quot;Hello World&quot;
+str1.append(&quot;!&quot;);          // &quot;Hello!&quot;
+
+/* 访问特定字符 */
+char c = str3[0]; // &#x27;H&#x27;
+
+/* 截取子串 */
+string sub = str3.substr(0, 5); // &quot;Hello&quot;
+
+/* 获取长度 */
+int len = str3.length();
+
+/* 字符串比较 */
+bool isEqual = (str1 == str3);</code></pre>
+<p><small>注：上述代码需要包含头文件 <code>#include &lt;string&gt;</code></small></p>
+<p>实际上<code>&lt;string&gt;</code>库中的字符串包含的功能远超过上述基本操作，大家可以参考 C++ 官方文档来了解更多细节：https://en.cppreference.com/w/cpp/string/basic_string 。</p>
+<h3 id="字符串的实现">字符串的实现</h3>
+<p>为了深入了解字符串的运行机制，我们可以尝试自己实现一个顺序存储的字符串类。</p>
+<h4 id="基于动态数组的字符串实现">基于动态数组的字符串实现</h4>
+<p>最直接的实现方式就是通过动态维护一个字符数组及其长度（以及容量以避免频繁扩容）。</p>
+<pre><code>/* 基于动态数组实现的字符串 */
+class MyString {
+  private:
+    char* data; // 字符数组指针
+    int len;    // 字符串长度
+
+  public:
+    MyString() {
+        data = new char[1];
+        data[0] = &#x27;\0&#x27;;
+        len = 0;
+    }
+
+    MyString(const char* str) {
+        len = 0;
+        while (str[len] != &#x27;\0&#x27;) len++;
+        data = new char[len + 1];
+        for (int i = 0; i &lt; len; i++) {
+            data[i] = str[i];
+        }
+        data[len] = &#x27;\0&#x27;;
+    }
+
+    ~MyString() {
+        delete[] data;
+    }
+
+    /* 获取字符串长度 */
+    int length() {
+        return len;
+    }
+
+    /* 截取子串 */
+    MyString substr(int pos, int n) {
+        if (pos &lt; 0 || pos &gt;= len)
+            throw out_of_range(&quot;越界&quot;);
+        int subLen = (pos + n &gt; len) ? (len - pos) : n;
+        char* temp = new char[subLen + 1];
+        for (int i = 0; i &lt; subLen; i++) {
+            temp[i] = data[pos + i];
+        }
+        temp[subLen] = &#x27;\0&#x27;;
+        MyString result(temp);
+        delete[] temp;
+        return result;
+    }
+};</code></pre>
+<h3 id="任务内容">任务内容</h3>
+<ul><li>完成顺序存储的字符串类的实现，要求可以通过给出的测试程序（你在这一部分不可以修改测试程序，需自己基于上述框架补充拼接、查找等基本方法）。</li><li>参考 C++ 标准库中的 <code>&lt;string&gt;</code> 实现，在你的字符串类上添加更多的功能，如查找特定子串、替换子串等（五个更多的功能即可），并比较你的字符串在频繁拼接时与 <code>&lt;string&gt;</code> 库的性能差异。</li><li>分析动态扩容策略对字符串连接（如连续拼接百万次）性能的影响。</li></ul>
+<p>你提交的材料中这部分内容需要包含：</p>
+<ul><li>三个小任务分别的代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对你程序和结果的分析（注：分析需要能够体现你对这些功能的理解，不能仅仅是简单的结果描述）</li><li>你对性能差异的分析（注：分析需要能够体现你对数组扩容等机制的理解，不能仅仅是简单的结果描述）</li></ul>
+<h2 id="baseline-任务-2-字符串的模式匹配">Baseline 任务 2: 字符串的模式匹配</h2>
+<p>字符串在日常中的最核心操作就是<strong>模式匹配（Pattern Matching）</strong>：即在主串中寻找是否出现了给定的子串（模式串），并返回其位置。</p>
+<h3 id="1-朴素模式匹配算法">1. 朴素模式匹配算法</h3>
+<p>朴素算法使用双指针，逐个字符向后比对。如果发现不匹配，主串退回到上一次比对起点的下一个字符，模式串退回到开头。 如图所示，每次发现失配，都“笨拙”地仅仅向右移动一位重新开始。</p>
+<pre><code>/* 朴素模式匹配算法 */
+int naiveMatch(const string&amp; text, const string&amp; pattern) {
+    int n = text.length(), m = pattern.length();
+    for (int i = 0; i &lt;= n - m; i++) {
+        int j = 0;
+        while (j &lt; m &amp;&amp; text[i + j] == pattern[j]) {
+            j++;
+        }
+        if (j == m) return i; // 匹配成功，返回起点
+    }
+    return -1; // 匹配失败
+}</code></pre>
+<h3 id="2-kmp-算法">2. KMP 算法</h3>
+<p>KMP 算法（Knuth-Morris-Pratt Algorithm）消除了主串指针的回溯。它通过对模式串的分析，得到了一个 <code>next</code> 数组（或称为失败函数），指示在发生失配时，模式串可以向右滑动的最大安全距离，从而保证主串指针只需一直向前移动。</p>
+<p>这个视频可以帮助同学们直观理解：https://www.bilibili.com/video/BV1AY4y157yL</p>
+<p>KMP 算法的实现核心在于 <code>next</code> 数组的求解：</p>
+<pre><code>/* 求解 next 数组的简易实现 */
+vector&lt;int&gt; getNext(const string&amp; pattern) {
+    int m = pattern.length();
+    vector&lt;int&gt; next(m, 0);
+    int head = 0;
+    for (int tail = 1; tail &lt; m; tail++) {
+        while (head &gt; 0 &amp;&amp; pattern[head] != pattern[tail]) {
+            head = next[head - 1];
+        }
+        if (pattern[head] == pattern[tail]) {
+            head++;
+        }
+        next[tail] = head;
+    }
+    return next;
+}</code></pre>
+<h3 id="任务内容-2">任务内容</h3>
+<p>为了更好地理解模式匹配，本练习分为了三个递进的步骤，建议按顺序完成：</p>
+<ul><li><strong>Step 1. 分析与测试朴素算法</strong>：构造极端的测试用例文本（例如主串是由大量重复字符凑成，末尾才失配），在给定的 <code>test_match.cpp</code> 中测试并记录朴素算法在最坏情况下的耗时和表现。</li><li><strong>Step 2. 基础 KMP 算法的实现</strong>：在 <code> match.cpp</code> 中实现完整的 KMP 模式匹配算法（可直接调用前置写好的 <code>getNext</code> 函数）。然后使用在 Step 1 中构造的极端用例，对比它与朴素算法在性能上的巨大差异。</li><li><strong>Step 3. nextval 数组深度优化</strong>：针对原始 <code>next</code> 数组在连续相同字符时依然会多余比较的缺陷，实现优化的 <code>nextval</code> 求解算法。自己设计测试样例结合 <code>nextval</code> 运行终极版的 KMP 匹配，观察其具体区别和常数级性能提升。</li></ul>
+<p>你提交的材料中这部分内容需要包含：</p>
+<ul><li>三个小任务分别的代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对你程序和结果的分析（注：分析需要能够体现你对这些模式匹配算法过程的理解，不能仅仅是简单的结果描述）</li><li>你对性能差异的分析（注：分析需要能够体现你对时间和空间复杂度的理解，不能仅仅是简单的结果描述）</li></ul>
+    </article>
+  </main>
+  <footer class="footer">内容来源于仓库 src 下的课程资料。Linear 页面完整转写自指定 README。</footer>
+  <script src="assets/slides.js"></script>
+</body>
+</html>

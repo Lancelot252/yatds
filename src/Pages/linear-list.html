@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>线性表教程与任务</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Cpath d='M18 20h28M18 32h22M18 44h28' stroke='%23187990' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <div class="nav-item has-submenu">
+          <a class="active" href="linear.html">线性结构</a>
+          <div class="submenu" aria-label="线性结构子页面">
+            <a href="linear-list.html">线性表</a>
+            <a href="linear-stack-queue.html">栈和队列</a>
+            <a href="linear-project.html">Project</a>
+            <a href="linear-string.html">字符串</a>
+          </div>
+        </div>
+        <a href="index.html#tree-placeholder">树结构</a>
+        <a href="index.html#graph-placeholder">图结构</a>
+        <a href="index.html#hash-placeholder">哈希</a>
+        <a href="index.html#sort-placeholder">排序查找</a>
+      </div>
+    </nav>
+  </header>
+  <main class="page-shell">
+<aside class="toc toc-chapters">
+  <a class="toc-root" href="#线性表-数组和链表"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c3-1 6-4 7-7l5-5-2-2-5 5c-3 1-6 4-7 7l2 2Z"/><path d="m14 4 6 6"/></svg></span><span>线性表（数组和链表）</span></a>
+  <a class="toc-chapter" href="#baseline-任务-1-链表的基本实现"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务 1: 链表的基本实现</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#初始化链表"><span>1.1</span><strong>初始化链表</strong></a>
+    <a class="toc-subitem" href="#插入节点"><span>1.2</span><strong>插入节点</strong></a>
+    <a class="toc-subitem" href="#删除节点"><span>1.3</span><strong>删除节点</strong></a>
+    <a class="toc-subitem" href="#访问节点"><span>1.4</span><strong>访问节点</strong></a>
+    <a class="toc-subitem" href="#查找节点"><span>1.5</span><strong>查找节点</strong></a>
+    <a class="toc-subitem" href="#任务内容"><span>1.6</span><strong>任务内容</strong></a>
+  </div>
+  <a class="toc-chapter" href="#baseline-任务-2-可变数组的实现"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务 2: 可变数组的实现</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#任务内容-2"><span>2.1</span><strong>任务内容</strong></a>
+  </div>
+  <a class="toc-chapter" href="#baseline-任务-3-链表的进阶算法解题-经典题目"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务 3: 链表的进阶算法解题（经典题目）</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#综合题目-幽灵交叉路口"><span>3.1</span><strong>综合题目：幽灵交叉路口</strong></a>
+    <a class="toc-subitem" href="#任务内容-3"><span>3.2</span><strong>任务内容</strong></a>
+  </div>
+</aside>
+    <article class="content">
+      <h1 id="线性表-数组和链表">线性表（数组和链表）</h1>
+<blockquote><p><small>数据结构的世界如同一堵厚实的砖墙。</small></p><p><small>数组的砖块整齐排列，逐个紧贴。链表的砖块分散各处，连接的藤蔓自由地穿梭于砖缝之间。</small></p></blockquote>
+<p>所有依赖代码位于 <code>List\src</code> 目录下。</p>
+<h2 id="baseline-任务-1-链表的基本实现">Baseline 任务 1：链表的基本实现</h2>
+<p>链表（linked list）是一种线性数据结构，其中的每个元素都是一个节点对象，各个节点通过“引用”相连接。引用记录了下一个节点的内存地址，通过它可以从当前节点访问到下一个节点。</p>
+<p>链表的设计使得各个节点可以分散存储在内存各处，它们的内存地址无须连续。</p>
+<figure><img src="assets/images/linked_list_definition_storage.png" alt="链表定义与存储方式"><figcaption>链表定义与存储方式</figcaption></figure>
+<p>链表的组成单位是节点（node）对象。每个节点都包含两项数据：节点的“值”和指向下一节点的“引用”（指针）。</p>
+<p>一般而言，一个常见的 C++ 链表结构体定义如下：</p>
+<pre><code>/* 链表节点结构体 */
+struct ListNode {
+    ElementType val;         // 节点值
+    ListNode *next;  // 指向下一节点的指针
+    ListNode(int x) : val(x), next(nullptr) {}  // 构造函数
+};</code></pre>
+<p><small>注：<code>ElementType</code> 代表节点中存储的数据类型，实际定义中一般为 <code>int</code>、<code>float</code>、<code>char*</code> 等。</small></p>
+<h3 id="初始化链表">初始化链表</h3>
+<p>建立链表分为两步，第一步是初始化各个节点对象，第二步是构建节点之间的引用关系。初始化完成后，我们就可以从链表的头节点出发，通过引用（指针）指向 <code>next</code> 依次访问所有节点。</p>
+<p>在C++中，链表的初始化可以通过<code>new</code>运算符来完成空间分配：</p>
+<pre><code>/* 初始化链表 1 -&gt; 3 -&gt; 2 -&gt; 5 -&gt; 4 */
+// 初始化各个节点
+ListNode* n0 = new ListNode(1);
+ListNode* n1 = new ListNode(3);
+ListNode* n2 = new ListNode(2);
+ListNode* n3 = new ListNode(5);
+ListNode* n4 = new ListNode(4);
+// 构建节点之间的引用
+n0-&gt;next = n1;
+n1-&gt;next = n2;
+n2-&gt;next = n3;
+n3-&gt;next = n4;</code></pre>
+<p>数组整体是一个变量，比如数组 nums 包含元素 nums[0] 和 nums[1] 等，而链表是由多个独立的节点对象组成的。我们通常将头节点当作链表的代称，比如以上代码中的链表可记作链表 n0 。</p>
+<h3 id="插入节点">插入节点</h3>
+<p>在链表中插入节点非常容易。如图所示，假设我们想在相邻的两个节点 <code>n0</code> 和 <code>n1</code> 之间插入一个新节点 <code>P</code> ，则只需改变两个节点引用（指针）即可，时间复杂度为 $O(1)$ 。</p>
+<p>相比之下，在数组中插入元素的时间复杂度为 $O(n)$ ，在大数据量下的效率较低。</p>
+<figure><img src="assets/images/insert_node.png" alt="节点的插入"><figcaption>节点的插入</figcaption></figure>
+<p>C++版本的插入代码如下：</p>
+<pre><code>/* 在链表的节点 n0 之后插入节点 P */
+void insert(ListNode *n0, ListNode *P) {
+    ListNode *n1 = n0-&gt;next;
+    P-&gt;next = n1;
+    n0-&gt;next = P;
+}</code></pre>
+<h3 id="删除节点">删除节点</h3>
+<p>如图所示，在链表中删除节点也非常方便，只需改变一个节点的引用（指针）即可。</p>
+<p>请注意，尽管在删除操作完成后节点 <code>P</code> 仍然指向 <code>n1</code> ，但实际上遍历此链表已经无法访问到 <code>P</code> ，这意味着 <code>P</code> 已经不再属于该链表了。</p>
+<figure><img src="assets/images/delete_node.png" alt="节点的删除"><figcaption>节点的删除</figcaption></figure>
+<p>C++版本的删除代码如下：</p>
+<pre><code>/* 删除链表的节点 n0 之后的首个节点 */
+void remove(ListNode *n0) {
+    if (n0-&gt;next == nullptr)
+        return;
+    // n0 -&gt; P -&gt; n1
+    ListNode *P = n0-&gt;next;
+    ListNode *n1 = P-&gt;next;
+    n0-&gt;next = n1;
+    // 释放内存
+    delete P;
+}</code></pre>
+<p><small>注：内存释放是必要的，否则会造成程序内存溢出。</small></p>
+<h3 id="访问节点">访问节点</h3>
+<p><strong>在链表中访问节点的效率较低。</strong> 如之前所述，我们可以在 $O(1)$ 时间下访问数组中的任意元素。链表则不然，程序需要从头节点出发，逐个向后遍历，直至找到目标节点。也就是说，访问链表的第 $i$ 个节点需要循环 $i - 1$ 轮，时间复杂度为 $O(n)$ 。</p>
+<p>代码如下所示：</p>
+<pre><code>/* 访问链表中索引为 index 的节点 */
+ListNode *access(ListNode *head, int index) {
+    for (int i = 0; i &lt; index; i++) {
+        if (head == nullptr)
+            return nullptr;
+        head = head-&gt;next;
+    }
+    return head;
+}</code></pre>
+<h3 id="查找节点">查找节点</h3>
+<p>遍历链表，查找其中值为 <code>target</code> 的节点，输出该节点在链表中的索引。此过程也属于线性查找。</p>
+<p>代码如下所示：</p>
+<pre><code>/* 在链表中查找值为 target 的首个节点 */
+int find(ListNode *head, int target) {
+    int index = 0;
+    while (head != nullptr) {
+        if (head-&gt;val == target)
+            return index;
+        head = head-&gt;next;
+        index++;
+    }
+    return -1;
+}</code></pre>
+<h3 id="任务内容">任务内容</h3>
+<p>我们需要同学们完成以下内容：</p>
+<ul><li>编写链表的基本实现代码，包括节点定义、链表初始化、节点插入、节点删除、节点访问和节点查找等功能（希望同学们可以超出上述教程中给出的几种操作，编写出更多的功能函数），并写出一个测试程序来验证这些功能的正确性。（注：测试程序需要能够体现函数的特性，不能仅仅是简单的功能测试。）</li></ul>
+<ul><li>尝试将链表实现为一个模版类（C++），支持任意数据类型的存储。编写你的测试程序来验证（要求与前一个任务相同）。</li></ul>
+<ul><li>我们在仓库中提供了一个测试程序 <code>testlist.cpp</code>，同学们需要根据这个测试程序来完成链表的基本实现，并在完成后加入在前两个任务中实现的功能。加入新功能后的链表实现需要能够同时正确执行我们给出的测试程序和你自己编写的新测试程序。</li></ul>
+<p>你提交的材料中这部分内容需要包含：</p>
+<ul><li>三个小任务分别的代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对你程序和结果的分析（注：分析需要能够体现你对这些功能的理解，不能仅仅是简单的结果描述）</li></ul>
+<h2 id="baseline-任务-2-可变数组的实现">Baseline 任务 2：可变数组的实现</h2>
+<p>数组相信大家其实已经很熟悉了（毕竟在C和C++的课程中已经拷打了很久了），但大家应该也已经发现了数组最大的问题：<strong>数组的长度是固定的</strong>。当我们无法确定需要存储的数据量时，数组就有可能会不够用（可能会爆）。</p>
+<p>这时候就有人要问了，<strong>我们能不能设计一种数据结构，既能像数组一样支持随机访问，又能像链表一样支持动态扩容呢？</strong></p>
+<p>回忆 C++ 课程中 STL 库中的 <code>std::vector</code>，它就是这样一个数据结构。</p>
+<p>可是它是怎么实现的呢？</p>
+<h3 id="任务内容-2">任务内容</h3>
+<ul><li>设计并实现一个可变数组类，要求该类支持动态扩容、随机访问等功能。你需要编写测试程序来验证你的实现。</li><li>评估你的可变数组实现与 C++ 标准库中的 <code>std::vector</code> 的差异，你需要在实验报告中分析他们的不同并评估优劣。</li><li>参考 C++ 标准库中的 <code>&lt;vector&gt;</code> 实现，优化你的可变数组类，添加更多的功能，如获取数组的长度、判断数组是否为空等（五个更多的功能即可），编写测试程序体现你的可变数组类的特点。</li><li>分析同样作为可以动态扩容的链表和可变数组在不同场景下的性能差异，你需要使用完整的测试程序来体现差异，并在报告中进行分析。</li></ul>
+<p>你提交的材料中这部分内容需要包含：</p>
+<ul><li>你的所有代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>你的可变数组实现设计思路和分析</li><li>你的差异评估和分析</li></ul>
+<h2 id="baseline-任务-3-链表的进阶算法解题-经典题目">Baseline 任务 3：链表的进阶算法解题（经典题目）</h2>
+<blockquote><p><small>基本的增删查改，不过是顺流而下的平铺直叙。</small></p><p><small>当指针开始逆流反转、于陌路中殊途同归，亦或陷入宿命般的无尽循环。</small></p></blockquote>
+<p>在掌握了链表的基础操作后，我们需要面对一些更具挑战性的经典算法问题。在面试和实际工程中，链表常常会出现诸如“反转结构”、“指针成环”、“多方交汇”等复杂情况。</p>
+<p>这里列举了三个最经典的进阶场景：</p>
+<ol><li><strong>反转链表</strong>：改变链表中节点指针的指向，使链表首尾倒置（空间复杂度通常可以优化至 $O(1)$）。</li><li><strong>环形链表</strong>：链表的尾节点指向了之前的某一个节点，使得链表遍历永远无法到达 <code>nullptr</code> 终点（常使用“快慢指针”算法解决）。</li><li><strong>相交链表</strong>：两个单独的链表在某一个节点处合并，拥有了共同的后续节点（常使用“双指针”技巧解决）。</li></ol>
+<h3 id="综合题目-幽灵交叉路口">综合题目：幽灵交叉路口</h3>
+<p>为了测试大家对这些算法的掌握程度，我们将这几个概念融合为一个综合编程题目。</p>
+<p><strong>题目描述</strong>： 假设你在探索两段古老的单向迷宫隧道（分别用单链表 <code>ListA</code> 和 <code>ListB</code> 表示）。这两段隧道由于地质变化，可能发生了以下异常情况：</p>
+<ul><li><strong>诅咒循环（成环）</strong>：迷宫可能在内部形成了死循环，进入后将无法走出。</li><li><strong>殊途同归（相交）</strong>：两条隧道可能在某处打通汇合，走到了一起并通向同一个出口（此时假设两条隧道都没有死循环）。</li></ul>
+<p>你需要设计一个核心算法模块，依次完成以下三个挑战：</p>
+<ol><li><strong>探查环路</strong>：分别判断 <code>ListA</code> 和 <code>ListB</code> 内部是否存在环。如果存在，请找出环的“入口节点”（即发生循环的第一个节点），并<strong>解除其环状结构</strong>。</li><li><strong>寻找交汇点</strong>：在确认（或已解除）两链表完全无环的前提下，判断 <code>ListA</code> 和 <code>ListB</code> 是否在某处相交。如果相交，请找出它们<strong>开始交汇的位置</strong>。</li><li><strong>空间逆转</strong>：如果找到了交汇点，请将两链表交汇后的<strong>公共部分</strong>进行<strong>局部反转</strong>。注意只需要反转公共部分，原先各自独立的头部区间不能被破坏。</li></ol>
+<h3 id="任务内容-3">任务内容</h3>
+<ul><li><strong>算法实现</strong>：编写上述综合题目的求解代码。要求封装为清晰的函数模块（例如 <code>detectAndRemoveCycle</code>、<code>getIntersectionNode</code>、<code>reverseSharedPath</code> 等）。</li><li><strong>测试程序</strong>：设计能够覆盖所有边界情况的测试用例。你需要手动在测试代码中构造：</li><li>存在环的单条测试链表。</li><li>不相交的两条独立无环链表。</li><li>相交的两条无环链表。</li><li>并通过简单直接的可视化输出（命令行即可），验证你各步算法结果的正确性。</li><li><strong>复杂度规定</strong>：你需要尽可能以最高效的方式完成。算法的时间复杂度总体需控制在 $O(n)$，空间复杂度要求为 $O(1)$（不得使用哈希表或额外数组来记录节点）。</li></ul>
+<p>你提交的材料中这部分任务需要包含：</p>
+<ul><li>综合题目的完整代码（注意：代码的文件结构、类的封装以及防泄漏的内存管理规则也是评分的一部分）。</li><li>你的测试用例构造方式以及程序输出截图，用于证明不同情况下的正确性。</li><li>进阶算法的设计思路报告，并在报告中给出你的时间与空间复杂度分析。</li></ul>
+    </article>
+  </main>
+  <footer class="footer">内容来源于仓库 src 下的课程资料。Linear 页面完整转写自指定 README。</footer>
+  <script src="assets/slides.js"></script>
+</body>
+</html>
