@@ -44,6 +44,14 @@
     <a class="toc-subitem" href="#2-kmp-算法"><span>2.2</span><strong>2. KMP 算法</strong></a>
     <a class="toc-subitem" href="#任务内容-2"><span>2.3</span><strong>任务内容</strong></a>
   </div>
+  <a class="toc-chapter" href="#baseline-任务-3-双链-dna-目标蛋白编码片段检索"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务 3: 双链 DNA 目标蛋白编码片段检索</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#项目简介"><span>3.1</span><strong>项目简介</strong></a>
+    <a class="toc-subitem" href="#项目要求"><span>3.2</span><strong>项目要求</strong></a>
+    <a class="toc-subitem" href="#输入输出格式-遗传密码表与测试样例"><span>3.3</span><strong>输入输出与样例</strong></a>
+    <a class="toc-subitem" href="#报告内容"><span>3.4</span><strong>报告内容</strong></a>
+    <a class="toc-subitem" href="#评分标准"><span>3.5</span><strong>评分标准</strong></a>
+  </div>
 </aside>
     <article class="content">
       <h1 id="字符串-string">字符串 (String)</h1>
@@ -175,6 +183,70 @@ vector&lt;int&gt; getNext(const string&amp; pattern) {
 <ul><li><strong>Step 1. 分析与测试朴素算法</strong>：构造极端的测试用例文本（例如主串是由大量重复字符凑成，末尾才失配），在给定的 <code>test_match.cpp</code> 中测试并记录朴素算法在最坏情况下的耗时和表现。</li><li><strong>Step 2. 基础 KMP 算法的实现</strong>：在 <code> match.cpp</code> 中实现完整的 KMP 模式匹配算法（可直接调用前置写好的 <code>getNext</code> 函数）。然后使用在 Step 1 中构造的极端用例，对比它与朴素算法在性能上的巨大差异。</li><li><strong>Step 3. nextval 数组深度优化</strong>：针对原始 <code>next</code> 数组在连续相同字符时依然会多余比较的缺陷，实现优化的 <code>nextval</code> 求解算法。自己设计测试样例结合 <code>nextval</code> 运行终极版的 KMP 匹配，观察其具体区别和常数级性能提升。</li></ul>
 <p>你提交的材料中这部分内容需要包含：</p>
 <ul><li>三个小任务分别的代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对你程序和结果的分析（注：分析需要能够体现你对这些模式匹配算法过程的理解，不能仅仅是简单的结果描述）</li><li>你对性能差异的分析（注：分析需要能够体现你对时间和空间复杂度的理解，不能仅仅是简单的结果描述）</li></ul>
+<h2 id="baseline-任务-3-双链-dna-目标蛋白编码片段检索">Baseline 任务 3: 双链 DNA 目标蛋白编码片段检索</h2>
+<h3 id="项目简介">项目简介</h3>
+<p>接下来我们希望大家利用字符串相关知识，来实现一个经典的生物信息学算法计算模块——<strong>DNA 目标蛋白编码片段检索</strong>。</p>
+<p>在 DNA 中，遗传信息由四种碱基（A, T, C, G）组成。每连续三个碱基构成一个<strong>密码子</strong>并翻译为一个氨基酸或者终止符号，例如 <code>ATG -> M</code>、<code>GCT -> A</code>、<code>TAA -> *</code>。一条 DNA 序列不仅可以从第 1、2、3 个碱基开始读取，即存在<strong>三种阅读框</strong>，而且由于具有双链结构，它还包含一条<strong>反向互补序列</strong>，需要将序列反转并将 <code>A&lt;-&gt;T</code>、<code>C&lt;-&gt;G</code> 互换。</p>
+<p>例如，当前序列为：</p>
+<pre><code>S = AATGGCTTTAAGCCATCATGGCC
+P = MA</code></pre>
+<p>其正向链的第一种阅读框中包含 <code>ATGGCT</code> 和 <code>ATGGCC</code>，都能翻译为 <code>MA</code>。同时在其反向互补链中也能翻译出 <code>MA</code> 的片段。我们需要将这些匹配转换回原始 DNA 序列的区间坐标，并回答给定的区间范围内完整包含多少个能够编码目标蛋白质的 DNA 片段。</p>
+<p>本项目为了突出字符串数据结构的使用，大家将被提供一段 DNA 序列 <code>S</code>、目标蛋白质序列 <code>P</code> 以及查询次数 <code>q</code>。程序需要对正/反向双链的 6 种阅读框进行翻译，通过<strong>高效的字符串匹配算法（如 KMP）</strong>在这 6 条蛋白质序列中查找目标蛋白质，最后对于给定的多个区间查询 <code>[l, r]</code> 实现快速统计作答。</p>
+<h3 id="项目要求">项目要求</h3>
+<ol>
+  <li><strong>核心算法设计</strong>：鼓励并要求自主设计或实现高效的字符串匹配算法完成蛋白质序列匹配，<strong>不能</strong>直接调用语言自带的字符串查找函数。为了证明你使用了线性时间复杂度的高效算法（如 KMP 算法等），第一行要求额外计算并输出目标蛋白质序列 <code>P</code> 的匹配状态特征数组（例如 KMP 的前缀函数 <code>pi</code> 数组）。如果使用普通暴力算法又省略输出该特征数组，不仅将导致在此项被扣分，还极有可能在进阶的大型数据测试中超时。</li>
+  <li><strong>生信逻辑实现</strong>：必须考虑正向链和反向互补链（2 种），以及每条链的三种阅读框（共 6 种情况）。将找到的匹配位置（支持重叠）准确转换回原 DNA 序列的区间 <code>L</code> 和 <code>R</code>，并输出链方向（<code>+</code> 或 <code>-</code>）和阅读框编号（<code>1, 2, 3</code>）。</li>
+  <li><strong>高效查询处理</strong>：对于多次区间查询 <code>[l, r]</code>，由于查询次数可能非常大（<code>q &lt;= 2 * 10^5</code>），你不能每次重新扫描序列。必须设计预处理（如前缀和等）来快速统计所给区间内完整包含特定序列的块数。</li>
+  <li><strong>代码质量</strong>：编写清晰、可维护的代码，并添加适当的注释和文档。时间复杂度要求尽量达到 <code>O(n + m + q)</code>。</li>
+</ol>
+<details class="content-details" open>
+  <summary id="输入输出格式-遗传密码表与测试样例">输入输出格式、遗传密码表与测试样例</summary>
+  <h4 id="密码子翻译规则与匹配区间限制">密码子翻译规则与匹配区间限制</h4>
+  <p>本题使用标准遗传密码表，例如 <code>ATG -> M</code>、<code>GCC/GCT/GCA/GCG -> A</code>、<code>TAA/TAG/TGA -> *</code> 等。<code>*</code> 表示终止密码子。如果翻译序列中出现 <code>*</code>，它可以看作一个普通字符参与 KMP 扫描，但目标序列 <code>P</code> 不含 <code>*</code>。设 <code>P</code> 的长为 <code>m</code>，匹配长度均为 <code>3m</code>。区间坐标查询 <code>[l, r]</code> 只计算被<strong>完全包含</strong>的片段个数，即右端点不超过 <code>r</code>，左端点不小于 <code>l</code> 的连续序列。</p>
+  <h4 id="输入格式">输入格式</h4>
+  <p>第一行输入一个字符串 <code>S</code>，表示 DNA 序列。第二行输入一个字符串 <code>P</code>，表示目标蛋白质序列。第三行输入一个整数 <code>q</code>，表示查询次数。接下来 <code>q</code> 行，每行两个整数 <code>l, r</code> 表示查询区间 <code>[l, r]</code>。</p>
+  <h4 id="输出格式">输出格式</h4>
+  <p>第一行输出目标蛋白质序列 <code>P</code> 的匹配状态特征数组，优先推荐为 KMP 的前缀函数数组 <code>pi</code>。如果使用简单的暴力匹配不仅无法满分，且需要输出一行 <code>-1</code> 以防格式错误且以此标明未实现特征数组。</p>
+  <p>第二行输出一个整数 <code>K</code>，表示找到的总匹配数。接下来 <code>K</code> 行，输出 <code>L R strand frame</code>。需按照 <code>L</code> 从小到大排序；若 <code>L</code> 相同，按照 <code>strand</code> 和 <code>frame</code> 排序。最后输出 <code>q</code> 行，每行一个整数，表示在对应区间内包含的匹配数量。</p>
+  <h4 id="样例数据">样例数据</h4>
+  <p><strong>输入样例：</strong></p>
+  <pre><code>AATGGCTTTAAGCCATCATGGCC
+MA
+6
+1 7
+1 16
+10 16
+12 23
+1 23
+3 17</code></pre>
+  <p><strong>输出样例：</strong></p>
+  <pre><code>0 0
+3
+2 7 + 2
+11 16 - 2
+18 23 + 3
+1
+2
+1
+1
+3
+1</code></pre>
+</details>
+<h3 id="报告内容">报告内容</h3>
+<p>你的实验报告需要至少包含以下要点：</p>
+<ul>
+  <li>你的设计思路（采用的匹配算法原理及其特征状态捕捉、反向互补坐标如何映射、如何处理多次区间查询等）。</li>
+  <li>各个核心功能函数的代码原理解释。</li>
+  <li>运行说明与时间复杂度分析。</li>
+</ul>
+<h3 id="评分标准">评分标准</h3>
+<ul>
+  <li><strong>基础匹配实现（30%）</strong>：自主实现了高效的字符串匹配算法（最推荐 KMP），并且完整梳理出 6 条可能阅读框的蛋白质翻译工作；能够按要求输出特征状态数组。如果是粗暴匹配（<code>O(nm)</code> 时间复杂度）或无法给出特征状态，该项只能获得部分分数并可能导致大型测试集不通过。你需要在实验报告中提供匹配算法的设计思路。</li>
+  <li><strong>坐标映射与查询优化（30%）</strong>：合理转化反向互补链及阅读框坐标，正确运用前缀和等时间优化技巧，使得多区间查询的时间复杂度符合预期。你需要在报告中阐明数据结构的优化原理。</li>
+  <li><strong>鲁棒性（20%）</strong>：代码能够正确应对包含交叉重叠匹配、区间无法容纳目标串等边缘用例，以及未越界的准确判断。</li>
+  <li><strong>代码质量（20%）</strong>：编写清晰、可维护的代码，并添加适当的注释和文档。</li>
+</ul>
+<p>注：以上评分标准同时基于你的报告和实际程序内容进行评估。</p>
     </article>
   </main>
   <footer class="footer">内容来源于仓库 src 下的课程资料。Linear 页面完整转写自指定 README。</footer>
