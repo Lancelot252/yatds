@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>祖玛游戏 - Zuma Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 2.5em;
+            text-shadow: 0 0 20px rgba(255, 200, 50, 0.6);
+            letter-spacing: 4px;
+        }
+
+        .subtitle {
+            font-size: 0.9em;
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+
+        /* 信息面板 */
+        .info-panel {
+            display: flex;
+            gap: 30px;
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+
+        .info-panel span {
+            background: rgba(255,255,255,0.1);
+            padding: 6px 18px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .info-panel .score { color: #ffd700; font-weight: bold; }
+        .info-panel .eliminated { color: #00ff88; }
+
+        /* 游戏区域 */
+        .game-area {
+            width: 90%;
+            max-width: 900px;
+            margin: 10px 0;
+        }
+
+        /* 轨道区域 */
+        .track-container {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.15);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 15px;
+            min-height: 80px;
+            position: relative;
+        }
+
+        .track-label {
+            font-size: 0.85em;
+            color: #888;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .track {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+        }
+
+        .ball {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1em;
+            cursor: default;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+
+        .ball:hover {
+            transform: scale(1.15);
+        }
+
+        .ball.R { background: radial-gradient(circle at 35% 35%, #ff6b6b, #c0392b); box-shadow: 0 0 10px rgba(255,107,107,0.5); }
+        .ball.G { background: radial-gradient(circle at 35% 35%, #6bff6b, #27ae60); box-shadow: 0 0 10px rgba(107,255,107,0.5); }
+        .ball.B { background: radial-gradient(circle at 35% 35%, #6bb5ff, #2980b9); box-shadow: 0 0 10px rgba(107,181,255,0.5); }
+        .ball.Y { background: radial-gradient(circle at 35% 35%, #ffe66b, #f39c12); box-shadow: 0 0 10px rgba(255,230,107,0.5); }
+        .ball.P { background: radial-gradient(circle at 35% 35%, #d06bff, #8e44ad); box-shadow: 0 0 10px rgba(208,107,255,0.5); }
+        .ball.O { background: radial-gradient(circle at 35% 35%, #ffb56b, #e67e22); box-shadow: 0 0 10px rgba(255,181,107,0.5); }
+
+        /* 插入位置指示器 */
+        .insert-slot {
+            width: 6px;
+            height: 42px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .insert-slot:hover {
+            background: rgba(255,255,255,0.8);
+            box-shadow: 0 0 15px rgba(255,255,255,0.5);
+            transform: scaleY(1.2);
+        }
+
+        .insert-slot.active {
+            background: #ffd700;
+            box-shadow: 0 0 20px rgba(255,215,0,0.7);
+        }
+
+        /* 待发射队列 */
+        .queue-container {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.15);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .queue-label {
+            font-size: 0.85em;
+            color: #888;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .queue {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .queue .ball {
+            width: 36px;
+            height: 36px;
+            font-size: 0.85em;
+            opacity: 0.7;
+        }
+
+        .queue .ball.next {
+            opacity: 1;
+            width: 42px;
+            height: 42px;
+            font-size: 1em;
+            border: 3px solid #ffd700;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(255,215,0,0.3); }
+            50% { box-shadow: 0 0 25px rgba(255,215,0,0.8); }
+        }
+
+        /* 控制区域 */
+        .controls {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-init { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; }
+        .btn-random { background: linear-gradient(135deg, #f093fb, #f5576c); color: #fff; }
+        .btn-undo { background: linear-gradient(135deg, #4facfe, #00f2fe); color: #fff; }
+
+        /* 消息提示 */
+        .message {
+            text-align: center;
+            font-size: 1.2em;
+            min-height: 30px;
+            margin: 10px 0;
+            padding: 8px;
+            border-radius: 10px;
+        }
+
+        .message.success { color: #00ff88; }
+        .message.error { color: #ff6b6b; }
+        .message.info { color: #ffd700; }
+
+        /* 游戏结束弹窗 */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .modal h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .modal .win { color: #ffd700; }
+        .modal .lose { color: #ff6b6b; }
+
+        .modal p {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        /* 初始化设置面板 */
+        .init-panel {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.15);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 15px 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .init-panel label {
+            display: block;
+            margin-bottom: 5px;
+            color: #aaa;
+            font-size: 0.9em;
+        }
+
+        .init-panel input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            font-size: 1em;
+            font-family: monospace;
+        }
+
+        .init-panel input::placeholder {
+            color: #666;
+        }
+
+        .init-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .init-row > div {
+            flex: 1;
+        }
+
+        /* 颜色图例 */
+        .legend {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 10px 0;
+            font-size: 0.85em;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .legend-ball {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+        }
+
+        .legend-ball.R { background: radial-gradient(circle at 35% 35%, #ff6b6b, #c0392b); }
+        .legend-ball.G { background: radial-gradient(circle at 35% 35%, #6bff6b, #27ae60); }
+        .legend-ball.B { background: radial-gradient(circle at 35% 35%, #6bb5ff, #2980b9); }
+        .legend-ball.Y { background: radial-gradient(circle at 35% 35%, #ffe66b, #f39c12); }
+
+        /* 消除动画 */
+        @keyframes eliminateAnim {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        .ball.eliminating {
+            animation: eliminateAnim 0.4s ease-out;
+        }
+
+        /* 位置编号 */
+        .position-indicator {
+            font-size: 0.65em;
+            color: #555;
+            text-align: center;
+            margin-top: 2px;
+        }
+
+        .slot-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            color: #555;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎯 祖玛游戏</h1>
+    <p class="subtitle">数据结构综合应用 — 双向链表 · 队列 · 栈</p>
+
+    <div class="legend">
+        <div class="legend-item"><div class="legend-ball R"></div> R 红</div>
+        <div class="legend-item"><div class="legend-ball G"></div> G 绿</div>
+        <div class="legend-item"><div class="legend-ball B"></div> B 蓝</div>
+        <div class="legend-item"><div class="legend-ball Y"></div> Y 黄</div>
+    </div>
+
+    <div class="info-panel">
+        <span class="score">🏆 得分: <span id="score">0</span></span>
+        <span class="eliminated">💥 消除: <span id="eliminated">0</span></span>
+        <span>📦 队列剩余: <span id="queueSize">0</span></span>
+        <span>↩️ 可撤销: <span id="undoCount">0</span></span>
+    </div>
+
+    <div class="message" id="message">点击下方按钮开始游戏</div>
+
+    <div class="game-area">
+        <!-- 初始化面板 -->
+        <div class="init-panel" id="initPanel">
+            <label>初始轨道彩球序列（如 RRBBGGYYRR）：</label>
+            <input type="text" id="inputTrack" placeholder="RRBBGGYYRRBBGG" value="RRBBGGYYRR">
+
+            <label>待发射彩球队列（如 RBGYRBGY）：</label>
+            <input type="text" id="inputQueue" placeholder="RBGYRBGYRBGY" value="RBGYRBGYRBGY">
+
+            <div class="init-row">
+                <div>
+                    <label>随机轨道长度：</label>
+                    <input type="number" id="inputTrackLen" value="10" min="3" max="30">
+                </div>
+                <div>
+                    <label>随机队列长度：</label>
+                    <input type="number" id="inputQueueLen" value="15" min="3" max="40">
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="btn btn-init" onclick="initCustom()">🎮 自定义开始</button>
+                <button class="btn btn-random" onclick="initRandom()">🎲 随机开始</button>
+            </div>
+        </div>
+
+        <!-- 轨道 -->
+        <div class="track-container" id="trackContainer" style="display:none;">
+            <div class="track-label">🛤️ 彩球轨道（点击竖线插入彩球）</div>
+            <div class="track" id="track"></div>
+        </div>
+
+        <!-- 待发射队列 -->
+        <div class="queue-container" id="queueContainer" style="display:none;">
+            <div class="queue-label">🚀 待发射队列</div>
+            <div class="queue" id="queue"></div>
+        </div>
+
+        <!-- 游戏控制 -->
+        <div class="controls" id="gameControls" style="display:none;">
+            <button class="btn btn-undo" onclick="undoAction()" id="btnUndo">↩️ 撤销</button>
+            <button class="btn btn-init" onclick="showInitPanel()">🔄 重新开始</button>
+        </div>
+    </div>
+
+    <!-- 游戏结束弹窗 -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <h2 id="modalTitle"></h2>
+            <p id="modalMessage"></p>
+            <button class="btn btn-init" onclick="showInitPanel(); closeModal();">🔄 再来一局</button>
+        </div>
+    </div>
+
+    <footer>
+        数据结构项目 — 祖玛游戏 | 双向链表 · 队列 · 栈 的综合应用
+    </footer>
+
+    <script>
+        const API_BASE = '';
+
+        // ============================================================
+        // API 调用函数
+        // ============================================================
+
+        async function apiPost(path, data) {
+            const response = await fetch(API_BASE + path, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            if (!response.ok) {
+                const err = await response.json();
+                throw new Error(err.error || '请求失败');
+            }
+            return response.json();
+        }
+
+        async function apiGet(path) {
+            const response = await fetch(API_BASE + path);
+            if (!response.ok) {
+                throw new Error('请求失败');
+            }
+            return response.json();
+        }
+
+        // ============================================================
+        // 游戏操作
+        // ============================================================
+
+        async function initCustom() {
+            const track = document.getElementById('inputTrack').value.trim().toUpperCase();
+            const queue = document.getElementById('inputQueue').value.trim().toUpperCase();
+
+            if (!track || !queue) {
+                showMessage('请输入轨道和队列序列！', 'error');
+                return;
+            }
+
+            try {
+                const data = await apiPost('/api/init', { track, queue, mode: 'custom' });
+                startGame(data);
+            } catch (e) {
+                showMessage('初始化失败: ' + e.message, 'error');
+            }
+        }
+
+        async function initRandom() {
+            const trackLen = parseInt(document.getElementById('inputTrackLen').value) || 10;
+            const queueLen = parseInt(document.getElementById('inputQueueLen').value) || 15;
+
+            try {
+                const data = await apiPost('/api/init', {
+                    mode: 'random',
+                    trackLength: trackLen,
+                    queueLength: queueLen
+                });
+                startGame(data);
+            } catch (e) {
+                showMessage('初始化失败: ' + e.message, 'error');
+            }
+        }
+
+        async function insertBall(position) {
+            try {
+                const data = await apiPost('/api/insert', { position });
+                updateGame(data);
+
+                if (data.eliminated > 0) {
+                    showMessage(`💥 消除了 ${data.eliminated} 个彩球！+${data.eliminated * 10}分`, 'success');
+                } else {
+                    showMessage('彩球已插入', 'info');
+                }
+
+                if (data.gameOver) {
+                    setTimeout(() => showGameOver(data), 500);
+                }
+            } catch (e) {
+                showMessage('插入失败: ' + e.message, 'error');
+            }
+        }
+
+        async function undoAction() {
+            try {
+                const data = await apiPost('/api/undo', {});
+                updateGame(data);
+                showMessage('↩️ 已撤销上一步操作', 'info');
+            } catch (e) {
+                showMessage('撤销失败: ' + e.message, 'error');
+            }
+        }
+
+        // ============================================================
+        // UI 更新
+        // ============================================================
+
+        function startGame(data) {
+            document.getElementById('initPanel').style.display = 'none';
+            document.getElementById('trackContainer').style.display = 'block';
+            document.getElementById('queueContainer').style.display = 'block';
+            document.getElementById('gameControls').style.display = 'flex';
+            updateGame(data);
+            showMessage('🎮 游戏开始！点击轨道间的竖线插入彩球', 'info');
+        }
+
+        function updateGame(data) {
+            // 更新信息面板
+            document.getElementById('score').textContent = data.score;
+            document.getElementById('eliminated').textContent = data.ballsEliminated;
+            document.getElementById('queueSize').textContent = data.queueSize;
+            document.getElementById('undoCount').textContent = data.undoCount;
+
+            // 更新轨道
+            renderTrack(data.track);
+
+            // 更新队列
+            renderQueue(data.launchQueue, data.nextBall);
+
+            // 更新撤销按钮状态
+            document.getElementById('btnUndo').disabled = data.undoCount === 0;
+        }
+
+        function renderTrack(trackStr) {
+            const container = document.getElementById('track');
+            container.innerHTML = '';
+
+            // 位置 0 的插入槽
+            const slot0 = createSlot(0);
+            container.appendChild(slot0);
+
+            for (let i = 0; i < trackStr.length; i++) {
+                const ball = createBall(trackStr[i]);
+                container.appendChild(ball);
+
+                // 每个球后面的插入槽
+                const slot = createSlot(i + 1);
+                container.appendChild(slot);
+            }
+        }
+
+        function createBall(color) {
+            const div = document.createElement('div');
+            div.className = 'ball ' + color;
+            div.textContent = color;
+            return div;
+        }
+
+        function createSlot(position) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'slot-wrapper';
+
+            const slot = document.createElement('div');
+            slot.className = 'insert-slot';
+            slot.title = `在位置 ${position} 插入`;
+            slot.onclick = () => insertBall(position);
+
+            const label = document.createElement('div');
+            label.className = 'position-indicator';
+            label.textContent = position;
+
+            wrapper.appendChild(slot);
+            wrapper.appendChild(label);
+            return wrapper;
+        }
+
+        function renderQueue(queueStr, nextBall) {
+            const container = document.getElementById('queue');
+            container.innerHTML = '';
+
+            for (let i = 0; i < queueStr.length; i++) {
+                const ball = createBall(queueStr[i]);
+                if (i === 0) {
+                    ball.classList.add('next');
+                }
+                container.appendChild(ball);
+            }
+
+            if (queueStr.length === 0) {
+                container.innerHTML = '<span style="color:#666;">队列为空</span>';
+            }
+        }
+
+        function showMessage(text, type) {
+            const msg = document.getElementById('message');
+            msg.textContent = text;
+            msg.className = 'message ' + (type || 'info');
+        }
+
+        function showGameOver(data) {
+            const overlay = document.getElementById('modalOverlay');
+            const title = document.getElementById('modalTitle');
+            const message = document.getElementById('modalMessage');
+
+            if (data.gameWon) {
+                title.innerHTML = '🎉 <span class="win">恭喜通关！</span>';
+                message.textContent = `最终得分: ${data.score} 分 | 共消除 ${data.ballsEliminated} 个彩球`;
+            } else {
+                title.innerHTML = '😢 <span class="lose">游戏结束</span>';
+                message.textContent = `最终得分: ${data.score} 分 | 轨道上还有 ${data.trackSize} 个彩球`;
+            }
+
+            overlay.classList.add('show');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('show');
+        }
+
+        function showInitPanel() {
+            document.getElementById('initPanel').style.display = 'block';
+            document.getElementById('trackContainer').style.display = 'none';
+            document.getElementById('queueContainer').style.display = 'none';
+            document.getElementById('gameControls').style.display = 'none';
+            showMessage('点击下方按钮开始游戏', 'info');
+            closeModal();
+        }
+    </script>
+</body>
+</html>
