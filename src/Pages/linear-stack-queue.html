@@ -216,7 +216,7 @@ class ArrayStack {
 <p>你提交的材料中这部分内容需要包含：</p>
 <ul><li>三个小任务分别的代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对你程序和结果的分析（注：分析需要能够体现你对这些功能的理解，不能仅仅是简单的结果描述）</li><li>你对性能差异的分析（注：分析需要能够体现你对两种实现的理解，不能仅仅是简单的结果描述）</li></ul>
 <details>
-  <summary>Baseline 任务 1 测试样例输入输出格式</summary>
+  <summary>点击展开：Baseline 任务 1 输入输出格式与样例</summary>
   <p><strong>注：</strong>以下测试样例仅用于说明输入输出格式，不代表完整测试覆盖范围，也不是唯一评测数据。学生需要根据该格式自行设计并生成更多测试样例，用于覆盖边界情况和自定义扩展功能。本任务包含性能差异比较要求，自行生成的测试样例或测试程序输出必须包含可量化的性能统计数据，例如数据规模、操作次数、运行时间（如 <code>time_ms</code>）等。</p>
   <h4>输入格式</h4>
   <table><thead><tr><th>行号</th><th>内容</th><th>说明</th></tr></thead><tbody><tr><td>第 1 行</td><td><code>capacity n</code></td><td>数组栈容量和初始元素个数；链式栈可忽略 <code>capacity</code>，但仍需读取该值</td></tr><tr><td>第 2 行</td><td><code>a1 a2 ... an</code></td><td>从栈底到栈顶的初始元素；<code>n = 0</code> 时为空行</td></tr><tr><td>第 3 行</td><td><code>m</code></td><td>操作次数</td></tr><tr><td>接下来 <code>m</code> 行</td><td><code>op args...</code></td><td>每行一个操作</td></tr></tbody></table>
@@ -392,7 +392,7 @@ class LinkedListQueue {
 <p>你提交的材料中这部分内容需要包含：</p>
 <ul><li>四个小任务分别的代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对于<strong>基于数组的实现</strong>中设计的至少两种解决 <code>front</code> 和 <code>rear</code> 到达数组尾部问题解决方案思路的详细说明。</li><li>对你程序和结果的分析（注：分析需要能够体现你对这些功能的理解，不能仅仅是简单的结果描述）</li><li>你对性能差异的分析（注：分析需要能够体现你对两种实现的理解，不能仅仅是简单的结果描述）</li></ul>
 <details>
-  <summary>Baseline 任务 2 测试样例输入输出格式</summary>
+  <summary>点击展开：Baseline 任务 2 输入输出格式与样例</summary>
   <p><strong>注：</strong>以下测试样例仅用于说明输入输出格式，不代表完整测试覆盖范围，也不是唯一评测数据。学生需要根据该格式自行设计并生成更多测试样例，用于覆盖边界情况和自定义扩展功能。本任务包含性能差异比较要求，自行生成的测试样例或测试程序输出必须包含可量化的性能统计数据，例如数据规模、操作次数、运行时间（如 <code>time_ms</code>）等。</p>
   <h4>输入格式</h4>
   <table><thead><tr><th>行号</th><th>内容</th><th>说明</th></tr></thead><tbody><tr><td>第 1 行</td><td><code>capacity n</code></td><td>数组队列容量和初始元素个数；链式队列可忽略 <code>capacity</code>，但仍需读取该值</td></tr><tr><td>第 2 行</td><td><code>a1 a2 ... an</code></td><td>从队首到队尾的初始元素；<code>n = 0</code> 时为空行</td></tr><tr><td>第 3 行</td><td><code>m</code></td><td>操作次数</td></tr><tr><td>接下来 <code>m</code> 行</td><td><code>op args...</code></td><td>每行一个操作</td></tr></tbody></table>
@@ -433,7 +433,7 @@ PERF std_queue n=100000 ops=200000 time_ms=9.73</code></pre>
 <p>你提交的材料中这部分内容需要包含：</p>
 <ul><li>你的所有代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对你前两个小任务实现原理的解释</li><li>对你程序和测试结果的分析</li></ul>
 <details>
-  <summary>Baseline 任务 3 测试样例输入输出格式</summary>
+  <summary>点击展开：Baseline 任务 3 输入输出格式与样例</summary>
   <p><strong>注：</strong>以下测试样例仅用于说明输入输出格式，不代表完整测试覆盖范围，也不是唯一评测数据。学生需要根据该格式自行设计并生成更多测试样例，用于覆盖边界情况和自定义扩展功能。本任务包含性能差异比较要求，自行生成的测试样例或测试程序输出必须包含可量化的性能统计数据，例如数据规模、操作次数、运行时间（如 <code>time_ms</code>）等。</p>
   <h4>输入格式</h4>
   <table><thead><tr><th>位置</th><th>内容</th><th>说明</th></tr></thead><tbody><tr><td>第 1 行</td><td><code>T</code></td><td>测试场景数量</td></tr><tr><td>每个场景第 1 行</td><td><code>STACK_BY_QUEUE</code> / <code>QUEUE_BY_STACK</code> / <code>CONVERT</code></td><td>场景类型</td></tr></tbody></table>
