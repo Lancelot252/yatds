@@ -142,6 +142,38 @@ class MyString {
 <ul><li>完成顺序存储的字符串类的实现，要求可以通过给出的测试程序（你在这一部分不可以修改测试程序，需自己基于上述框架补充拼接、查找等基本方法）。</li><li>参考 C++ 标准库中的 <code>&lt;string&gt;</code> 实现，在你的字符串类上添加更多的功能，如查找特定子串、替换子串等（五个更多的功能即可），并比较你的字符串在频繁拼接时与 <code>&lt;string&gt;</code> 库的性能差异。</li><li>分析动态扩容策略对字符串连接（如连续拼接百万次）性能的影响。</li></ul>
 <p>你提交的材料中这部分内容需要包含：</p>
 <ul><li>三个小任务分别的代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对你程序和结果的分析（注：分析需要能够体现你对这些功能的理解，不能仅仅是简单的结果描述）</li><li>你对性能差异的分析（注：分析需要能够体现你对数组扩容等机制的理解，不能仅仅是简单的结果描述）</li></ul>
+<details>
+  <summary>点击展开：Baseline 任务 1 输入输出格式与样例</summary>
+  <p><strong>注：</strong>以下测试样例仅用于说明输入输出格式，不代表完整测试覆盖范围，也不是唯一评测数据。学生需要根据该格式自行设计并生成更多测试样例，用于覆盖边界情况和自定义扩展功能。本任务包含字符串类与 <code>std::string</code>、不同扩容策略的性能差异比较要求，自行生成的测试样例或测试程序输出必须包含可量化的性能统计数据，例如数据规模、操作次数、运行时间（如 <code>time_ms</code>）等。</p>
+  <h4>输入格式</h4>
+  <table><thead><tr><th>行号</th><th>内容</th><th>说明</th></tr></thead><tbody><tr><td>第 1 行</td><td><code>s</code></td><td>初始字符串；默认不包含空白字符，空字符串输入 <code>EMPTY</code></td></tr><tr><td>第 2 行</td><td><code>m</code></td><td>操作次数</td></tr><tr><td>接下来 <code>m</code> 行</td><td><code>op args...</code></td><td>每行一个操作</td></tr></tbody></table>
+  <table><thead><tr><th>操作</th><th>含义</th></tr></thead><tbody><tr><td><code>PRINT</code></td><td>输出当前字符串</td></tr><tr><td><code>LENGTH</code></td><td>输出当前字符串长度</td></tr><tr><td><code>APPEND t</code></td><td>将字符串 <code>t</code> 拼接到当前字符串末尾</td></tr><tr><td><code>SUBSTR pos len</code></td><td>输出从下标 <code>pos</code> 开始、长度为 <code>len</code> 的子串</td></tr><tr><td><code>FIND t</code></td><td>输出子串 <code>t</code> 首次出现的下标；不存在输出 <code>-1</code></td></tr><tr><td><code>REPLACE old new</code></td><td>将首次出现的子串 <code>old</code> 替换为 <code>new</code></td></tr><tr><td><code>COMPARE t</code></td><td>相等输出 <code>0</code>，小于输出 <code>-1</code>，大于输出 <code>1</code></td></tr><tr><td><code>CLEAR</code></td><td>清空当前字符串</td></tr></tbody></table>
+  <h4>输出格式</h4>
+  <table><thead><tr><th>项目</th><th>规定</th></tr></thead><tbody><tr><td>产生输出的操作</td><td><code>PRINT</code>、<code>LENGTH</code>、<code>SUBSTR</code>、<code>FIND</code>、<code>COMPARE</code></td></tr><tr><td>越界访问</td><td><code>SUBSTR</code> 越界输出 <code>ERROR</code></td></tr><tr><td>空字符串</td><td>输出 <code>EMPTY</code></td></tr><tr><td>性能统计</td><td>本任务包含性能差异比较要求，必须在功能输出后追加 <code>PERF name n=&lt;数据规模&gt; ops=&lt;操作次数&gt; time_ms=&lt;运行时间&gt;</code></td></tr></tbody></table>
+  <p><strong>输入样例：</strong></p>
+  <pre><code>Hello
+9
+PRINT
+LENGTH
+APPEND World
+SUBSTR 5 5
+FIND World
+REPLACE World String
+COMPARE HelloString
+PRINT
+LENGTH</code></pre>
+  <p><strong>输出样例：</strong></p>
+  <pre><code>Hello
+5
+World
+5
+0
+HelloString
+11
+PERF my_string n=100000 ops=200000 time_ms=24.18
+PERF std_string n=100000 ops=200000 time_ms=13.76
+PERF my_string_reserve n=100000 ops=200000 time_ms=9.42</code></pre>
+</details>
 <h2 id="baseline-任务-2-字符串的模式匹配">Baseline 任务 2: 字符串的模式匹配</h2>
 <p>字符串在日常中的最核心操作就是<strong>模式匹配（Pattern Matching）</strong>：即在主串中寻找是否出现了给定的子串（模式串），并返回其位置。</p>
 <h3 id="1-朴素模式匹配算法">1. 朴素模式匹配算法</h3>
@@ -183,6 +215,33 @@ vector&lt;int&gt; getNext(const string&amp; pattern) {
 <ul><li><strong>Step 1. 分析与测试朴素算法</strong>：构造极端的测试用例文本（例如主串是由大量重复字符凑成，末尾才失配），在给定的 <code>test_match.cpp</code> 中测试并记录朴素算法在最坏情况下的耗时和表现。</li><li><strong>Step 2. 基础 KMP 算法的实现</strong>：在 <code> match.cpp</code> 中实现完整的 KMP 模式匹配算法（可直接调用前置写好的 <code>getNext</code> 函数）。然后使用在 Step 1 中构造的极端用例，对比它与朴素算法在性能上的巨大差异。</li><li><strong>Step 3. nextval 数组深度优化</strong>：针对原始 <code>next</code> 数组在连续相同字符时依然会多余比较的缺陷，实现优化的 <code>nextval</code> 求解算法。自己设计测试样例结合 <code>nextval</code> 运行终极版的 KMP 匹配，观察其具体区别和常数级性能提升。</li></ul>
 <p>你提交的材料中这部分内容需要包含：</p>
 <ul><li>三个小任务分别的代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对你程序和结果的分析（注：分析需要能够体现你对这些模式匹配算法过程的理解，不能仅仅是简单的结果描述）</li><li>你对性能差异的分析（注：分析需要能够体现你对时间和空间复杂度的理解，不能仅仅是简单的结果描述）</li></ul>
+<details>
+  <summary>点击展开：Baseline 任务 2 输入输出格式与样例</summary>
+  <p><strong>注：</strong>以下测试样例仅用于说明输入输出格式，不代表完整测试覆盖范围，也不是唯一评测数据。学生需要根据该格式自行设计并生成更多测试样例，用于覆盖边界情况和自定义扩展功能。本任务包含朴素匹配、KMP 与 nextval 优化的性能差异比较要求，自行生成的测试样例或测试程序输出必须包含可量化的性能统计数据，例如数据规模、操作次数、运行时间（如 <code>time_ms</code>）等。</p>
+  <h4>输入格式</h4>
+  <table><thead><tr><th>行号</th><th>内容</th><th>说明</th></tr></thead><tbody><tr><td>第 1 行</td><td><code>text</code></td><td>主串</td></tr><tr><td>第 2 行</td><td><code>pattern</code></td><td>模式串</td></tr><tr><td>第 3 行</td><td><code>m</code></td><td>操作次数</td></tr><tr><td>接下来 <code>m</code> 行</td><td><code>op</code></td><td>每行一个操作</td></tr></tbody></table>
+  <table><thead><tr><th>操作</th><th>含义</th></tr></thead><tbody><tr><td><code>NEXT</code></td><td>输出模式串的 <code>next</code> 数组</td></tr><tr><td><code>NEXTVAL</code></td><td>输出模式串的 <code>nextval</code> 数组</td></tr><tr><td><code>NAIVE</code></td><td>使用朴素算法匹配并输出首次匹配下标；不存在输出 <code>-1</code></td></tr><tr><td><code>KMP</code></td><td>使用 KMP 算法匹配并输出首次匹配下标；不存在输出 <code>-1</code></td></tr><tr><td><code>KMP_NEXTVAL</code></td><td>使用 nextval 优化后的 KMP 匹配并输出首次匹配下标；不存在输出 <code>-1</code></td></tr><tr><td><code>ALL</code></td><td>依次输出 <code>NAIVE</code>、<code>KMP</code>、<code>KMP_NEXTVAL</code> 的匹配下标</td></tr></tbody></table>
+  <h4>输出格式</h4>
+  <table><thead><tr><th>项目</th><th>规定</th></tr></thead><tbody><tr><td>普通输出</td><td>每个操作按输入顺序产生一行输出</td></tr><tr><td>数组输出</td><td>使用单个空格分隔</td></tr><tr><td>匹配下标</td><td>从 <code>0</code> 开始，不存在输出 <code>-1</code></td></tr><tr><td>性能统计</td><td>本任务包含性能差异比较要求，必须在功能输出后追加 <code>PERF name n=&lt;主串长度&gt; m=&lt;模式串长度&gt; time_ms=&lt;运行时间&gt;</code></td></tr></tbody></table>
+  <p><strong>输入样例：</strong></p>
+  <pre><code>AAAAAAAAAAB
+AAAAB
+5
+NEXT
+NEXTVAL
+NAIVE
+KMP
+KMP_NEXTVAL</code></pre>
+  <p><strong>输出样例：</strong></p>
+  <pre><code>0 1 2 3 0
+0 0 0 0 0
+6
+6
+6
+PERF naive n=11 m=5 time_ms=0.018
+PERF kmp n=11 m=5 time_ms=0.006
+PERF kmp_nextval n=11 m=5 time_ms=0.005</code></pre>
+</details>
 <h2 id="baseline-任务-3-双链-dna-目标蛋白编码片段检索">Baseline 任务 3: 双链 DNA 目标蛋白编码片段检索</h2>
 <h3 id="项目简介">项目简介</h3>
 <p>接下来我们希望大家利用字符串相关知识，来实现一个经典的生物信息学算法计算模块——<strong>DNA 目标蛋白编码片段检索</strong>。</p>
@@ -199,15 +258,15 @@ P = MA</code></pre>
   <li><strong>高效查询处理</strong>：对于多次区间查询 <code>[l, r]</code>，由于查询次数可能非常大（<code>q &lt;= 2 * 10^5</code>），你不能每次重新扫描序列。必须设计预处理（如前缀和等）来快速统计所给区间内完整包含特定序列的块数。</li>
   <li><strong>代码质量</strong>：编写清晰、可维护的代码，并添加适当的注释和文档。时间复杂度要求尽量达到 <code>O(n + m + q)</code>。</li>
 </ol>
-<details class="content-details" open>
-  <summary id="输入输出格式-遗传密码表与测试样例">输入输出格式、遗传密码表与测试样例</summary>
+<details>
+  <summary id="输入输出格式-遗传密码表与测试样例">点击展开：Baseline 任务 3 输入输出格式与样例</summary>
+  <p><strong>注：</strong>以下测试样例仅用于说明输入输出格式，不代表完整测试覆盖范围，也不是唯一评测数据。学生需要根据该格式自行设计并生成更多测试样例，用于覆盖边界情况和自定义扩展功能。</p>
   <h4 id="密码子翻译规则与匹配区间限制">密码子翻译规则与匹配区间限制</h4>
   <p>本题使用标准遗传密码表，例如 <code>ATG -> M</code>、<code>GCC/GCT/GCA/GCG -> A</code>、<code>TAA/TAG/TGA -> *</code> 等。<code>*</code> 表示终止密码子。如果翻译序列中出现 <code>*</code>，它可以看作一个普通字符参与 KMP 扫描，但目标序列 <code>P</code> 不含 <code>*</code>。设 <code>P</code> 的长为 <code>m</code>，匹配长度均为 <code>3m</code>。区间坐标查询 <code>[l, r]</code> 只计算被<strong>完全包含</strong>的片段个数，即右端点不超过 <code>r</code>，左端点不小于 <code>l</code> 的连续序列。</p>
   <h4 id="输入格式">输入格式</h4>
-  <p>第一行输入一个字符串 <code>S</code>，表示 DNA 序列。第二行输入一个字符串 <code>P</code>，表示目标蛋白质序列。第三行输入一个整数 <code>q</code>，表示查询次数。接下来 <code>q</code> 行，每行两个整数 <code>l, r</code> 表示查询区间 <code>[l, r]</code>。</p>
+  <table><thead><tr><th>行号</th><th>内容</th><th>说明</th></tr></thead><tbody><tr><td>第 1 行</td><td><code>S</code></td><td>DNA 序列</td></tr><tr><td>第 2 行</td><td><code>P</code></td><td>目标蛋白质序列</td></tr><tr><td>第 3 行</td><td><code>q</code></td><td>查询次数</td></tr><tr><td>接下来 <code>q</code> 行</td><td><code>l r</code></td><td>查询区间 <code>[l, r]</code></td></tr></tbody></table>
   <h4 id="输出格式">输出格式</h4>
-  <p>第一行输出目标蛋白质序列 <code>P</code> 的匹配状态特征数组，优先推荐为 KMP 的前缀函数数组 <code>pi</code>。如果使用简单的暴力匹配不仅无法满分，且需要输出一行 <code>-1</code> 以防格式错误且以此标明未实现特征数组。</p>
-  <p>第二行输出一个整数 <code>K</code>，表示找到的总匹配数。接下来 <code>K</code> 行，输出 <code>L R strand frame</code>。需按照 <code>L</code> 从小到大排序；若 <code>L</code> 相同，按照 <code>strand</code> 和 <code>frame</code> 排序。最后输出 <code>q</code> 行，每行一个整数，表示在对应区间内包含的匹配数量。</p>
+  <table><thead><tr><th>位置</th><th>内容</th><th>说明</th></tr></thead><tbody><tr><td>第 1 行</td><td><code>pi</code> 数组</td><td>目标蛋白质序列 <code>P</code> 的匹配状态特征数组；普通暴力匹配需输出 <code>-1</code> 标明未实现特征数组</td></tr><tr><td>第 2 行</td><td><code>K</code></td><td>找到的总匹配数</td></tr><tr><td>接下来 <code>K</code> 行</td><td><code>L R strand frame</code></td><td>匹配片段区间、链方向和阅读框；按 <code>L</code> 从小到大排序，<code>L</code> 相同时按 <code>strand</code> 和 <code>frame</code> 排序</td></tr><tr><td>最后 <code>q</code> 行</td><td><code>answer</code></td><td>每个查询区间内完整包含的匹配数量</td></tr></tbody></table>
   <h4 id="样例数据">样例数据</h4>
   <p><strong>输入样例：</strong></p>
   <pre><code>AATGGCTTTAAGCCATCATGGCC
