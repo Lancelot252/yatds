@@ -25,3 +25,18 @@
 c++ -std=c++17 stackli.cpp teststkl.cpp -o /tmp/teststkl
 /tmp/teststkl
 ```
+
+## 规定测试样例格式
+
+父级 `StackAndQueue/README.md` 已给出栈 baseline 的统一输入输出格式。链式栈测试程序建议按以下协议扩展：
+
+注：父级 README 中的测试样例仅用于说明输入输出格式，不代表完整测试覆盖范围，也不是唯一评测数据。学生需要根据该格式自行设计并生成更多测试样例，用于覆盖边界情况和自定义扩展功能。
+
+本组栈任务包含性能差异分析要求，测试程序输出必须包含可量化的性能统计数据，例如数据规模、操作次数、运行时间（如 `time_ms`）等。
+
+- 第一行读取 `capacity n`，其中链式栈可忽略 `capacity`，但仍需读取以保持格式一致。
+- 第二行读取从栈底到栈顶的 `n` 个初始元素。
+- 操作范围：`PUSH x`、`POP`、`TOP`、`SIZE`、`EMPTY`、`PRINT`。
+- 输出约定：`POP`、`TOP`、`SIZE`、`EMPTY`、`PRINT` 逐行输出；空栈访问输出 `ERROR`；空栈打印输出 `EMPTY`；布尔值输出 `true` 或 `false`。
+
+仓库给出的 `teststkl.cpp` 仍是基础接口检查，不读取标准输入；你的扩展测试应补充上述命令式输入输出格式。

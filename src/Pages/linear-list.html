@@ -145,6 +145,36 @@ int find(ListNode *head, int target) {
 <ul><li>我们在仓库中提供了一个测试程序 <code>testlist.cpp</code>，同学们需要根据这个测试程序来完成链表的基本实现，并在完成后加入在前两个任务中实现的功能。加入新功能后的链表实现需要能够同时正确执行我们给出的测试程序和你自己编写的新测试程序。</li></ul>
 <p>你提交的材料中这部分内容需要包含：</p>
 <ul><li>三个小任务分别的代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对你程序和结果的分析（注：分析需要能够体现你对这些功能的理解，不能仅仅是简单的结果描述）</li></ul>
+<details>
+  <summary>Baseline 任务 1 测试样例输入输出格式</summary>
+  <p><strong>注：</strong>以下测试样例仅用于说明输入输出格式，不代表完整测试覆盖范围，也不是唯一评测数据。学生需要根据该格式自行设计并生成更多测试样例，用于覆盖边界情况和自定义扩展功能。</p>
+  <h4>输入格式</h4>
+  <table><thead><tr><th>行号</th><th>内容</th><th>说明</th></tr></thead><tbody><tr><td>第 1 行</td><td><code>n</code></td><td>初始链表长度</td></tr><tr><td>第 2 行</td><td><code>a1 a2 ... an</code></td><td>从头到尾的初始元素；<code>n = 0</code> 时为空行</td></tr><tr><td>第 3 行</td><td><code>m</code></td><td>操作次数</td></tr><tr><td>接下来 <code>m</code> 行</td><td><code>op args...</code></td><td>每行一个操作</td></tr></tbody></table>
+  <table><thead><tr><th>操作</th><th>含义</th></tr></thead><tbody><tr><td><code>PUSH_FRONT x</code></td><td>在链表头部插入 <code>x</code></td></tr><tr><td><code>PUSH_BACK x</code></td><td>在链表尾部插入 <code>x</code></td></tr><tr><td><code>INSERT i x</code></td><td>在下标 <code>i</code> 处插入 <code>x</code>，下标从 <code>0</code> 开始</td></tr><tr><td><code>ERASE i</code></td><td>删除下标 <code>i</code> 处的元素</td></tr><tr><td><code>ACCESS i</code></td><td>输出下标 <code>i</code> 处的元素</td></tr><tr><td><code>FIND x</code></td><td>输出值为 <code>x</code> 的第一个元素下标；不存在输出 <code>-1</code></td></tr><tr><td><code>CONTAINS x</code></td><td>输出链表是否包含 <code>x</code></td></tr><tr><td><code>SIZE</code></td><td>输出当前链表长度</td></tr><tr><td><code>PRINT</code></td><td>从头到尾输出当前链表</td></tr><tr><td><code>CLEAR</code></td><td>清空链表</td></tr></tbody></table>
+  <h4>输出格式</h4>
+  <table><thead><tr><th>项目</th><th>规定</th></tr></thead><tbody><tr><td>产生输出的操作</td><td><code>ACCESS</code>、<code>FIND</code>、<code>CONTAINS</code>、<code>SIZE</code>、<code>PRINT</code></td></tr><tr><td>越界访问</td><td>输出 <code>ERROR</code></td></tr><tr><td>布尔值</td><td><code>CONTAINS</code> 输出 <code>true</code> 或 <code>false</code></td></tr><tr><td>打印链表</td><td>元素用单个空格分隔，空链表输出 <code>EMPTY</code></td></tr></tbody></table>
+  <p><strong>输入样例：</strong></p>
+  <pre><code>5
+1 3 5 7 9
+10
+PRINT
+INSERT 2 4
+ERASE 4
+ACCESS 2
+FIND 7
+CONTAINS 9
+PUSH_FRONT 0
+PUSH_BACK 10
+SIZE
+PRINT</code></pre>
+  <p><strong>输出样例：</strong></p>
+  <pre><code>1 3 5 7 9
+4
+-1
+true
+7
+0 1 3 4 5 9 10</code></pre>
+</details>
 <h2 id="baseline-任务-2-可变数组的实现">Baseline 任务 2：可变数组的实现</h2>
 <p>数组相信大家其实已经很熟悉了（毕竟在C和C++的课程中已经拷打了很久了），但大家应该也已经发现了数组最大的问题：<strong>数组的长度是固定的</strong>。当我们无法确定需要存储的数据量时，数组就有可能会不够用（可能会爆）。</p>
 <p>这时候就有人要问了，<strong>我们能不能设计一种数据结构，既能像数组一样支持随机访问，又能像链表一样支持动态扩容呢？</strong></p>
@@ -154,6 +184,38 @@ int find(ListNode *head, int target) {
 <ul><li>设计并实现一个可变数组类，要求该类支持动态扩容、随机访问等功能。你需要编写测试程序来验证你的实现。</li><li>评估你的可变数组实现与 C++ 标准库中的 <code>std::vector</code> 的差异，你需要在实验报告中分析他们的不同并评估优劣。</li><li>参考 C++ 标准库中的 <code>&lt;vector&gt;</code> 实现，优化你的可变数组类，添加更多的功能，如获取数组的长度、判断数组是否为空等（五个更多的功能即可），编写测试程序体现你的可变数组类的特点。</li><li>分析同样作为可以动态扩容的链表和可变数组在不同场景下的性能差异，你需要使用完整的测试程序来体现差异，并在报告中进行分析。</li></ul>
 <p>你提交的材料中这部分内容需要包含：</p>
 <ul><li>你的所有代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>你的可变数组实现设计思路和分析</li><li>你的差异评估和分析</li></ul>
+<details>
+  <summary>Baseline 任务 2 测试样例输入输出格式</summary>
+  <p><strong>注：</strong>以下测试样例仅用于说明输入输出格式，不代表完整测试覆盖范围，也不是唯一评测数据。学生需要根据该格式自行设计并生成更多测试样例，用于覆盖边界情况和自定义扩展功能。本任务包含性能差异比较要求，自行生成的测试样例或测试程序输出必须包含可量化的性能统计数据，例如数据规模、操作次数、运行时间（如 <code>time_ms</code>）等。</p>
+  <h4>输入格式</h4>
+  <table><thead><tr><th>行号</th><th>内容</th><th>说明</th></tr></thead><tbody><tr><td>第 1 行</td><td><code>capacity n</code></td><td>初始容量和初始元素个数，要求 <code>capacity &gt;= n</code></td></tr><tr><td>第 2 行</td><td><code>a1 a2 ... an</code></td><td>初始数组元素；<code>n = 0</code> 时为空行</td></tr><tr><td>第 3 行</td><td><code>m</code></td><td>操作次数</td></tr><tr><td>接下来 <code>m</code> 行</td><td><code>op args...</code></td><td>每行一个操作</td></tr></tbody></table>
+  <table><thead><tr><th>操作</th><th>含义</th></tr></thead><tbody><tr><td><code>PUSH_BACK x</code></td><td>在数组尾部追加 <code>x</code>，容量不足时应自动扩容</td></tr><tr><td><code>INSERT i x</code></td><td>在下标 <code>i</code> 处插入 <code>x</code></td></tr><tr><td><code>ERASE i</code></td><td>删除下标 <code>i</code> 处的元素</td></tr><tr><td><code>GET i</code></td><td>输出下标 <code>i</code> 处的元素</td></tr><tr><td><code>SET i x</code></td><td>将下标 <code>i</code> 处的元素修改为 <code>x</code></td></tr><tr><td><code>SIZE</code></td><td>输出当前元素个数</td></tr><tr><td><code>CAPACITY</code></td><td>输出当前容量</td></tr><tr><td><code>EMPTY</code></td><td>输出数组是否为空</td></tr><tr><td><code>PRINT</code></td><td>从前到后输出当前数组</td></tr><tr><td><code>CLEAR</code></td><td>清空数组元素，容量是否缩减由实现自行说明</td></tr></tbody></table>
+  <h4>输出格式</h4>
+  <table><thead><tr><th>项目</th><th>规定</th></tr></thead><tbody><tr><td>产生输出的操作</td><td><code>GET</code>、<code>SIZE</code>、<code>CAPACITY</code>、<code>EMPTY</code>、<code>PRINT</code></td></tr><tr><td>越界访问</td><td><code>GET</code> 越界输出 <code>ERROR</code></td></tr><tr><td>布尔值</td><td><code>EMPTY</code> 输出 <code>true</code> 或 <code>false</code></td></tr><tr><td>打印数组</td><td>元素用单个空格分隔，空数组输出 <code>EMPTY</code></td></tr><tr><td>性能统计</td><td>本任务包含性能差异比较要求，必须在功能输出后追加 <code>PERF name n=&lt;数据规模&gt; ops=&lt;操作次数&gt; time_ms=&lt;运行时间&gt;</code></td></tr></tbody></table>
+  <p><strong>输入样例：</strong></p>
+  <pre><code>4 3
+2 4 6
+9
+PRINT
+PUSH_BACK 8
+PUSH_BACK 10
+INSERT 1 3
+SET 3 7
+GET 3
+SIZE
+CAPACITY
+PRINT</code></pre>
+  <p><strong>输出样例：</strong></p>
+  <pre><code>2 4 6
+7
+6
+8
+2 3 4 7 8 10
+PERF vector_like n=100000 ops=200000 time_ms=18.42
+PERF std_vector n=100000 ops=200000 time_ms=12.67
+PERF linked_list n=100000 ops=200000 time_ms=45.31</code></pre>
+  <p>注：样例中的 <code>CAPACITY</code> 输出假设扩容策略为容量翻倍。采用其他扩容策略时，需要在报告中说明。</p>
+</details>
 <h2 id="baseline-任务-3-链表的进阶算法解题-经典题目">Baseline 任务 3：链表的进阶算法解题（经典题目）</h2>
 <blockquote><p><small>基本的增删查改，不过是顺流而下的平铺直叙。</small></p><p><small>当指针开始逆流反转、于陌路中殊途同归，亦或陷入宿命般的无尽循环。</small></p></blockquote>
 <p>在掌握了链表的基础操作后，我们需要面对一些更具挑战性的经典算法问题。在面试和实际工程中，链表常常会出现诸如“反转结构”、“指针成环”、“多方交汇”等复杂情况。</p>
@@ -169,6 +231,42 @@ int find(ListNode *head, int target) {
 <ul><li><strong>算法实现</strong>：编写上述综合题目的求解代码。要求封装为清晰的函数模块（例如 <code>detectAndRemoveCycle</code>、<code>getIntersectionNode</code>、<code>reverseSharedPath</code> 等）。</li><li><strong>测试程序</strong>：设计能够覆盖所有边界情况的测试用例。你需要手动在测试代码中构造：</li><li>存在环的单条测试链表。</li><li>不相交的两条独立无环链表。</li><li>相交的两条无环链表。</li><li>并通过简单直接的可视化输出（命令行即可），验证你各步算法结果的正确性。</li><li><strong>复杂度规定</strong>：你需要尽可能以最高效的方式完成。算法的时间复杂度总体需控制在 $O(n)$，空间复杂度要求为 $O(1)$（不得使用哈希表或额外数组来记录节点）。</li></ul>
 <p>你提交的材料中这部分任务需要包含：</p>
 <ul><li>综合题目的完整代码（注意：代码的文件结构、类的封装以及防泄漏的内存管理规则也是评分的一部分）。</li><li>你的测试用例构造方式以及程序输出截图，用于证明不同情况下的正确性。</li><li>进阶算法的设计思路报告，并在报告中给出你的时间与空间复杂度分析。</li></ul>
+<details>
+  <summary>Baseline 任务 3 测试样例输入输出格式</summary>
+  <p><strong>注：</strong>以下测试样例仅用于说明输入输出格式，不代表完整测试覆盖范围，也不是唯一评测数据。学生需要根据该格式自行设计并生成更多测试样例，用于覆盖边界情况和自定义扩展功能。</p>
+  <h4>输入格式</h4>
+  <table><thead><tr><th>位置</th><th>内容</th><th>说明</th></tr></thead><tbody><tr><td>第 1 行</td><td><code>T</code></td><td>测试场景数量</td></tr><tr><td>每个场景第 1 行</td><td><code>CYCLE</code> / <code>NO_INTERSECTION</code> / <code>INTERSECTION</code></td><td>场景类型</td></tr></tbody></table>
+  <table><thead><tr><th>场景类型</th><th>后续输入格式</th><th>含义</th></tr></thead><tbody><tr><td><code>CYCLE</code></td><td><code>n entry</code>；下一行 <code>n</code> 个结点值</td><td><code>entry</code> 为尾结点指向的环入口下标，<code>-1</code> 表示无环</td></tr><tr><td><code>NO_INTERSECTION</code></td><td><code>nA</code> 和 <code>nA</code> 个值；再输入 <code>nB</code> 和 <code>nB</code> 个值</td><td>两条互不相交的无环链表</td></tr><tr><td><code>INTERSECTION</code></td><td><code>nA</code> 和 <code>ListA</code> 独有前缀；<code>nB</code> 和 <code>ListB</code> 独有前缀；<code>k</code> 和共享公共尾部</td><td>两条有公共尾部的无环链表</td></tr></tbody></table>
+  <h4>输出格式</h4>
+  <table><thead><tr><th>场景</th><th>输出规则</th></tr></thead><tbody><tr><td>所有场景</td><td>先输出 <code>CASE t</code>，其中 <code>t</code> 从 <code>1</code> 开始</td></tr><tr><td><code>CYCLE</code></td><td>输出 <code>CYCLE_ENTRY value</code> 或 <code>CYCLE_ENTRY NONE</code>，随后输出解除环后的链表</td></tr><tr><td><code>NO_INTERSECTION</code></td><td>输出 <code>INTERSECTION NONE</code></td></tr><tr><td><code>INTERSECTION</code></td><td>输出 <code>INTERSECTION value</code>，随后输出公共部分反转后的 <code>ListA</code> 与 <code>ListB</code></td></tr><tr><td>链表打印</td><td>元素用单个空格分隔，空链表输出 <code>EMPTY</code></td></tr></tbody></table>
+  <p><strong>输入样例：</strong></p>
+  <pre><code>3
+CYCLE
+5 2
+1 2 3 4 5
+NO_INTERSECTION
+3
+1 2 3
+2
+4 5
+INTERSECTION
+2
+10 20
+1
+30
+3
+7 8 9</code></pre>
+  <p><strong>输出样例：</strong></p>
+  <pre><code>CASE 1
+CYCLE_ENTRY 3
+LIST 1 2 3 4 5
+CASE 2
+INTERSECTION NONE
+CASE 3
+INTERSECTION 7
+LIST_A 10 20 9 8 7
+LIST_B 30 9 8 7</code></pre>
+</details>
     </article>
   </main>
   <footer class="footer">内容来源于仓库 src 下的课程资料。Linear 页面完整转写自指定 README。</footer>
