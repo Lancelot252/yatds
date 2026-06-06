@@ -1,0 +1,40 @@
+<svg viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="冒泡排序操作步骤6">
+<defs>
+  <filter id="sh" x="-6%" y="-6%" width="112%" height="116%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#187990" flood-opacity=".07"/></filter>
+  <radialGradient id="bgGrad" cx="35%" cy="35%"><stop offset="0%" stop-color="#eaf6f8"/><stop offset="100%" stop-color="#dff5f7"/></radialGradient>
+</defs>
+
+<!-- 第一行：圆形气泡数组 -->
+<g transform="translate(220, 120)">
+  <text x="-55" y="22" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#187990">nums</text>
+  <!-- 5和2比较，高亮 -->
+  <circle cx="30" cy="14" r="16" fill="url(#bgGrad)" stroke="#187990" stroke-width="1.4" filter="url(#sh)"/>
+  <text x="30" y="21" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="17" font-weight="700" fill="#1d2a2f">1</text>
+  <circle cx="80" cy="18" r="22" fill="url(#bgGrad)" stroke="#187990" stroke-width="1.4" filter="url(#sh)"/>
+  <text x="80" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="600" fill="#1d2a2f">3</text>
+  <circle cx="128" cy="16" r="15" fill="url(#bgGrad)" stroke="#187990" stroke-width="1.4" filter="url(#sh)"/>
+  <text x="128" y="22" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#1d2a2f">1</text>
+  <circle cx="174" cy="19" r="23" fill="url(#bgGrad)" stroke="#187990" stroke-width="1.4" filter="url(#sh)"/>
+  <text x="174" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#1d2a2f">4</text>
+  <circle cx="225" cy="11" r="18" fill="#fff3cd" stroke="#e6b04a" stroke-width="2" filter="url(#sh)"/>
+  <text x="225" y="18" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="600" fill="#1d2a2f">2</text>
+  <circle cx="275" cy="17" r="28" fill="#fff3cd" stroke="#e6b04a" stroke-width="2" filter="url(#sh)"/>
+  <text x="275" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#1d2a2f">5</text>
+  <!-- 比较箭头：2和5之间（第5个和第6个） -->
+  <path d="M 236 -4 Q 248 -20 260 -8" stroke="#e6b04a" stroke-width="2" fill="none" marker-end="url(#ahC)"/>
+  <path d="M 257 40 Q 246 54 236 24" stroke="#e6b04a" stroke-width="2" fill="none" marker-end="url(#ahC)"/>
+</g>
+
+
+<!-- 说明框 -->
+<g transform="translate(220, 230)">
+  <rect x="0" y="0" width="300" height="46" rx="8" ry="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
+  <text x="150" y="28" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="600" fill="#1d2a2f">从左至右比较相邻元素，若前者更大则交换</text>
+</g>
+
+<!-- Step 标签 -->
+<g transform="translate(20, 340)">
+  <rect x="0" y="0" width="78" height="34" rx="6" ry="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>
+  <text x="39" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#61737c">Step 6</text>
+</g>
+</svg>

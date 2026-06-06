@@ -1,0 +1,74 @@
+<svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="基数排序概览">
+<defs><filter id="sh" x="-4%" y="-4%" width="108%" height="112%"><feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#187990" flood-opacity=".07"/></filter></defs>
+
+<text x="360" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="17" font-weight="700" fill="#1d2a2f">基数排序 — LSD（最低位优先）</text>
+
+<!-- 初始数组 -->
+<g transform="translate(180, 40)">
+  <text x="-35" y="18" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#187990">初始</text>
+  <rect x="0" y="0" width="380" height="38" rx="8" ry="8" fill="none" stroke="#187990" stroke-width="1.5"/>
+  <rect x="4" y="4" width="48" height="30" rx="5" ry="5" fill="#dff5f7" stroke="#187990" stroke-width="1.2"/><text x="28" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#1d2a2f">329</text>
+  <rect x="56" y="4" width="48" height="30" rx="5" ry="5" fill="#dff5f7" stroke="#187990" stroke-width="1.2"/><text x="80" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#1d2a2f">457</text>
+  <rect x="108" y="4" width="48" height="30" rx="5" ry="5" fill="#dff5f7" stroke="#187990" stroke-width="1.2"/><text x="132" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#1d2a2f">657</text>
+  <rect x="160" y="4" width="48" height="30" rx="5" ry="5" fill="#dff5f7" stroke="#187990" stroke-width="1.2"/><text x="184" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#1d2a2f">839</text>
+  <rect x="212" y="4" width="48" height="30" rx="5" ry="5" fill="#dff5f7" stroke="#187990" stroke-width="1.2"/><text x="236" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#1d2a2f">436</text>
+  <rect x="264" y="4" width="48" height="30" rx="5" ry="5" fill="#dff5f7" stroke="#187990" stroke-width="1.2"/><text x="288" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#1d2a2f">720</text>
+  <rect x="316" y="4" width="54" height="30" rx="5" ry="5" fill="#dff5f7" stroke="#187990" stroke-width="1.2"/><text x="343" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#1d2a2f">355</text>
+</g>
+
+<!-- 第1轮：按个位排序 -->
+<g transform="translate(30, 95)">
+  <text x="330" y="12" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#996600">第 1 轮：按个位数字分配到桶 [0-9]，再收集</text>
+  <rect x="100" y="20" width="460" height="34" rx="6" ry="6" fill="#eaf6f8" stroke="#187990" stroke-width="1.3"/>
+  <text x="110" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">720</text>
+  <text x="175" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">355</text>
+  <text x="240" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">436</text>
+  <text x="305" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">457</text>
+  <text x="370" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">657</text>
+  <text x="435" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">329</text>
+  <text x="500" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">839</text>
+</g>
+
+<!-- 第2轮：按十位排序 -->
+<g transform="translate(30, 150)">
+  <text x="330" y="12" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#996600">第 2 轮：按十位数字分配到桶 [0-9]，再收集</text>
+  <rect x="100" y="20" width="460" height="34" rx="6" ry="6" fill="#eaf6f8" stroke="#187990" stroke-width="1.3"/>
+  <text x="110" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">720</text>
+  <text x="175" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">329</text>
+  <text x="240" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">436</text>
+  <text x="305" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">355</text>
+  <text x="370" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">457</text>
+  <text x="435" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">657</text>
+  <text x="500" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">839</text>
+</g>
+
+<!-- 第3轮：按百位排序 -->
+<g transform="translate(30, 205)">
+  <text x="330" y="12" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#996600">第 3 轮：按百位数字分配到桶 [0-9]，再收集 → 有序！</text>
+  <rect x="100" y="20" width="460" height="38" rx="8" ry="8" fill="#eaf6f8" stroke="#187990" stroke-width="1.8"/>
+  <text x="115" y="44" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#187990">329</text>
+  <text x="182" y="44" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#187990">355</text>
+  <text x="250" y="44" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#187990">436</text>
+  <text x="318" y="44" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#187990">457</text>
+  <text x="386" y="44" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#187990">657</text>
+  <text x="454" y="44" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#187990">720</text>
+  <text x="520" y="44" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#187990">839</text>
+  <circle cx="555" cy="30" r="12" fill="#eaf6f8" stroke="#187990" stroke-width="1.4"/>
+  <text x="555" y="35" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#187990">&#x2713;</text>
+</g>
+
+<!-- 特性说明 -->
+<g transform="translate(70, 268)">
+  <rect x="0" y="0" width="600" height="72" rx="8" ry="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>
+  <text x="300" y="19" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#1d2a2f">基数排序特性</text>
+  <text x="15" y="39" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">&#x2022; 时间复杂度：O(d &#xD7; (n+k))，d=位数，k=桶数(10)</text>
+  <text x="15" y="56" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">&#x2022; 空间复杂度：O(n+k)，需要额外桶空间 | 稳定排序 | 非比较排序</text>
+  <text x="15" y="71" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">&#x2022; 适用场景：整数/字符串排序，位数相近时效率高</text>
+</g>
+
+<!-- 桶示意 -->
+<g transform="translate(200, 350)">
+  <rect x="0" y="0" width="340" height="38" rx="6" ry="6" fill="#fef9ef" stroke="#e6b04a" stroke-width="1.2"/>
+  <text x="170" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#996600">每轮操作：按当前位数字将元素放入 10 个桶 (0-9) → 按顺序收集回数组</text>
+</g>
+</svg>

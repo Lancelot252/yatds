@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>归并排序教程与任务</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Cpath d='M18 20h28M18 32h22M18 44h28' stroke='%23187990' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <div class="nav-item has-submenu">
+          <a href="linear.html">线性结构</a>
+          <div class="submenu" aria-label="线性结构子页面">
+            <a href="linear-list.html">线性表</a>
+            <a href="linear-stack-queue.html">栈和队列</a>
+            <a href="linear-project.html">Project</a>
+            <a href="linear-string.html">字符串</a>
+          </div>
+        </div>
+        <a href="index.html#tree-placeholder">树结构</a>
+        <a href="index.html#graph-placeholder">图结构</a>
+        <a href="index.html#hash-placeholder">哈希</a>
+        <div class="nav-item has-submenu">
+          <a class="active" href="sort.html">排序查找</a>
+          <div class="submenu" aria-label="排序查找子页面">
+            <a href="sort-bubble.html">冒泡排序</a>
+            <a href="sort-selection.html">选择排序</a>
+            <a href="sort-insertion.html">插入排序</a>
+            <a href="sort-shell.html">希尔排序</a>
+            <a href="sort-quick.html">快速排序</a>
+            <a href="sort-merge.html">归并排序</a>
+            <a href="sort-heap.html">堆排序</a>
+            <a href="sort-radix.html">基数排序</a>
+            <a href="sort-project.html">Project</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="page-shell">
+<aside class="toc toc-chapters">
+  <a class="toc-root" href="#归并排序"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c3-1 6-4 7-7l5-5-2-2-5 5c-3 1-6 4-7 7l2 2Z"/><path d="m14 4 6 6"/></svg></span><span>归并排序</span></a>
+  <a class="toc-chapter" href="#算法概述"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">算法概述</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#算法流程"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">算法流程</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#算法特性"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">算法特性</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#baseline-任务-1-2路归并排序的基础实现"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务 1: 2路归并排序的基础实现</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#baseline-任务-2-归并排序算法的优化"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务 2: 归并排序算法的优化</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+</aside>
+    <article class="content">
+      <h1 id="归并排序">归并排序（Merge Sort）</h1>
+<blockquote><p><small>归并排序是一种基于分治策略的排序算法，包含"划分"和"合并"两个阶段。</small></p></blockquote>
+<ol>
+<li><strong>划分阶段：</strong>通过递归不断地将数组从中点处分开，将长数组的排序问题转换为短数组的排序问题。</li>
+<li><strong>合并阶段：</strong>当子数组长度为 1 时终止划分，开始合并，持续地将左右两个较短的有序数组合并为一个较长的有序数组，直至结束。</li>
+</ol>
+<figure><img src="assets/images/sort/merge_sort_overview.svg" alt="归并排序的划分与合并阶段"><figcaption>归并排序的划分与合并阶段</figcaption></figure>
+
+<h2 id="算法流程">算法流程</h2>
+<p>如图所示，"划分阶段"从顶至底递归地将数组从中点切分为两个子数组。</p>
+<ol>
+<li>计算数组中点 mid，递归划分左子数组（区间 [left, mid]）和右子数组（区间 [mid + 1, right]）。</li>
+<li>递归执行步骤 1，直至子数组区间长度为 1 时终止。</li>
+</ol>
+<p>"合并阶段"从底至顶地将左子数组和右子数组合并为一个有序数组。需要注意的是，从长度为 1 的子数组开始合并，合并阶段中的每个子数组都是有序的。</p>
+
+<div class="slide-deck">
+  <div class="slide-stage">
+    <img src="assets/images/sort/merge_sort_step1.svg" alt="归并排序步骤 1">
+    <span class="slide-title" style="display:none">步骤 1</span>
+    <span class="slide-count" style="display:none"></span>
+    <div data-slide-src="assets/images/sort/merge_sort_step1.svg" data-slide-title="步骤 1"></div>
+    <div data-slide-src="assets/images/sort/merge_sort_step2.svg" data-slide-title="步骤 2"></div>
+    <div data-slide-src="assets/images/sort/merge_sort_step3.svg" data-slide-title="步骤 3"></div>
+    <div data-slide-src="assets/images/sort/merge_sort_step4.svg" data-slide-title="步骤 4"></div>
+    <div data-slide-src="assets/images/sort/merge_sort_step5.svg" data-slide-title="步骤 5"></div>
+    <div data-slide-src="assets/images/sort/merge_sort_step6.svg" data-slide-title="步骤 6"></div>
+    <div data-slide-src="assets/images/sort/merge_sort_step7.svg" data-slide-title="步骤 7"></div>
+    <div data-slide-src="assets/images/sort/merge_sort_step8.svg" data-slide-title="步骤 8"></div>
+    <div data-slide-src="assets/images/sort/merge_sort_step9.svg" data-slide-title="步骤 9"></div>
+    <div data-slide-src="assets/images/sort/merge_sort_step10.svg" data-slide-title="步骤 10"></div>
+  </div>
+  <div class="slide-controls">
+    <button type="button" data-slide-prev>&lt;</button>
+    <div class="slide-meta">
+      <span id="slideLabel">步骤 1 / 10</span>
+      <div class="slide-dots" id="slideDots"></div>
+    </div>
+    <button type="button" data-slide-next>&gt;</button>
+  </div>
+</div>
+
+<p>观察发现，归并排序与二叉树后序遍历的递归顺序是一致的。</p>
+<ul>
+<li>后序遍历：先递归左子树，再递归右子树，最后处理根节点。</li>
+<li>归并排序：先递归左子数组，再递归右子数组，最后处理合并。</li>
+</ul>
+
+<h2 id="算法特性">算法特性</h2>
+<ul>
+<li><strong>时间复杂度为 O(n log n)、非自适应排序：</strong>划分产生高度为 log n 的递归树，每层合并的总操作数量为 n，因此总体时间复杂度为 O(n log n)。</li>
+<li><strong>空间复杂度为 O(n)、非原地排序：</strong>递归深度为 log n，使用 O(log n) 大小的栈帧空间。合并操作需要借助辅助数组实现，使用 O(n) 大小的额外空间。</li>
+<li><strong>稳定排序：</strong>在合并过程中，相等元素的次序保持不变。</li>
+</ul>
+
+<h2 id="baseline-任务-1-2路归并排序的基础实现">Baseline 任务 1：2 路归并排序的基础实现</h2>
+<h3>任务内容</h3>
+<p>完成 MergeSort.cpp，实现 2 路归并排序（递归）：</p>
+<ul>
+<li>采用分治思想，先拆分再合并</li>
+<li>递归将数组分成左右两部分，分别排序</li>
+<li>合并两个有序子数组得到最终结果</li>
+<li>时间复杂度：O(n log n)</li>
+<li>空间复杂度：O(n)</li>
+<li>稳定排序</li>
+</ul>
+<h3>验证方式</h3>
+<ul>
+<li>编译：<code>g++ testMergeSort.cpp MergeSort.cpp -o testMergeSort</code></li>
+<li>运行：<code>./testMergeSort</code></li>
+</ul>
+
+<h2 id="baseline-任务-2-归并排序算法的优化">Baseline 任务 2：归并排序算法的优化</h2>
+<h3>任务内容：原地归并排序与链表归并排序优化</h3>
+<p>传统数组版归并排序需要 O(n) 的额外空间，而链表结构可以实现 O(1) 空间复杂度的归并排序；同时也可以尝试优化数组归并的空间使用。</p>
+<ul>
+<li><strong>核心思想：</strong>
+<ul>
+<li>对于数组：尝试实现基于"原地合并"的优化版本，减少辅助数组的空间开销；</li>
+<li>对于链表：实现迭代版链表归并排序，无需递归栈空间，合并阶段仅通过修改指针完成，空间复杂度优化至 O(1)。</li>
+</ul>
+</li>
+<li><strong>要求：</strong>
+<ol>
+<li>实现链表节点结构 <code>ListNode</code>，并完成迭代版 <code>ListNode* mergeSortList(ListNode* head)</code> 函数。</li>
+<li>编写测试程序，验证链表归并排序的正确性，并对比数组版与链表版的空间使用差异。</li>
+<li>分析链表归并排序的优势与适用场景。</li>
+</ol>
+</li>
+</ul>
+
+<h3>文件结构</h3>
+<ul>
+<li><code>MergeSort.h</code>：归并排序函数声明</li>
+<li><code>MergeSort.cpp</code>：归并排序核心算法实现</li>
+<li><code>testMergeSort.cpp</code>：测试程序，验证排序功能正确性</li>
+</ul>
+    </article>
+  </main>
+  <footer class="footer">归并排序内容来源于 Sort/Baseline/src/MergeSort。</footer>
+  <script src="assets/slides.js"></script>
+</body>
+</html>

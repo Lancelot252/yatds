@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>堆排序教程与任务</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Cpath d='M18 20h28M18 32h22M18 44h28' stroke='%23187990' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <div class="nav-item has-submenu">
+          <a href="linear.html">线性结构</a>
+          <div class="submenu" aria-label="线性结构子页面">
+            <a href="linear-list.html">线性表</a>
+            <a href="linear-stack-queue.html">栈和队列</a>
+            <a href="linear-project.html">Project</a>
+            <a href="linear-string.html">字符串</a>
+          </div>
+        </div>
+        <a href="index.html#tree-placeholder">树结构</a>
+        <a href="index.html#graph-placeholder">图结构</a>
+        <a href="index.html#hash-placeholder">哈希</a>
+        <div class="nav-item has-submenu">
+          <a class="active" href="sort.html">排序查找</a>
+          <div class="submenu" aria-label="排序查找子页面">
+            <a href="sort-bubble.html">冒泡排序</a>
+            <a href="sort-selection.html">选择排序</a>
+            <a href="sort-insertion.html">插入排序</a>
+            <a href="sort-shell.html">希尔排序</a>
+            <a href="sort-quick.html">快速排序</a>
+            <a href="sort-merge.html">归并排序</a>
+            <a href="sort-heap.html">堆排序</a>
+            <a href="sort-radix.html">基数排序</a>
+            <a href="sort-project.html">Project</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="page-shell">
+<aside class="toc toc-chapters">
+  <a class="toc-root" href="#堆排序"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c3-1 6-4 7-7l5-5-2-2-5 5c-3 1-6 4-7 7l2 2Z"/><path d="m14 4 6 6"/></svg></span><span>堆排序</span></a>
+  <a class="toc-chapter" href="#算法概述"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">算法概述</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#算法流程"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">算法流程</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#算法特性"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">算法特性</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#baseline-任务-堆排序的基础实现"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务: 堆排序的基础实现</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+</aside>
+    <article class="content">
+      <h1 id="堆排序">堆排序（Heap Sort）</h1>
+<blockquote><p><small>堆排序是一种基于堆数据结构实现的高效排序算法。我们可以利用已经学过的"建堆操作"和"元素出堆操作"实现堆排序。</small></p></blockquote>
+<p>一种直观的实现思路是：</p>
+<ol>
+<li>输入数组并建立小顶堆，此时最小元素位于堆顶。</li>
+<li>不断执行出堆操作，依次记录出堆元素，即可得到从小到大排序的序列。</li>
+</ol>
+<p>以上方法虽然可行，但需要借助一个额外数组来保存弹出的元素，比较浪费空间。在实际中，我们通常使用一种更加优雅的实现方式。</p>
+
+<h2 id="算法流程">算法流程</h2>
+<p>设数组的长度为 n，堆排序的流程如图所示。</p>
+<ol>
+<li>输入数组并建立大顶堆。完成后，最大元素位于堆顶。</li>
+<li>将堆顶元素（第一个元素）与堆底元素（最后一个元素）交换。完成交换后，堆的长度减 1，已排序元素数量加 1。</li>
+<li>从堆顶元素开始，从顶到底执行堆化操作（sift down）。完成堆化后，堆的性质得到修复。</li>
+<li>循环执行第 2 步和第 3 步。循环 n-1 轮后，即可完成数组排序。</li>
+</ol>
+
+<div class="callout" style="margin:20px 0; padding:16px 20px; border-radius:8px; background:#f0f8ff; border-left:4px solid var(--accent);">
+  <strong style="color:#004085;">Tip</strong>
+  <p style="margin:8px 0 0 0; color:#333;">实际上，元素出堆操作中也包含第 2 步和第 3 步，只是多了一个弹出元素的步骤。</p>
+</div>
+
+<div class="slide-deck">
+  <div class="slide-stage">
+    <img src="assets/images/sort/heap_sort_step1.svg" alt="堆排序步骤 1">
+    <span class="slide-title" style="display:none">步骤 1</span>
+    <span class="slide-count" style="display:none"></span>
+    <div data-slide-src="assets/images/sort/heap_sort_step1.svg" data-slide-title="步骤 1"></div>
+    <div data-slide-src="assets/images/sort/heap_sort_step2.svg" data-slide-title="步骤 2"></div>
+    <div data-slide-src="assets/images/sort/heap_sort_step3.svg" data-slide-title="步骤 3"></div>
+    <div data-slide-src="assets/images/sort/heap_sort_step4.svg" data-slide-title="步骤 4"></div>
+    <div data-slide-src="assets/images/sort/heap_sort_step5.svg" data-slide-title="步骤 5"></div>
+    <div data-slide-src="assets/images/sort/heap_sort_step6.svg" data-slide-title="步骤 6"></div>
+    <div data-slide-src="assets/images/sort/heap_sort_step7.svg" data-slide-title="步骤 7"></div>
+    <div data-slide-src="assets/images/sort/heap_sort_step8.svg" data-slide-title="步骤 8"></div>
+    <div data-slide-src="assets/images/sort/heap_sort_step9.svg" data-slide-title="步骤 9"></div>
+    <div data-slide-src="assets/images/sort/heap_sort_step10.svg" data-slide-title="步骤 10"></div>
+    <div data-slide-src="assets/images/sort/heap_sort_step11.svg" data-slide-title="步骤 11"></div>
+    <div data-slide-src="assets/images/sort/heap_sort_step12.svg" data-slide-title="步骤 12"></div>
+  </div>
+  <div class="slide-controls">
+    <button type="button" data-slide-prev>&lt;</button>
+    <div class="slide-meta">
+      <span id="slideLabel">步骤 1 / 12</span>
+      <div class="slide-dots" id="slideDots"></div>
+    </div>
+    <button type="button" data-slide-next>&gt;</button>
+  </div>
+</div>
+
+<h2 id="算法特性">算法特性</h2>
+<ul>
+<li><strong>时间复杂度为 O(n log n)、非自适应排序：</strong>建堆操作使用 O(n) 时间。从堆中提取最大元素的时间复杂度为 O(log n)，共循环 n-1 轮。</li>
+<li><strong>空间复杂度为 O(1)、原地排序：</strong>几个指针变量使用 O(1) 空间。元素交换和堆化操作都是在原数组上进行的。</li>
+<li><strong>非稳定排序：</strong>在交换堆顶元素和堆底元素时，相等元素的相对位置可能发生变化。</li>
+</ul>
+
+<h2 id="baseline-任务-堆排序的基础实现">Baseline 任务：堆排序的基础实现</h2>
+<h3>任务内容</h3>
+<p>完成 HeapSort.cpp，实现堆排序：</p>
+<ul>
+<li>采用完全二叉树（大顶堆）结构</li>
+<li>先构建堆，再交换堆顶与末尾元素，反复向下调整</li>
+<li>数组从下标 1 开始存储数据</li>
+<li>时间复杂度：O(n log n)</li>
+<li>空间复杂度：O(1)</li>
+<li>不稳定排序</li>
+</ul>
+<h3>验证方式</h3>
+<ul>
+<li>编译：<code>g++ testHeapSort.cpp HeapSort.cpp -o testHeapSort</code></li>
+<li>运行：<code>./testHeapSort</code></li>
+</ul>
+
+<h3>文件结构</h3>
+<ul>
+<li><code>HeapSort.h</code>：堆排序函数声明</li>
+<li><code>HeapSort.cpp</code>：堆排序核心算法实现</li>
+<li><code>testHeapSort.cpp</code>：测试程序，验证排序功能正确性</li>
+</ul>
+    </article>
+  </main>
+  <footer class="footer">堆排序内容来源于 Sort/Baseline/src/SelectSort/HeapSort。</footer>
+  <script src="assets/slides.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>冒泡排序教程与任务</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Cpath d='M18 20h28M18 32h22M18 44h28' stroke='%23187990' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <div class="nav-item has-submenu">
+          <a href="linear.html">线性结构</a>
+          <div class="submenu" aria-label="线性结构子页面">
+            <a href="linear-list.html">线性表</a>
+            <a href="linear-stack-queue.html">栈和队列</a>
+            <a href="linear-project.html">Project</a>
+            <a href="linear-string.html">字符串</a>
+          </div>
+        </div>
+        <a href="index.html#tree-placeholder">树结构</a>
+        <a href="index.html#graph-placeholder">图结构</a>
+        <a href="index.html#hash-placeholder">哈希</a>
+        <div class="nav-item has-submenu">
+          <a class="active" href="sort.html">排序查找</a>
+          <div class="submenu" aria-label="排序查找子页面">
+            <a href="sort-bubble.html">冒泡排序</a>
+            <a href="sort-selection.html">选择排序</a>
+            <a href="sort-insertion.html">插入排序</a>
+            <a href="sort-shell.html">希尔排序</a>
+            <a href="sort-quick.html">快速排序</a>
+            <a href="sort-merge.html">归并排序</a>
+            <a href="sort-heap.html">堆排序</a>
+            <a href="sort-radix.html">基数排序</a>
+            <a href="sort-project.html">Project</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="page-shell">
+<aside class="toc toc-chapters">
+  <a class="toc-root" href="#冒泡排序"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c3-1 6-4 7-7l5-5-2-2-5 5c-3 1-6 4-7 7l2 2Z"/><path d="m14 4 6 6"/></svg></span><span>冒泡排序</span></a>
+  <a class="toc-chapter" href="#算法流程"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">算法流程</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#冒泡过程模拟"><span>1.1</span><strong>冒泡过程模拟</strong></a>
+    <a class="toc-subitem" href="#整体流程"><span>1.2</span><strong>整体流程</strong></a>
+  </div>
+  <a class="toc-chapter" href="#算法特性"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">算法特性</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#baseline-任务-1-冒泡排序的基础实现"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务 1: 冒泡排序的基础实现</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#baseline-任务-2-冒泡排序算法的优化"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务 2: 冒泡排序算法的优化</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+</aside>
+    <article class="content">
+      <h1 id="冒泡排序">冒泡排序（Bubble Sort）</h1>
+<blockquote><p><small>冒泡排序通过连续地比较与交换相邻元素实现排序。</small></p><p><small>这个过程就像气泡从底部升到顶部一样，因此得名冒泡排序。</small></p></blockquote>
+<p>如图所示，冒泡过程可以利用元素交换操作来模拟：从数组最左端开始向右遍历，依次比较相邻元素大小，如果"左元素 &gt; 右元素"就交换二者。遍历完成后，最大的元素会被移动到数组的最右端。</p>
+
+<div class="slide-deck">
+  <div class="slide-stage">
+    <img src="assets/images/sort/bubble_operation_step1.svg" alt="冒泡操作步骤 1">
+    <span class="slide-title" style="display:none">步骤 1</span>
+    <span class="slide-count" style="display:none"></span>
+    <div data-slide-src="assets/images/sort/bubble_operation_step1.svg" data-slide-title="步骤 1"></div>
+    <div data-slide-src="assets/images/sort/bubble_operation_step2.svg" data-slide-title="步骤 2"></div>
+    <div data-slide-src="assets/images/sort/bubble_operation_step3.svg" data-slide-title="步骤 3"></div>
+    <div data-slide-src="assets/images/sort/bubble_operation_step4.svg" data-slide-title="步骤 4"></div>
+    <div data-slide-src="assets/images/sort/bubble_operation_step5.svg" data-slide-title="步骤 5"></div>
+    <div data-slide-src="assets/images/sort/bubble_operation_step6.svg" data-slide-title="步骤 6"></div>
+    <div data-slide-src="assets/images/sort/bubble_operation_step7.svg" data-slide-title="步骤 7"></div>
+  </div>
+  <div class="slide-controls">
+    <button type="button" data-slide-prev>&lt;</button>
+    <div class="slide-meta">
+      <span id="slideLabel">步骤 1 / 7</span>
+      <div class="slide-dots" id="slideDots"></div>
+    </div>
+    <button type="button" data-slide-next>&gt;</button>
+  </div>
+</div>
+
+<h2 id="算法流程">算法流程</h2>
+<p>设数组的长度为 n，冒泡排序的步骤如图所示。</p>
+<ol>
+<li>首先，对 n 个元素执行"冒泡"，将数组的最大元素交换至正确位置。</li>
+<li>接下来，对剩余 n-1 个元素执行"冒泡"，将第二大元素交换至正确位置。</li>
+<li>以此类推，经过 n-1 轮"冒泡"后，前 n-1 大的元素都被交换至正确位置。</li>
+<li>仅剩的一个元素必定是最小元素，无须排序，因此数组排序完成。</li>
+</ol>
+<figure><img src="assets/images/sort/bubble_sort_overview.svg" alt="冒泡排序流程"><figcaption>冒泡排序整体流程</figcaption></figure>
+
+<h2 id="算法特性">算法特性</h2>
+<ul>
+<li><strong>时间复杂度为 O(n²)、自适应排序：</strong>各轮"冒泡"遍历的数组长度依次为 n-1、n-2、...、2、1，总和为 (n-1)n/2。在引入 flag 优化后，最佳时间复杂度可达到 O(n)。</li>
+<li><strong>空间复杂度为 O(1)、原地排序：</strong>指针 i 和 j 使用常数大小的额外空间。</li>
+<li><strong>稳定排序：</strong>由于在"冒泡"中遇到相等元素不交换。</li>
+</ul>
+
+<h2 id="baseline-任务-1-冒泡排序的基础实现">Baseline 任务 1：冒泡排序的基础实现</h2>
+<h3>任务内容</h3>
+<p>完成 BubbleSort.cpp，实现冒泡排序：</p>
+<ul>
+<li>重复遍历数组，依次比较相邻元素并交换</li>
+<li>每次循环将最大元素"冒泡"到末尾</li>
+<li>原地排序、稳定排序</li>
+<li>时间复杂度：O(n²)</li>
+<li>空间复杂度：O(1)</li>
+</ul>
+<h3>验证方式</h3>
+<ul>
+<li>编译：<code>g++ testBubbleSort.cpp BubbleSort.cpp -o testBubbleSort</code></li>
+<li>运行：<code>./testBubbleSort</code></li>
+</ul>
+
+<h2 id="baseline-任务-2-冒泡排序算法的优化">Baseline 任务 2：冒泡排序算法的优化</h2>
+<blockquote><p><small>在实践中，我们会发现冒泡排序存在明显的短板：例如，在数组已经有序时仍会进行无用遍历；在部分有序的数组中会进行大量无效比较；或者在处理"小元素在末尾"的场景时，移动效率极低。</small></p><p><small>这些问题都指向了一个方向：冒泡排序还有很大的优化空间。</small></p></blockquote>
+<h3>任务内容：带提前终止的冒泡排序</h3>
+<p>原始冒泡排序无论数组是否有序，都会执行完整的双层循环，造成大量冗余操作。尝试实现带有序检测的冒泡排序：</p>
+<ul>
+<li><strong>核心思想：</strong>在每一轮遍历中记录是否发生交换，若某一轮未交换任何元素，说明数组已有序，直接提前终止排序。</li>
+<li><strong>要求：</strong>
+<ol>
+<li>实现 <code>void BubbleSortEarlyExit(vector&lt;int&gt;&amp; arr)</code> 函数。</li>
+<li>编写测试程序，验证该算法在不同场景下的正确性（如随机数组、有序数组、逆序数组）。</li>
+<li>分析其与简单冒泡排序的时间复杂度对比（理论与实际运行时间），并解释其改进点。</li>
+</ol>
+</li>
+</ul>
+
+<h3>文件结构</h3>
+<ul>
+<li><code>BubbleSort.h</code>：冒泡排序函数声明</li>
+<li><code>BubbleSort.cpp</code>：冒泡排序核心算法实现</li>
+<li><code>testBubbleSort.cpp</code>：测试程序，验证排序功能正确性</li>
+</ul>
+    </article>
+  </main>
+  <footer class="footer">冒泡排序内容来源于 Sort/Baseline/src/SwapSort/BubbleSort。</footer>
+  <script src="assets/slides.js"></script>
+</body>
+</html>

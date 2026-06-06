@@ -1,0 +1,150 @@
+<svg viewBox="0 0 620 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="快速排序概览">
+
+<!-- ====== 左侧：递归流程 ====== -->
+<g transform="translate(20, 10)">
+
+  <!-- nums 标签 -->
+  <text x="20" y="28" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#4a7c59">nums</text>
+
+  <!-- L0: 初始数组 [2,4,1,0,3,5] 全绿 -->
+  <g transform="translate(70, 8)">
+    <rect x="0" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="21" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">2</text>
+    <rect x="46" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="67" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">4</text>
+    <rect x="92" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="113" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+    <rect x="138" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="159" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">0</text>
+    <rect x="184" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="205" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">3</text>
+    <rect x="230" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="251" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">5</text>
+  </g>
+
+  <!-- 箭头: L0 -> L1 -->
+  <g transform="translate(205, 48)">
+    <line x1="0" y1="0" x2="0" y2="18" stroke="#999" stroke-width="1.5"/>
+    <polygon points="-6,14 6,14 0,22" fill="#999"/>
+  </g>
+  <text x="295" y="60" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#555">开启递归</text>
+
+  <!-- L1: pivot高亮 [2]蓝色 其余绿色 -->
+  <g transform="translate(70, 72)">
+    <rect x="0" y="0" width="42" height="34" rx="6" ry="6" fill="#7ec8e3" stroke="#4fa8d0" stroke-width="1.6"/><text x="21" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">2</text>
+    <rect x="46" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="67" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">4</text>
+    <rect x="92" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="113" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+    <rect x="138" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="159" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">0</text>
+    <rect x="184" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="205" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">3</text>
+    <rect x="230" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="251" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">5</text>
+  </g>
+
+  <!-- 哨兵划分 标签框 -->
+  <g transform="translate(70, 114)">
+    <rect x="0" y="0" width="272" height="28" rx="6" ry="6" fill="#f0f0f0" stroke="#ddd" stroke-width="1"/>
+    <text x="136" y="19" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="600" fill="#444">哨兵划分</text>
+  </g>
+
+  <!-- L2: 划分后 [1,0,2,4,3,5] pivot=2在pos2 蓝色 -->
+  <g transform="translate(70, 150)">
+    <rect x="0" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="21" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+    <rect x="46" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="67" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">0</text>
+    <rect x="92" y="0" width="42" height="34" rx="6" ry="6" fill="#7ec8e3" stroke="#4fa8d0" stroke-width="1.6"/><text x="113" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">2</text>
+    <rect x="138" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="159" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">4</text>
+    <rect x="184" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="205" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">3</text>
+    <rect x="230" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="251" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">5</text>
+  </g>
+
+  <!-- 箭头: L2 -> 左右子数组 -->
+  <g transform="translate(113, 192)">
+    <line x1="0" y1="0" x2="0" y2="18" stroke="#999" stroke-width="1.5"/>
+    <polygon points="-6,14 6,14 0,22" fill="#999"/>
+  </g>
+  <text x="15" y="208" font-family="'Microsoft YaHei',sans-serif" font-size="12" font-weight="600" fill="#555">递归左子数组</text>
+
+  <g transform="translate(275, 192)">
+    <line x1="0" y1="0" x2="0" y2="18" stroke="#999" stroke-width="1.5"/>
+    <polygon points="-6,14 6,14 0,22" fill="#999"/>
+  </g>
+  <text x="288" y="208" font-family="'Microsoft YaHei',sans-serif" font-size="12" font-weight="600" fill="#555">递归右子数组</text>
+
+  <!-- L3-左: [1,0] + pivot 2 -->
+  <g transform="translate(70, 218)">
+    <rect x="0" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="21" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+    <rect x="46" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="67" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">0</text>
+    <!-- pivot 2 占位 -->
+    <text x="105" y="24" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="600" fill="#333">2</text>
+  </g>
+
+  <!-- L3-右: [4,3,5] -->
+  <g transform="translate(208, 218)">
+    <rect x="0" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="21" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">4</text>
+    <rect x="46" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="67" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">3</text>
+    <rect x="92" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="113" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">5</text>
+  </g>
+
+  <!-- 哨兵划分 - 左 -->
+  <g transform="translate(70, 260)">
+    <rect x="0" y="0" width="88" height="26" rx="5" ry="5" fill="#f0f0f0" stroke="#ddd" stroke-width="1"/>
+    <text x="44" y="18" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#444">哨兵划分</text>
+  </g>
+
+  <!-- 哨兵划分 - 右 -->
+  <g transform="translate(208, 260)">
+    <rect x="0" y="0" width="88" height="26" rx="5" ry="5" fill="#f0f0f0" stroke="#ddd" stroke-width="1"/>
+    <text x="44" y="18" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#444">哨兵划分</text>
+  </g>
+
+  <!-- L4-左: [0,1] + pivot 2 -->
+  <g transform="translate(70, 294)">
+    <rect x="0" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="21" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">0</text>
+    <rect x="46" y="0" width="42" height="34" rx="6" ry="6" fill="#7ec8e3" stroke="#4fa8d0" stroke-width="1.6"/><text x="67" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+    <text x="105" y="24" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="600" fill="#333">2</text>
+  </g>
+
+  <!-- L4-右: [3,4,5] pivot=4蓝色 -->
+  <g transform="translate(208, 294)">
+    <rect x="0" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="21" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">3</text>
+    <rect x="46" y="0" width="42" height="34" rx="6" ry="6" fill="#7ec8e3" stroke="#4fa8d0" stroke-width="1.6"/><text x="67" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">4</text>
+    <rect x="92" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="113" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">5</text>
+  </g>
+
+  <!-- 终止递归 箭头和文字 -->
+  <g transform="translate(91, 336)">
+    <line x1="0" y1="0" x2="0" y2="16" stroke="#999" stroke-width="1.5"/>
+    <polygon points="-5,12 5,12 0,20" fill="#999"/>
+  </g>
+  <text x="15" y="350" font-family="'Microsoft YaHei',sans-serif" font-size="11" font-weight="600" fill="#888">终止递归</text>
+
+  
+  <text x="115" y="350" font-family="'Microsoft YaHei',sans-serif" font-size="11" font-weight="600" fill="#888">终止递归</text>
+
+  <g transform="translate(229, 336)">
+    <line x1="0" y1="0" x2="0" y2="16" stroke="#999" stroke-width="1.5"/>
+    <polygon points="-5,12 5,12 0,20" fill="#999"/>
+  </g>
+  <text x="255" y="350" font-family="'Microsoft YaHei',sans-serif" font-size="11" font-weight="600" fill="#888">终止递归</text>
+
+  <g transform="translate(320, 336)">
+    <line x1="0" y1="0" x2="0" y2="16" stroke="#999" stroke-width="1.5"/>
+    <polygon points="-5,12 5,12 0,20" fill="#999"/>
+  </g>
+
+  <!-- 最终结果 [0,1,2,3,4,5] 全绿 -->
+  <g transform="translate(70, 362)">
+    <rect x="0" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="21" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">0</text>
+    <rect x="46" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="67" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+    <rect x="92" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="113" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">2</text>
+    <rect x="138" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="159" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">3</text>
+    <rect x="184" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="205" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">4</text>
+    <rect x="230" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.2"/><text x="251" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">5</text>
+  </g>
+
+  <!-- 右大括号 -->
+  <path d="M 360,50 Q 380,50 380,80 L 380,200 Q 380,210 395,210 Q 380,210 380,220 L 380,340 Q 380,370 360,370" stroke="#bbb" stroke-width="1.5" fill="none"/>
+
+</g>
+
+<!-- ====== 右侧：说明文字 ====== -->
+<g transform="translate(420, 160)">
+  <text x="0" y="34" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="600" fill="#333">递归子数组执行 "哨兵划分"</text>
+  <text x="0" y="62" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="600" fill="#333">直至子数组长度为 1 时终止</text>
+  <text x="0" y="90" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="600" fill="#333">即可完成数组排序</text>
+</g>
+
+
+</svg>

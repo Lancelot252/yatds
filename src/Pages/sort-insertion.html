@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>插入排序教程与任务</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Cpath d='M18 20h28M18 32h22M18 44h28' stroke='%23187990' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <div class="nav-item has-submenu">
+          <a href="linear.html">线性结构</a>
+          <div class="submenu" aria-label="线性结构子页面">
+            <a href="linear-list.html">线性表</a>
+            <a href="linear-stack-queue.html">栈和队列</a>
+            <a href="linear-project.html">Project</a>
+            <a href="linear-string.html">字符串</a>
+          </div>
+        </div>
+        <a href="index.html#tree-placeholder">树结构</a>
+        <a href="index.html#graph-placeholder">图结构</a>
+        <a href="index.html#hash-placeholder">哈希</a>
+        <div class="nav-item has-submenu">
+          <a class="active" href="sort.html">排序查找</a>
+          <div class="submenu" aria-label="排序查找子页面">
+            <a href="sort-bubble.html">冒泡排序</a>
+            <a href="sort-selection.html">选择排序</a>
+            <a href="sort-insertion.html">插入排序</a>
+            <a href="sort-shell.html">希尔排序</a>
+            <a href="sort-quick.html">快速排序</a>
+            <a href="sort-merge.html">归并排序</a>
+            <a href="sort-heap.html">堆排序</a>
+            <a href="sort-radix.html">基数排序</a>
+            <a href="sort-project.html">Project</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="page-shell">
+<aside class="toc toc-chapters">
+  <a class="toc-root" href="#直接插入排序"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c3-1 6-4 7-7l5-5-2-2-5 5c-3 1-6 4-7 7l2 2Z"/><path d="m14 4 6 6"/></svg></span><span>直接插入排序</span></a>
+  <a class="toc-chapter" href="#单次插入操作"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">单次插入操作</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#算法流程"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">算法流程</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#算法特性"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">算法特性</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#baseline-任务-1-插入排序的基础实现"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务 1: 插入排序的基础实现</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#baseline-任务-2-插入排序算法的优化"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务 2: 插入排序算法的优化</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+</aside>
+    <article class="content">
+      <h1 id="直接插入排序">直接插入排序（Insertion Sort）</h1>
+<blockquote><p><small>插入排序是一种简单的排序算法，它的工作原理与手动整理一副牌的过程非常相似。</small></p></blockquote>
+<p>具体来说，我们在未排序区间选择一个基准元素，将该元素与其左侧已排序区间的元素逐一比较大小，并将该元素插入到正确的位置。</p>
+<p>下图展示了数组插入元素的操作流程。设基准元素为 base，我们需要将从目标索引到 base 之间的所有元素向右移动一位，然后将 base 赋值给目标索引。</p>
+<figure><img src="assets/images/sort/insertion_sort_operation.svg" alt="单次插入操作"><figcaption>单次插入操作示意图</figcaption></figure>
+
+<h2 id="算法流程">算法流程</h2>
+<p>插入排序的整体流程如图所示。</p>
+<ol>
+<li>初始状态下，数组的第 1 个元素已完成排序。</li>
+<li>选取数组的第 2 个元素作为 base，将其插入到正确位置后，数组的前 2 个元素已排序。</li>
+<li>选取第 3 个元素作为 base，将其插入到正确位置后，数组的前 3 个元素已排序。</li>
+<li>以此类推，在最后一轮中，选取最后一个元素作为 base，将其插入到正确位置后，所有元素均已排序。</li>
+</ol>
+<figure><img src="assets/images/sort/insertion_overview.svg" alt="插入排序流程"><figcaption>插入排序整体流程</figcaption></figure>
+
+<h2 id="算法特性">算法特性</h2>
+<ul>
+<li><strong>时间复杂度为 O(n²)、自适应排序：</strong>在最差情况下，每次插入操作分别需要循环 n-1、n-2、...、2、1 次，求和得到 (n-1)n/2，因此时间复杂度为 O(n²)。在遇到有序数据时，插入操作会提前终止。当输入数组完全有序时，插入排序达到最佳时间复杂度 O(n)。</li>
+<li><strong>空间复杂度为 O(1)、原地排序：</strong>指针 i 和 j 使用常数大小的额外空间。</li>
+<li><strong>稳定排序：</strong>在插入操作过程中，我们会将元素插入到相等元素的右侧，不会改变它们的顺序。</li>
+</ul>
+
+<h2 id="baseline-任务-1-插入排序的基础实现">Baseline 任务 1：插入排序的基础实现</h2>
+<h3>任务内容</h3>
+<p>完成 InsertSort.cpp，实现插入排序：</p>
+<ul>
+<li>从数组第二个元素开始，逐个将元素插入到前面已排序序列的正确位置</li>
+<li>对输入的整型数组进行<strong>原地升序排序</strong></li>
+<li>时间复杂度：最坏 O(n²)，最好 O(n)</li>
+<li>空间复杂度：O(1)</li>
+</ul>
+<h3>验证方式</h3>
+<ul>
+<li>编译：<code>g++ testInsertSort.cpp InsertSort.cpp -o testInsertSort</code></li>
+<li>运行：<code>./testInsertSort</code></li>
+</ul>
+
+<h2 id="baseline-任务-2-插入排序算法的优化">Baseline 任务 2：插入排序算法的优化</h2>
+<blockquote><p><small>在实践中，我们会发现插入排序存在明显的短板：例如，在寻找插入位置时需要逐个比较，效率较低；或者在移动元素时需要频繁交换位置，导致操作次数较多。</small></p><p><small>这些问题都指向了一个方向：插入排序还有很大的优化空间。</small></p></blockquote>
+<h3>任务内容：二分插入排序（优化查找过程）</h3>
+<p>传统的直接插入排序在寻找元素插入位置时，采用从后往前逐个比较的方式，比较次数较多。尝试实现二分插入排序：</p>
+<ul>
+<li><strong>核心思想：</strong>在有序区间内使用二分查找来快速定位插入位置，减少比较次数，提升查找效率。</li>
+<li><strong>要求：</strong>
+<ol>
+<li>实现 <code>void BinaryInsertSort(vector&lt;int&gt;&amp; arr)</code> 函数。</li>
+<li>编写测试程序，验证该算法在不同场景下的正确性（如随机数组、有序数组、逆序数组）。</li>
+<li>分析其与简单插入排序的时间复杂度对比（理论与实际运行时间），并解释其改进点。</li>
+</ol>
+</li>
+</ul>
+
+<h3>文件结构</h3>
+<ul>
+<li><code>InsertSort.h</code>：插入排序函数声明，带头文件保护</li>
+<li><code>InsertSort.cpp</code>：插入排序核心算法实现</li>
+<li><code>testInsertSort.cpp</code>：测试程序，验证排序功能正确性</li>
+</ul>
+    </article>
+  </main>
+  <footer class="footer">插入排序内容来源于 Sort/Baseline/src/InsertSort/InsertSort。</footer>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<svg viewBox="0 0 750 510" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="归并排序概览">
+
+<!-- ====== 右侧：标注区域 ====== -->
+<g transform="translate(0, 0)">
+
+  <!-- 划分阶段 大括号 -->
+  <path d="M 620,28 Q 640,28 640,48 L 640,165 Q 640,170 656,170 Q 640,180 640,185 L 640,275 Q 640,295 620,295" stroke="#bbb" stroke-width="1.5" fill="none"/>
+  <text x="725" y="175" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#444">划分阶段</text>
+
+  <!-- 虚线分隔：触发递归 / 终止条件 -->
+  <line x1="80" y1="298" x2="650" y2="298" stroke="#ccc" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="658" y="292" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="600" fill="#555">触发递归</text>
+  <text x="658" y="315" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="600" fill="#555">终止条件</text>
+
+  <!-- 合并阶段 大括号 -->
+  <path d="M 620,305 Q 640,305 640,330 L 640,410 Q 640,418 656,418 Q 640,428 640,433 L 640,470 Q 640,490 620,490" stroke="#bbb" stroke-width="1.5" fill="none"/>
+  <text x="725" y="420" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#444">合并阶段</text>
+
+</g>
+
+<!-- ====== 中间：完整递归树 ====== -->
+<g transform="translate(0, 0)">
+
+  <!-- ========== L0: 原始数组 [7,3,2,6,0,1,5,4] ========== -->
+  <g transform="translate(155, 18)">
+    <rect x="0"   y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">7</text>
+    <rect x="46"  y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="67" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">3</text>
+    <rect x="92"  y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="113" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">2</text>
+    <rect x="138" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="159" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">6</text>
+    <rect x="184" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="205" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">0</text>
+    <rect x="230" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="251" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+    <rect x="276" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="297" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">5</text>
+    <rect x="322" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="343" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">4</text>
+  </g>
+
+  <!-- 箭头 L0 -> L1: 斜线分叉 + 垂直箭头头 -->
+  <line x1="334" y1="52" x2="224" y2="78" stroke="#999" stroke-width="1.5"/>
+  <line x1="334" y1="52" x2="420" y2="78" stroke="#999" stroke-width="1.5"/>
+
+  <!-- ========== L1: [7,3,2,6] 和 [0,1,5,4] ========== -->
+  <g transform="translate(125, 84)">
+    <rect x="0"   y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">7</text>
+    <rect x="46"  y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="67" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">3</text>
+    <rect x="92"  y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="113" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">2</text>
+    <rect x="138" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="159" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">6</text>
+  </g>
+  <g transform="translate(369, 84)">
+    <rect x="0"   y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">0</text>
+    <rect x="46"  y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="67" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+    <rect x="92"  y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="113" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">5</text>
+    <rect x="138" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="159" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">4</text>
+  </g>
+
+  <!-- 箭头 L1 -> L2: 斜线分叉 + 垂直箭头头 -->
+  <!-- 左半 [7,3,2,6] -> [7,3] 和 [2,6] -->
+  <line x1="201" y1="118" x2="148" y2="148" stroke="#999" stroke-width="1.5"/>
+  <line x1="209" y1="118" x2="264" y2="148" stroke="#999" stroke-width="1.5"/>
+
+  <!-- 右半 [0,1,5,4] -> [0,1] 和 [5,4] -->
+  <line x1="455" y1="118" x2="400" y2="148" stroke="#999" stroke-width="1.5"/>
+
+  <line x1="460" y1="118" x2="540" y2="148" stroke="#999" stroke-width="1.5"/>
+
+
+  <!-- ========== L2: [7,3] [2,6] [0,1] [5,4] ========== -->
+  <g transform="translate(100, 154)">
+    <rect x="0"  y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">7</text>
+    <rect x="46" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="67" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">3</text>
+  </g>
+  <g transform="translate(220, 154)">
+    <rect x="0"  y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">2</text>
+    <rect x="46" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="67" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">6</text>
+  </g>
+  <g transform="translate(360, 154)">
+    <rect x="0"  y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">0</text>
+    <rect x="46" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="67" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+  </g>
+  <g transform="translate(490, 154)">
+    <rect x="0"  y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">5</text>
+    <rect x="46" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="67" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">4</text>
+  </g>
+
+  <!-- 箭头 L2 -> 叶子: 垂直线 + 垂直箭头头 -->
+  <line x1="125" y1="188" x2="118" y2="218" stroke="#999" stroke-width="1.5"/>
+
+  <line x1="165" y1="188" x2="182" y2="218" stroke="#999" stroke-width="1.5"/>
+ 
+  <line x1="240" y1="188" x2="236" y2="218" stroke="#999" stroke-width="1.5"/>
+
+  <line x1="285" y1="188" x2="296" y2="218" stroke="#999" stroke-width="1.5"/>
+
+  <line x1="385" y1="188" x2="380" y2="218" stroke="#999" stroke-width="1.5"/>
+ 
+  <line x1="430" y1="188" x2="435" y2="218" stroke="#999" stroke-width="1.5"/>
+
+  <line x1="515" y1="188" x2="510" y2="218" stroke="#999" stroke-width="1.5"/>
+
+  <line x1="555" y1="188" x2="560" y2="218" stroke="#999" stroke-width="1.5"/>
+  
+
+  <!-- ========== L3: 全部叶子节点 ========== -->
+  <g transform="translate(92, 224)">
+    <rect x="0" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">7</text>
+  </g>
+  <g transform="translate(151, 224)">
+    <rect x="0" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">3</text>
+  </g>
+  <g transform="translate(210, 224)">
+    <rect x="0" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">2</text>
+  </g>
+  <g transform="translate(275, 224)">
+    <rect x="0" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">6</text>
+  </g>
+  <g transform="translate(349, 224)">
+    <rect x="0" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">0</text>
+  </g>
+  <g transform="translate(415, 224)">
+    <rect x="0" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+  </g>
+  <g transform="translate(485, 224)">
+    <rect x="0" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">5</text>
+  </g>
+  <g transform="translate(550, 224)">
+    <rect x="0" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">4</text>
+  </g>
+
+  <!-- ====== 合并区：斜线交叉汇聚 + 垂直箭头头 ====== -->
+
+  <!-- 叶子 -> M1: 交叉斜线 + 垂直箭头头 -->
+  <!-- 7+3 -> [3,7]: 7连右, 3连左 -->
+  <line x1="113" y1="258" x2="165" y2="290" stroke="#999" stroke-width="1.5"/>
+  
+  <line x1="165" y1="258" x2="118" y2="290" stroke="#999" stroke-width="1.5"/>
+
+  <!-- 2+6 -> [2,6]: 2连左, 6连右 -->
+  <line x1="230" y1="258" x2="239" y2="290" stroke="#999" stroke-width="1.5"/>
+
+  <line x1="296" y1="258" x2="290" y2="290" stroke="#999" stroke-width="1.5"/>
+
+  <!-- 0+1 -> [0,1]: 0连左, 1连右 -->
+  <line x1="375" y1="258" x2="380" y2="290" stroke="#999" stroke-width="1.5"/>
+ 
+  <line x1="440" y1="258" x2="432" y2="290" stroke="#999" stroke-width="1.5"/>
+ 
+  <!-- 5+4 -> [4,5]: 5连右, 4连左 -->
+  <line x1="505" y1="258" x2="560" y2="290" stroke="#999" stroke-width="1.5"/>
+ 
+  <line x1="565" y1="258" x2="510" y2="290" stroke="#999" stroke-width="1.5"/>
+
+
+  <!-- ========== M1: [3,7] [2,6] [0,1] [4,5] ========== -->
+  <g transform="translate(100, 300)">
+    <rect x="0"  y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">3</text>
+    <rect x="46" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="67" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">7</text>
+  </g>
+  <g transform="translate(219, 300)">
+    <rect x="0"  y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">2</text>
+    <rect x="46" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="67" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">6</text>
+  </g>
+  <g transform="translate(360, 300)">
+    <rect x="0"  y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">0</text>
+    <rect x="46" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="67" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+  </g>
+  <g transform="translate(495, 300)">
+    <rect x="0"  y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">4</text>
+    <rect x="46" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="67" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">5</text>
+  </g>
+
+  <!-- M1 -> M2: 交叉斜线 + 垂直箭头头 -->
+  <!-- [3,7]+[2,6] -> [2,3,6,7] -->
+  <line x1="150" y1="334" x2="205" y2="370" stroke="#999" stroke-width="1.5"/>
+
+  <line x1="265" y1="334" x2="205" y2="370" stroke="#999" stroke-width="1.5"/>
+
+  <!-- [0,1]+[4,5] -> [0,1,4,5] -->
+  <line x1="404" y1="334" x2="484" y2="370" stroke="#999" stroke-width="1.5"/>
+
+  <line x1="543" y1="334" x2="484" y2="370" stroke="#999" stroke-width="1.5"/>
+
+
+  <!-- ========== M2: [2,3,6,7] [0,1,4,5] ========== -->
+  <g transform="translate(115, 376)">
+    <rect x="0"   y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">2</text>
+    <rect x="46"  y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="67" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">3</text>
+    <rect x="92"  y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="113" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">6</text>
+    <rect x="138" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="159" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">7</text>
+  </g>
+  <g transform="translate(399, 376)">
+    <rect x="0"   y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">0</text>
+    <rect x="46"  y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="67" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+    <rect x="92"  y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="113" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">4</text>
+    <rect x="138" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="159" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">5</text>
+  </g>
+
+  <!-- 最终合并 M2 -> 最终结果: 交叉斜线 + 垂直箭头头 -->
+  <line x1="265" y1="410" x2="340" y2="450" stroke="#999" stroke-width="1.5"/>
+ 
+  <line x1="449" y1="410" x2="374" y2="450" stroke="#999" stroke-width="1.5"/>
+
+
+  <!-- ========== 最终结果: [0,1,2,3,4,5,6,7] ========== -->
+  <g transform="translate(155, 456)">
+    <rect x="0"   y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="21" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">0</text>
+    <rect x="46"  y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="67" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+    <rect x="92"  y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="113" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">2</text>
+    <rect x="138" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="159" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">3</text>
+    <rect x="184" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="205" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">4</text>
+    <rect x="230" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="251" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">5</text>
+    <rect x="276" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="297" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">6</text>
+    <rect x="322" y="0" width="42" height="34" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1.3"/><text x="343" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">7</text>
+  </g>
+
+</g>
+
+</svg>

@@ -1,0 +1,55 @@
+<svg viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="堆排序步骤1">
+<defs><filter id="sh" x="-4%" y="-4%" width="108%" height="112%"><feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#187990" flood-opacity=".07"/></filter></defs>
+
+<text x="360" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#1d2a2f">堆排序 — 原始数组与完全二叉树</text>
+
+<!-- 原始数组 -->
+<g transform="translate(180, 40)">
+  <text x="-35" y="20" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="600" fill="#187990">nums</text>
+  <rect x="0" y="0" width="380" height="40" rx="8" ry="8" fill="none" stroke="#187990" stroke-width="1.5"/>
+  <rect x="4" y="4" width="48" height="32" rx="5" ry="5" fill="#dff5f7" stroke="#187990" stroke-width="1.3"/><text x="28" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#1d2a2f">9</text>
+  <rect x="56" y="4" width="48" height="32" rx="5" ry="5" fill="#dff5f7" stroke="#187990" stroke-width="1.3"/><text x="80" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#1d2a2f">4</text>
+  <rect x="108" y="4" width="48" height="32" rx="5" ry="5" fill="#dff5f7" stroke="#187990" stroke-width="1.3"/><text x="132" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#1d2a2f">6</text>
+  <rect x="160" y="4" width="48" height="32" rx="5" ry="5" fill="#dff5f7" stroke="#187990" stroke-width="1.3"/><text x="184" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#1d2a2f">2</text>
+  <rect x="212" y="4" width="48" height="32" rx="5" ry="5" fill="#dff5f7" stroke="#187990" stroke-width="1.3"/><text x="236" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#1d2a2f">8</text>
+  <rect x="264" y="4" width="48" height="32" rx="5" ry="5" fill="#dff5f7" stroke="#187990" stroke-width="1.3"/><text x="288" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#1d2a2f">1</text>
+  <rect x="316" y="4" width="54" height="32" rx="5" ry="5" fill="#dff5f7" stroke="#187990" stroke-width="1.3"/><text x="343" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#1d2a2f">5</text>
+  <!-- 下标标注 -->
+  <text x="28" y="52" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="10" fill="#996600">0</text>
+  <text x="80" y="52" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="10" fill="#996600">1</text>
+  <text x="132" y="52" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="10" fill="#996600">2</text>
+  <text x="184" y="52" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="10" fill="#996600">3</text>
+  <text x="236" y="52" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="10" fill="#996600">4</text>
+  <text x="288" y="52" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="10" fill="#996600">5</text>
+  <text x="343" y="52" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="10" fill="#996600">6</text>
+</g>
+
+<!-- 完全二叉树表示 -->
+<g transform="translate(160, 115)">
+  <text x="190" y="-5" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#61737c">对应的完全二叉树（尚未建堆）</text>
+
+  <!-- 树的连线 -->
+  <line x1="190" y1="30" x2="100" y2="70" stroke="#d8e8ec" stroke-width="1.5"/>
+  <line x1="190" y1="30" x2="280" y2="70" stroke="#d8e8ec" stroke-width="1.5"/>
+  <line x1="100" y1="82" x2="55" y2="120" stroke="#d8e8ec" stroke-width="1.2"/>
+  <line x1="100" y1="82" x2="145" y2="120" stroke="#d8e8ec" stroke-width="1.2"/>
+  <line x1="280" y1="82" x2="255" y2="120" stroke="#d8e8ec" stroke-width="1.2"/>
+  <line x1="280" y1="82" x2="325" y2="120" stroke="#d8e8ec" stroke-width="1.2"/>
+
+  <!-- 节点 -->
+  <circle cx="190" cy="18" r="22" fill="#dff5f7" stroke="#187990" stroke-width="1.5"/><text x="190" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#1d2a2f">9</text>
+  <circle cx="100" cy="72" r="20" fill="#dff5f7" stroke="#187990" stroke-width="1.3"/><text x="100" y="78" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#1d2a2f">4</text>
+  <circle cx="280" cy="72" r="20" fill="#dff5f7" stroke="#187990" stroke-width="1.3"/><text x="280" y="78" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#1d2a2f">6</text>
+  <circle cx="55" cy="130" r="17" fill="#dff5f7" stroke="#187990" stroke-width="1.2"/><text x="55" y="135" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#1d2a2f">2</text>
+  <circle cx="145" cy="130" r="17" fill="#dff5f7" stroke="#187990" stroke-width="1.2"/><text x="145" y="135" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#1d2a2f">8</text>
+  <circle cx="255" cy="130" r="17" fill="#dff5f7" stroke="#187990" stroke-width="1.2"/><text x="255" y="135" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#1d2a2f">1</text>
+  <circle cx="325" cy="130" r="17" fill="#dff5f7" stroke="#187990" stroke-width="1.2"/><text x="325" y="135" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#1d2a2f">5</text>
+</g>
+
+<text x="360" y="275" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="600" fill="#1d2a2f">堆排序利用「大顶堆」：父节点 &gt;= 子节点，根节点为最大值</text>
+
+<g transform="translate(20, 285)">
+  <rect x="0" y="0" width="78" height="34" rx="6" ry="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>
+  <text x="39" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#61737c">Step 1</text>
+</g>
+</svg>

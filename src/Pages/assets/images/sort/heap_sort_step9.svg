@@ -1,0 +1,28 @@
+<svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="堆排序步骤9">
+<defs><filter id="sh" x="-4%" y="-4%" width="108%" height="112%"><feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#187990" flood-opacity=".07"/></filter></defs>
+
+<text x="360" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#1d2a2f">堆排序 — 取出 4 归位</text>
+
+<g transform="translate(250, 42)">
+  <text x="105" y="-3" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="10" font-weight="600" fill="#187990">建堆后 4 为最大值</text>
+
+  <line x1="105" y1="16" x2="58" y2="44" stroke="#d8e8ec" stroke-width="1.2"/>
+  <line x1="105" y1="16" x2="152" y2="44" stroke="#d8e8ec" stroke-width="1.2"/>
+
+  <circle cx="105" cy="6" r="17" fill="#fff3cd" stroke="#e6b04a" stroke-width="2"/><text x="105" y="13" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#1d2a2f">4</text>
+  <circle cx="58" cy="46" r="15" fill="#dff5f7" stroke="#187990" stroke-width="1.2"/><text x="58" y="52" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#1d2a2f">2</text>
+  <circle cx="152" cy="46" r="15" fill="#dff5f7" stroke="#187990" stroke-width="1.2"/><text x="152" y="52" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#1d2a2f">1</text>
+</g>
+
+<g transform="translate(155, 118)">
+  <rect x="0" y="0" width="420" height="32" rx="8" ry="8" fill="#eaf6f8" stroke="#187990" stroke-width="1.3"/>
+  <text x="210" y="21" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#187990">当前数组: [4, 2, 1 | 5, 6, 8, 9]</text>
+</g>
+
+<text x="360" y="178" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="600" fill="#1d2a2f">将 4 与末尾元素 1 交换，4 归位</text>
+
+<g transform="translate(20, 196)">
+  <rect x="0" y="0" width="78" height="34" rx="6" ry="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>
+  <text x="39" y="23" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#61737c">Step 9</text>
+</g>
+</svg>

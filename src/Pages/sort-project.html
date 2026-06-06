@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>排序综合项目：卡牌对战游戏</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Cpath d='M18 20h28M18 32h22M18 44h28' stroke='%23187990' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <div class="nav-item has-submenu">
+          <a href="linear.html">线性结构</a>
+          <div class="submenu" aria-label="线性结构子页面">
+            <a href="linear-list.html">线性表</a>
+            <a href="linear-stack-queue.html">栈和队列</a>
+            <a href="linear-project.html">Project</a>
+            <a href="linear-string.html">字符串</a>
+          </div>
+        </div>
+        <a href="index.html#tree-placeholder">树结构</a>
+        <a href="index.html#graph-placeholder">图结构</a>
+        <a href="index.html#hash-placeholder">哈希</a>
+        <div class="nav-item has-submenu">
+          <a class="active" href="sort.html">排序查找</a>
+          <div class="submenu" aria-label="排序查找子页面">
+            <a href="sort-bubble.html">冒泡排序</a>
+            <a href="sort-selection.html">选择排序</a>
+            <a href="sort-insertion.html">插入排序</a>
+            <a href="sort-shell.html">希尔排序</a>
+            <a href="sort-quick.html">快速排序</a>
+            <a href="sort-merge.html">归并排序</a>
+            <a href="sort-heap.html">堆排序</a>
+            <a href="sort-radix.html">基数排序</a>
+            <a href="sort-project.html">Project</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="page-shell">
+<aside class="toc toc-chapters">
+  <a class="toc-root" href="#综合实践项目-卡牌对战游戏"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c3-1 6-4 7-7l5-5-2-2-5 5c-3 1-6 4-7 7l2 2Z"/><path d="m14 4 6 6"/></svg></span><span>综合实践项目：卡牌对战游戏</span></a>
+  <a class="toc-chapter" href="#项目简介"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">项目简介</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#游戏核心规则"><span>1.1</span><strong>游戏核心规则</strong></a>
+    <a class="toc-subitem" href="#得分规则"><span>1.2</span><strong>得分规则</strong></a>
+  </div>
+  <a class="toc-chapter" href="#设计要点"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">设计要点</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#手牌初始化与整理"><span>2.1</span><strong>手牌初始化与整理</strong></a>
+    <a class="toc-subitem" href="#牌组构建"><span>2.2</span><strong>牌组构建</strong></a>
+    <a class="toc-subitem" href="#连锁消除重排"><span>2.3</span><strong>连锁消除重排</strong></a>
+    <a class="toc-subitem" href="#玩家排名"><span>2.4</span><strong>玩家排名</strong></a>
+  </div>
+  <a class="toc-chapter" href="#项目要求"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">项目要求</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+</aside>
+    <article class="content">
+      <h1 id="综合实践项目-卡牌对战游戏">综合实践项目：卡牌对战游戏的排序与牌局调度系统</h1>
+<blockquote><p><small>创意综合应用项目 —— 利用八大排序算法的知识，实现一个简化版的卡牌对战排序游戏。</small></p></blockquote>
+
+<p>接下来我们希望大家利用八大排序算法的知识，来实现一个简化版的卡牌对战排序游戏。</p>
+
+<p>游戏核心玩法围绕<strong>「手牌排序、牌组构建、连锁消除」</strong>展开，玩家需要在不同阶段灵活运用排序算法，整理手牌、打出符合规则的牌组，最终通过得分排名决出胜负。</p>
+
+<h2 id="项目简介">项目简介</h2>
+
+<h3 id="游戏核心规则">游戏核心规则</h3>
+
+<h4>1. 卡牌属性</h4>
+<p>每张卡牌包含三个核心属性：</p>
+<ul>
+<li><strong>花色：</strong>&#9824; 黑桃、&#9829; 红桃、&#9827; 梅花、&#9670; 方块（4 种）</li>
+<li><strong>点数：</strong>1 ~ 13（A=1，J=11，Q=12，K=13）</li>
+<li><strong>等级：</strong>1 ~ 3（等级越高，分值越高）</li>
+</ul>
+
+<h4>2. 基础流程</h4>
+<ul>
+<li><strong>初始化：</strong>玩家获得 13 张随机卡牌作为手牌。</li>
+<li><strong>回合：</strong>玩家可进行「排序手牌」或「打出牌组」两种操作。</li>
+<li><strong>结算：</strong>打出牌组后，剩余手牌自动重排，若形成新的可消除牌组则触发连锁消除并加分。</li>
+<li><strong>结束：</strong>手牌全部打出或无牌可打时游戏结束，根据总分排名。</li>
+</ul>
+
+<h4>3. 牌组与消除规则</h4>
+<p>玩家需要打出以下任意一种合法牌组，打出后这些卡牌会被消除并计分：</p>
+<ul>
+<li><strong>对子：</strong>两张相同点数的卡牌（如 &#9824; A、&#9829; A）</li>
+<li><strong>三张：</strong>三张相同点数的卡牌</li>
+<li><strong>顺子：</strong>5 张连续点数的卡牌（如 3、4、5、6、7，花色不限）</li>
+<li><strong>同花：</strong>5 张相同花色的卡牌（点数不限）</li>
+<li><strong>同花顺：</strong>5 张连续点数且同花色的卡牌（如 &#9829; 10、&#9829; J、&#9829; Q、&#9829; K、&#9829; A）</li>
+</ul>
+
+<h4>4. 连锁消除规则</h4>
+<p>打出牌组后，手牌会断开并重新拼接。若拼接后出现新的可消除牌组，会自动触发消除并加分，连锁次数越多，额外加分越高。</p>
+<p><strong>示例：</strong>手牌为 <code>[&#9824; 3, &#9829; 3, &#9827; 3, &#9824; 4, &#9829; 4, &#9827; 4]</code>，玩家先打出三张 3，剩余的三张 4 会自动消除，触发一次连锁。</p>
+
+<h3 id="得分规则">得分规则</h3>
+<table>
+<thead>
+<tr><th>牌组类型</th><th>基础得分</th><th>连锁加成</th></tr>
+</thead>
+<tbody>
+<tr><td>对子</td><td>10 分 &times; 卡牌等级</td><td>每多 1 次连锁，额外 +5 分</td></tr>
+<tr><td>三张</td><td>30 分 &times; 卡牌等级</td><td>每多 1 次连锁，额外 +10 分</td></tr>
+<tr><td>顺子</td><td>50 分</td><td>每多 1 次连锁，额外 +15 分</td></tr>
+<tr><td>同花</td><td>50 分</td><td>每多 1 次连锁，额外 +15 分</td></tr>
+<tr><td>同花顺</td><td>100 分</td><td>每多 1 次连锁，额外 +20 分</td></tr>
+</tbody>
+</table>
+<p>游戏结束时，总分最高的玩家获胜。</p>
+
+<h2 id="设计要点">设计要点</h2>
+<p>核心算法部分应使用 C++ 语言完成，用户界面的形式不加限制。支持发挥想象设计更多的附加功能和规则。</p>
+
+<h3 id="手牌初始化与整理">1. 手牌初始化与整理</h3>
+<ul>
+<li><strong>场景：</strong>玩家拿到随机乱序的手牌，需要按点数 / 花色进行初步整理，方便查看。</li>
+<li><strong>可选附加功能：</strong>支持设计玩家能够选择不同的排序算法进行手牌整理的功能。</li>
+</ul>
+
+<h3 id="牌组构建">2. 牌组构建</h3>
+<ul>
+<li><strong>场景：</strong>玩家从手牌中选择要打出的牌，且仅能打出合法的牌组。</li>
+<li>若所有玩家手上都没有合法的牌组或者将牌全部打出，则视为游戏结束。</li>
+</ul>
+
+<h3 id="连锁消除重排">3. 连锁消除重排</h3>
+<ul>
+<li><strong>场景：</strong>打出牌组后，剩余手牌需要重新拼接，拼接处若是合法牌组，则会触发新的消除。</li>
+<li>触发连续消除将会获得更高的分数。</li>
+</ul>
+
+<h3 id="玩家排名">4. 玩家排名</h3>
+<ul>
+<li><strong>场景：</strong>游戏结束后，对玩家总分进行多维度排名（如最终得分，连锁消除次数等）。</li>
+<li><strong>可选附加功能：</strong>支持设计可自定义玩家数量和玩家信息的功能。若没有自定义数量的功能，参与游戏的玩家也<strong>至少为 2 个</strong>。</li>
+</ul>
+
+<h2 id="项目要求">项目要求</h2>
+<ol>
+<li><strong>数据结构设计：</strong>合理设计数据结构来表示卡牌、手牌、牌组及游戏状态。</li>
+<li><strong>功能实现：</strong>实现卡牌初始化、手牌排序、牌组构建、自动消除、连锁消除、得分计算及胜负判断等功能。</li>
+<li><strong>用户交互：</strong>设计简单的用户界面（命令行或图形界面）与玩家交互，展示手牌、游戏状态与得分，图形化 UI 界面会得到额外加分。</li>
+<li><strong>代码质量：</strong>编写清晰、可维护的代码，并添加适当的注释和文档。</li>
+</ol>
+
+<div class="callout" style="margin:20px 0; padding:16px 20px; border-radius:8px; background:#f0f8ff; border-left:4px solid var(--accent);">
+  <strong style="color:#004085;">提示</strong>
+  <p style="margin:8px 0 0 0; color:#333;">本项目是对八大排序算法知识的综合运用。在手牌排序环节中，你可以让玩家选择使用不同的排序算法（冒泡、快速、归并等），体验各算法在不同场景下的表现差异。在玩家排名环节中，同样可以灵活运用排序算法实现多维度排名。</p>
+</div>
+    </article>
+  </main>
+  <footer class="footer">综合项目内容来源于 Sort/project/README.md。</footer>
+  <script src="assets/slides.js"></script>
+</body>
+</html>

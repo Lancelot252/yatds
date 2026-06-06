@@ -1,0 +1,122 @@
+<svg viewBox="0 0 720 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="插入排序操作过程">
+<defs><filter id="sh" x="-4%" y="-4%" width="108%" height="112%"><feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#187990" flood-opacity=".07"/></filter></defs>
+
+<!-- 已排序区间标题 -->
+<text x="100" y="28" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="600" fill="#61737c">已排序区间</text>
+
+<!-- ===== 第 0 行：初始状态 ===== -->
+<g transform="translate(180, 15)">
+  <text x="-70" y="40" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="600" fill="#61737c">[0, 0]</text>
+  <rect x="0" y="10" width="330" height="40" rx="8" ry="8" fill="none" stroke="#187990" stroke-width="1.4"/>
+  <!-- 已排序(灰): 只有第1个元素 -->
+  <rect x="4" y="14" width="48" height="32" rx="5" ry="5" fill="#b8c4cc" stroke="#61737c" stroke-width="1.2"/><text x="28" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">4</text>
+  <!-- 待插入(青色高亮) -->
+  <rect x="56" y="14" width="48" height="32" rx="5" ry="5" fill="#7ec8e3" stroke="#187990" stroke-width="1.8"/><text x="80" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+  <!-- 未排序(绿) -->
+  <rect x="108" y="14" width="48" height="32" rx="5" ry="5" fill="#a8d5c9" stroke="#187990" stroke-width="1.2"/><text x="132" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">3</text>
+  <rect x="160" y="14" width="48" height="32" rx="5" ry="5" fill="#a8d5c9" stroke="#187990" stroke-width="1.2"/><text x="184" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+  <rect x="212" y="14" width="48" height="32" rx="5" ry="5" fill="#a8d5c9" stroke="#187990" stroke-width="1.2"/><text x="236" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">5</text>
+  <rect x="264" y="14" width="48" height="32" rx="5" ry="5" fill="#a8d5c9" stroke="#187990" stroke-width="1.2"/><text x="288" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">2</text>
+</g>
+
+<!-- 箭头0→1 + 文字 -->
+<path d="M 255 68 C 250 85, 220 85, 210 98" stroke="#999" stroke-width="1.2" fill="none"/>
+<polygon points="206,97 215,97 211,102" fill="#999"/>
+<text x="260" y="90" text-anchor="start" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#61737c">执行第 1 轮插入</text>
+
+<!-- ===== 第 1 行 ===== -->
+<g transform="translate(180, 95)">
+  <text x="-70" y="40" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="600" fill="#61737c">[0, 1]</text>
+  <rect x="0" y="10" width="330" height="40" rx="8" ry="8" fill="none" stroke="#187990" stroke-width="1.4"/>
+  <!-- 已排序(灰) -->
+  <rect x="4" y="14" width="48" height="32" rx="5" ry="5" fill="#b8c4cc" stroke="#61737c" stroke-width="1.2"/><text x="28" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+  <rect x="56" y="14" width="48" height="32" rx="5" ry="5" fill="#b8c4cc" stroke="#61737c" stroke-width="1.2"/><text x="80" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">4</text>
+  <!-- 待插入(青色高亮) -->
+  <rect x="108" y="14" width="48" height="32" rx="5" ry="5" fill="#7ec8e3" stroke="#187990" stroke-width="1.8"/><text x="132" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">3</text>
+  <!-- 未排序(绿) -->
+  <rect x="160" y="14" width="48" height="32" rx="5" ry="5" fill="#a8d5c9" stroke="#187990" stroke-width="1.2"/><text x="184" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+  <rect x="212" y="14" width="48" height="32" rx="5" ry="5" fill="#a8d5c9" stroke="#187990" stroke-width="1.2"/><text x="236" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">5</text>
+  <rect x="264" y="14" width="48" height="32" rx="5" ry="5" fill="#a8d5c9" stroke="#187990" stroke-width="1.2"/><text x="288" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">2</text>
+</g>
+
+<!-- 箭头1→2 + 文字 -->
+<path d="M 305 148 C 290 165, 260 165, 255 178" stroke="#999" stroke-width="1.2" fill="none"/>
+<polygon points="253,176 260,176 256,182" fill="#999"/>
+<text x="300" y="170" text-anchor="start" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#61737c">执行第 2 轮插入</text>
+
+<!-- ===== 第 2 行 ===== -->
+<g transform="translate(180, 175)">
+  <text x="-70" y="40" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="600" fill="#61737c">[0, 2]</text>
+  <rect x="0" y="10" width="330" height="40" rx="8" ry="8" fill="none" stroke="#187990" stroke-width="1.4"/>
+  <!-- 已排序(灰) -->
+  <rect x="4" y="14" width="48" height="32" rx="5" ry="5" fill="#b8c4cc" stroke="#61737c" stroke-width="1.2"/><text x="28" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+  <rect x="56" y="14" width="48" height="32" rx="5" ry="5" fill="#b8c4cc" stroke="#61737c" stroke-width="1.2"/><text x="80" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">3</text>
+  <rect x="108" y="14" width="48" height="32" rx="5" ry="5" fill="#b8c4cc" stroke="#61737c" stroke-width="1.2"/><text x="132" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">4</text>
+  <!-- 待插入(青色高亮) -->
+  <rect x="160" y="14" width="48" height="32" rx="5" ry="5" fill="#7ec8e3" stroke="#187990" stroke-width="1.8"/><text x="184" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+  <!-- 未排序(绿) -->
+  <rect x="212" y="14" width="48" height="32" rx="5" ry="5" fill="#a8d5c9" stroke="#187990" stroke-width="1.2"/><text x="236" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">5</text>
+  <rect x="264" y="14" width="48" height="32" rx="5" ry="5" fill="#a8d5c9" stroke="#187990" stroke-width="1.2"/><text x="288" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">2</text>
+</g>
+
+<!-- 箭头2→3 + 文字 -->
+<path d="M 360 228 C 350 245, 260 245, 255 258" stroke="#999" stroke-width="1.2" fill="none"/>
+<polygon points="253,256 260,256 256,262" fill="#999"/>
+<text x="360" y="250" text-anchor="start" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#61737c">执行第 3 轮插入</text>
+
+<!-- ===== 第 3 行 ===== -->
+<g transform="translate(180, 255)">
+  <text x="-70" y="40" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="600" fill="#61737c">[0, 3]</text>
+  <rect x="0" y="10" width="330" height="40" rx="8" ry="8" fill="none" stroke="#187990" stroke-width="1.4"/>
+  <!-- 已排序(灰) -->
+  <rect x="4" y="14" width="48" height="32" rx="5" ry="5" fill="#b8c4cc" stroke="#61737c" stroke-width="1.2"/><text x="28" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+  <rect x="56" y="14" width="48" height="32" rx="5" ry="5" fill="#b8c4cc" stroke="#61737c" stroke-width="1.2"/><text x="80" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+  <rect x="108" y="14" width="48" height="32" rx="5" ry="5" fill="#b8c4cc" stroke="#61737c" stroke-width="1.2"/><text x="132" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">3</text>
+  <rect x="160" y="14" width="48" height="32" rx="5" ry="5" fill="#b8c4cc" stroke="#61737c" stroke-width="1.2"/><text x="184" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">4</text>
+  <!-- 待插入(青色高亮) -->
+  <rect x="212" y="14" width="48" height="32" rx="5" ry="5" fill="#7ec8e3" stroke="#187990" stroke-width="1.8"/><text x="236" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">5</text>
+  <!-- 未排序(绿) -->
+  <rect x="264" y="14" width="48" height="32" rx="5" ry="5" fill="#a8d5c9" stroke="#187990" stroke-width="1.2"/><text x="288" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">2</text>
+</g>
+
+<!-- 箭头3→4 + 文字 -->
+<path d="M 410 308 C 410 325, 410 325, 410 338" stroke="#999" stroke-width="1.2" fill="none"/>
+<polygon points="408,336 412,336 410,342" fill="#999"/>
+<text x="415" y="325" text-anchor="start" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#61737c">执行第 4 轮插入</text>
+
+<!-- ===== 第 4 行 ===== -->
+<g transform="translate(180, 335)">
+  <text x="-70" y="40" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="600" fill="#61737c">[0, 4]</text>
+  <rect x="0" y="10" width="330" height="40" rx="8" ry="8" fill="none" stroke="#187990" stroke-width="1.4"/>
+  <!-- 已排序(灰) -->
+  <rect x="4" y="14" width="48" height="32" rx="5" ry="5" fill="#b8c4cc" stroke="#61737c" stroke-width="1.2"/><text x="28" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+  <rect x="56" y="14" width="48" height="32" rx="5" ry="5" fill="#b8c4cc" stroke="#61737c" stroke-width="1.2"/><text x="80" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+  <rect x="108" y="14" width="48" height="32" rx="5" ry="5" fill="#b8c4cc" stroke="#61737c" stroke-width="1.2"/><text x="132" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">3</text>
+  <rect x="160" y="14" width="48" height="32" rx="5" ry="5" fill="#b8c4cc" stroke="#61737c" stroke-width="1.2"/><text x="184" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">4</text>
+  <rect x="212" y="14" width="48" height="32" rx="5" ry="5" fill="#b8c4cc" stroke="#61737c" stroke-width="1.2"/><text x="236" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">5</text>
+  <!-- 待插入(青色高亮) -->
+  <rect x="264" y="14" width="48" height="32" rx="5" ry="5" fill="#7ec8e3" stroke="#187990" stroke-width="1.8"/><text x="288" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">2</text>
+</g>
+
+<!-- 箭头4→5 + 文字 -->
+<path d="M 480 388 C 480 405, 340 405, 320 418" stroke="#999" stroke-width="1.2" fill="none"/>
+<polygon points="319,416 327,416 323,422" fill="#999"/>
+<text x="460" y="415" text-anchor="start" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#61737c">执行第 5 轮插入</text>
+
+<!-- ===== 第 5 行：完成排序 ===== -->
+<g transform="translate(180, 415)">
+  <text x="-70" y="40" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="600" fill="#61737c">[0, 5]</text>
+  <rect x="0" y="10" width="330" height="40" rx="8" ry="8" fill="none" stroke="#187990" stroke-width="1.4"/>
+  <!-- 全部已排序(灰) -->
+  <rect x="4" y="14" width="48" height="32" rx="5" ry="5" fill="#b8c4cc" stroke="#61737c" stroke-width="1.2"/><text x="28" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+  <rect x="56" y="14" width="48" height="32" rx="5" ry="5" fill="#b8c4cc" stroke="#61737c" stroke-width="1.2"/><text x="80" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+  <rect x="108" y="14" width="48" height="32" rx="5" ry="5" fill="#b8c4cc" stroke="#61737c" stroke-width="1.2"/><text x="132" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">2</text>
+  <rect x="160" y="14" width="48" height="32" rx="5" ry="5" fill="#b8c4cc" stroke="#61737c" stroke-width="1.2"/><text x="184" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">3</text>
+  <rect x="212" y="14" width="48" height="32" rx="5" ry="5" fill="#b8c4cc" stroke="#61737c" stroke-width="1.2"/><text x="236" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">4</text>
+  <rect x="264" y="14" width="48" height="32" rx="5" ry="5" fill="#b8c4cc" stroke="#61737c" stroke-width="1.2"/><text x="288" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">5</text>
+</g>
+
+<!-- 完成排序箭头+文字 -->
+<text x="460" y="488" text-anchor="start" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#61737c">完成排序</text>
+
+</svg>
