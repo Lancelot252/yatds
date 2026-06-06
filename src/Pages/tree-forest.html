@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>二叉树和森林的转换 — 教程与任务</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Cpath d='M18 20h28M18 32h22M18 44h28' stroke='%23187990' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <div class="nav-item has-submenu">
+          <a href="linear.html">线性结构</a>
+          <div class="submenu" aria-label="线性结构子页面">
+            <a href="linear-list.html">线性表</a>
+            <a href="linear-stack-queue.html">栈和队列</a>
+            <a href="linear-project.html">Project</a>
+            <a href="linear-string.html">字符串</a>
+          </div>
+        </div>
+        <div class="nav-item has-submenu">
+          <a class="active" href="tree.html">树结构</a>
+          <div class="submenu" aria-label="树结构子页面">
+            <a href="tree-forest.html">二叉树和森林的转换</a>
+            <a href="tree-huffman.html">哈夫曼树</a>
+          </div>
+        </div>
+        <a href="index.html#graph-placeholder">图结构</a>
+        <a href="index.html#hash-placeholder">哈希</a>
+        <a href="index.html#sort-placeholder">排序查找</a>
+      </div>
+    </nav>
+  </header>
+  <main class="page-shell">
+<aside class="toc toc-chapters">
+  <a class="toc-root" href="#二叉树和森林的转换"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c3-1 6-4 7-7l5-5-2-2-5 5c-3 1-6 4-7 7l2 2Z"/><path d="m14 4 6 6"/></svg></span><span>二叉树和森林的转换</span></a>
+  <a class="toc-chapter" href="#森林的定义"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">森林的定义</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#树和森林"><span>1.1</span><strong>树和森林</strong></a>
+    <a class="toc-subitem" href="#二叉树"><span>1.2</span><strong>二叉树</strong></a>
+    <a class="toc-subitem" href="#左孩子右兄弟表示法"><span>1.3</span><strong>左孩子右兄弟表示法</strong></a>
+  </div>
+  <a class="toc-chapter" href="#baseline-任务-二叉树与森林的转换"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务: 二叉树与森林的转换</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#数据结构定义"><span>2.1</span><strong>数据结构定义</strong></a>
+    <a class="toc-subitem" href="#森林转二叉树"><span>2.2</span><strong>森林转二叉树</strong></a>
+    <a class="toc-subitem" href="#二叉树转森林"><span>2.3</span><strong>二叉树转森林</strong></a>
+    <a class="toc-subitem" href="#森林的遍历"><span>2.4</span><strong>森林的遍历</strong></a>
+    <a class="toc-subitem" href="#任务内容"><span>2.5</span><strong>任务内容</strong></a>
+  </div>
+</aside>
+    <article class="content">
+      <h1 id="二叉树和森林的转换">二叉树和森林的转换</h1>
+<blockquote><p><small>森林是若干棵树的集合。通过左孩子右兄弟表示法，任意森林都可以唯一地映射为一棵二叉树。</small></p><p><small>森林的前序遍历等于对应二叉树的前序遍历，森林的后序遍历等于对应二叉树的中序遍历。</small></p></blockquote>
+<p>所有依赖代码位于 <code>Tree\Baseline\forest</code> 目录下。数据结构定义在 <code>forest.h</code>。</p>
+<h2 id="森林的定义">森林的定义</h2>
+<h3 id="树和森林">树和森林</h3>
+<p>树（Tree）是一种非线性数据结构，由节点和边组成，每个节点可以有零个或多个子节点。一棵树有且仅有一个根节点。</p>
+<p>森林（Forest）则是若干棵互不相交的树的集合。森林中的每棵树都是一个独立的树结构，树根之间没有边相连。为便于处理，通常将森林定义为一个以各树根为元素的线性表。</p>
+<h3 id="二叉树">二叉树</h3>
+<p>二叉树（Binary Tree）是每个节点最多有两个子节点（左孩子和右孩子）的树结构。由于二叉树的节点度数固定，它的存储和操作比一般树更为简单，因此在计算机科学中有着广泛的应用。</p>
+<h3 id="左孩子右兄弟表示法">左孩子右兄弟表示法</h3>
+<p>左孩子右兄弟（Left-Child Right-Sibling, LCRS）表示法是一种将任意树（或森林）转换为二叉树的标准方法。其核心思想是：</p>
+<ul><li>对于树中的每个节点，将其<strong>第一个孩子</strong>作为它在二叉树中的<strong>左孩子</strong>。</li><li>将其<strong>其余孩子</strong>依次作为前一个兄弟节点的<strong>右孩子</strong>（即右兄弟链）。</li></ul>
+<p>对于森林，先转换第一棵树，其根作为二叉树的根；随后将森林中其余的树依次作为前一个树根的<strong>右孩子</strong>连接。</p>
+<p>这种转换是<strong>一一对应</strong>的，也就是说，给定一棵二叉树，我们也可以唯一地还原出原始的森林。</p>
+<h2 id="baseline-任务-二叉树与森林的转换">Baseline 任务: 二叉树与森林的转换</h2>
+<h3 id="数据结构定义">数据结构定义</h3>
+<p>本项目中使用以下数据结构来表示森林和二叉树（定义在 <code>forest.h</code>）：</p>
+<h4>一般树节点（ForestNode）</h4>
+<pre><code>template &lt;typename T&gt;
+struct ForestNode {
+    T data;
+    std::vector&lt;std::unique_ptr&lt;ForestNode&gt;&gt; children;
+
+    ForestNode(const T &amp;data);
+    ForestNode(T &amp;&amp;data);
+    static std::unique_ptr&lt;ForestNode&gt; get_new_node(const T &amp;data);
+    static std::unique_ptr&lt;ForestNode&gt; get_new_node(T &amp;&amp;data);
+};</code></pre>
+<p><code>ForestNode</code> 使用 <code>std::vector</code> 存储子节点，支持任意数量的孩子（可变度数）。所有权通过 <code>std::unique_ptr</code> 管理。</p>
+<h4>森林（Forest）</h4>
+<pre><code>template &lt;typename T&gt;
+using Forest = std::vector&lt;std::unique_ptr&lt;ForestNode&lt;T&gt;&gt;&gt;;</code></pre>
+<p>森林就是一棵棵树的根节点组成的向量。</p>
+<h4>二叉树节点（BinaryTreeNode）</h4>
+<pre><code>template &lt;typename T&gt;
+struct BinaryTreeNode {
+    T data;
+    std::unique_ptr&lt;BinaryTreeNode&gt; left;
+    std::unique_ptr&lt;BinaryTreeNode&gt; right;
+
+    BinaryTreeNode(const T &amp;data);
+    BinaryTreeNode(T &amp;&amp;data);
+    static std::unique_ptr&lt;BinaryTreeNode&gt; get_new_node(const T &amp;data);
+    static std::unique_ptr&lt;BinaryTreeNode&gt; get_new_node(T &amp;&amp;data);
+};</code></pre>
+<p><code>BinaryTreeNode</code> 固定有 <code>left</code> 和 <code>right</code> 两个子节点指针，与一般二叉树节点定义一致。</p>
+<h3 id="森林转二叉树">森林转二叉树</h3>
+<p>函数签名：</p>
+<pre><code>template &lt;typename T&gt;
+std::unique_ptr&lt;BinaryTreeNode&lt;T&gt;&gt;
+forest_to_binary_tree(const Forest&lt;T&gt; &amp;forest);</code></pre>
+<p>算法步骤：</p>
+<ol><li>若森林为空，返回空指针。</li><li>对森林中的每棵树，递归转换每个子树：<ul><li>创建一个新的 <code>BinaryTreeNode</code>，数据与原节点相同。</li><li>将原节点的<strong>第一个孩子</strong>递归转换为新节点的<strong>左孩子</strong>。</li><li>将原节点的<strong>后续孩子</strong>依次链接为左孩子的<strong>右兄弟链</strong>（即每个兄弟作为前一个的 <code>right</code>）。</li></ul></li><li>森林中第一棵树的根成为结果二叉树的根。</li><li>后续树的根依次作为前一树根的<strong>右孩子</strong>。</li></ol>
+<h3 id="二叉树转森林">二叉树转森林</h3>
+<p>函数签名：</p>
+<pre><code>template &lt;typename T&gt;
+Forest&lt;T&gt;
+binary_tree_to_forest(const std::unique_ptr&lt;BinaryTreeNode&lt;T&gt;&gt; &amp;root);</code></pre>
+<p>算法步骤（<code>forest_to_binary_tree</code> 的逆过程）：</p>
+<ol><li>若二叉树根为空，返回空森林。</li><li>沿二叉树的<strong>右链</strong>向下遍历——右链上的每个节点都是森林中一棵树的根。</li><li>对每个根节点，递归还原一般树：<ul><li>创建一个新的 <code>ForestNode</code>，数据与原节点相同。</li><li>沿该节点的 <code>left</code>-&gt;<code>right</code> 链向下遍历——链上的每个节点都是该 <code>ForestNode</code> 的一个孩子。</li></ul></li></ol>
+<h3 id="森林的遍历">森林的遍历</h3>
+<p>森林的遍历按顺序逐棵进行：</p>
+<ul><li><strong>前序遍历</strong>：对于森林中的每一棵树，先访问根节点，再依次递归访问每个子树。</li><li><strong>后序遍历</strong>：对于森林中的每一棵树，先依次递归访问每个子树，最后访问根节点。</li></ul>
+<p>关键不变式：<strong>森林的前序遍历 = 二叉树的前序遍历</strong>，<strong>森林的后序遍历 = 二叉树的中序遍历</strong>。</p>
+<h3 id="任务内容">任务内容</h3>
+<p>学生需要在 <code>forest-impl.hpp</code> 中实现以下四个函数：</p>
+<table><thead><tr><th>函数</th><th>说明</th></tr></thead><tbody><tr><td><code>forest_to_binary_tree()</code></td><td>将森林转换为二叉树（左孩子右兄弟表示法）</td></tr><tr><td><code>binary_tree_to_forest()</code></td><td>将二叉树还原为森林</td></tr><tr><td><code>forest_preorder()</code></td><td>森林的前序遍历</td></tr><tr><td><code>forest_postorder()</code></td><td>森林的后序遍历</td></tr></tbody></table>
+<p>你提交的材料中这部分内容需要包含：</p>
+<ul><li>四个函数的完整实现代码。</li><li>对左孩子右兄弟表示法原理的解释。</li><li>对森林与二叉树转换正确性的分析，特别是为什么森林的前序遍历等于二叉树的前序遍历，森林的后序遍历等于二叉树的中序遍历。</li><li>自行设计测试用例，验证转换的正确性和往返转换（round-trip）的一致性。</li></ul>
+<details>
+  <summary>点击展开：Baseline 测试样例与预期输出</summary>
+  <p><strong>注：</strong>以下测试样例仅用于说明格式，不代表完整测试覆盖范围。学生需要根据该格式自行设计并生成更多测试样例，覆盖边界情况。</p>
+  <p>以 <code>forest-demo.cpp</code> 中的示例森林为例（两棵树：A 有孩子 B、C、D；E 有孩子 F、G）：</p>
+  <pre><code>Tree 1:     Tree 2:
+    A            E
+   /|\          / \
+  B C D        F   G</code></pre>
+  <h4>预期输出</h4>
+  <pre><code>=== Original Forest ===
+Forest preorder:  A B C D E F G
+Forest postorder: B C D A F G E
+
+=== Binary Tree (from forest) ===
+Binary preorder:  A B C D E F G
+Binary inorder:   B C D A F G E
+
+=== Recovered Forest ===
+Forest preorder:  A B C D E F G
+Forest postorder: B C D A F G E</code></pre>
+  <p>可以看到，<strong>森林的前序遍历 = 二叉树的前序遍历</strong>，<strong>森林的后序遍历 = 二叉树的中序遍历</strong>。往返转换后森林遍历结果与原始一致，验证了转换的正确性。</p>
+</details>
+    </article>
+  </main>
+  <footer class="footer">内容来源于仓库 src 下的课程资料。</footer>
+  <script src="assets/slides.js"></script>
+</body>
+</html>
