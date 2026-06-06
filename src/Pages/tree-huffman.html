@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>哈夫曼树 — 教程与任务</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Cpath d='M18 20h28M18 32h22M18 44h28' stroke='%23187990' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <div class="nav-item has-submenu">
+          <a href="linear.html">线性结构</a>
+          <div class="submenu" aria-label="线性结构子页面">
+            <a href="linear-list.html">线性表</a>
+            <a href="linear-stack-queue.html">栈和队列</a>
+            <a href="linear-project.html">Project</a>
+            <a href="linear-string.html">字符串</a>
+          </div>
+        </div>
+        <div class="nav-item has-submenu">
+          <a class="active" href="tree.html">树结构</a>
+          <div class="submenu" aria-label="树结构子页面">
+            <a href="tree-forest.html">二叉树和森林的转换</a>
+            <a href="tree-huffman.html">哈夫曼树</a>
+          </div>
+        </div>
+        <a href="index.html#graph-placeholder">图结构</a>
+        <a href="index.html#hash-placeholder">哈希</a>
+        <a href="index.html#sort-placeholder">排序查找</a>
+      </div>
+    </nav>
+  </header>
+  <main class="page-shell">
+<aside class="toc toc-chapters">
+  <a class="toc-root" href="#哈夫曼树"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c3-1 6-4 7-7l5-5-2-2-5 5c-3 1-6 4-7 7l2 2Z"/><path d="m14 4 6 6"/></svg></span><span>哈夫曼树</span></a>
+  <a class="toc-chapter" href="#baseline-任务-哈夫曼树的基本实现"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务: 哈夫曼树的基本实现</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#什么是哈夫曼树"><span>1.1</span><strong>什么是哈夫曼树</strong></a>
+    <a class="toc-subitem" href="#数据结构定义"><span>1.2</span><strong>数据结构定义</strong></a>
+    <a class="toc-subitem" href="#构造算法"><span>1.3</span><strong>构造算法</strong></a>
+    <a class="toc-subitem" href="#哈夫曼编码"><span>1.4</span><strong>哈夫曼编码</strong></a>
+    <a class="toc-subitem" href="#任务内容"><span>1.5</span><strong>任务内容</strong></a>
+  </div>
+  <a class="toc-chapter" href="#project-任务-基于哈夫曼树的简化-deflate-编码与解码"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Project 任务: 简化 Deflate 编码与解码</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#项目概述"><span>2.1</span><strong>项目概述</strong></a>
+    <a class="toc-subitem" href="#deflate-编码规则"><span>2.2</span><strong>Deflate 编码规则</strong></a>
+    <a class="toc-subitem" href="#项目要求"><span>2.3</span><strong>项目要求</strong></a>
+    <a class="toc-subitem" href="#实验报告"><span>2.4</span><strong>实验报告</strong></a>
+  </div>
+</aside>
+    <article class="content">
+      <h1 id="哈夫曼树">哈夫曼树</h1>
+<blockquote><p><small>哈夫曼树是一种带权路径长度最短的二叉树，也称为最优二叉树。</small></p><p><small>核心思想：频率高的字符用短编码，频率低的字符用长编码，从而实现数据压缩。</small></p></blockquote>
+<p>依赖代码位于 <code>Tree\Baseline\huffman</code> 和 <code>Tree\Project\huffman</code> 目录下。</p>
+<h2 id="baseline-任务-哈夫曼树的基本实现">Baseline 任务: 哈夫曼树的基本实现</h2>
+<h3 id="什么是哈夫曼树">什么是哈夫曼树</h3>
+<p>在数据通信中，我们希望用尽可能短的二进制编码来表示字符。如果使用固定长度编码（如 ASCII 每字符 8 位），则无法利用字符出现频率的差异。哈夫曼编码（Huffman Coding）是一种可变长度编码方法，根据字符出现的频率分配不同长度的编码，使得总体编码长度最短。</p>
+<p>设一组字符的权值（频率）为 $w_1, w_2, \dots, w_n$，对应的哈夫曼树中每个叶子节点到根的路径长度为 $l_i$，则树的<strong>带权路径长度</strong>（WPL）为：</p>
+<p>$$WPL = \sum_{i=1}^{n} w_i \cdot l_i$$</p>
+<p>哈夫曼树就是使 WPL 最小的二叉树。</p>
+<p>哈夫曼树具有以下性质：</p>
+<ul><li>每个叶子节点对应一个原始字符（带权值）。</li><li>每个内部节点不存储字符，其权值为两个子节点权值之和。</li><li>从根到叶子的路径定义了该字符的编码：向左走为 <code>0</code>，向右走为 <code>1</code>。</li><li>没有编码是另一个编码的前缀（前缀码），保证了解码的唯一性。</li></ul>
+<h3 id="数据结构定义">数据结构定义</h3>
+<p>本项目中使用以下数据结构（定义在 <code>huffman-tree.h</code>）：</p>
+<h4>通用 N 叉树节点（Node）</h4>
+<pre><code>template &lt;typename T, std::size_t N = 2&gt;
+struct Node {
+    T data;
+    std::array&lt;std::unique_ptr&lt;Node&gt;, N&gt; children;
+
+    Node(const T &amp;data);
+    Node(T &amp;&amp;data);
+    static std::unique_ptr&lt;Node&gt; get_new_node(const T &amp;data);
+    static std::unique_ptr&lt;Node&gt; get_new_node(T &amp;&amp;data);
+};</code></pre>
+<p><code>Node</code> 是一个模板化的通用节点，<code>N</code> 为子节点数量（默认为 2，即二叉树节点）。子节点存储在固定大小的 <code>std::array</code> 中，所有权通过 <code>std::unique_ptr</code> 管理。</p>
+<h4>哈夫曼树节点数据（HuffmanTreeNodeData）</h4>
+<pre><code>template &lt;typename data_t, typename weight_t&gt;
+struct HuffmanTreeNodeData {
+    std::optional&lt;data_t&gt; data;   // 叶子节点存储字符，内部节点为 nullopt
+    weight_t weight;              // 权值（频率）
+};</code></pre>
+<p><code>HuffmanTreeNodeData</code> 使用 <code>std::optional&lt;data_t&gt;</code> 来区分叶子节点（有字符数据）和内部节点（无字符数据）。</p>
+<h4>哈夫曼树节点类型别名</h4>
+<pre><code>template &lt;typename data_t, typename weight_t&gt;
+using HuffmanTreeNode = Node&lt;HuffmanTreeNodeData&lt;data_t, weight_t&gt;, 2&gt;;</code></pre>
+<p><code>HuffmanTreeNode</code> 是一个携带 <code>HuffmanTreeNodeData</code> 作为数据载荷的二叉树节点。</p>
+<h3 id="构造算法">构造算法</h3>
+<p>函数签名：</p>
+<pre><code>template &lt;typename data_t, typename weight_t&gt;
+std::unique_ptr&lt;HuffmanTreeNode&lt;data_t, weight_t&gt;&gt;
+construct_huffman_tree(const std::vector&lt;std::pair&lt;data_t, weight_t&gt;&gt; &amp;leaves);</code></pre>
+<p>算法步骤（贪心 + 最小堆）：</p>
+<ol><li>若输入为空，返回空指针。</li><li>为每个 <code>(data, weight)</code> 对创建一个叶子节点。</li><li>将所有节点放入一个<strong>最小堆</strong>（按权值排序），使用 <code>std::make_heap</code> 和自定义比较器。</li><li>当堆中节点数大于 1 时，重复以下步骤：<ul><li>从堆中弹出两个权值最小的节点（<code>node1</code> 和 <code>node2</code>）。</li><li>创建一个新的内部节点，其权值为 <code>node1-&gt;data.weight + node2-&gt;data.weight</code>，<code>data</code> 字段为 <code>std::nullopt</code>。</li><li>将 <code>node1</code> 设为左孩子（<code>children[0]</code>），<code>node2</code> 设为右孩子（<code>children[1]</code>）。</li><li>将新节点压回堆中。</li></ul></li><li>堆中仅剩的节点即为哈夫曼树的根。</li></ol>
+<p>时间复杂度：$O(n \log n)$，其中 n 为叶子节点数量。每次堆操作（pop 和 push）为 $O(\log n)$，共执行 $n-1$ 次合并。</p>
+<h3 id="哈夫曼编码">哈夫曼编码</h3>
+<p>构造好哈夫曼树后，可以通过 DFS 遍历树来生成每个字符的编码。从根节点出发，沿途记录路径：向左走记为 <code>"0"</code>，向右走记为 <code>"1"</code>。当到达叶子节点时，当前路径字符串即为该字符的哈夫曼编码。</p>
+<p>评分依据为经编码后的整个字符串的二进制比特流长度，不要求编码与参考实现完全一致（只要 WPL 相同即可）。</p>
+<h3 id="任务内容">任务内容</h3>
+<p>学生需要在 <code>huffman-tree-impl.hpp</code> 中实现 <code>construct_huffman_tree()</code> 函数，使用输入的频率数据构建哈夫曼树。</p>
+<p>你提交的材料中这部分内容需要包含：</p>
+<ul><li><code>construct_huffman_tree()</code> 的完整实现代码。</li><li>对哈夫曼树构造算法（贪心策略 + 最小堆）的原理说明。</li><li>对算法时间复杂度的分析（$O(n \log n)$ 的推导过程）。</li><li>自行设计测试用例，包含不同字符频率分布（均匀分布、极端分布等），测试编码结果并计算 WPL。</li><li>分析为什么哈夫曼编码是前缀码，以及为什么它能保证最优压缩。</li></ul>
+<details>
+  <summary>点击展开：Baseline 测试样例与预期输出</summary>
+  <p><strong>注：</strong>以下测试样例仅用于说明格式，不代表完整测试覆盖范围。学生需要根据该格式自行设计并生成更多测试样例，覆盖边界情况。</p>
+  <p><code>huffman-coding.cpp</code> 是一个交互式测试程序，读取一行文本，统计字符频率，构建哈夫曼树，并输出每个字符的编码。</p>
+  <h4>输入样例</h4>
+  <pre><code>Enter one line of string: hello world</code></pre>
+  <h4>输出样例</h4>
+  <pre><code>char   cnt 1
+char d cnt 1
+char e cnt 1
+char h cnt 1
+char r cnt 1
+char w cnt 1
+char o cnt 2
+char l cnt 3
+char   code 000
+char d code 001
+char e code 010
+char h code 011
+char r code 100
+char w code 101
+char o code 11
+char l code 10</code></pre>
+  <p><strong>评分标准：</strong>以编码后整个字符串的二进制比特流总长度作为评分依据。编码结果不要求与参考实现完全一致，只要 WPL 相同（即总比特流长度相同）即可。</p>
+</details>
+<h2 id="project-任务-基于哈夫曼树的简化-deflate-编码与解码">Project 任务: 基于哈夫曼树的简化 Deflate 编码与解码</h2>
+<h3 id="项目概述">项目概述</h3>
+<p>本项目要求你使用<strong>哈夫曼树</strong>实现一个简化版 <strong>Deflate 编码器与解码器</strong>。项目的核心目标是：把一段文本先转换为"字面量 / 回溯引用"的 token 序列，再使用哈夫曼树对 token 进行编码；解码时再将压缩数据还原为原始文本。</p>
+<p>压缩流程分两步：</p>
+<ol><li><strong>分词</strong>：把原始文本扫描成两类 token——字面量 token（直接表示一个字符）和回溯 token（表示从前面已出现过的文本中复制一段）。</li><li><strong>哈夫曼编码</strong>：对 token 对应的符号建立哈夫曼树，并将符号编码成比特流。</li></ol>
+<h3 id="deflate-编码规则">Deflate 编码规则</h3>
+<p><strong>以下规则中的具体参数均为示例</strong>。如果你的设计有所不同，你可以简述原因，并结合具体例子说明达到的效果。</p>
+<h4>滑动窗口</h4>
+<ul><li>使用固定大小的滑动窗口 <code>W = 64</code>。</li><li>当前扫描位置 <code>i</code> 之前的最多 W 个字符作为可回溯范围。</li><li>在窗口中寻找与当前位置开始的字符串<strong>最长匹配</strong>：若最长匹配长度 <code>len &gt;= 3</code>，则使用回溯 token；否则使用字面量 token。</li></ul>
+<h4>Token 定义</h4>
+<table><thead><tr><th>Token</th><th>记号</th><th>参数</th></tr></thead><tbody><tr><td>字面量</td><td><code>literal(c)</code></td><td><code>c</code> 为原始字符</td></tr><tr><td>回溯</td><td><code>match(len, dist)</code></td><td><code>len</code> 为复制长度 (3~18)，<code>dist</code> 为回溯距离 (1~64)</td></tr><tr><td>结束符</td><td><code>EOS</code></td><td>表示压缩数据结束</td></tr></tbody></table>
+<h4>符号表设计</h4>
+<p>定义统一符号空间（共 273 个符号）：</p>
+<ul><li><code>0 ~ 255</code>：256 个字面量字符</li><li><code>256 ~ 271</code>：长度 3 ~ 18（<code>256 + (len - 3)</code> 对应长度 <code>len</code>）</li><li><code>272</code>：结束符 EOS</li></ul>
+<p>哈夫曼树只负责对符号编码：字面量字符直接作为符号；回溯 token 的长度 <code>len</code> 部分用哈夫曼编码；距离 <code>dist</code> 不用哈夫曼编码，直接写成固定 6 比特。</p>
+<h4>编码格式</h4>
+<p>压缩文件采用如下结构：</p>
+<pre><code>[文件头]
+[压缩主体比特流]</code></pre>
+<p><strong>文件头</strong>包含：magic number、原始文本长度、273 个符号的频率表。解码时可以根据频率表重新构建哈夫曼树，不需要额外传输树结构。</p>
+<p><strong>压缩主体</strong>：</p>
+<ul><li>若 token 是 <code>literal(c)</code>：输出符号 <code>c</code> 的哈夫曼编码。</li><li>若 token 是 <code>match(len, dist)</code>：输出长度符号 <code>256 + (len - 3)</code> 的哈夫曼编码，再输出 <code>dist - 1</code> 的 6 比特二进制。</li><li>最后输出 <code>EOS</code> 的哈夫曼编码。</li></ul>
+<h3 id="项目要求">项目要求</h3>
+<h4>功能实现</h4>
+<p>至少实现以下功能：</p>
+<ul><li><strong>压缩</strong>：读取原始文本并进行压缩编码，根据符号频率构建哈夫曼树，生成哈夫曼编码表，实现压缩文件写入。</li><li><strong>解压</strong>：实现解码还原原文。</li></ul>
+<p>可选扩展功能：支持压缩前后大小统计和压缩率计算；支持查看哈夫曼编码表等。</p>
+<h4>数据结构设计</h4>
+<p>请合理设计并在报告中说明：滑动窗口缓冲区、token 序列、哈夫曼树节点结构、编码表。</p>
+<h4>用户交互</h4>
+<p>提供 CLI 命令供用户使用。</p>
+<h4>边界情况处理</h4>
+<p>列举你能想到的边界情况，自行设计对应测试用例。</p>
+<h3 id="实验报告">实验报告</h3>
+<p>你的实验报告需要至少包含以下内容：</p>
+<ol><li><strong>设计思路</strong>：说明你如何定义你的 Deflate 以及原因。</li><li><strong>哈夫曼树构建过程</strong>：说明节点结构、频率统计、优先队列合并过程、编码表生成方式等。</li><li><strong>Deflate 编码与解码过程说明</strong>：用一个具体例子，完整描述原文如何分词、哪些位置被编码为字面量、哪些位置被编码为回溯 token、哈夫曼编码如何写入比特流、解码时如何恢复原文。</li><li><strong>运行说明</strong>：说明如何编译、运行、测试。</li></ol>
+    </article>
+  </main>
+  <footer class="footer">内容来源于仓库 src 下的课程资料。</footer>
+  <script src="assets/slides.js"></script>
+</body>
+</html>
