@@ -99,8 +99,9 @@
     if (!slides.length) return;
     let index = 0;
     const img = deck.querySelector('.slide-stage img');
-    const title = deck.querySelector('.slide-title');
-    const count = deck.querySelector('.slide-count');
+    const title = deck.querySelector('.slide-stage .slide-title');
+    const count = deck.querySelector('.slide-stage .slide-count');
+    const label = deck.querySelector('#slideLabel') || deck.querySelector('.slide-meta > span:first-child');
     const dots = deck.querySelector('.slide-dots');
     const prev = deck.querySelector('[data-slide-prev]');
     const next = deck.querySelector('[data-slide-next]');
@@ -117,8 +118,9 @@
       index = (nextIndex + slides.length) % slides.length;
       img.src = slides[index].src;
       img.alt = slides[index].title;
-      title.textContent = slides[index].title;
-      count.textContent = `${index + 1} / ${slides.length}`;
+      if (title) title.textContent = slides[index].title;
+      if (count) count.textContent = `${index + 1} / ${slides.length}`;
+      if (label) label.textContent = `${slides[index].title} / ${slides.length}`;
       Array.from(dots.children).forEach((dot, i) => dot.classList.toggle('active', i === index));
     }
 
