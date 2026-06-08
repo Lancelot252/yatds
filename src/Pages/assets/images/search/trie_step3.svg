@@ -1,0 +1,79 @@
+<svg viewBox="0 0 720 402" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Trie步骤3 - 前缀匹配">
+<defs>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="120%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#187990" flood-opacity=".08"/></filter>
+</defs>
+<text x="360" y="34" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#187990">Trie（字典树/前缀树）</text>
+<text x="360" y="55" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#61737c">前缀匹配：搜索 "ca" 前缀，找到所有以 "ca" 开头的关键字</text>
+
+<!-- 根节点 -->
+<circle cx="360" cy="90" r="22" fill="#187990" stroke="#0d5e6e" stroke-width="2" filter="url(#sh)"/>
+<text x="360" y="98" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#fff">root</text>
+
+<!-- 根 → d（灰暗） -->
+<line x1="330" y1="108" x2="210" y2="168" stroke="#d8e8ec" stroke-width="1.5"/>
+<text x="258" y="144" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#b8c4cc">d</text>
+
+<!-- 根 → c（高亮） -->
+<line x1="390" y1="108" x2="510" y2="168" stroke="#f0a500" stroke-width="3"/>
+<text x="456" y="144" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#f0a500">'c'</text>
+
+<!-- 节点 d（灰暗） -->
+<circle cx="210" cy="180" r="20" fill="#f2f4f5" stroke="#d8e8ec" stroke-width="1.5"/>
+<text x="210" y="188" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" fill="#b8c4cc">d</text>
+
+<!-- 节点 c（高亮） -->
+<circle cx="510" cy="180" r="22" fill="#187990" stroke="#0d5e6e" stroke-width="2.5" filter="url(#sh)"/>
+<text x="510" y="188" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">c</text>
+<text x="537" y="178" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#187990">①</text>
+
+<!-- d → o（灰暗） -->
+<line x1="210" y1="200" x2="210" y2="255" stroke="#d8e8ec" stroke-width="1.5"/>
+<text x="220" y="232" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#b8c4cc">o</text>
+
+<!-- c → a（高亮） -->
+<line x1="510" y1="202" x2="510" y2="255" stroke="#f0a500" stroke-width="3"/>
+<text x="522" y="232" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#f0a500">'a'</text>
+
+<!-- 节点 o（灰暗） -->
+<circle cx="210" cy="268" r="20" fill="#f2f4f5" stroke="#d8e8ec" stroke-width="1.5"/>
+<text x="210" y="276" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" fill="#b8c4cc">o</text>
+
+<!-- 节点 a（高亮，前缀终点）-->
+<circle cx="510" cy="268" r="22" fill="#2d9bb3" stroke="#187990" stroke-width="2.5" filter="url(#sh)"/>
+<text x="510" y="276" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">a</text>
+<text x="537" y="265" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#2d9bb3">②</text>
+<text x="540" y="282" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#2d9bb3">前缀终点</text>
+
+<!-- o → g（灰暗） -->
+<line x1="210" y1="288" x2="210" y2="335" stroke="#d8e8ec" stroke-width="1.5"/>
+
+<!-- a → t（展开高亮） -->
+<line x1="495" y1="288" x2="440" y2="336" stroke="#2d9bb3" stroke-width="2.5" stroke-dasharray="6,3"/>
+<text x="454" y="316" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#2d9bb3">t</text>
+
+<!-- a → r（展开高亮） -->
+<line x1="525" y1="288" x2="578" y2="336" stroke="#2d9bb3" stroke-width="2.5" stroke-dasharray="6,3"/>
+<text x="560" y="316" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#2d9bb3">r</text>
+
+<!-- 节点 g（灰暗） -->
+<circle cx="210" cy="348" r="18" fill="#f2f4f5" stroke="#d8e8ec" stroke-width="1.5"/>
+<text x="210" y="355" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#b8c4cc">g</text>
+
+<!-- 节点 t（匹配结果）-->
+<circle cx="440" cy="348" r="20" fill="#f0a500" stroke="#c8a800" stroke-width="2" filter="url(#sh)"/>
+<text x="440" y="355" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#fff">t</text>
+<text x="440" y="373" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#f0a500">"cat"</text>
+
+<!-- 节点 r（匹配结果）-->
+<circle cx="578" cy="348" r="20" fill="#f0a500" stroke="#c8a800" stroke-width="2" filter="url(#sh)"/>
+<text x="578" y="355" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#fff">r</text>
+<text x="578" y="373" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#f0a500">"car"</text>
+
+<!-- 结果说明框 -->
+<rect x="30" y="310" width="350" height="46" rx="8" fill="#187990" filter="url(#sh)"/>
+<text x="205" y="330" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#fff">前缀 "ca" 匹配结果：</text>
+<text x="205" y="350" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#dff5f7">"cat"  和  "car"（DFS 展开子树）</text>
+
+<rect x="20" y="362" width="68" height="28" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>
+<text x="54" y="381" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#61737c">Step 3</text>
+</svg>

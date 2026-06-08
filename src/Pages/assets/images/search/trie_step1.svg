@@ -1,0 +1,80 @@
+<svg viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Trie步骤1 - Trie结构">
+<defs>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="120%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#187990" flood-opacity=".08"/></filter>
+</defs>
+<text x="360" y="34" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#187990">Trie（字典树/前缀树）</text>
+<text x="360" y="55" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#61737c">存储关键字："do" "dog" "cat" "car"，每条路径对应一个字符</text>
+
+<!-- 根节点 -->
+<circle cx="360" cy="90" r="22" fill="#187990" stroke="#0d5e6e" stroke-width="2" filter="url(#sh)"/>
+<text x="360" y="98" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#fff">root</text>
+
+<!-- 根 → d -->
+<line x1="330" y1="108" x2="210" y2="168" stroke="#2d9bb3" stroke-width="2"/>
+<text x="258" y="144" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#2d9bb3">d</text>
+
+<!-- 根 → c -->
+<line x1="390" y1="108" x2="510" y2="168" stroke="#2d9bb3" stroke-width="2"/>
+<text x="456" y="144" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#2d9bb3">c</text>
+
+<!-- 节点 d -->
+<circle cx="210" cy="180" r="20" fill="#dff5f7" stroke="#187990" stroke-width="1.8" filter="url(#sh)"/>
+<text x="210" y="188" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" fill="#1d2a2f">d</text>
+
+<!-- 节点 c -->
+<circle cx="510" cy="180" r="20" fill="#dff5f7" stroke="#187990" stroke-width="1.8" filter="url(#sh)"/>
+<text x="510" y="188" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" fill="#1d2a2f">c</text>
+
+<!-- d → o -->
+<line x1="210" y1="200" x2="210" y2="255" stroke="#2d9bb3" stroke-width="2"/>
+<text x="220" y="232" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#2d9bb3">o</text>
+
+<!-- c → a -->
+<line x1="510" y1="200" x2="510" y2="255" stroke="#2d9bb3" stroke-width="2"/>
+<text x="520" y="232" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#2d9bb3">a</text>
+
+<!-- 节点 o（有end标记 "do"）-->
+<circle cx="210" cy="268" r="20" fill="#f0a500" stroke="#c8a800" stroke-width="2" filter="url(#sh)"/>
+<text x="210" y="276" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#fff">o</text>
+<text x="172" y="268" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#f0a500">★</text>
+<text x="158" y="296" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#f0a500">"do"结尾</text>
+
+<!-- 节点 a -->
+<circle cx="510" cy="268" r="20" fill="#dff5f7" stroke="#187990" stroke-width="1.8" filter="url(#sh)"/>
+<text x="510" y="276" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" fill="#1d2a2f">a</text>
+
+<!-- o → g -->
+<line x1="210" y1="288" x2="210" y2="335" stroke="#2d9bb3" stroke-width="2"/>
+<text x="220" y="315" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#2d9bb3">g</text>
+
+<!-- a → t -->
+<line x1="495" y1="285" x2="440" y2="335" stroke="#2d9bb3" stroke-width="2"/>
+<text x="454" y="315" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#2d9bb3">t</text>
+
+<!-- a → r -->
+<line x1="525" y1="285" x2="575" y2="335" stroke="#2d9bb3" stroke-width="2"/>
+<text x="558" y="315" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#2d9bb3">r</text>
+
+<!-- 节点 g（"dog"结尾）-->
+<circle cx="210" cy="348" r="20" fill="#f0a500" stroke="#c8a800" stroke-width="2" filter="url(#sh)"/>
+<text x="210" y="356" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#fff">g</text>
+<text x="172" y="348" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#f0a500">★</text>
+
+<!-- 节点 t（"cat"结尾）-->
+<circle cx="440" cy="348" r="20" fill="#f0a500" stroke="#c8a800" stroke-width="2" filter="url(#sh)"/>
+<text x="440" y="356" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#fff">t</text>
+<text x="402" y="348" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#f0a500">★</text>
+
+<!-- 节点 r（"car"结尾）-->
+<circle cx="575" cy="348" r="20" fill="#f0a500" stroke="#c8a800" stroke-width="2" filter="url(#sh)"/>
+<text x="575" y="356" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#fff">r</text>
+<text x="537" y="348" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#f0a500">★</text>
+
+<!-- 图例 -->
+<circle cx="34" cy="336" r="10" fill="#f0a500" stroke="#c8a800" stroke-width="1.5"/>
+<text x="34" y="340" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#fff">★</text>
+<text x="100" y="340" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">= 关键字结尾标记（isEnd）</text>
+
+<rect x="20" y="348" width="68" height="28" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>
+<text x="54" y="367" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#61737c">Step 1</text>
+</svg>

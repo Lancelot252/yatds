@@ -1,0 +1,63 @@
+<svg viewBox="0 0 720 354" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="索引顺序表查找步骤2 - 索引定位块">
+<defs>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="120%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#187990" flood-opacity=".08"/></filter>
+  <marker id="arrT" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <polygon points="0 0, 8 3, 0 6" fill="#2d9bb3"/>
+  </marker>
+</defs>
+<text x="360" y="34" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#187990">索引顺序表查找（分块查找）</text>
+<text x="360" y="55" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#61737c">第一步：在索引表中定位目标所在块（顺序或二分）</text>
+
+<!-- 索引表 -->
+<g transform="translate(90,80)">
+  <!-- 表头 -->
+  <rect x="0" y="0" width="140" height="34" rx="0" fill="#187990"/>
+  <text x="70" y="22" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#fff">最大关键字</text>
+  <rect x="140" y="0" width="110" height="34" rx="0" fill="#187990"/>
+  <text x="195" y="22" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#fff">起始下标</text>
+
+  <!-- 行1：比较，8 < 20，继续 -->
+  <rect x="0" y="34" width="140" height="38" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1"/>
+  <text x="70" y="59" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" fill="#b8c4cc">8</text>
+  <rect x="140" y="34" width="110" height="38" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1"/>
+  <text x="195" y="59" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" fill="#b8c4cc">0</text>
+  <!-- 比较标注 -->
+  <text x="300" y="59" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#b8c4cc">8 &lt; 20，跳过</text>
+
+  <!-- 行2：命中，20 >= 20 -->
+  <rect x="0" y="72" width="140" height="38" fill="#187990" stroke="#0d5e6e" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="70" y="97" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">20</text>
+  <rect x="140" y="72" width="110" height="38" fill="#187990" stroke="#0d5e6e" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="195" y="97" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">2</text>
+  <!-- 指针 -->
+  <text x="298" y="92" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#187990">← 20 ≥ 20，定位块 2 ✓</text>
+  <line x1="285" y1="91" x2="255" y2="91" stroke="#2d9bb3" stroke-width="2" marker-end="url(#arrT)"/>
+
+  <!-- 行3 -->
+  <rect x="0" y="110" width="140" height="38" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1"/>
+  <text x="70" y="135" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" fill="#61737c">35</text>
+  <rect x="140" y="110" width="110" height="38" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1"/>
+  <text x="195" y="135" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" fill="#61737c">4</text>
+  <text x="300" y="135" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#b8c4cc">无需查看</text>
+</g>
+
+<!-- 块2内容展示 -->
+<rect x="480" y="80" width="215" height="160" rx="10" fill="#dff5f7" stroke="#2d9bb3" stroke-width="2" filter="url(#sh)"/>
+<text x="587" y="106" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">块 2（起始 2，长度 2）</text>
+<rect x="496" y="118" width="80" height="44" rx="6" fill="#f7fbfc" stroke="#2d9bb3" stroke-width="1.5"/>
+<text x="536" y="146" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" fill="#1d2a2f">15</text>
+<text x="536" y="168" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">下标 2</text>
+<rect x="585" y="118" width="80" height="44" rx="6" fill="#f0a500" stroke="#c8a800" stroke-width="2"/>
+<text x="625" y="146" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" font-weight="700" fill="#fff">20</text>
+<text x="625" y="168" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#c8a800">下标 3</text>
+<text x="587" y="200" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#187990">→ 进入块内顺序查找</text>
+<text x="587" y="222" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">（下一步）</text>
+
+<!-- 下方说明 -->
+<rect x="50" y="260" width="620" height="56" rx="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
+<text x="360" y="283" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#1d2a2f">索引查找策略</text>
+<text x="360" y="305" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">索引表有序时可用二分查找（O(log b)），最终定位到块后再顺序比较，b 为块数</text>
+
+<rect x="20" y="320" width="68" height="28" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>
+<text x="54" y="339" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#61737c">Step 2</text>
+</svg>

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>顺序查找教程与任务</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Ccircle cx='26' cy='26' r='12' stroke='%23187990' stroke-width='6' fill='none'/%3E%3Cpath d='M35 35 L50 50' stroke='%23187990' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <div class="nav-item has-submenu">
+          <a href="linear.html">线性结构</a>
+          <div class="submenu" aria-label="线性结构子页面">
+            <a href="linear-list.html">线性表</a>
+            <a href="linear-stack-queue.html">栈和队列</a>
+            <a href="linear-project.html">Project</a>
+            <a href="linear-string.html">字符串</a>
+          </div>
+        </div>
+        <a href="tree.html">树结构</a>
+        <a href="index.html#graph-placeholder">图结构</a>
+        <a href="index.html#hash-placeholder">哈希</a>
+        <div class="nav-item has-submenu">
+          <a class="active" href="search.html">查找算法</a>
+          <div class="submenu" aria-label="查找算法子页面">
+            <a href="search-sequential.html">顺序查找</a>
+            <a href="search-binary.html">二分查找</a>
+            <a href="search-interpolation.html">插值查找</a>
+            <a href="search-fibonacci.html">斐波那契查找</a>
+            <a href="search-static-tree.html">静态树表</a>
+            <a href="search-indexed-sequential.html">索引顺序表</a>
+            <a href="search-bst.html">BST</a>
+            <a href="search-avl.html">AVL 树</a>
+            <a href="search-btree.html">B-树/B+树</a>
+            <a href="search-trie.html">Trie</a>
+            <a href="search-hash.html">哈希表</a>
+            <a href="search-project.html">Project</a>
+          </div>
+        </div>
+        <div class="nav-item has-submenu">
+          <a href="sort.html">排序算法</a>
+          <div class="submenu" aria-label="排序算法子页面">
+            <a href="sort-bubble.html">冒泡排序</a>
+            <a href="sort-selection.html">选择排序</a>
+            <a href="sort-insertion.html">插入排序</a>
+            <a href="sort-shell.html">希尔排序</a>
+            <a href="sort-quick.html">快速排序</a>
+            <a href="sort-merge.html">归并排序</a>
+            <a href="sort-heap.html">堆排序</a>
+            <a href="sort-radix.html">基数排序</a>
+            <a href="sort-project.html">Project</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="page-shell">
+<aside class="toc toc-chapters">
+  <a class="toc-root" href="#顺序查找"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke-width="1.9" fill="none" stroke="currentColor"/><path d="m16 16 4 4" stroke-width="1.9" stroke-linecap="round"/></svg></span><span>顺序查找</span></a>
+  <a class="toc-chapter" href="#查找过程"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">查找过程</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#顺序查找过程模拟"><span>1.1</span><strong>过程模拟</strong></a>
+    <a class="toc-subitem" href="#哨兵查找"><span>1.2</span><strong>哨兵查找</strong></a>
+  </div>
+  <a class="toc-chapter" href="#算法特性"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">算法特性</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#baseline-任务"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+</aside>
+    <article class="content">
+      <h1 id="顺序查找">顺序查找（Sequential Search）</h1>
+<blockquote><p><small>顺序查找是最简单的查找方法：从表的一端开始，逐个将记录的关键字与给定值比较，若某个记录的关键字与给定值相等，则查找成功；否则查找失败。</small></p><p><small>顺序查找适用于线性表，对数据是否有序没有要求。</small></p></blockquote>
+
+<h2 id="查找过程">查找过程</h2>
+<p>以数组 <code>[3, 5, 1, 7, 2, 6]</code>、目标 <code>target = 7</code> 为例，顺序查找的步骤如下：</p>
+<ol>
+  <li>从下标 0 开始，逐个取出元素与 target 进行比较。</li>
+  <li>若当前元素等于 target，则返回该元素的下标，查找成功。</li>
+  <li>若遍历完整个表仍未找到，返回 -1，查找失败。</li>
+</ol>
+
+<h3 id="顺序查找过程模拟">顺序查找过程模拟</h3>
+
+<div class="slide-deck">
+  <div class="slide-stage">
+    <img src="assets/images/search/seq_search_step1.svg" alt="顺序查找步骤 1">
+    <span class="slide-title" style="display:none">步骤 1</span>
+    <span class="slide-count" style="display:none"></span>
+    <div data-slide-src="assets/images/search/seq_search_step1.svg" data-slide-title="步骤 1：i=0，比较 nums[0]=3 ≠ 7"></div>
+    <div data-slide-src="assets/images/search/seq_search_step2.svg" data-slide-title="步骤 2：i=1，比较 nums[1]=5 ≠ 7"></div>
+    <div data-slide-src="assets/images/search/seq_search_step3.svg" data-slide-title="步骤 3：i=2，比较 nums[2]=1 ≠ 7"></div>
+    <div data-slide-src="assets/images/search/seq_search_step4.svg" data-slide-title="步骤 4：i=3，nums[3]=7 = target，查找成功！"></div>
+  </div>
+  <div class="slide-controls">
+    <button type="button" data-slide-prev>&lt;</button>
+    <div class="slide-meta">
+      <span id="slideLabel">步骤 1 / 4</span>
+      <div class="slide-dots" id="slideDots"></div>
+    </div>
+    <button type="button" data-slide-next>&gt;</button>
+  </div>
+</div>
+
+<h3 id="哨兵查找">哨兵查找</h3>
+<p>在基础顺序查找中，每次循环需要检查两个条件：<strong>是否到达表尾</strong>和<strong>是否找到目标</strong>。哨兵查找通过在表头位置放置目标元素，消除每次对表尾的边界检查，从而减少约一半的比较次数。</p>
+<blockquote><p><small>哨兵法：在 <code>nums[0]</code> 处放置 target，从表尾向前扫描，必定在 <code>nums[0]</code> 处停止。若停在表尾之前说明找到了目标，否则查找失败。</small></p></blockquote>
+
+<table>
+  <thead>
+    <tr><th>方法</th><th>每次循环条件判断数</th><th>适用场景</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>基础顺序查找</td><td>2 次（边界 + 比较）</td><td>任意线性表</td></tr>
+    <tr><td>哨兵查找</td><td>1 次（仅比较）</td><td>可修改下标 0 的顺序表</td></tr>
+  </tbody>
+</table>
+
+<h2 id="算法特性">算法特性</h2>
+<ul>
+  <li><strong>时间复杂度：O(n)。</strong>最坏情况下需比较 n 次（目标不存在或在末尾）；若各元素等概率被查找，平均比较次数为 (n+1)/2。</li>
+  <li><strong>空间复杂度：O(1)，原地查找。</strong>只需常数额外空间存储指针与目标值。</li>
+  <li><strong>无序也可用：</strong>不要求数组有序，适用范围最广。</li>
+  <li><strong>稳定性：</strong>顺序查找返回第一个匹配项的位置。</li>
+</ul>
+
+<h2 id="baseline-任务">Baseline 任务：顺序查找与哨兵查找</h2>
+<h3>任务内容</h3>
+<p>完成 <code>search.cpp</code>，实现以下两个函数：</p>
+<ol>
+  <li>
+    <strong>顺序查找</strong> <code>int SequentialSearch(vector&lt;int&gt;&amp; nums, int target)</code>
+    <ul>
+      <li>从表头开始逐个比较关键字，直到找到目标元素或扫描结束</li>
+      <li>返回目标所在下标，未找到返回 -1</li>
+    </ul>
+  </li>
+  <li>
+    <strong>哨兵查找</strong> <code>int SentinelSearch(vector&lt;int&gt;&amp; nums, int target)</code>
+    <ul>
+      <li>在下标 0 处放置哨兵 target，从表尾向前扫描</li>
+      <li>减少每次循环中的边界判断次数</li>
+    </ul>
+  </li>
+</ol>
+<h3>文件结构</h3>
+<ul>
+  <li><code>search.h</code>：函数声明</li>
+  <li><code>search.cpp</code>：查找算法核心实现</li>
+  <li><code>test.cpp</code>：测试程序，验证查找功能正确性</li>
+</ul>
+<h3>验证方式</h3>
+<ul>
+  <li>编译：<code>g++ -std=c++17 test.cpp search.cpp -o testSequentialSearch</code></li>
+  <li>运行：<code>./testSequentialSearch</code></li>
+</ul>
+    </article>
+  </main>
+  <footer class="footer">顺序查找内容来源于 src/Search/Baseline/src/StaticSearch/SequentialSearch。</footer>
+  <script src="assets/slides.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AVL 树教程与任务</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Ccircle cx='26' cy='26' r='12' stroke='%23187990' stroke-width='6' fill='none'/%3E%3Cpath d='M35 35 L50 50' stroke='%23187990' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <div class="nav-item has-submenu">
+          <a href="linear.html">线性结构</a>
+          <div class="submenu" aria-label="线性结构子页面">
+            <a href="linear-list.html">线性表</a>
+            <a href="linear-stack-queue.html">栈和队列</a>
+            <a href="linear-project.html">Project</a>
+            <a href="linear-string.html">字符串</a>
+          </div>
+        </div>
+        <a href="tree.html">树结构</a>
+        <a href="index.html#graph-placeholder">图结构</a>
+        <a href="index.html#hash-placeholder">哈希</a>
+        <div class="nav-item has-submenu">
+          <a class="active" href="search.html">查找算法</a>
+          <div class="submenu" aria-label="查找算法子页面">
+            <a href="search-sequential.html">顺序查找</a>
+            <a href="search-binary.html">二分查找</a>
+            <a href="search-interpolation.html">插值查找</a>
+            <a href="search-fibonacci.html">斐波那契查找</a>
+            <a href="search-static-tree.html">静态树表</a>
+            <a href="search-indexed-sequential.html">索引顺序表</a>
+            <a href="search-bst.html">BST</a>
+            <a href="search-avl.html">AVL 树</a>
+            <a href="search-btree.html">B-树/B+树</a>
+            <a href="search-trie.html">Trie</a>
+            <a href="search-hash.html">哈希表</a>
+            <a href="search-project.html">Project</a>
+          </div>
+        </div>
+        <div class="nav-item has-submenu">
+          <a href="sort.html">排序算法</a>
+          <div class="submenu" aria-label="排序算法子页面">
+            <a href="sort-bubble.html">冒泡排序</a>
+            <a href="sort-selection.html">选择排序</a>
+            <a href="sort-insertion.html">插入排序</a>
+            <a href="sort-shell.html">希尔排序</a>
+            <a href="sort-quick.html">快速排序</a>
+            <a href="sort-merge.html">归并排序</a>
+            <a href="sort-heap.html">堆排序</a>
+            <a href="sort-radix.html">基数排序</a>
+            <a href="sort-project.html">Project</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="page-shell">
+<aside class="toc toc-chapters">
+  <a class="toc-root" href="#avl树"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke-width="1.9" fill="none" stroke="currentColor"/><path d="m16 16 4 4" stroke-width="1.9" stroke-linecap="round"/></svg></span><span>AVL 树</span></a>
+  <a class="toc-chapter" href="#平衡因子"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">平衡因子</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#avl旋转"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">旋转操作</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#ll旋转"><span>2.1</span><strong>LL 型右旋（过程模拟）</strong></a>
+    <a class="toc-subitem" href="#四种失衡"><span>2.2</span><strong>四种失衡类型</strong></a>
+  </div>
+  <a class="toc-chapter" href="#算法特性"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">算法特性</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#baseline-任务"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+</aside>
+    <article class="content">
+      <h1 id="avl树">AVL 树（Adelson-Velsky-Landis Tree）</h1>
+<blockquote><p><small>AVL 树是在 BST 基础上加入平衡约束的自平衡二叉搜索树：任意节点的左右子树高度差（平衡因子 bf）的绝对值不超过 1。</small></p><p><small>当插入或删除节点导致 |bf| &gt; 1 时，通过旋转操作恢复平衡，从而保证树高始终为 O(log n)，避免 BST 退化。</small></p></blockquote>
+
+<h2 id="平衡因子">平衡因子（Balance Factor）</h2>
+<p>每个节点的 <strong>平衡因子 bf = 左子树高度 − 右子树高度</strong>。AVL 树要求所有节点 |bf| ≤ 1。插入或删除后，从叶节点到根逐层回溯更新 bf，一旦发现 |bf| = 2，立即在该节点执行旋转。</p>
+
+<h2 id="avl旋转">旋转操作</h2>
+
+<h3 id="ll旋转">LL 型右旋（过程模拟）</h3>
+<p>以插入 <code>1</code> 导致节点 <code>5</code> 的 bf=2 为例，展示 LL 型调整的完整过程：</p>
+
+<div class="slide-deck">
+  <div class="slide-stage">
+    <img src="assets/images/search/avl_rotate_step1.svg" alt="AVL 旋转步骤 1">
+    <span class="slide-title" style="display:none">步骤 1</span>
+    <span class="slide-count" style="display:none"></span>
+    <div data-slide-src="assets/images/search/avl_rotate_step1.svg" data-slide-title="步骤 1：LL 失衡状态，节点 5（bf=2）触发右旋"></div>
+    <div data-slide-src="assets/images/search/avl_rotate_step2.svg" data-slide-title="步骤 2：右旋过程，节点 3 上升，节点 5 下降为 3 的右子节点"></div>
+    <div data-slide-src="assets/images/search/avl_rotate_step3.svg" data-slide-title="步骤 3：旋转完成，树恢复平衡，中序遍历仍为 1→3→5"></div>
+  </div>
+  <div class="slide-controls">
+    <button type="button" data-slide-prev>&lt;</button>
+    <div class="slide-meta">
+      <span id="slideLabel">步骤 1 / 3</span>
+      <div class="slide-dots" id="slideDots"></div>
+    </div>
+    <button type="button" data-slide-next>&gt;</button>
+  </div>
+</div>
+
+<h3 id="四种失衡">四种失衡类型</h3>
+<p>根据失衡节点和新插入节点的相对位置，共有四种旋转：</p>
+<table>
+  <thead>
+    <tr><th>失衡类型</th><th>条件</th><th>操作</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>LL 型</td><td>失衡节点 bf=2，左孩子 bf=1</td><td>对失衡节点右旋（Right Rotate）</td></tr>
+    <tr><td>RR 型</td><td>失衡节点 bf=-2，右孩子 bf=-1</td><td>对失衡节点左旋（Left Rotate）</td></tr>
+    <tr><td>LR 型</td><td>失衡节点 bf=2，左孩子 bf=-1</td><td>先对左孩子左旋，再对失衡节点右旋</td></tr>
+    <tr><td>RL 型</td><td>失衡节点 bf=-2，右孩子 bf=1</td><td>先对右孩子右旋，再对失衡节点左旋</td></tr>
+  </tbody>
+</table>
+
+<h2 id="算法特性">算法特性</h2>
+<ul>
+  <li><strong>时间复杂度：O(log n)</strong>，旋转后树高严格为 O(log n)，查找、插入、删除均保证。</li>
+  <li><strong>旋转代价：</strong>每次插入/删除最多执行 O(log n) 次旋转（通常仅 1~2 次）。</li>
+  <li><strong>与 BST 对比：</strong>避免了退化为链表的最坏情况，代价是旋转开销。</li>
+  <li><strong>与红黑树对比：</strong>AVL 更严格平衡，查找性能略优；红黑树插入/删除旋转次数少，实际应用更广。</li>
+</ul>
+
+<h2 id="baseline-任务">Baseline 任务：AVL 树实现</h2>
+<h3>任务内容</h3>
+<p>完成 <code>bst_avl.cpp</code>，在 BST 基础上实现以下 AVL 功能：</p>
+<ol>
+  <li>
+    <strong>旋转操作</strong>
+    <ul>
+      <li>实现 LL（右旋）、RR（左旋）、LR（先左后右）、RL（先右后左）四种旋转</li>
+    </ul>
+  </li>
+  <li>
+    <strong>AVL 插入</strong>
+    <ul>
+      <li>插入后回溯更新平衡因子，发现失衡时执行对应旋转</li>
+    </ul>
+  </li>
+  <li>
+    <strong>AVL 删除</strong>
+    <ul>
+      <li>删除后同样需要回溯并修复失衡</li>
+    </ul>
+  </li>
+</ol>
+<h3>验证方式</h3>
+<ul>
+  <li>编译：<code>g++ -std=c++17 test.cpp bst_avl.cpp -o testBSTAVL</code></li>
+  <li>运行：<code>./testBSTAVL</code></li>
+</ul>
+    </article>
+  </main>
+  <footer class="footer">AVL 树内容来源于 src/Search/Baseline/src/DynamicSearch/BSTAVL。</footer>
+  <script src="assets/slides.js"></script>
+</body>
+</html>

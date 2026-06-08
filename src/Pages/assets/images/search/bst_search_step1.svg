@@ -1,0 +1,63 @@
+<svg viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BST查找步骤1">
+<defs>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="120%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#187990" flood-opacity=".10"/></filter>
+</defs>
+<text x="360" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#187990">二叉搜索树查找</text>
+<text x="360" y="58" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#61737c">target = 10，从根节点出发逐层比较</text>
+
+<!-- BST 结构:
+       8
+      / \
+     5   12
+    / \  / \
+   3   7 10  14
+-->
+<!-- 边 -->
+<line x1="360" y1="110" x2="240" y2="180" stroke="#d8e8ec" stroke-width="2"/>
+<line x1="360" y1="110" x2="480" y2="180" stroke="#d8e8ec" stroke-width="2"/>
+<line x1="240" y1="210" x2="180" y2="280" stroke="#d8e8ec" stroke-width="2"/>
+<line x1="240" y1="210" x2="300" y2="280" stroke="#d8e8ec" stroke-width="2"/>
+<line x1="480" y1="210" x2="420" y2="280" stroke="#d8e8ec" stroke-width="2"/>
+<line x1="480" y1="210" x2="540" y2="280" stroke="#d8e8ec" stroke-width="2"/>
+
+<!-- 节点: 根节点 8 (当前检查 - 高亮) -->
+<circle cx="360" cy="95" r="32" fill="#2d9bb3" stroke="#187990" stroke-width="2.5" filter="url(#sh)"/>
+<text x="360" y="103" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="22" font-weight="700" fill="#fff">8</text>
+
+<!-- 节点 5 -->
+<circle cx="240" cy="195" r="28" fill="#dff5f7" stroke="#187990" stroke-width="1.8" filter="url(#sh)"/>
+<text x="240" y="203" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" font-weight="700" fill="#1d2a2f">5</text>
+
+<!-- 节点 12 -->
+<circle cx="480" cy="195" r="28" fill="#dff5f7" stroke="#187990" stroke-width="1.8" filter="url(#sh)"/>
+<text x="480" y="203" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" font-weight="700" fill="#1d2a2f">12</text>
+
+<!-- 节点 3 -->
+<circle cx="180" cy="295" r="24" fill="#dff5f7" stroke="#187990" stroke-width="1.6" filter="url(#sh)"/>
+<text x="180" y="302" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#1d2a2f">3</text>
+
+<!-- 节点 7 -->
+<circle cx="300" cy="295" r="24" fill="#dff5f7" stroke="#187990" stroke-width="1.6" filter="url(#sh)"/>
+<text x="300" y="302" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#1d2a2f">7</text>
+
+<!-- 节点 10 -->
+<circle cx="420" cy="295" r="24" fill="#dff5f7" stroke="#187990" stroke-width="1.6" filter="url(#sh)"/>
+<text x="420" y="302" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#1d2a2f">10</text>
+
+<!-- 节点 14 -->
+<circle cx="540" cy="295" r="24" fill="#dff5f7" stroke="#187990" stroke-width="1.6" filter="url(#sh)"/>
+<text x="540" y="302" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#1d2a2f">14</text>
+
+<!-- 说明框 -->
+<rect x="30" y="220" width="160" height="64" rx="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
+<text x="110" y="244" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#1d2a2f">当前：根节点 8</text>
+<text x="110" y="264" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">10 &gt; 8</text>
+<text x="110" y="280" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">→ 进入右子树</text>
+
+<rect x="20" y="340" width="78" height="32" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>
+<text x="59" y="361" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#61737c">Step 1</text>
+
+<rect x="600" y="75" width="100" height="44" rx="8" fill="#187990"/>
+<text x="650" y="93" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" font-weight="700" fill="#fff">target = 10</text>
+<text x="650" y="111" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#dff5f7">O(log n) 平均</text>
+</svg>

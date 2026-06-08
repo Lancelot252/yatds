@@ -1,0 +1,68 @@
+<svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AVL右旋步骤2 - 旋转过程">
+<defs>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="120%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#187990" flood-opacity=".10"/></filter>
+  <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#2d9bb3"/>
+  </marker>
+  <marker id="arrowOrange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#f0a500"/>
+  </marker>
+</defs>
+<text x="360" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#187990">AVL 树右旋（LL 型调整）</text>
+<text x="360" y="58" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#61737c">旋转过程：以节点 3 为轴，5 降为 3 的右子节点</text>
+
+<!-- 旋转过程示意 -->
+<!-- 节点 3 上移成为新根 -->
+<!-- 原 3 的右子树 T2 挂到 5 的左边（这里为空） -->
+
+<!-- 旋转前的虚影 (原始位置 5->3->1) -->
+<text x="200" y="68" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#b8c4cc">旋转前</text>
+
+<!-- 虚线边 旋转前 -->
+<line x1="200" y1="115" x2="140" y2="185" stroke="#d8e8ec" stroke-width="1.5" stroke-dasharray="6,3"/>
+<line x1="140" y1="215" x2="110" y2="275" stroke="#d8e8ec" stroke-width="1.5" stroke-dasharray="6,3"/>
+
+<!-- 节点 5 (失衡节点 - 下降中) -->
+<circle cx="200" cy="100" r="28" fill="#e8e0f0" stroke="#9b7fc0" stroke-width="2" filter="url(#sh)"/>
+<text x="200" y="108" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" font-weight="700" fill="#9b7fc0">5</text>
+<text x="245" y="96" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#e55a5a">bf=2↓</text>
+
+<!-- 节点 3 (上升中) -->
+<circle cx="140" cy="200" r="26" fill="#dff5f7" stroke="#187990" stroke-width="2" filter="url(#sh)"/>
+<text x="140" y="208" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" font-weight="700" fill="#1d2a2f">3</text>
+
+<!-- 节点 1 -->
+<circle cx="110" cy="290" r="22" fill="#dff5f7" stroke="#187990" stroke-width="1.6" filter="url(#sh)"/>
+<text x="110" y="297" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#1d2a2f">1</text>
+
+<!-- 旋转步骤说明 -->
+<rect x="60" y="340" width="280" height="52" rx="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
+<text x="200" y="362" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#1d2a2f">① 3 取代 5 成为根节点</text>
+<text x="200" y="382" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">② 5 成为 3 的右子节点</text>
+
+<!-- 大箭头 -->
+<path d="M 300 200 L 420 200" stroke="#2d9bb3" stroke-width="3.5" fill="none" marker-end="url(#arrowBlue)"/>
+<text x="360" y="192" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#2d9bb3">右旋</text>
+
+<!-- 旋转后的树 -->
+<text x="560" y="68" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#187990">旋转中...</text>
+<line x1="560" y1="115" x2="500" y2="185" stroke="#2d9bb3" stroke-width="2"/>
+<line x1="560" y1="115" x2="620" y2="185" stroke="#2d9bb3" stroke-width="2" stroke-dasharray="8,4"/>
+
+<!-- 节点 3 (新根，上升) -->
+<circle cx="560" cy="100" r="30" fill="#2d9bb3" stroke="#187990" stroke-width="2.5" filter="url(#sh)"/>
+<text x="560" y="108" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="22" font-weight="700" fill="#fff">3</text>
+<text x="600" y="96" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#2d9bb3">新根↑</text>
+
+<!-- 节点 1 -->
+<circle cx="500" cy="200" r="26" fill="#dff5f7" stroke="#187990" stroke-width="1.8" filter="url(#sh)"/>
+<text x="500" y="208" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" font-weight="700" fill="#1d2a2f">1</text>
+
+<!-- 节点 5 下移 (虚线表示降下) -->
+<circle cx="620" cy="200" r="26" fill="#e8e0f0" stroke="#9b7fc0" stroke-width="2" stroke-dasharray="6,3" filter="url(#sh)"/>
+<text x="620" y="208" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" font-weight="700" fill="#9b7fc0">5</text>
+<text x="660" y="200" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#f0a500">bf=0↓</text>
+
+<rect x="20" y="360" width="78" height="32" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>
+<text x="59" y="381" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#61737c">Step 2</text>
+</svg>
