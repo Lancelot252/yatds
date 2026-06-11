@@ -49,8 +49,8 @@
 <line x1="100" y1="305" x2="620" y2="305" stroke="#d8e8ec" stroke-width="1"/>
 <text x="360" y="325" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">关键点：Fibonacci 分割不均等，避免每次取中点，对非均匀数据更友好</text>
 
-<rect x="80" y="348" width="560" height="26" rx="6" fill="#187990"/>
-<text x="360" y="366" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#fff">✓ 查找成功，共 2 次比较，时间复杂度 O(log n)</text>
+<rect x="110" y="348" width="530" height="26" rx="6" fill="#187990"/>
+<text x="375" y="366" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#fff">✓ 查找成功，共 2 次比较，时间复杂度 O(log n)</text>
 
 <rect x="20" y="350" width="68" height="28" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>
 <text x="54" y="369" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#61737c">Step 2</text>

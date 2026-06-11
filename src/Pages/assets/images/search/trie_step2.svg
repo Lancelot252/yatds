@@ -38,8 +38,8 @@
 <circle cx="210" cy="268" r="22" fill="#187990" stroke="#0d5e6e" stroke-width="2.5" filter="url(#sh)"/>
 <text x="210" y="276" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">o</text>
 <text x="238" y="265" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#187990">②</text>
-<text x="170" y="290" font-family="'Microsoft YaHei',sans-serif" font-size="10" fill="#61737c">★已是"do"结尾</text>
-<text x="170" y="302" font-family="'Microsoft YaHei',sans-serif" font-size="10" fill="#61737c">但 target 未完</text>
+<text x="182" y="285" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="10" fill="#61737c">★已是"do"结尾</text>
+<text x="182" y="299" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="10" fill="#61737c">但 target 未完</text>
 
 <!-- 节点 a（灰暗） -->
 <circle cx="510" cy="268" r="20" fill="#f2f4f5" stroke="#d8e8ec" stroke-width="1.5"/>

@@ -46,10 +46,10 @@
 <text x="360" y="348" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">查找路径：8 → 12 → 10</text>
 
 <!-- 说明框 -->
-<rect x="530" y="220" width="170" height="64" rx="8" fill="#187990"/>
-<text x="615" y="244" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#fff">查找成功！</text>
-<text x="615" y="265" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#dff5f7">共比较 3 次</text>
-<text x="615" y="281" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#dff5f7">返回节点 10</text>
+<rect x="530" y="130" width="170" height="64" rx="8" fill="#187990"/>
+<text x="615" y="154" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#fff">查找成功！</text>
+<text x="615" y="175" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#dff5f7">共比较 3 次</text>
+<text x="615" y="191" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#dff5f7">返回节点 10</text>
 
 <rect x="20" y="340" width="78" height="32" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>
 <text x="59" y="361" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#61737c">Step 3</text>

@@ -22,8 +22,8 @@
 <text x="360" y="113" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="24" font-weight="700" fill="#fff">5</text>
 
 <!-- bf=2 标注 -->
-<rect x="398" y="88" width="70" height="22" rx="4" fill="#fdecea" stroke="#e55a5a" stroke-width="1"/>
-<text x="433" y="104" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" font-weight="700" fill="#e55a5a">bf = 2 ⚠</text>
+<rect x="406" y="88" width="70" height="22" rx="4" fill="#fdecea" stroke="#e55a5a" stroke-width="1"/>
+<text x="441" y="104" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" font-weight="700" fill="#e55a5a">bf = 2 ⚠</text>
 
 <!-- 右子树为空标注 -->
 <text x="460" y="185" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#b8c4cc">右子树：∅</text>
@@ -32,8 +32,8 @@
 <!-- 节点 3 -->
 <circle cx="260" cy="215" r="30" fill="#dff5f7" stroke="#187990" stroke-width="1.8" filter="url(#sh)"/>
 <text x="260" y="223" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="22" font-weight="700" fill="#1d2a2f">3</text>
-<rect x="218" y="238" width="52" height="22" rx="4" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1"/>
-<text x="244" y="254" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">bf = 1</text>
+<rect x="180" y="238" width="52" height="22" rx="4" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1"/>
+<text x="206" y="254" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">bf = 1</text>
 
 <!-- 节点 1（最近插入） -->
 <circle cx="200" cy="315" r="26" fill="#f0a500" stroke="#c8a800" stroke-width="2.2" filter="url(#sh)"/>
@@ -42,9 +42,9 @@
 <text x="200" y="354" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#c8a800">新插入节点</text>
 
 <!-- 高度注释 -->
-<text x="170" y="312" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">h=0</text>
-<text x="228" y="215" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">h=1</text>
-<text x="328" y="105" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#e55a5a">h=2</text>
+<text x="166" y="312" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">h=0</text>
+<text x="222" y="215" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">h=1</text>
+<text x="318" y="105" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#e55a5a">h=2</text>
 
 <!-- 说明框 -->
 <rect x="430" y="240" width="260" height="100" rx="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>

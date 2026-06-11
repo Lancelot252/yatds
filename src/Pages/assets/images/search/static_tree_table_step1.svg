@@ -63,8 +63,8 @@
   <text x="620" y="169" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">深度3</text>
 
   <!-- ASL 说明 -->
-  <rect x="30" y="200" width="660" height="28" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1"/>
-  <text x="360" y="219" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">ASL = (1×1 + 2×2 + 4×3) / 7 = 17/7 ≈ 2.43（最优平衡树，最小平均查找长度）</text>
+  <rect x="110" y="200" width="560" height="28" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1"/>
+  <text x="390" y="219" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">ASL = (1×1 + 2×2 + 4×3) / 7 = 17/7 ≈ 2.43（最优平衡树，最小平均查找长度）</text>
 </g>
 
 <rect x="20" y="380" width="68" height="28" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>

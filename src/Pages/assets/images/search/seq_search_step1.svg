@@ -38,9 +38,9 @@
 </g>
 
 <!-- 指针箭头在 index=0 -->
-<path d="M 141 185 L 141 158" stroke="#2d9bb3" stroke-width="2.5" fill="none"/>
-<polygon points="134,162 148,162 141,150" fill="#2d9bb3"/>
-<text x="141" y="202" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#2d9bb3">i = 0</text>
+<path d="M 141 186 L 141 178" stroke="#2d9bb3" stroke-width="2.5" fill="none"/>
+<polygon points="134,178 148,178 141,166" fill="#2d9bb3"/>
+<text x="127" y="183" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#2d9bb3">i = 0</text>
 
 <!-- 比较说明 -->
 <rect x="240" y="190" width="240" height="56" rx="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>

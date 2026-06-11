@@ -30,9 +30,9 @@
   <text x="416" y="68" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">5</text>
 </g>
 
-<path d="M 293 185 L 293 158" stroke="#2d9bb3" stroke-width="2.5" fill="none"/>
-<polygon points="286,162 300,162 293,150" fill="#2d9bb3"/>
-<text x="293" y="202" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#2d9bb3">i = 2</text>
+<path d="M 293 186 L 293 178" stroke="#2d9bb3" stroke-width="2.5" fill="none"/>
+<polygon points="286,178 300,178 293,166" fill="#2d9bb3"/>
+<text x="279" y="183" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#2d9bb3">i = 2</text>
 
 <rect x="240" y="190" width="240" height="56" rx="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
 <text x="360" y="216" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#1d2a2f">比较：nums[2] = 1</text>

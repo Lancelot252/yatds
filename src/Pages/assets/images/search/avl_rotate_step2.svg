@@ -16,7 +16,7 @@
 <!-- 原 3 的右子树 T2 挂到 5 的左边（这里为空） -->
 
 <!-- 旋转前的虚影 (原始位置 5->3->1) -->
-<text x="200" y="68" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#b8c4cc">旋转前</text>
+<text x="110" y="80" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#b8c4cc">旋转前</text>
 
 <!-- 虚线边 旋转前 -->
 <line x1="200" y1="115" x2="140" y2="185" stroke="#d8e8ec" stroke-width="1.5" stroke-dasharray="6,3"/>
@@ -36,16 +36,16 @@
 <text x="110" y="297" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#1d2a2f">1</text>
 
 <!-- 旋转步骤说明 -->
-<rect x="60" y="340" width="280" height="52" rx="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
-<text x="200" y="362" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#1d2a2f">① 3 取代 5 成为根节点</text>
-<text x="200" y="382" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">② 5 成为 3 的右子节点</text>
+<rect x="110" y="340" width="280" height="52" rx="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
+<text x="250" y="362" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#1d2a2f">① 3 取代 5 成为根节点</text>
+<text x="250" y="382" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">② 5 成为 3 的右子节点</text>
 
 <!-- 大箭头 -->
 <path d="M 300 200 L 420 200" stroke="#2d9bb3" stroke-width="3.5" fill="none" marker-end="url(#arrowBlue)"/>
 <text x="360" y="192" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#2d9bb3">右旋</text>
 
 <!-- 旋转后的树 -->
-<text x="560" y="68" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#187990">旋转中...</text>
+<text x="655" y="78" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#187990">旋转中...</text>
 <line x1="560" y1="115" x2="500" y2="185" stroke="#2d9bb3" stroke-width="2"/>
 <line x1="560" y1="115" x2="620" y2="185" stroke="#2d9bb3" stroke-width="2" stroke-dasharray="8,4"/>
 

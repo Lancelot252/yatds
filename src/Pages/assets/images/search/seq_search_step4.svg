@@ -32,9 +32,9 @@
   <text x="416" y="68" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">5</text>
 </g>
 
-<path d="M 369 185 L 369 158" stroke="#187990" stroke-width="2.5" fill="none"/>
-<polygon points="362,162 376,162 369,150" fill="#187990"/>
-<text x="369" y="202" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">i = 3</text>
+<path d="M 369 186 L 369 178" stroke="#187990" stroke-width="2.5" fill="none"/>
+<polygon points="362,178 376,178 369,166" fill="#187990"/>
+<text x="355" y="183" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">i = 3</text>
 
 <!-- 找到提示 -->
 <rect x="220" y="190" width="280" height="56" rx="8" fill="#187990"/>
