@@ -11,11 +11,11 @@
 
 <!-- 根 → d -->
 <line x1="330" y1="108" x2="210" y2="168" stroke="#2d9bb3" stroke-width="2"/>
-<text x="258" y="144" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#2d9bb3">d</text>
+<text x="245" y="132" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#2d9bb3">d</text>
 
 <!-- 根 → c -->
 <line x1="390" y1="108" x2="510" y2="168" stroke="#2d9bb3" stroke-width="2"/>
-<text x="456" y="144" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#2d9bb3">c</text>
+<text x="462" y="132" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#2d9bb3">c</text>
 
 <!-- 节点 d -->
 <circle cx="210" cy="180" r="20" fill="#dff5f7" stroke="#187990" stroke-width="1.8" filter="url(#sh)"/>
@@ -49,11 +49,11 @@
 
 <!-- a → t -->
 <line x1="495" y1="285" x2="440" y2="335" stroke="#2d9bb3" stroke-width="2"/>
-<text x="454" y="315" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#2d9bb3">t</text>
+<text x="444" y="310" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#2d9bb3">t</text>
 
 <!-- a → r -->
 <line x1="525" y1="285" x2="575" y2="335" stroke="#2d9bb3" stroke-width="2"/>
-<text x="558" y="315" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#2d9bb3">r</text>
+<text x="566" y="310" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#2d9bb3">r</text>
 
 <!-- 节点 g（"dog"结尾）-->
 <circle cx="210" cy="348" r="20" fill="#f0a500" stroke="#c8a800" stroke-width="2" filter="url(#sh)"/>

@@ -38,8 +38,8 @@
 <!-- 节点 1（最近插入） -->
 <circle cx="200" cy="315" r="26" fill="#f0a500" stroke="#c8a800" stroke-width="2.2" filter="url(#sh)"/>
 <text x="200" y="323" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" font-weight="700" fill="#fff">1</text>
-<rect x="158" y="338" width="84" height="22" rx="4" fill="#fff8e6" stroke="#f0a500" stroke-width="1"/>
-<text x="200" y="354" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#c8a800">新插入节点</text>
+<rect x="158" y="345" width="84" height="22" rx="4" fill="#fff8e6" stroke="#f0a500" stroke-width="1"/>
+<text x="200" y="361" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#c8a800">新插入节点</text>
 
 <!-- 高度注释 -->
 <text x="166" y="312" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">h=0</text>

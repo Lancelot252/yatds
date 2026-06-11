@@ -11,11 +11,11 @@
 
 <!-- 根 → d（高亮） -->
 <line x1="330" y1="108" x2="210" y2="168" stroke="#f0a500" stroke-width="3"/>
-<text x="254" y="144" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#f0a500">'d'</text>
+<text x="232" y="130" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#f0a500">'d'</text>
 
 <!-- 根 → c（灰暗） -->
 <line x1="390" y1="108" x2="510" y2="168" stroke="#d8e8ec" stroke-width="1.5"/>
-<text x="456" y="144" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#b8c4cc">c</text>
+<text x="462" y="132" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#b8c4cc">c</text>
 
 <!-- 节点 d（高亮，已访问） -->
 <circle cx="210" cy="180" r="22" fill="#187990" stroke="#0d5e6e" stroke-width="2.5" filter="url(#sh)"/>

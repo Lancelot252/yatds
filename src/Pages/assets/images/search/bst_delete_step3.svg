@@ -39,9 +39,9 @@
   <text x="560" y="253" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" font-weight="700" fill="#1d2a2f">14</text>
 
   <!-- 结果说明 -->
-  <rect x="110" y="290" width="560" height="58" rx="8" fill="#187990" filter="url(#sh)"/>
-  <text x="390" y="313" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#fff">✓ 删除成功！中序遍历仍为有序：3→7→8→10→12→14</text>
-  <text x="390" y="335" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#dff5f7">BST 结构性质：左子树 &lt; 根 &lt; 右子树，删除后仍满足</text>
+  <rect x="80" y="290" width="560" height="58" rx="8" fill="#187990" filter="url(#sh)"/>
+  <text x="360" y="313" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#fff">✓ 删除成功！中序遍历仍为有序：3→7→8→10→12→14</text>
+  <text x="360" y="335" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#dff5f7">BST 结构性质：左子树 &lt; 根 &lt; 右子树，删除后仍满足</text>
 </g>
 
 <rect x="20" y="430" width="68" height="28" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>

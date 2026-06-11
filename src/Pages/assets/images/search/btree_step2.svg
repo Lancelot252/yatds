@@ -44,7 +44,7 @@
 <text x="360" y="262" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#187990">✓ 在中间子节点 [12|15] 中找到 15</text>
 
 <!-- 结果框 -->
-<rect x="80" y="276" width="560" height="66" rx="8" fill="#187990" filter="url(#sh)"/>
+<rect x="110" y="276" width="500" height="66" rx="8" fill="#187990" filter="url(#sh)"/>
 <text x="360" y="300" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#fff">查找成功！target = 15，共访问 2 个节点</text>
 <text x="360" y="322" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#dff5f7">时间复杂度 O(log_m n)；树高低，每层对应一次磁盘读取</text>
 

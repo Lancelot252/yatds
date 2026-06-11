@@ -36,9 +36,9 @@
 <text x="110" y="297" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#1d2a2f">1</text>
 
 <!-- 旋转步骤说明 -->
-<rect x="110" y="340" width="280" height="52" rx="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
-<text x="250" y="362" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#1d2a2f">① 3 取代 5 成为根节点</text>
-<text x="250" y="382" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">② 5 成为 3 的右子节点</text>
+<rect x="220" y="340" width="280" height="52" rx="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
+<text x="360" y="362" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#1d2a2f">① 3 取代 5 成为根节点</text>
+<text x="360" y="382" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">② 5 成为 3 的右子节点</text>
 
 <!-- 大箭头 -->
 <path d="M 300 200 L 420 200" stroke="#2d9bb3" stroke-width="3.5" fill="none" marker-end="url(#arrowBlue)"/>

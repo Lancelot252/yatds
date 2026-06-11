@@ -40,7 +40,7 @@
 <text x="570" y="227" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" fill="#1d2a2f">30</text>
 
 <!-- 说明框 -->
-<rect x="60" y="265" width="600" height="72" rx="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
+<rect x="110" y="265" width="500" height="72" rx="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
 <text x="360" y="288" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#187990">B-树关键性质（m=3）：</text>
 <text x="360" y="308" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">① 每节点最多 m-1=2 个关键字；② 非根节点至少 ⌈m/2⌉-1=1 个关键字</text>
 <text x="360" y="328" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">③ 关键字有序；④ 全部叶节点在同一层，树高均衡，降低磁盘 I/O 次数</text>

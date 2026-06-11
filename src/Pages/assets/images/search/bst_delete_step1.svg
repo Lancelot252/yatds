@@ -44,12 +44,12 @@
 </g>
 
 <!-- 三种删除情况说明 -->
-<rect x="110" y="350" width="560" height="66" rx="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
-<text x="390" y="371" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#1d2a2f">BST 删除三种情况：</text>
-<text x="130" y="391" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">① 叶节点：直接删除</text>
-<text x="310" y="391" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">② 一个子节点：子节点替代</text>
-<text x="510" y="391" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#e55a5a">③ 两子节点：中序后继替换</text>
-<text x="390" y="408" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#187990">节点 5 有两个子节点（3和7）→ 使用情况 ③</text>
+<rect x="80" y="350" width="560" height="66" rx="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
+<text x="360" y="371" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#1d2a2f">BST 删除三种情况：</text>
+<text x="100" y="391" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">① 叶节点：直接删除</text>
+<text x="280" y="391" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">② 一个子节点：子节点替代</text>
+<text x="478" y="391" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#e55a5a">③ 两子节点：中序后继替换</text>
+<text x="360" y="408" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#187990">节点 5 有两个子节点（3和7）→ 使用情况 ③</text>
 
 <rect x="20" y="430" width="68" height="28" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>
 <text x="54" y="449" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#61737c">Step 1</text>

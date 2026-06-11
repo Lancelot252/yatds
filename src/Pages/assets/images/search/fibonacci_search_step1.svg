@@ -54,7 +54,7 @@
 </g>
 
 <!-- 比较结果 -->
-<rect x="80" y="270" width="560" height="80" rx="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
+<rect x="110" y="270" width="500" height="80" rx="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
 <text x="360" y="294" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#1d2a2f">比较：A[4] = 9 &lt; target = 11</text>
 <text x="360" y="316" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">目标在 probe 右侧，收缩到右半部分 [11, 13]（索引 5-6）</text>
 <text x="360" y="338" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#2d9bb3">更新：lo = 5，k = k − 2 = 4，下次分割用 F(2) = 1</text>

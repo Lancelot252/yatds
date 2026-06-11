@@ -17,8 +17,8 @@
   <line x1="500" y1="110" x2="570" y2="160" stroke="#d8e8ec" stroke-width="1.8"/>
 
   <!-- 比较过程标注 -->
-  <text x="446" y="66" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#f0a500">9&gt;7 → 右</text>
-  <text x="394" y="142" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#f0a500">9&lt;11 → 左</text>
+  <text x="458" y="58" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#f0a500">9&gt;7 → 右</text>
+  <text x="382" y="138" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#f0a500">9&lt;11 → 左</text>
 
   <!-- 根 7（已访问，灰化） -->
   <circle cx="360" cy="18" r="22" fill="#b8c4cc" stroke="#8c959f" stroke-width="2" filter="url(#sh)"/>
@@ -47,13 +47,13 @@
   <text x="570" y="178" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" fill="#b8c4cc">13</text>
 
   <!-- 结果框 -->
-  <rect x="110" y="205" width="520" height="58" rx="8" fill="#187990" filter="url(#sh)"/>
-  <text x="370" y="228" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#fff">✓ 查找成功：key = 9 在深度 3 处命中</text>
-  <text x="370" y="252" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#dff5f7">比较次数：3 次（7 → 11 → 9）= 树高 O(log n)</text>
+  <rect x="110" y="205" width="500" height="58" rx="8" fill="#187990" filter="url(#sh)"/>
+  <text x="360" y="228" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#fff">✓ 查找成功：key = 9 在深度 3 处命中</text>
+  <text x="360" y="252" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#dff5f7">比较次数：3 次（7 → 11 → 9）= 树高 O(log n)</text>
 
   <!-- 对比顺序查找 -->
-  <rect x="110" y="275" width="520" height="38" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1"/>
-  <text x="370" y="299" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">顺序查找需 5 次比较；静态树表 3 次即可定位（提升约 40%）</text>
+  <rect x="110" y="275" width="500" height="38" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1"/>
+  <text x="360" y="299" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">顺序查找需 5 次比较；静态树表 3 次即可定位（提升约 40%）</text>
 </g>
 
 <rect x="20" y="330" width="68" height="28" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>

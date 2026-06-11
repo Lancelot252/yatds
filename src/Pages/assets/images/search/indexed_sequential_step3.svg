@@ -11,12 +11,12 @@
   <!-- 元素 15 -->
   <rect x="0" y="0" width="140" height="60" rx="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.8"/>
   <text x="70" y="38" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="22" fill="#b8c4cc">15</text>
-  <text x="70" y="72" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#b8c4cc">比较①: 15≠20</text>
+  <text x="70" y="78" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#b8c4cc">比较①: 15≠20</text>
 
   <!-- 元素 20（命中） -->
   <rect x="160" y="0" width="140" height="60" rx="8" fill="#187990" stroke="#0d5e6e" stroke-width="2.5" filter="url(#sh)"/>
   <text x="230" y="38" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="22" font-weight="700" fill="#fff">20</text>
-  <text x="230" y="72" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" font-weight="700" fill="#187990">比较②: 20=20 ✓</text>
+  <text x="230" y="78" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" font-weight="700" fill="#187990">比较②: 20=20 ✓</text>
 </g>
 
 <!-- 结果框 -->
