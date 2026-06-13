@@ -1,0 +1,59 @@
+<svg viewBox="0 0 720 370" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="插值查找步骤1 - 计算探针位置">
+<defs>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="120%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#187990" flood-opacity=".08"/></filter>
+  <marker id="arrowOrange" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <polygon points="0 0, 8 3, 0 6" fill="#f0a500"/>
+  </marker>
+</defs>
+<text x="360" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#187990">插值查找（Interpolation Search）</text>
+<text x="360" y="58" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#61737c">有序数组 [1,3,5,7,9,11,13]，目标 target = 11，按比例估算探针位置</text>
+
+<!-- 数组格子 -->
+<g transform="translate(100,90)">
+  <!-- 下标 -->
+  <text x="37" y="-8" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">0</text>
+  <text x="111" y="-8" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">1</text>
+  <text x="185" y="-8" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">2</text>
+  <text x="259" y="-8" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">3</text>
+  <text x="333" y="-8" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">4</text>
+  <text x="407" y="-8" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">5</text>
+  <text x="481" y="-8" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">6</text>
+
+  <!-- 格子 0: lo -->
+  <rect x="0" y="0" width="74" height="50" rx="6" fill="#dff5f7" stroke="#187990" stroke-width="2" filter="url(#sh)"/>
+  <text x="37" y="31" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" font-weight="700" fill="#187990">1</text>
+  <!-- 格子 1~4 -->
+  <rect x="74" y="0" width="74" height="50" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.5"/>
+  <text x="111" y="31" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" fill="#61737c">3</text>
+  <rect x="148" y="0" width="74" height="50" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.5"/>
+  <text x="185" y="31" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" fill="#61737c">5</text>
+  <rect x="222" y="0" width="74" height="50" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.5"/>
+  <text x="259" y="31" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" fill="#61737c">7</text>
+  <rect x="296" y="0" width="74" height="50" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.5"/>
+  <text x="333" y="31" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" fill="#61737c">9</text>
+  <!-- 格子 5: probe -->
+  <rect x="370" y="0" width="74" height="50" rx="6" fill="#f0a500" stroke="#c8a800" stroke-width="2.5" filter="url(#sh)"/>
+  <text x="407" y="31" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" font-weight="700" fill="#fff">11</text>
+  <!-- 格子 6: hi -->
+  <rect x="444" y="0" width="74" height="50" rx="6" fill="#dff5f7" stroke="#187990" stroke-width="2" filter="url(#sh)"/>
+  <text x="481" y="31" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" font-weight="700" fill="#187990">13</text>
+
+  <!-- lo / hi / probe 标签 -->
+  <text x="37" y="66" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#187990">lo=0</text>
+  <text x="481" y="66" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#187990">hi=6</text>
+  <text x="407" y="66" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#f0a500">probe=5</text>
+
+  <!-- probe 向上箭头 -->
+  <line x1="407" y1="56" x2="407" y2="-2" stroke="#f0a500" stroke-width="2" marker-end="url(#arrowOrange)"/>
+</g>
+
+<!-- 公式框 -->
+<rect x="80" y="230" width="560" height="100" rx="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
+<text x="360" y="253" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">插值公式（按比例估算）</text>
+<text x="360" y="275" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#1d2a2f">probe = lo + (target − A[lo]) / (A[hi] − A[lo]) × (hi − lo)</text>
+<text x="360" y="298" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">      = 0 + (11 − 1) / (13 − 1) × (6 − 0)  =  10 / 12 × 6  ≈  5</text>
+<text x="360" y="320" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#187990">→ 估算目标在索引 5 处，比二分查找更精准</text>
+
+<rect x="20" y="336" width="68" height="28" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>
+<text x="54" y="355" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#61737c">Step 1</text>
+</svg>

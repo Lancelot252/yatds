@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BST 二叉搜索树教程与任务</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Ccircle cx='26' cy='26' r='12' stroke='%23187990' stroke-width='6' fill='none'/%3E%3Cpath d='M35 35 L50 50' stroke='%23187990' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <div class="nav-item has-submenu">
+          <a href="linear.html">线性结构</a>
+          <div class="submenu" aria-label="线性结构子页面">
+            <a href="linear-list.html">线性表</a>
+            <a href="linear-stack-queue.html">栈和队列</a>
+            <a href="linear-project.html">Project</a>
+            <a href="linear-string.html">字符串</a>
+          </div>
+        </div>
+        <a href="tree.html">树结构</a>
+        <a href="index.html#graph-placeholder">图结构</a>
+        <a href="index.html#hash-placeholder">哈希</a>
+        <div class="nav-item has-submenu">
+          <a class="active" href="search.html">查找算法</a>
+          <div class="submenu" aria-label="查找算法子页面">
+            <a href="search-sequential.html">顺序查找</a>
+            <a href="search-binary.html">二分查找</a>
+            <a href="search-interpolation.html">插值查找</a>
+            <a href="search-fibonacci.html">斐波那契查找</a>
+            <a href="search-static-tree.html">静态树表</a>
+            <a href="search-indexed-sequential.html">索引顺序表</a>
+            <a href="search-bst.html">BST</a>
+            <a href="search-avl.html">AVL 树</a>
+            <a href="search-btree.html">B-树/B+树</a>
+            <a href="search-trie.html">Trie</a>
+            <a href="search-hash.html">哈希表</a>
+            <a href="search-project.html">Project</a>
+          </div>
+        </div>
+        <div class="nav-item has-submenu">
+          <a href="sort.html">排序算法</a>
+          <div class="submenu" aria-label="排序算法子页面">
+            <a href="sort-bubble.html">冒泡排序</a>
+            <a href="sort-selection.html">选择排序</a>
+            <a href="sort-insertion.html">插入排序</a>
+            <a href="sort-shell.html">希尔排序</a>
+            <a href="sort-quick.html">快速排序</a>
+            <a href="sort-merge.html">归并排序</a>
+            <a href="sort-heap.html">堆排序</a>
+            <a href="sort-radix.html">基数排序</a>
+            <a href="sort-project.html">Project</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="page-shell">
+<aside class="toc toc-chapters">
+  <a class="toc-root" href="#bst"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke-width="1.9" fill="none" stroke="currentColor"/><path d="m16 16 4 4" stroke-width="1.9" stroke-linecap="round"/></svg></span><span>BST</span></a>
+  <a class="toc-chapter" href="#bst查找"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">BST 查找</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#查找过程模拟"><span>1.1</span><strong>查找过程模拟</strong></a>
+  </div>
+  <a class="toc-chapter" href="#bst插入"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">BST 插入</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#插入过程模拟"><span>2.1</span><strong>插入过程模拟</strong></a>
+  </div>
+  <a class="toc-chapter" href="#bst删除"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">BST 删除</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#删除过程模拟"><span>3.1</span><strong>删除过程模拟</strong></a>
+  </div>
+  <a class="toc-chapter" href="#算法特性"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">算法特性</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#baseline-任务"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+</aside>
+    <article class="content">
+      <h1 id="bst">二叉搜索树（BST）</h1>
+<blockquote><p><small>二叉搜索树（Binary Search Tree）是一种动态查找结构：对于每个节点，其左子树所有关键字均小于该节点，右子树所有关键字均大于该节点。</small></p><p><small>中序遍历 BST 可得到有序序列，这一性质使得查找、插入和删除操作均可在 O(h) 时间内完成（h 为树高）。</small></p></blockquote>
+
+<h2 id="bst查找">BST 查找</h2>
+<p>查找目标关键字 <code>key</code>：从根节点出发，若 <code>key &lt; 当前节点</code>，走左子树；若 <code>key &gt; 当前节点</code>，走右子树；相等则命中。</p>
+
+<h3 id="查找过程模拟">查找过程模拟</h3>
+<p>以 BST <code>{8, 5, 12, 3, 7, 10, 14}</code>、目标 <code>key = 10</code> 为例：</p>
+
+<div class="slide-deck">
+  <div class="slide-stage">
+    <img src="assets/images/search/bst_search_step1.svg" alt="BST 查找步骤 1">
+    <span class="slide-title" style="display:none">步骤 1</span>
+    <span class="slide-count" style="display:none"></span>
+    <div data-slide-src="assets/images/search/bst_search_step1.svg" data-slide-title="步骤 1：从根 8 开始，10 > 8，走右子树"></div>
+    <div data-slide-src="assets/images/search/bst_search_step2.svg" data-slide-title="步骤 2：到达节点 12，10 < 12，走左子树"></div>
+    <div data-slide-src="assets/images/search/bst_search_step3.svg" data-slide-title="步骤 3：到达节点 10，10=10，查找成功"></div>
+  </div>
+  <div class="slide-controls">
+    <button type="button" data-slide-prev>&lt;</button>
+    <div class="slide-meta">
+      <span id="slideLabel">步骤 1 / 3</span>
+      <div class="slide-dots" id="slideDots"></div>
+    </div>
+    <button type="button" data-slide-next>&gt;</button>
+  </div>
+</div>
+
+<h2 id="bst插入">BST 插入</h2>
+<p>插入新关键字时，先按查找逻辑找到其应插入的位置（空节点处），再创建新节点挂接。插入后仍满足 BST 性质。</p>
+
+<h3 id="插入过程模拟">插入过程模拟</h3>
+<p>向 BST 中插入 <code>key = 6</code>：</p>
+
+<div class="slide-deck">
+  <div class="slide-stage">
+    <img src="assets/images/search/bst_insert_step1.svg" alt="BST 插入步骤 1">
+    <span class="slide-title" style="display:none">步骤 1</span>
+    <span class="slide-count" style="display:none"></span>
+    <div data-slide-src="assets/images/search/bst_insert_step1.svg" data-slide-title="步骤 1：从根出发查找插入位置，8→5→7，到达 7 的左子位置"></div>
+    <div data-slide-src="assets/images/search/bst_insert_step2.svg" data-slide-title="步骤 2：6 < 7，插入位置为 7 的左子树"></div>
+    <div data-slide-src="assets/images/search/bst_insert_step3.svg" data-slide-title="步骤 3：插入完成，节点 6 作为 7 的左子节点（橙色）"></div>
+  </div>
+  <div class="slide-controls">
+    <button type="button" data-slide-prev>&lt;</button>
+    <div class="slide-meta">
+      <span id="slideLabel2">步骤 1 / 3</span>
+      <div class="slide-dots" id="slideDots2"></div>
+    </div>
+    <button type="button" data-slide-next>&gt;</button>
+  </div>
+</div>
+
+<h2 id="bst删除">BST 删除</h2>
+<p>删除分三种情况：</p>
+<ol>
+  <li><strong>叶节点：</strong>直接删除。</li>
+  <li><strong>只有一个子节点：</strong>用子节点替代被删节点。</li>
+  <li><strong>有两个子节点：</strong>用中序后继（右子树最左节点）替换，再删除该后继。</li>
+</ol>
+
+<h3 id="删除过程模拟">删除过程模拟</h3>
+<p>删除节点 <code>5</code>（有两个子节点 3、7）：</p>
+
+<div class="slide-deck">
+  <div class="slide-stage">
+    <img src="assets/images/search/bst_delete_step1.svg" alt="BST 删除步骤 1">
+    <span class="slide-title" style="display:none">步骤 1</span>
+    <span class="slide-count" style="display:none"></span>
+    <div data-slide-src="assets/images/search/bst_delete_step1.svg" data-slide-title="步骤 1：目标节点 5 有两个子节点，需找中序后继"></div>
+    <div data-slide-src="assets/images/search/bst_delete_step2.svg" data-slide-title="步骤 2：中序后继为节点 7（右子树最左节点），橙色标注"></div>
+    <div data-slide-src="assets/images/search/bst_delete_step3.svg" data-slide-title="步骤 3：用 7 替换 5，删除原节点 7，中序遍历仍为有序序列"></div>
+  </div>
+  <div class="slide-controls">
+    <button type="button" data-slide-prev>&lt;</button>
+    <div class="slide-meta">
+      <span id="slideLabel3">步骤 1 / 3</span>
+      <div class="slide-dots" id="slideDots3"></div>
+    </div>
+    <button type="button" data-slide-next>&gt;</button>
+  </div>
+</div>
+
+<h2 id="算法特性">算法特性</h2>
+<ul>
+  <li><strong>时间复杂度：</strong>平均 O(log n)；最坏情况（退化为链表）O(n)。</li>
+  <li><strong>空间复杂度：O(n)，</strong>每个元素对应一个节点。</li>
+  <li><strong>中序遍历：</strong>始终得到有序序列，可用于验证 BST 结构正确性。</li>
+  <li><strong>退化问题：</strong>按有序序列插入导致树退化为链表；AVL 树和红黑树通过旋转避免此问题。</li>
+</ul>
+
+<h2 id="baseline-任务">Baseline 任务：BST 实现</h2>
+<h3>任务内容</h3>
+<p>完成 <code>bst_avl.cpp</code>，实现以下 BST 功能：</p>
+<ol>
+  <li>
+    <strong>BST 插入</strong> <code>void insert(int key)</code>
+    <ul>
+      <li>保持左子树关键字小于根、右子树关键字大于根</li>
+    </ul>
+  </li>
+  <li>
+    <strong>BST 查找</strong> <code>bool search(int key)</code>
+    <ul>
+      <li>返回目标关键字是否存在</li>
+    </ul>
+  </li>
+  <li>
+    <strong>BST 删除</strong> <code>void remove(int key)</code>
+    <ul>
+      <li>处理三种删除情况，保持 BST 性质</li>
+    </ul>
+  </li>
+  <li>
+    <strong>中序遍历</strong> <code>void inorder()</code>
+    <ul>
+      <li>输出有序序列用于验证</li>
+    </ul>
+  </li>
+</ol>
+<h3>文件结构</h3>
+<ul>
+  <li><code>bst_avl.h</code>：BST 与 AVL 树接口声明</li>
+  <li><code>bst_avl.cpp</code>：核心实现</li>
+  <li><code>test.cpp</code>：测试程序</li>
+</ul>
+<h3>验证方式</h3>
+<ul>
+  <li>编译：<code>g++ -std=c++17 test.cpp bst_avl.cpp -o testBSTAVL</code></li>
+  <li>运行：<code>./testBSTAVL</code></li>
+</ul>
+    </article>
+  </main>
+  <footer class="footer">BST 内容来源于 src/Search/Baseline/src/DynamicSearch/BSTAVL。</footer>
+  <script src="assets/slides.js"></script>
+</body>
+</html>

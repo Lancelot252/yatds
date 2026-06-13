@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>哈希表查找教程与任务</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Ccircle cx='26' cy='26' r='12' stroke='%23187990' stroke-width='6' fill='none'/%3E%3Cpath d='M35 35 L50 50' stroke='%23187990' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <div class="nav-item has-submenu">
+          <a href="linear.html">线性结构</a>
+          <div class="submenu" aria-label="线性结构子页面">
+            <a href="linear-list.html">线性表</a>
+            <a href="linear-stack-queue.html">栈和队列</a>
+            <a href="linear-project.html">Project</a>
+            <a href="linear-string.html">字符串</a>
+          </div>
+        </div>
+        <a href="tree.html">树结构</a>
+        <a href="index.html#graph-placeholder">图结构</a>
+        <a href="index.html#hash-placeholder">哈希</a>
+        <div class="nav-item has-submenu">
+          <a class="active" href="search.html">查找算法</a>
+          <div class="submenu" aria-label="查找算法子页面">
+            <a href="search-sequential.html">顺序查找</a>
+            <a href="search-binary.html">二分查找</a>
+            <a href="search-interpolation.html">插值查找</a>
+            <a href="search-fibonacci.html">斐波那契查找</a>
+            <a href="search-static-tree.html">静态树表</a>
+            <a href="search-indexed-sequential.html">索引顺序表</a>
+            <a href="search-bst.html">BST</a>
+            <a href="search-avl.html">AVL 树</a>
+            <a href="search-btree.html">B-树/B+树</a>
+            <a href="search-trie.html">Trie</a>
+            <a href="search-hash.html">哈希表</a>
+            <a href="search-project.html">Project</a>
+          </div>
+        </div>
+        <div class="nav-item has-submenu">
+          <a href="sort.html">排序算法</a>
+          <div class="submenu" aria-label="排序算法子页面">
+            <a href="sort-bubble.html">冒泡排序</a>
+            <a href="sort-selection.html">选择排序</a>
+            <a href="sort-insertion.html">插入排序</a>
+            <a href="sort-shell.html">希尔排序</a>
+            <a href="sort-quick.html">快速排序</a>
+            <a href="sort-merge.html">归并排序</a>
+            <a href="sort-heap.html">堆排序</a>
+            <a href="sort-radix.html">基数排序</a>
+            <a href="sort-project.html">Project</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="page-shell">
+<aside class="toc toc-chapters">
+  <a class="toc-root" href="#哈希表查找"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke-width="1.9" fill="none" stroke="currentColor"/><path d="m16 16 4 4" stroke-width="1.9" stroke-linecap="round"/></svg></span><span>哈希表查找</span></a>
+  <a class="toc-chapter" href="#哈希函数"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">哈希函数</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#冲突处理"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">冲突处理</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#插入与查找模拟"><span>2.1</span><strong>插入与查找模拟</strong></a>
+    <a class="toc-subitem" href="#常见冲突策略"><span>2.2</span><strong>常见策略对比</strong></a>
+  </div>
+  <a class="toc-chapter" href="#装填因子"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">装填因子</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#算法特性-hash"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">算法特性</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#baseline-任务-hash"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+</aside>
+    <article class="content">
+      <h1 id="哈希表查找">哈希表查找（Hash Table Search）</h1>
+<blockquote><p><small>哈希表通过哈希函数将关键字映射到表中的位置，实现在接近 O(1) 的时间内完成查找。其核心挑战在于：如何设计好的哈希函数以减少冲突，以及如何高效处理已发生的冲突。</small></p></blockquote>
+
+<h2 id="哈希函数">哈希函数</h2>
+<p>哈希函数 h(key) 将关键字映射到表中的槽位下标（0 到 m-1）。好的哈希函数应满足：</p>
+<ul>
+  <li><strong>均匀性：</strong>将关键字均匀分布到各槽位，减少冲突。</li>
+  <li><strong>确定性：</strong>相同关键字始终映射到相同位置。</li>
+  <li><strong>高效性：</strong>计算速度快。</li>
+</ul>
+<table>
+  <thead>
+    <tr><th>构造方法</th><th>公式</th><th>特点</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>直接定址法</td><td>h(key) = a × key + b</td><td>无冲突，但需要连续地址空间</td></tr>
+    <tr><td>除留余数法</td><td>h(key) = key % m（m 取质数）</td><td>最常用，m 取质数效果好</td></tr>
+    <tr><td>乘法散列</td><td>h(key) = ⌊m × frac(key × A)⌋</td><td>对 m 不敏感，A ≈ 0.618</td></tr>
+  </tbody>
+</table>
+
+<h2 id="冲突处理">冲突处理</h2>
+<p>当两个不同关键字映射到同一槽位时，发生<strong>哈希冲突</strong>。常见的冲突处理方式分为两大类：</p>
+
+<h3 id="插入与查找模拟">插入与查找过程模拟</h3>
+<p>以表长 11、哈希函数 h(key) = key % 11、线性探测为例，演示插入和查找流程：</p>
+
+<div class="slide-deck">
+  <div class="slide-stage">
+    <img src="assets/images/search/hash_table_step1.svg" alt="哈希表步骤 1">
+    <span class="slide-title" style="display:none">步骤 1</span>
+    <span class="slide-count" style="display:none"></span>
+    <div data-slide-src="assets/images/search/hash_table_step1.svg" data-slide-title="步骤 1：初始状态，哈希表为空（11 个槽位）"></div>
+    <div data-slide-src="assets/images/search/hash_table_step2.svg" data-slide-title="步骤 2：插入 23，h(23)=1，槽位 1 为空，直接存入"></div>
+    <div data-slide-src="assets/images/search/hash_table_step3.svg" data-slide-title="步骤 3：插入 34，h(34)=1，冲突！线性探测到槽位 2"></div>
+    <div data-slide-src="assets/images/search/hash_table_step4.svg" data-slide-title="步骤 4：查找 34，从 h(34)=1 开始探测，槽位 2 找到目标"></div>
+  </div>
+  <div class="slide-controls">
+    <button type="button" data-slide-prev>&lt;</button>
+    <div class="slide-meta">
+      <span id="slideLabel">步骤 1 / 4</span>
+      <div class="slide-dots" id="slideDots"></div>
+    </div>
+    <button type="button" data-slide-next>&gt;</button>
+  </div>
+</div>
+
+<h3 id="常见冲突策略">常见冲突处理策略对比</h3>
+<table>
+  <thead>
+    <tr><th>策略</th><th>方法</th><th>优点</th><th>缺点</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>线性探测</td><td>h(key) + 1, +2, +3, …</td><td>实现简单，缓存友好</td><td>容易产生"堆积"（primary clustering）</td></tr>
+    <tr><td>二次探测</td><td>h(key) + 1², -1², +2², -2², …</td><td>减少堆积</td><td>不能保证探测到所有槽位</td></tr>
+    <tr><td>拉链法</td><td>每个槽位维护链表</td><td>无需预估数据量，删除简单</td><td>额外空间，链表不缓存友好</td></tr>
+  </tbody>
+</table>
+
+<h2 id="装填因子">装填因子（Load Factor）</h2>
+<p>装填因子 α = 已存关键字数 / 哈希表总槽位数，直接影响查找效率：</p>
+<ul>
+  <li>α 越小，冲突越少，查找越快，但空间利用率低。</li>
+  <li>α 越大，冲突越多，查找退化。开放地址法一般要求 α ≤ 0.75。</li>
+  <li>拉链法对 α &gt; 1 也能工作，但链表过长影响性能。</li>
+</ul>
+<p>平均查找长度 ASL 与装填因子密切相关：</p>
+<ul>
+  <li>线性探测（查找成功）：ASL ≈ ½ × (1 + 1/(1-α))</li>
+  <li>线性探测（查找失败）：ASL ≈ ½ × (1 + 1/(1-α)²)</li>
+</ul>
+
+<h2 id="算法特性-hash">算法特性</h2>
+<ul>
+  <li><strong>时间复杂度：期望 O(1)。</strong>在装填因子较低时，查找、插入、删除均接近常数时间。</li>
+  <li><strong>最坏情况：O(n)。</strong>所有关键字均哈希到同一槽位时退化。</li>
+  <li><strong>空间复杂度：O(n)。</strong>需要额外的哈希表数组及（拉链法中的）链表空间。</li>
+  <li><strong>不支持有序遍历：</strong>哈希表本身无序，无法高效执行范围查询。</li>
+</ul>
+
+<h2 id="baseline-任务-hash">Baseline 任务：哈希表</h2>
+<h3>任务一：实现哈希函数</h3>
+<p>完成 <code>hash_table.cpp</code> 中的哈希函数构造：</p>
+<ul>
+  <li><code>DirectHash</code>：直接定址法</li>
+  <li><code>ModHash</code>：除留余数法，表长取质数</li>
+  <li><code>MultiplicationHash</code>：乘法散列</li>
+</ul>
+<h3>任务二：实现冲突处理</h3>
+<p>在哈希表基础上实现三种冲突处理策略：</p>
+<ul>
+  <li>线性探测（开放地址）</li>
+  <li>二次探测（开放地址）</li>
+  <li>拉链法（链式存储）</li>
+</ul>
+<h3>任务三：实现哈希表操作</h3>
+<p>支持完整的 CRUD 操作：</p>
+<ul>
+  <li>插入 <code>Insert(key)</code>：计算哈希值并处理冲突后存入</li>
+  <li>查找 <code>Search(key)</code>：从哈希位置开始探测，记录命中位置与探测次数</li>
+  <li>删除 <code>Delete(key)</code>：注意开放地址法删除后的标记处理</li>
+  <li>统计装填因子、平均查找长度（ASL）</li>
+</ul>
+<h3>文件结构</h3>
+<ul>
+  <li><code>hash_table.h</code>：接口声明</li>
+  <li><code>hash_table.cpp</code>：哈希表核心实现</li>
+  <li><code>test.cpp</code>：测试程序</li>
+</ul>
+<h3>验证方式</h3>
+<ul>
+  <li>编译：<code>g++ -std=c++17 test.cpp hash_table.cpp -o testHashTable</code></li>
+  <li>运行：<code>./testHashTable</code></li>
+</ul>
+    </article>
+  </main>
+  <footer class="footer">哈希表查找内容来源于 src/Search/Baseline/src/HashTable。</footer>
+  <script src="assets/slides.js"></script>
+</body>
+</html>

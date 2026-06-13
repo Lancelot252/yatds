@@ -1,0 +1,55 @@
+<svg viewBox="0 0 720 396" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="斐波那契查找步骤3 - 三种查找方式对比">
+<defs>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="120%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#187990" flood-opacity=".08"/></filter>
+</defs>
+<text x="360" y="34" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#187990">斐波那契查找（Fibonacci Search）</text>
+<text x="360" y="55" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#61737c">三种有序表查找方式的探针分割策略对比</text>
+
+<!-- 三列对比 -->
+<!-- 二分查找 -->
+<rect x="30" y="75" width="200" height="240" rx="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.5"/>
+<text x="130" y="102" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#61737c">二分查找</text>
+<!-- 分割线示意 -->
+<rect x="50" y="120" width="160" height="36" rx="4" fill="#e8f4f6" stroke="#b8c4cc" stroke-width="1"/>
+<text x="130" y="143" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">固定取中点</text>
+<text x="130" y="175" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">mid = (lo + hi) / 2</text>
+<text x="130" y="196" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">左右各 n/2</text>
+<line x1="50" y1="210" x2="210" y2="210" stroke="#e0e8eb" stroke-width="1"/>
+<text x="130" y="230" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">复杂度 O(log n)</text>
+<text x="130" y="252" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">任意数据分布</text>
+<text x="130" y="272" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">仅加减比较</text>
+<text x="130" y="295" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">适用最广</text>
+
+<!-- 插值查找 -->
+<rect x="260" y="75" width="200" height="240" rx="8" fill="#f7fbfc" stroke="#f0a500" stroke-width="1.8"/>
+<text x="360" y="102" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#f0a500">插值查找</text>
+<rect x="280" y="120" width="160" height="36" rx="4" fill="#fff8e6" stroke="#f0a500" stroke-width="1"/>
+<text x="360" y="143" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#c8a800">按比例估算位置</text>
+<text x="360" y="175" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="10" fill="#c8a800">probe = lo + (t−A[lo])/(A[hi]−A[lo])×(hi−lo)</text>
+<text x="360" y="196" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">分布相关，不均等</text>
+<line x1="280" y1="210" x2="440" y2="210" stroke="#f0e0a0" stroke-width="1"/>
+<text x="360" y="230" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">均匀分布近 O(1)</text>
+<text x="360" y="252" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">非均匀可能退化</text>
+<text x="360" y="272" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">需要乘除法</text>
+<text x="360" y="295" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">适合均匀数据</text>
+
+<!-- 斐波那契查找 -->
+<rect x="490" y="75" width="200" height="240" rx="8" fill="#f7fbfc" stroke="#187990" stroke-width="2"/>
+<text x="590" y="102" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">斐波那契查找</text>
+<rect x="510" y="120" width="160" height="36" rx="4" fill="#dff5f7" stroke="#187990" stroke-width="1"/>
+<text x="590" y="143" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#187990">按 Fibonacci 比例分割</text>
+<text x="590" y="175" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#1d2a2f">mid = lo + F(k−2) − 1</text>
+<text x="590" y="196" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">左 F(k−1)，右 F(k−2)</text>
+<line x1="510" y1="210" x2="670" y2="210" stroke="#b8dceb" stroke-width="1"/>
+<text x="590" y="230" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">复杂度 O(log n)</text>
+<text x="590" y="252" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">仅加减运算</text>
+<text x="590" y="272" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">分割不均等</text>
+<text x="590" y="295" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#187990">适合外存查找</text>
+
+<!-- 底部说明 -->
+<rect x="30" y="336" width="660" height="22" rx="6" fill="#187990"/>
+<text x="360" y="352" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" font-weight="700" fill="#fff">三者时间复杂度均为 O(log n)，差异在于探针策略与适用数据分布</text>
+
+<rect x="20" y="362" width="68" height="28" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>
+<text x="54" y="381" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#61737c">Step 3</text>
+</svg>

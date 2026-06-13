@@ -1,0 +1,58 @@
+<svg viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AVL右旋步骤1 - LL失衡状态">
+<defs>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="120%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#187990" flood-opacity=".10"/></filter>
+</defs>
+<text x="360" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#187990">AVL 树右旋（LL 型调整）</text>
+<text x="360" y="58" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#61737c">插入节点 1 后，节点 5 的平衡因子 bf=2，触发 LL 型调整</text>
+
+<!-- 失衡的树结构:
+        5  (bf=2，失衡)
+       /
+      3  (bf=1)
+     /
+    1
+-->
+
+<!-- 边 -->
+<line x1="360" y1="120" x2="260" y2="200" stroke="#d8e8ec" stroke-width="2"/>
+<line x1="260" y1="230" x2="200" y2="300" stroke="#d8e8ec" stroke-width="2"/>
+
+<!-- 节点 5（失衡节点，红色标注） -->
+<circle cx="360" cy="105" r="34" fill="#e55a5a" stroke="#c02020" stroke-width="2.5" filter="url(#sh)"/>
+<text x="360" y="113" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="24" font-weight="700" fill="#fff">5</text>
+
+<!-- bf=2 标注 -->
+<rect x="406" y="88" width="70" height="22" rx="4" fill="#fdecea" stroke="#e55a5a" stroke-width="1"/>
+<text x="441" y="104" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" font-weight="700" fill="#e55a5a">bf = 2 ⚠</text>
+
+<!-- 右子树为空标注 -->
+<text x="460" y="185" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#b8c4cc">右子树：∅</text>
+<line x1="360" y1="139" x2="440" y2="180" stroke="#d8e8ec" stroke-width="1.5" stroke-dasharray="6,3"/>
+
+<!-- 节点 3 -->
+<circle cx="260" cy="215" r="30" fill="#dff5f7" stroke="#187990" stroke-width="1.8" filter="url(#sh)"/>
+<text x="260" y="223" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="22" font-weight="700" fill="#1d2a2f">3</text>
+<rect x="180" y="238" width="52" height="22" rx="4" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1"/>
+<text x="206" y="254" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">bf = 1</text>
+
+<!-- 节点 1（最近插入） -->
+<circle cx="200" cy="315" r="26" fill="#f0a500" stroke="#c8a800" stroke-width="2.2" filter="url(#sh)"/>
+<text x="200" y="323" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" font-weight="700" fill="#fff">1</text>
+<rect x="158" y="345" width="84" height="22" rx="4" fill="#fff8e6" stroke="#f0a500" stroke-width="1"/>
+<text x="200" y="361" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#c8a800">新插入节点</text>
+
+<!-- 高度注释 -->
+<text x="166" y="312" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">h=0</text>
+<text x="222" y="215" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">h=1</text>
+<text x="318" y="105" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#e55a5a">h=2</text>
+
+<!-- 说明框 -->
+<rect x="430" y="240" width="260" height="100" rx="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
+<text x="560" y="264" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#e55a5a">LL 型失衡</text>
+<text x="560" y="284" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">根节点 5 的 bf = 2</text>
+<text x="560" y="302" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">左孩子 3 的 bf = 1</text>
+<text x="560" y="322" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#187990">→ 执行右旋（Right Rotate）</text>
+
+<rect x="20" y="338" width="78" height="32" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>
+<text x="59" y="359" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#61737c">Step 1</text>
+</svg>

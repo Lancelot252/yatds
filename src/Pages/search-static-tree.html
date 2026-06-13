@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>静态树表查找教程与任务</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Ccircle cx='26' cy='26' r='12' stroke='%23187990' stroke-width='6' fill='none'/%3E%3Cpath d='M35 35 L50 50' stroke='%23187990' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <div class="nav-item has-submenu">
+          <a href="linear.html">线性结构</a>
+          <div class="submenu" aria-label="线性结构子页面">
+            <a href="linear-list.html">线性表</a>
+            <a href="linear-stack-queue.html">栈和队列</a>
+            <a href="linear-project.html">Project</a>
+            <a href="linear-string.html">字符串</a>
+          </div>
+        </div>
+        <a href="tree.html">树结构</a>
+        <a href="index.html#graph-placeholder">图结构</a>
+        <a href="index.html#hash-placeholder">哈希</a>
+        <div class="nav-item has-submenu">
+          <a class="active" href="search.html">查找算法</a>
+          <div class="submenu" aria-label="查找算法子页面">
+            <a href="search-sequential.html">顺序查找</a>
+            <a href="search-binary.html">二分查找</a>
+            <a href="search-interpolation.html">插值查找</a>
+            <a href="search-fibonacci.html">斐波那契查找</a>
+            <a href="search-static-tree.html">静态树表</a>
+            <a href="search-indexed-sequential.html">索引顺序表</a>
+            <a href="search-bst.html">BST</a>
+            <a href="search-avl.html">AVL 树</a>
+            <a href="search-btree.html">B-树/B+树</a>
+            <a href="search-trie.html">Trie</a>
+            <a href="search-hash.html">哈希表</a>
+            <a href="search-project.html">Project</a>
+          </div>
+        </div>
+        <div class="nav-item has-submenu">
+          <a href="sort.html">排序算法</a>
+          <div class="submenu" aria-label="排序算法子页面">
+            <a href="sort-bubble.html">冒泡排序</a>
+            <a href="sort-selection.html">选择排序</a>
+            <a href="sort-insertion.html">插入排序</a>
+            <a href="sort-shell.html">希尔排序</a>
+            <a href="sort-quick.html">快速排序</a>
+            <a href="sort-merge.html">归并排序</a>
+            <a href="sort-heap.html">堆排序</a>
+            <a href="sort-radix.html">基数排序</a>
+            <a href="sort-project.html">Project</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="page-shell">
+<aside class="toc toc-chapters">
+  <a class="toc-root" href="#静态树表查找"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke-width="1.9" fill="none" stroke="currentColor"/><path d="m16 16 4 4" stroke-width="1.9" stroke-linecap="round"/></svg></span><span>静态树表查找</span></a>
+  <a class="toc-chapter" href="#树表构造"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">判定树构造</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#树表结构"><span>1.1</span><strong>结构与构造</strong></a>
+    <a class="toc-subitem" href="#查找路径"><span>1.2</span><strong>查找路径模拟</strong></a>
+  </div>
+  <a class="toc-chapter" href="#asl分析"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">ASL 分析</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#算法特性"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">算法特性</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#baseline-任务"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+</aside>
+    <article class="content">
+      <h1 id="静态树表查找">静态树表查找（Static Tree Table）</h1>
+<blockquote><p><small>静态树表将有序关键字集合组织成最优判定树，通过树形路径完成查找。与普通二分查找相比，静态树表在频次不均等的查找场景下能最小化平均查找长度（ASL）。</small></p><p><small>对于等概率查找，最优静态树即完全平衡二叉搜索树；各元素查找概率不同时，可通过动态规划构造最优判定树。</small></p></blockquote>
+
+<h2 id="树表构造">判定树构造与查找</h2>
+
+<h3 id="树表结构">结构与构造</h3>
+<p>对有序关键字集合 <code>{1, 3, 5, 7, 9, 11, 13}</code>（等概率查找），构造最优静态树表：</p>
+<ol>
+  <li>取中间元素 <code>7</code>（下标 3）作为根节点。</li>
+  <li>递归地在左半 <code>{1, 3, 5}</code> 中取 <code>3</code> 为根，在右半 <code>{9, 11, 13}</code> 中取 <code>11</code> 为根。</li>
+  <li>依此递归，形成完全平衡二叉搜索树。</li>
+</ol>
+
+<div class="slide-deck">
+  <div class="slide-stage">
+    <img src="assets/images/search/static_tree_table_step1.svg" alt="静态树表步骤 1">
+    <span class="slide-title" style="display:none">步骤 1</span>
+    <span class="slide-count" style="display:none"></span>
+    <div data-slide-src="assets/images/search/static_tree_table_step1.svg" data-slide-title="步骤 1：从有序数组构造判定树（取中间元素为根）"></div>
+    <div data-slide-src="assets/images/search/static_tree_table_step2.svg" data-slide-title="步骤 2：查找 target=9 的路径：7→11→9，3 次比较"></div>
+  </div>
+  <div class="slide-controls">
+    <button type="button" data-slide-prev>&lt;</button>
+    <div class="slide-meta">
+      <span id="slideLabel">步骤 1 / 2</span>
+      <div class="slide-dots" id="slideDots"></div>
+    </div>
+    <button type="button" data-slide-next>&gt;</button>
+  </div>
+</div>
+
+<h3 id="查找路径">查找路径</h3>
+<p>在静态树表中查找关键字 <code>k</code> 的过程与 BST 查找完全相同：</p>
+<ul>
+  <li>若 <code>k = root</code>，查找成功；</li>
+  <li>若 <code>k &lt; root</code>，进入左子树继续；</li>
+  <li>若 <code>k &gt; root</code>，进入右子树继续；</li>
+  <li>若到达空节点仍未找到，查找失败。</li>
+</ul>
+
+<h2 id="asl分析">ASL 分析</h2>
+<p>对于 n=7 的完全平衡树，每个节点深度如下：</p>
+<ul>
+  <li>深度 1：1 个节点（根 7）</li>
+  <li>深度 2：2 个节点（3, 11）</li>
+  <li>深度 3：4 个节点（1, 5, 9, 13）</li>
+</ul>
+<p><strong>ASL = (1×1 + 2×2 + 4×3) / 7 = 17/7 ≈ 2.43</strong>，为等概率条件下的最优平均查找长度。</p>
+
+<h2 id="算法特性">算法特性</h2>
+<ul>
+  <li><strong>时间复杂度：O(log n)，</strong>等同于对有序数组的二分查找。</li>
+  <li><strong>构造一次，多次查找：</strong>建树时间 O(n)，之后每次查找 O(log n)。</li>
+  <li><strong>静态结构：</strong>不支持动态插入/删除，数据集固定时最优。</li>
+  <li><strong>非等概率优化：</strong>可用动态规划构造最优判定树（Knuth 算法），使带权 ASL 最小。</li>
+</ul>
+
+<h2 id="baseline-任务">Baseline 任务：静态树表构造与查找</h2>
+<h3>任务内容</h3>
+<p>完成 <code>static_tree_table.cpp</code>，实现以下函数：</p>
+<ol>
+  <li>
+    <strong>构造静态树表</strong>
+    <ul>
+      <li>基于有序关键字递归选取中间元素建树</li>
+      <li>使查找路径尽量均衡，降低平均查找长度</li>
+    </ul>
+  </li>
+  <li>
+    <strong>静态树表查找</strong>
+    <ul>
+      <li>按树形路径定位目标关键字</li>
+      <li>返回是否命中、节点位置和比较次数</li>
+    </ul>
+  </li>
+</ol>
+<h3>文件结构</h3>
+<ul>
+  <li><code>static_tree_table.h</code>：接口声明</li>
+  <li><code>static_tree_table.cpp</code>：核心实现</li>
+  <li><code>test.cpp</code>：测试程序</li>
+</ul>
+<h3>验证方式</h3>
+<ul>
+  <li>编译：<code>g++ -std=c++17 test.cpp static_tree_table.cpp -o testStaticTreeTable</code></li>
+  <li>运行：<code>./testStaticTreeTable</code></li>
+</ul>
+    </article>
+  </main>
+  <footer class="footer">静态树表内容来源于 src/Search/Baseline/src/StaticSearch/StaticTreeTable。</footer>
+  <script src="assets/slides.js"></script>
+</body>
+</html>

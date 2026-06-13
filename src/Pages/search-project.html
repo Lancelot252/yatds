@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>查找算法综合项目</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Ccircle cx='26' cy='26' r='12' stroke='%23187990' stroke-width='6' fill='none'/%3E%3Cpath d='M35 35 L50 50' stroke='%23187990' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <div class="nav-item has-submenu">
+          <a href="linear.html">线性结构</a>
+          <div class="submenu" aria-label="线性结构子页面">
+            <a href="linear-list.html">线性表</a>
+            <a href="linear-stack-queue.html">栈和队列</a>
+            <a href="linear-project.html">Project</a>
+            <a href="linear-string.html">字符串</a>
+          </div>
+        </div>
+        <a href="tree.html">树结构</a>
+        <a href="index.html#graph-placeholder">图结构</a>
+        <a href="index.html#hash-placeholder">哈希</a>
+        <div class="nav-item has-submenu">
+          <a class="active" href="search.html">查找算法</a>
+          <div class="submenu" aria-label="查找算法子页面">
+            <a href="search-sequential.html">顺序查找</a>
+            <a href="search-binary.html">二分查找</a>
+            <a href="search-interpolation.html">插值查找</a>
+            <a href="search-fibonacci.html">斐波那契查找</a>
+            <a href="search-static-tree.html">静态树表</a>
+            <a href="search-indexed-sequential.html">索引顺序表</a>
+            <a href="search-bst.html">BST</a>
+            <a href="search-avl.html">AVL 树</a>
+            <a href="search-btree.html">B-树/B+树</a>
+            <a href="search-trie.html">Trie</a>
+            <a href="search-hash.html">哈希表</a>
+            <a href="search-project.html">Project</a>
+          </div>
+        </div>
+        <div class="nav-item has-submenu">
+          <a href="sort.html">排序算法</a>
+          <div class="submenu" aria-label="排序算法子页面">
+            <a href="sort-bubble.html">冒泡排序</a>
+            <a href="sort-selection.html">选择排序</a>
+            <a href="sort-insertion.html">插入排序</a>
+            <a href="sort-shell.html">希尔排序</a>
+            <a href="sort-quick.html">快速排序</a>
+            <a href="sort-merge.html">归并排序</a>
+            <a href="sort-heap.html">堆排序</a>
+            <a href="sort-radix.html">基数排序</a>
+            <a href="sort-project.html">Project</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="page-shell">
+<aside class="toc toc-chapters">
+  <a class="toc-root" href="#查找综合项目"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke-width="1.9" fill="none" stroke="currentColor"/><path d="m16 16 4 4" stroke-width="1.9" stroke-linecap="round"/></svg></span><span>查找综合项目</span></a>
+  <a class="toc-chapter" href="#子项目一"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">子项目一：校园检索系统</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#查找结构选型"><span>1.1</span><strong>查找结构选型</strong></a>
+    <a class="toc-subitem" href="#项目要求"><span>1.2</span><strong>项目要求</strong></a>
+  </div>
+  <a class="toc-chapter" href="#子项目二"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">子项目二：性能横向对比</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#测评数据集"><span>2.1</span><strong>测评数据集</strong></a>
+    <a class="toc-subitem" href="#测评指标"><span>2.2</span><strong>测评指标</strong></a>
+  </div>
+  <a class="toc-chapter" href="#评分标准"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">评分标准</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+</aside>
+    <article class="content">
+      <h1 id="查找综合项目">查找算法综合项目</h1>
+<blockquote><p><small>本项目包含两大核心任务，旨在帮助学习者深入理解静态查找表、动态查找树、哈希表与 Trie 等查找结构的设计思想、性能差异和工程应用。</small></p></blockquote>
+
+<p>可使用的查找结构范围：顺序查找、有序表查找、静态树表、索引顺序表、BST、AVL 树、B-树、B+ 树、Trie、哈希表。</p>
+
+<h2 id="子项目一">子项目一：校园资料智能检索系统</h2>
+<blockquote><p><small>系统面向图书、课程资料、学生信息或校园公告等数据场景，用户可以通过编号、标题、关键词、前缀、分类等条件快速查询目标记录。项目重点不是做复杂的数据库系统，而是让不同查找结构在合适的查询场景中发挥作用。</small></p></blockquote>
+
+<p>系统示例数据：</p>
+<table>
+  <thead>
+    <tr><th>ID</th><th>标题</th><th>分类</th><th>关键词</th><th>热度</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1001</td><td>数据结构实验指导</td><td>课程资料</td><td>数据结构, 实验, C++</td><td>95</td></tr>
+    <tr><td>1002</td><td>图书馆借阅规则</td><td>校园公告</td><td>图书馆, 借阅</td><td>60</td></tr>
+    <tr><td>1003</td><td>查找算法复习提纲</td><td>课程资料</td><td>查找, 哈希表, AVL</td><td>88</td></tr>
+  </tbody>
+</table>
+
+<p>用户可执行的操作：按 ID 精确查找、按标题前缀查找、按关键词查找相关资料、按分类筛选、插入/删除/修改记录、查看热门资料或查询统计信息。</p>
+
+<h3 id="查找结构选型">查找结构的应用场景</h3>
+<table>
+  <thead>
+    <tr><th>查询场景</th><th>适配结构</th><th>理由</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>精确查找（按 ID）</td><td>哈希表、BST、AVL 树</td><td>O(1)~O(log n) 精确定位</td></tr>
+    <tr><td>有序查找与范围查询</td><td>有序表、AVL 树、B+ 树</td><td>区间查询效率高</td></tr>
+    <tr><td>动态维护（频繁插入删除）</td><td>BST、AVL 树、B-树</td><td>动态平衡结构</td></tr>
+    <tr><td>关键词与前缀检索</td><td>Trie、哈希表、倒排索引</td><td>逐字符路径匹配</td></tr>
+    <tr><td>外存索引模拟</td><td>索引顺序表、B-树、B+ 树</td><td>多级索引、磁盘分块</td></tr>
+  </tbody>
+</table>
+
+<h3 id="项目要求">项目要求</h3>
+<ol>
+  <li><strong>数据结构设计：</strong>合理设计数据结构来表示资料记录、索引、关键词集合、查找结果和系统状态。</li>
+  <li><strong>功能实现：</strong>实现资料初始化、插入、删除、修改、精确查找、范围查找、前缀查找、关键词查找和查询统计等功能。</li>
+  <li><strong>结构选型说明：</strong>至少选择两类以上查找结构用于不同功能，并解释为什么该结构适合对应场景。</li>
+  <li><strong>用户交互：</strong>设计简单的用户界面（命令行或图形界面）与用户交互，展示查询条件、查询结果、查找路径或统计信息。</li>
+  <li><strong>代码质量：</strong>编写清晰、可维护的代码，并添加适当的注释和文档。</li>
+</ol>
+
+<h2 id="子项目二">子项目二：多类查找结构性能横向对比</h2>
+<blockquote><p><small>对多类查找结构进行标准化性能测评，对比查找效率、构造开销、插入删除代价、空间占用和适用场景。</small></p></blockquote>
+
+<h3 id="测评数据集">测评数据集设计</h3>
+<ol>
+  <li><strong>小规模：</strong>100~1000 条，观察查找路径和结构变化。</li>
+  <li><strong>中等规模：</strong>1 万~10 万条，基础性能对比。</li>
+  <li><strong>近乎有序：</strong>验证 BST 退化、AVL 平衡效果。</li>
+  <li><strong>随机分布：</strong>一般场景平均性能测试。</li>
+  <li><strong>大量重复关键字：</strong>冲突处理与重复记录管理。</li>
+  <li><strong>字符串关键字：</strong>Trie、哈希表和字符串查找结构测试。</li>
+</ol>
+
+<h3 id="测评指标">测评指标</h3>
+<ol>
+  <li>查找成功平均比较次数（平均查找长度 ASL）</li>
+  <li>查找失败平均比较次数或探测次数</li>
+  <li>构造索引或建表时间</li>
+  <li>插入、删除、修改操作耗时</li>
+  <li>哈希表冲突次数、冲突率和装填因子影响</li>
+  <li>树结构高度、旋转次数或节点分裂次数</li>
+  <li>空间占用大小</li>
+  <li>理论复杂度与实测结果对比</li>
+</ol>
+
+<p><strong>输出结果要求：</strong>性能对比表格、查询路径或结构变化过程展示、不同结构优劣分析报告、面向应用场景的查找结构选择指南、复杂度总结与学习心得。</p>
+
+<h2 id="评分标准">评分标准</h2>
+<table>
+  <thead>
+    <tr><th>维度</th><th>权重</th><th>评价要点</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>功能实现</td><td>30%</td><td>根据项目要求设计功能，实现完整的查找、更新和结果展示流程</td></tr>
+    <tr><td>数据结构设计</td><td>30%</td><td>合理选择并实现查找结构，能说明结构特点、适用场景和优缺点</td></tr>
+    <tr><td>性能分析</td><td>20%</td><td>完成多场景测试，给出 ASL、构造开销、冲突率等关键指标分析</td></tr>
+    <tr><td>用户交互与代码质量</td><td>20%</td><td>界面清晰，代码结构合理，可维护性好，包含必要注释和文档</td></tr>
+  </tbody>
+</table>
+
+<blockquote><p><small>注：评分标准同时基于你的报告和实际程序内容进行评估。</small></p></blockquote>
+
+<h3>目录结构建议</h3>
+<ul>
+  <li><code>src/</code>：源代码</li>
+  <li><code>data/</code>：测试数据</li>
+  <li><code>result/</code>：性能测试结果</li>
+  <li><code>report/</code>：实验报告</li>
+  <li><code>main.cpp</code>：统一入口，通过菜单选择应用项目或测评项目</li>
+</ul>
+    </article>
+  </main>
+  <footer class="footer">查找算法综合项目说明来源于 src/Search/Project/README.md。</footer>
+  <script src="assets/slides.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BST插入步骤3 - 插入完成">
+<defs>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="120%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#187990" flood-opacity=".10"/></filter>
+</defs>
+<text x="360" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#187990">BST 插入操作</text>
+<text x="360" y="58" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#61737c">向 BST 中插入 key = 6，找到合适的空位置</text>
+
+<line x1="360" y1="110" x2="240" y2="180" stroke="#b8c4cc" stroke-width="1.8"/>
+<line x1="360" y1="110" x2="480" y2="180" stroke="#edf4f6" stroke-width="1.5"/>
+<line x1="240" y1="210" x2="180" y2="280" stroke="#d8e8ec" stroke-width="2"/>
+<line x1="240" y1="210" x2="300" y2="280" stroke="#2d9bb3" stroke-width="2.5" stroke-dasharray="6,3"/>
+<!-- 新边: 7 -> 6 -->
+<line x1="300" y1="318" x2="260" y2="355" stroke="#f0a500" stroke-width="2.5" stroke-dasharray="5,3"/>
+
+<circle cx="360" cy="95" r="32" fill="#b8c4cc" stroke="#8c959f" stroke-width="1.8" filter="url(#sh)"/>
+<text x="360" y="103" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="22" font-weight="700" fill="#fff">8</text>
+
+<circle cx="240" cy="195" r="28" fill="#b8c4cc" stroke="#8c959f" stroke-width="1.8" filter="url(#sh)"/>
+<text x="240" y="203" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" font-weight="700" fill="#fff">5</text>
+
+<circle cx="480" cy="195" r="28" fill="#edf4f6" stroke="#b8c4cc" stroke-width="1.5" filter="url(#sh)"/>
+<text x="480" y="203" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" font-weight="700" fill="#aab8be">12</text>
+
+<circle cx="180" cy="295" r="24" fill="#dff5f7" stroke="#187990" stroke-width="1.6" filter="url(#sh)"/>
+<text x="180" y="302" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#1d2a2f">3</text>
+
+<!-- 节点 7 (当前) -->
+<circle cx="300" cy="295" r="28" fill="#2d9bb3" stroke="#187990" stroke-width="2.2" filter="url(#sh)"/>
+<text x="300" y="303" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="20" font-weight="700" fill="#fff">7</text>
+
+<!-- 新节点 6 (插入位置) -->
+<circle cx="255" cy="368" r="24" fill="#f0a500" stroke="#c8a800" stroke-width="2.5" filter="url(#sh)"/>
+<text x="255" y="375" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="18" font-weight="800" fill="#fff">6</text>
+<text x="255" y="338" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#f0a500">↓</text>
+<text x="255" y="408" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#c8a800">新节点</text>
+
+<rect x="430" y="300" width="180" height="54" rx="8" fill="#187990"/>
+<text x="520" y="322" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#fff">插入成功！</text>
+<text x="520" y="344" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#dff5f7">6 作为 7 的左子节点</text>
+
+<rect x="20" y="340" width="78" height="32" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>
+<text x="59" y="361" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#61737c">Step 3</text>
+</svg>

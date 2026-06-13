@@ -1,0 +1,53 @@
+<svg viewBox="0 0 720 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="哈希表步骤4 - 查找">
+<defs>
+  <filter id="sh" x="-6%" y="-6%" width="112%" height="116%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#187990" flood-opacity=".08"/></filter>
+</defs>
+<text x="360" y="36" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#187990">哈希表操作</text>
+<text x="360" y="58" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#61737c">查找 key = 34，从 h(34) = 1 开始探测</text>
+
+<g transform="translate(200, 90)">
+  <text x="-40" y="30" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">下标</text>
+  <text x="200" y="30" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">值</text>
+  <g filter="url(#sh)">
+    <rect x="0"  y="40" width="48" height="36" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
+    <text x="24" y="64" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">0</text>
+    <rect x="48" y="40" width="130" height="36" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
+    <text x="113" y="64" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#b8c4cc">空</text>
+
+    <!-- 槽位 1: 23 (不是目标，继续探测) -->
+    <rect x="0"  y="76" width="48" height="36" fill="#f0a500" stroke="#c8a800" stroke-width="2"/>
+    <text x="24" y="100" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#fff">1</text>
+    <rect x="48" y="76" width="130" height="36" fill="#f0a500" stroke="#c8a800" stroke-width="2"/>
+    <text x="113" y="100" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">23 ≠ 34，跳过</text>
+
+    <!-- 槽位 2: 34 找到！ -->
+    <rect x="0"  y="112" width="48" height="36" fill="#187990" stroke="#0d5e6e" stroke-width="2.2"/>
+    <text x="24" y="136" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#fff">2</text>
+    <rect x="48" y="112" width="130" height="36" fill="#187990" stroke="#0d5e6e" stroke-width="2.2"/>
+    <text x="113" y="136" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="800" fill="#fff">34 ✓ 找到！</text>
+
+    <rect x="0"  y="148" width="48" height="36" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
+    <text x="24" y="172" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">3</text>
+    <rect x="48" y="148" width="130" height="36" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
+    <text x="113" y="172" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#b8c4cc">空</text>
+
+    <rect x="0"  y="184" width="48" height="36" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
+    <text x="24" y="208" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">…</text>
+    <rect x="48" y="184" width="130" height="36" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
+    <text x="113" y="208" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#b8c4cc">空</text>
+  </g>
+</g>
+
+<rect x="440" y="100" width="260" height="100" rx="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.2"/>
+<text x="570" y="124" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#1d2a2f">查找过程</text>
+<text x="570" y="146" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#61737c">1. h(34) = 1</text>
+<text x="570" y="164" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#f0a500">2. 槽位 1 = 23 ≠ 34</text>
+<text x="570" y="182" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#187990">3. 槽位 2 = 34 ✓</text>
+
+<rect x="440" y="220" width="260" height="60" rx="8" fill="#187990"/>
+<text x="570" y="247" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#fff">查找成功！</text>
+<text x="570" y="268" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#dff5f7">探测次数 = 2，期望近似 O(1)</text>
+
+<rect x="20" y="300" width="78" height="32" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>
+<text x="59" y="321" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#61737c">Step 4</text>
+</svg>

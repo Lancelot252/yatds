@@ -1,0 +1,74 @@
+<svg viewBox="0 0 720 458" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Trie步骤2 - 查找dog">
+<defs>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="120%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#187990" flood-opacity=".08"/></filter>
+</defs>
+<text x="360" y="34" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#187990">Trie（字典树/前缀树）</text>
+<text x="360" y="55" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#61737c">查找关键字 "dog"：逐字符沿路径匹配，到达结尾节点（★）</text>
+
+<!-- 根节点（高亮路径起点） -->
+<circle cx="360" cy="90" r="22" fill="#187990" stroke="#0d5e6e" stroke-width="2.5" filter="url(#sh)"/>
+<text x="360" y="98" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#fff">root</text>
+
+<!-- 根 → d（高亮） -->
+<line x1="330" y1="108" x2="210" y2="168" stroke="#f0a500" stroke-width="3"/>
+<text x="232" y="130" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#f0a500">'d'</text>
+
+<!-- 根 → c（灰暗） -->
+<line x1="390" y1="108" x2="510" y2="168" stroke="#d8e8ec" stroke-width="1.5"/>
+<text x="462" y="132" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#b8c4cc">c</text>
+
+<!-- 节点 d（高亮，已访问） -->
+<circle cx="210" cy="180" r="22" fill="#187990" stroke="#0d5e6e" stroke-width="2.5" filter="url(#sh)"/>
+<text x="210" y="188" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">d</text>
+<text x="238" y="178" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#187990">①</text>
+
+<!-- 节点 c（灰暗） -->
+<circle cx="510" cy="180" r="20" fill="#f2f4f5" stroke="#d8e8ec" stroke-width="1.5"/>
+<text x="510" y="188" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" fill="#b8c4cc">c</text>
+
+<!-- d → o（高亮） -->
+<line x1="210" y1="202" x2="210" y2="255" stroke="#f0a500" stroke-width="3"/>
+<text x="222" y="232" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#f0a500">'o'</text>
+
+<!-- c → a（灰暗） -->
+<line x1="510" y1="200" x2="510" y2="255" stroke="#d8e8ec" stroke-width="1.5"/>
+<text x="520" y="232" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#b8c4cc">a</text>
+
+<!-- 节点 o（高亮，已访问；★ "do"结尾但继续走）-->
+<circle cx="210" cy="268" r="22" fill="#187990" stroke="#0d5e6e" stroke-width="2.5" filter="url(#sh)"/>
+<text x="210" y="276" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">o</text>
+<text x="238" y="265" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#187990">②</text>
+<text x="182" y="285" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="10" fill="#61737c">★已是"do"结尾</text>
+<text x="182" y="299" text-anchor="end" font-family="'Microsoft YaHei',sans-serif" font-size="10" fill="#61737c">但 target 未完</text>
+
+<!-- 节点 a（灰暗） -->
+<circle cx="510" cy="268" r="20" fill="#f2f4f5" stroke="#d8e8ec" stroke-width="1.5"/>
+<text x="510" y="276" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" fill="#b8c4cc">a</text>
+
+<!-- o → g（高亮） -->
+<line x1="210" y1="290" x2="210" y2="338" stroke="#f0a500" stroke-width="3"/>
+<text x="222" y="318" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#f0a500">'g'</text>
+
+<!-- a → t/r（灰暗） -->
+<line x1="495" y1="285" x2="440" y2="335" stroke="#d8e8ec" stroke-width="1.5"/>
+<line x1="525" y1="285" x2="575" y2="335" stroke="#d8e8ec" stroke-width="1.5"/>
+
+<!-- 节点 g（命中，isEnd=true）-->
+<circle cx="210" cy="350" r="22" fill="#187990" stroke="#0d5e6e" stroke-width="2.5" filter="url(#sh)"/>
+<text x="210" y="358" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">g</text>
+<text x="238" y="348" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#187990">③★</text>
+
+<!-- 节点 t r（灰暗） -->
+<circle cx="440" cy="348" r="18" fill="#f2f4f5" stroke="#d8e8ec" stroke-width="1.5"/>
+<text x="440" y="355" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#b8c4cc">t</text>
+<circle cx="575" cy="348" r="18" fill="#f2f4f5" stroke="#d8e8ec" stroke-width="1.5"/>
+<text x="575" y="355" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" fill="#b8c4cc">r</text>
+
+<!-- 结果 -->
+<rect x="180" y="384" width="360" height="62" rx="8" fill="#187990" filter="url(#sh)"/>
+<text x="360" y="408" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#fff">✓ 查找成功！</text>
+<text x="360" y="428" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" fill="#dff5f7">"dog" 存在，isEnd = true，比较 3 次</text>
+
+<rect x="20" y="416" width="68" height="28" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>
+<text x="54" y="435" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#61737c">Step 2</text>
+</svg>

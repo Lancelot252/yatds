@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>插值查找教程与任务</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Ccircle cx='26' cy='26' r='12' stroke='%23187990' stroke-width='6' fill='none'/%3E%3Cpath d='M35 35 L50 50' stroke='%23187990' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <div class="nav-item has-submenu">
+          <a href="linear.html">线性结构</a>
+          <div class="submenu" aria-label="线性结构子页面">
+            <a href="linear-list.html">线性表</a>
+            <a href="linear-stack-queue.html">栈和队列</a>
+            <a href="linear-project.html">Project</a>
+            <a href="linear-string.html">字符串</a>
+          </div>
+        </div>
+        <a href="tree.html">树结构</a>
+        <a href="index.html#graph-placeholder">图结构</a>
+        <a href="index.html#hash-placeholder">哈希</a>
+        <div class="nav-item has-submenu">
+          <a class="active" href="search.html">查找算法</a>
+          <div class="submenu" aria-label="查找算法子页面">
+            <a href="search-sequential.html">顺序查找</a>
+            <a href="search-binary.html">二分查找</a>
+            <a href="search-interpolation.html">插值查找</a>
+            <a href="search-fibonacci.html">斐波那契查找</a>
+            <a href="search-static-tree.html">静态树表</a>
+            <a href="search-indexed-sequential.html">索引顺序表</a>
+            <a href="search-bst.html">BST</a>
+            <a href="search-avl.html">AVL 树</a>
+            <a href="search-btree.html">B-树/B+树</a>
+            <a href="search-trie.html">Trie</a>
+            <a href="search-hash.html">哈希表</a>
+            <a href="search-project.html">Project</a>
+          </div>
+        </div>
+        <div class="nav-item has-submenu">
+          <a href="sort.html">排序算法</a>
+          <div class="submenu" aria-label="排序算法子页面">
+            <a href="sort-bubble.html">冒泡排序</a>
+            <a href="sort-selection.html">选择排序</a>
+            <a href="sort-insertion.html">插入排序</a>
+            <a href="sort-shell.html">希尔排序</a>
+            <a href="sort-quick.html">快速排序</a>
+            <a href="sort-merge.html">归并排序</a>
+            <a href="sort-heap.html">堆排序</a>
+            <a href="sort-radix.html">基数排序</a>
+            <a href="sort-project.html">Project</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="page-shell">
+<aside class="toc toc-chapters">
+  <a class="toc-root" href="#插值查找"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke-width="1.9" fill="none" stroke="currentColor"/><path d="m16 16 4 4" stroke-width="1.9" stroke-linecap="round"/></svg></span><span>插值查找</span></a>
+  <a class="toc-chapter" href="#查找过程"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">查找过程</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#插值公式"><span>1.1</span><strong>插值公式</strong></a>
+    <a class="toc-subitem" href="#过程模拟"><span>1.2</span><strong>过程模拟</strong></a>
+  </div>
+  <a class="toc-chapter" href="#算法特性"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">算法特性</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <a class="toc-chapter" href="#baseline-任务"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+</aside>
+    <article class="content">
+      <h1 id="插值查找">插值查找（Interpolation Search）</h1>
+<blockquote><p><small>插值查找是二分查找的改进：不固定取中点，而是根据目标值与区间端点的比例关系，估算目标可能所在的位置。</small></p><p><small>当数据均匀分布时，插值查找期望 O(log log n) 次探针，远优于二分查找的 O(log n)。</small></p></blockquote>
+
+<h2 id="查找过程">查找过程</h2>
+
+<h3 id="插值公式">插值公式</h3>
+<p>设有序数组 <code>A[lo..hi]</code>，目标 <code>target</code>，插值探针位置按以下公式估算：</p>
+<blockquote>
+  <p><code>probe = lo + (target − A[lo]) / (A[hi] − A[lo]) × (hi − lo)</code></p>
+</blockquote>
+<p>若 <code>A[probe] = target</code>，查找成功；若 <code>A[probe] < target</code>，在右半部分继续；否则在左半部分继续。这与二分查找的区别仅在于 probe 的计算方式：二分固定取 <code>(lo+hi)/2</code>，插值按"比例"动态估算。</p>
+
+<h3 id="过程模拟">过程模拟</h3>
+<p>以有序数组 <code>[1, 3, 5, 7, 9, 11, 13]</code>、目标 <code>target = 11</code> 为例：</p>
+
+<div class="slide-deck">
+  <div class="slide-stage">
+    <img src="assets/images/search/interpolation_search_step1.svg" alt="插值查找步骤 1">
+    <span class="slide-title" style="display:none">步骤 1</span>
+    <span class="slide-count" style="display:none"></span>
+    <div data-slide-src="assets/images/search/interpolation_search_step1.svg" data-slide-title="步骤 1：按比例公式计算探针位置 probe=5"></div>
+    <div data-slide-src="assets/images/search/interpolation_search_step2.svg" data-slide-title="步骤 2：A[5]=11=target，一次探针直接命中"></div>
+  </div>
+  <div class="slide-controls">
+    <button type="button" data-slide-prev>&lt;</button>
+    <div class="slide-meta">
+      <span id="slideLabel">步骤 1 / 2</span>
+      <div class="slide-dots" id="slideDots"></div>
+    </div>
+    <button type="button" data-slide-next>&gt;</button>
+  </div>
+</div>
+
+<h2 id="算法特性">算法特性</h2>
+<ul>
+  <li><strong>时间复杂度：</strong>均匀分布时期望 O(log log n)；最坏情况（极端非均匀分布）退化至 O(n)。</li>
+  <li><strong>空间复杂度：O(1)，原地查找。</strong></li>
+  <li><strong>前提条件：</strong>必须是有序数组；数据分布越均匀，探针越精准。</li>
+  <li><strong>与二分对比：</strong>均匀数据中插值往往一次命中；非均匀数据中二分更稳定。</li>
+</ul>
+
+<table>
+  <thead>
+    <tr><th>算法</th><th>探针位置</th><th>均匀分布</th><th>非均匀分布</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>二分查找</td><td>(lo+hi)/2，固定取中</td><td>O(log n)</td><td>O(log n)</td></tr>
+    <tr><td>插值查找</td><td>按比例估算，动态</td><td>O(log log n)</td><td>最坏 O(n)</td></tr>
+  </tbody>
+</table>
+
+<h2 id="baseline-任务">Baseline 任务：插值查找</h2>
+<h3>任务内容</h3>
+<p>完成 <code>ordered_search.cpp</code>，实现以下函数：</p>
+<ol>
+  <li>
+    <strong>插值查找</strong> <code>int InterpolationSearch(vector&lt;int&gt;&amp; nums, int target)</code>
+    <ul>
+      <li>根据关键字分布估计查找位置，适用于分布较均匀的数据</li>
+      <li>返回目标所在下标，未找到返回 -1</li>
+      <li>注意 <code>A[hi] == A[lo]</code> 时的边界处理（避免除以零）</li>
+    </ul>
+  </li>
+</ol>
+<h3>文件结构</h3>
+<ul>
+  <li><code>ordered_search.h</code>：函数声明</li>
+  <li><code>ordered_search.cpp</code>：有序表查找核心实现</li>
+  <li><code>test.cpp</code>：测试程序，验证查找功能正确性</li>
+</ul>
+<h3>验证方式</h3>
+<ul>
+  <li>编译：<code>g++ -std=c++17 test.cpp ordered_search.cpp -o testOrderedSearch</code></li>
+  <li>运行：<code>./testOrderedSearch</code></li>
+</ul>
+    </article>
+  </main>
+  <footer class="footer">插值查找内容来源于 src/Search/Baseline/src/StaticSearch/OrderedSearch。</footer>
+  <script src="assets/slides.js"></script>
+</body>
+</html>
