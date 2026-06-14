@@ -67,7 +67,7 @@
 <p>字符串（String）是由零个或多个字符组成的有限序列。</p>
 <p>我们可以将字符串类比为一段连续存放的文字，虽然在很多高级语言中它已经被封装成基本的数据类型或者对象，但从存储结构上看，字符串本质上是一个元素类型为字符的线性表。最常见的存储形式就是顺序存储（即字符数组）。</p>
 <p>如图所示，由于字符串中的字符在内存中是连续存取的，我们可以使用下标来快速访问对应的字符。</p>
-<figure><img src="assets/images/string_array.png" alt="string_array"><figcaption>string_array</figcaption></figure>
+<figure><img src="assets/images/Linear/string_array.svg" alt="string_array"><figcaption>string_array</figcaption></figure>
 <h3 id="字符串的基本操作">字符串的基本操作</h3>
 <p>字符串的常用操作如表所示，具体的方法名需要根据所使用的编程语言来确定。在此，我们以常见的求长度、拼接、求子串等命名为例（即 C++ 中<code>&lt;string&gt;</code>库中对应方法）。</p>
 <table><thead><tr><th>方法</th><th>描述</th><th>时间复杂度</th></tr></thead><tbody><tr><td><code>length()</code></td><td>获取字符串长度</td><td>$O(1)$</td></tr><tr><td><code>append()</code></td><td>在字符串末尾拼接另一个字符串</td><td>$O(m)$</td></tr><tr><td><code>substr()</code></td><td>从指定位置截取指定长度的子串</td><td>$O(k)$</td></tr></tbody></table>

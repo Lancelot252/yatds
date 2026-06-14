@@ -63,7 +63,7 @@
 <p>栈（stack）是一种遵循先入后出逻辑的线性数据结构。</p>
 <p>我们可以将栈类比为桌面上的一摞盘子，规定每次只能移动一个盘子，那么想取出底部的盘子，则需要先将上面的盘子依次移走。我们将盘子替换为各种类型的元素（如整数、字符、对象等），就得到了栈这种数据结构。</p>
 <p>如图所示，我们把堆叠元素的顶部称为“栈顶”，底部称为“栈底”。将把元素添加到栈顶的操作叫作“入栈”，删除栈顶元素的操作叫作“出栈”。</p>
-<figure><img src="assets/images/stack.png" alt="stack"><figcaption>stack</figcaption></figure>
+<figure><img src="assets/images/Linear/stack.svg" alt="stack"><figcaption>stack</figcaption></figure>
 <h3 id="栈的基本操作">栈的基本操作</h3>
 <p>栈的常用操作如表所示，具体的方法名需要根据所使用的编程语言来确定。在此，我们以常见的 push()、pop()、top() 命名为例（即 C++ 中<code>&lt;stack&gt;</code>库中栈的对应方法）。</p>
 <table><thead><tr><th>方法</th><th>描述</th><th>时间复杂度</th></tr></thead><tbody><tr><td><code>push()</code></td><td>元素入栈（添加至栈顶）</td><td>$O(1)$</td></tr><tr><td><code>pop()</code></td><td>栈顶元素出栈</td><td>$O(1)$</td></tr><tr><td><code>top()</code></td><td>访问栈顶元素</td><td>$O(1)$</td></tr></tbody></table>
@@ -104,9 +104,9 @@ bool empty = stack.empty();</code></pre>
     <div class="slide-meta"><div class="slide-title"></div><div class="slide-count"></div><div class="slide-dots"></div></div>
     <button type="button" data-slide-next aria-label="下一张">›</button>
   </div>
-  <span data-slide-src="assets/images/linkedlist_stack_step1.png" data-slide-title="基于链表的栈：初始结构"></span>
-<span data-slide-src="assets/images/linkedlist_stack_step2_push.png" data-slide-title="基于链表的栈：入栈"></span>
-<span data-slide-src="assets/images/linkedlist_stack_step3_pop.png" data-slide-title="基于链表的栈：出栈"></span>
+  <span data-slide-src="assets/images/Linear/linkedlist_stack_step1.svg" data-slide-title="基于链表的栈：初始结构"></span>
+<span data-slide-src="assets/images/Linear/linkedlist_stack_step2_push.svg" data-slide-title="基于链表的栈：入栈"></span>
+<span data-slide-src="assets/images/Linear/linkedlist_stack_step3_pop.svg" data-slide-title="基于链表的栈：出栈"></span>
 </section>
 <p>以下是基于链表实现栈的示例代码：</p>
 <pre><code>/* 基于链表实现的栈 */
@@ -172,9 +172,9 @@ class LinkedListStack {
     <div class="slide-meta"><div class="slide-title"></div><div class="slide-count"></div><div class="slide-dots"></div></div>
     <button type="button" data-slide-next aria-label="下一张">›</button>
   </div>
-  <span data-slide-src="assets/images/array_stack_step1.png" data-slide-title="基于数组的栈：初始结构"></span>
-<span data-slide-src="assets/images/array_stack_step2_push.png" data-slide-title="基于数组的栈：入栈"></span>
-<span data-slide-src="assets/images/array_stack_step3_pop.png" data-slide-title="基于数组的栈：出栈"></span>
+  <span data-slide-src="assets/images/Linear/array_stack_step1.svg" data-slide-title="基于数组的栈：初始结构"></span>
+<span data-slide-src="assets/images/Linear/array_stack_step2_push.svg" data-slide-title="基于数组的栈：入栈"></span>
+<span data-slide-src="assets/images/Linear/array_stack_step3_pop.svg" data-slide-title="基于数组的栈：出栈"></span>
 </section>
 <pre><code>/* 基于数组实现的栈 */
 class ArrayStack {
@@ -257,7 +257,7 @@ PERF std_stack n=100000 ops=200000 time_ms=8.91</code></pre>
 <h2 id="baseline-任务-2-队列的基本实现">Baseline 任务 2: 队列的基本实现</h2>
 <p>队列（queue）是一种遵循先入先出规则的线性数据结构。顾名思义，队列模拟了排队现象，即新来的人不断加入队列尾部，而位于队列头部的人逐个离开。</p>
 <p>如图所示，我们将队列头部称为“队首”，尾部称为“队尾”，将把元素加入队尾的操作称为“入队”，删除队首元素的操作称为“出队”。</p>
-<figure><img src="assets/images/queue.png" alt="queue"><figcaption>queue</figcaption></figure>
+<figure><img src="assets/images/Linear/queue.svg" alt="queue"><figcaption>queue</figcaption></figure>
 <h3 id="队列的基本操作">队列的基本操作</h3>
 <p>队列的常见操作如表所示（以 C++ 中 <code>&lt;queue&gt;</code> 库的对应方法为例）：</p>
 <table><thead><tr><th>方法</th><th>描述</th><th>时间复杂度</th></tr></thead><tbody><tr><td><code>push()</code></td><td>元素入队（添加至队尾）</td><td>$O(1)$</td></tr><tr><td><code>pop()</code></td><td>队首元素出队</td><td>$O(1)$</td></tr><tr><td><code>front()</code></td><td>访问队首元素</td><td>$O(1)$</td></tr></tbody></table>
@@ -295,9 +295,9 @@ bool empty = queue.empty();</code></pre>
     <div class="slide-meta"><div class="slide-title"></div><div class="slide-count"></div><div class="slide-dots"></div></div>
     <button type="button" data-slide-next aria-label="下一张">›</button>
   </div>
-  <span data-slide-src="assets/images/linkedlist_queue_step1.png" data-slide-title="基于链表的队列：初始结构"></span>
-<span data-slide-src="assets/images/linkedlist_queue_step2_push.png" data-slide-title="基于链表的队列：入队"></span>
-<span data-slide-src="assets/images/linkedlist_queue_step3_pop.png" data-slide-title="基于链表的队列：出队"></span>
+  <span data-slide-src="assets/images/Linear/linkedlist_queue_step1.svg" data-slide-title="基于链表的队列：初始结构"></span>
+<span data-slide-src="assets/images/Linear/linkedlist_queue_step2_push.svg" data-slide-title="基于链表的队列：入队"></span>
+<span data-slide-src="assets/images/Linear/linkedlist_queue_step3_pop.svg" data-slide-title="基于链表的队列：出队"></span>
 </section>
 <pre><code>/* 基于链表实现的队列 */
 class LinkedListQueue {
@@ -388,9 +388,9 @@ class LinkedListQueue {
     <div class="slide-meta"><div class="slide-title"></div><div class="slide-count"></div><div class="slide-dots"></div></div>
     <button type="button" data-slide-next aria-label="下一张">›</button>
   </div>
-  <span data-slide-src="assets/images/array_queue_step1.png" data-slide-title="基于数组的队列：初始结构"></span>
-<span data-slide-src="assets/images/array_queue_step2_push.png" data-slide-title="基于数组的队列：入队"></span>
-<span data-slide-src="assets/images/array_queue_step3_pop.png" data-slide-title="基于数组的队列：出队"></span>
+  <span data-slide-src="assets/images/Linear/array_queue_step1.svg" data-slide-title="基于数组的队列：初始结构"></span>
+<span data-slide-src="assets/images/Linear/array_queue_step2_push.svg" data-slide-title="基于数组的队列：入队"></span>
+<span data-slide-src="assets/images/Linear/array_queue_step3_pop.svg" data-slide-title="基于数组的队列：出队"></span>
 </section>
 <p>你可能会发现一个问题：在不断进行入队和出队的过程中，<code>front</code> 和 <code>rear</code> 都在向右移动，<strong>当它们到达数组尾部时就无法继续移动了</strong>。</p>
 <h3 id="任务内容-2">任务内容</h3>

@@ -1,0 +1,55 @@
+<svg viewBox="0 0 1232 704" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="stack">
+<defs>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="120%"><feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#187990" flood-opacity=".08"/></filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#b7c1c5"/></marker>
+  <marker id="arrowTeal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#187990"/></marker>
+</defs>
+<rect width="1232" height="704" fill="#fff"/>
+<text x="150" y="80" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="24" font-weight="700" fill="#187990" >栈</text>
+<text x="150" y="112" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="600" fill="#1d2a2f" >stack</text>
+<text x="94" y="235" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#1d2a2f" >入栈</text>
+<line x1="98" y1="252" x2="98" y2="336" stroke="#187990" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowTeal)"/>
+<text x="244" y="235" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#1d2a2f" >出栈</text>
+<line x1="240" y1="336" x2="240" y2="252" stroke="#187990" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowTeal)"/>
+<text x="170" y="205" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#1d2a2f" >栈顶</text>
+<rect x="142" y="242" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="169.0" y="272.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >2</text>
+<rect x="142" y="294" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="169.0" y="324.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >3</text>
+<rect x="142" y="346" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="169.0" y="376.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >1</text>
+<text x="168" y="430" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#1d2a2f" >栈底</text>
+<line x1="296" y1="330" x2="358" y2="330" stroke="#b7c1c5" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<text x="450" y="86" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#1d2a2f" >入栈</text>
+<text x="450" y="114" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="16" font-weight="500" fill="#1d2a2f" >push(5)</text>
+<rect x="423" y="137" width="54" height="36" rx="6" fill="#fff" stroke="#d8e8ec" stroke-width="1.8"/><text x="450.0" y="160.25" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="700" fill="#61737c" >5</text>
+<rect x="423" y="195" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="450.0" y="225.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >5</text>
+<rect x="423" y="247" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="450.0" y="277.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >2</text>
+<rect x="423" y="299" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="450.0" y="329.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >3</text>
+<rect x="423" y="351" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="450.0" y="381.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >1</text>
+<line x1="515" y1="330" x2="577" y2="330" stroke="#b7c1c5" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<text x="672" y="86" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#1d2a2f" >入栈</text>
+<text x="672" y="114" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="16" font-weight="500" fill="#1d2a2f" >push(4)</text>
+<rect x="645" y="137" width="54" height="36" rx="6" fill="#fff" stroke="#d8e8ec" stroke-width="1.8"/><text x="672.0" y="160.25" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="700" fill="#61737c" >4</text>
+<rect x="645" y="195" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="672.0" y="225.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >4</text>
+<rect x="645" y="247" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="672.0" y="277.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >5</text>
+<rect x="645" y="299" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="672.0" y="329.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >2</text>
+<rect x="645" y="351" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="672.0" y="381.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >3</text>
+<rect x="645" y="403" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="672.0" y="433.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >1</text>
+<line x1="737" y1="330" x2="799" y2="330" stroke="#b7c1c5" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<text x="894" y="86" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#1d2a2f" >出栈</text>
+<text x="894" y="114" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="16" font-weight="500" fill="#1d2a2f" >pop()</text>
+<rect x="867" y="195" width="54" height="48" rx="7" fill="#7ec8e3" stroke="#187990" stroke-width="1.8"/><text x="894.0" y="225.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >4</text>
+<rect x="867" y="247" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="894.0" y="277.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" ></text>
+<rect x="867" y="299" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="894.0" y="329.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >5</text>
+<rect x="867" y="351" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="894.0" y="381.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >2</text>
+<rect x="867" y="403" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="894.0" y="433.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >3</text>
+<rect x="867" y="455" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="894.0" y="485.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >1</text>
+<text x="955" y="220" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#187990" >4</text>
+<line x1="959" y1="330" x2="1021" y2="330" stroke="#b7c1c5" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<text x="1114" y="86" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#1d2a2f" >出栈</text>
+<text x="1114" y="114" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="16" font-weight="500" fill="#1d2a2f" >pop()</text>
+<rect x="1087" y="195" width="54" height="48" rx="7" fill="#7ec8e3" stroke="#187990" stroke-width="1.8"/><text x="1114.0" y="225.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >5</text>
+<rect x="1087" y="247" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="1114.0" y="277.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" ></text>
+<rect x="1087" y="299" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="1114.0" y="329.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >2</text>
+<rect x="1087" y="351" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="1114.0" y="381.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >3</text>
+<rect x="1087" y="403" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="1114.0" y="433.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >1</text>
+<text x="1176" y="220" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#187990" >5</text>
+</svg>

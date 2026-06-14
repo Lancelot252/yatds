@@ -1,0 +1,44 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="array queue step 3">
+<defs>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="120%"><feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#187990" flood-opacity=".08"/></filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#b7c1c5"/></marker>
+  <marker id="arrowTeal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#187990"/></marker>
+  <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#d3545d"/></marker>
+</defs>
+<rect width="1280" height="720" fill="#fff"/>
+<rect x="145" y="82" width="92" height="52" rx="8" fill="#f1f3f4" stroke="#d8e8ec" stroke-width="1.2"/>
+<text x="191.0" y="103.0" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="700" fill="#1d2a2f" >出队</text>
+<text x="191.0" y="123.0" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="500" fill="#61737c" >pop()</text>
+<rect x="160" y="180" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="187.0" y="210.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >1</text>
+<rect x="160" y="232" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="187.0" y="262.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >3</text>
+<rect x="160" y="284" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="187.0" y="314.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >2</text>
+<rect x="160" y="336" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="187.0" y="366.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >5</text>
+<text x="187" y="165" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="700" fill="#1d2a2f" >队首</text>
+<text x="187" y="430" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="700" fill="#1d2a2f" >队尾</text>
+<text x="80" y="245" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="700" fill="#1d2a2f" >出队</text>
+<line x1="118" y1="314" x2="118" y2="260" stroke="#187990" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arrowTeal)"/>
+<text x="80" y="392" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="700" fill="#1d2a2f" >入队</text>
+<line x1="118" y1="430" x2="118" y2="376" stroke="#187990" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arrowTeal)"/>
+<path d="M480 330 H428" stroke="#b7c1c5" stroke-width="12" stroke-linecap="round" marker-end="url(#arrow)" opacity=".75"/>
+<text x="584" y="318" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="700" fill="#61737c" >底层实现是数组</text>
+<text x="584" y="344" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="700" fill="#61737c" >对外表现为队列</text>
+<text x="190" y="462" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="16" font-weight="700" fill="#1d2a2f" >队列</text>
+<rect x="38" y="642" width="92" height="40" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.5"/><text x="84" y="668" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="16" font-weight="700" fill="#61737c" >Step 3</text>
+<rect x="862" y="117" width="70" height="328" rx="10" fill="#fff" stroke="#d8e8ec" stroke-width="2"/>
+<rect x="870" y="125" width="54" height="48" rx="7" fill="#fff" stroke="#d8e8ec" stroke-width="1.8"/><text x="897.0" y="155.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#61737c" >?</text>
+<rect x="870" y="177" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="897.0" y="207.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >3</text>
+<rect x="870" y="229" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="897.0" y="259.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >2</text>
+<rect x="870" y="281" width="54" height="48" rx="7" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="897.0" y="311.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >5</text>
+<rect x="870" y="333" width="54" height="48" rx="7" fill="#7ec8e3" stroke="#187990" stroke-width="1.8"/><text x="897.0" y="363.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" >4</text>
+<rect x="870" y="385" width="54" height="48" rx="7" fill="#fff" stroke="#d8e8ec" stroke-width="1.8"/><text x="897.0" y="415.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#61737c" ></text>
+<text x="842" y="208" text-anchor="end" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="700" fill="#d3545d" >front</text>
+<line x1="850" y1="203" x2="868" y2="203" stroke="#d3545d" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrowRed)"/>
+<text x="1030" y="330" text-anchor="start" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="24" font-weight="700" fill="#1d2a2f" >队列长度</text>
+<text x="1030" y="376" text-anchor="start" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="24" font-weight="700" fill="#1687c9" >size</text>
+<text x="1112" y="376" text-anchor="start" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" font-weight="700" fill="#1d2a2f" >=</text>
+<text x="1160" y="376" text-anchor="start" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="24" font-weight="700" fill="#1d2a2f" >4</text>
+<rect x="945" y="78" width="170" height="60" rx="8" fill="#f1f3f4" stroke="#d8e8ec" stroke-width="1.2"/>
+<text x="1030.0" y="103.0" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="700" fill="#1d2a2f" >1. 将 front 前进 1</text>
+<text x="1030.0" y="123.0" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="500" fill="#61737c" >2. 将 size 减 1</text>
+<text x="1060" y="650" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="11" font-weight="500" fill="#d0d5d7" >www.hello-algo.com</text>
+</svg>

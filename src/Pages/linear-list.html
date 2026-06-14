@@ -64,7 +64,7 @@
 <h2 id="baseline-任务-1-链表的基本实现">Baseline 任务 1：链表的基本实现</h2>
 <p>链表（linked list）是一种线性数据结构，其中的每个元素都是一个节点对象，各个节点通过“引用”相连接。引用记录了下一个节点的内存地址，通过它可以从当前节点访问到下一个节点。</p>
 <p>链表的设计使得各个节点可以分散存储在内存各处，它们的内存地址无须连续。</p>
-<figure><img src="assets/images/linked_list_definition_storage.png" alt="链表定义与存储方式"><figcaption>链表定义与存储方式</figcaption></figure>
+<figure><img src="assets/images/Linear/linked_list_definition_storage.svg" alt="链表定义与存储方式"><figcaption>链表定义与存储方式</figcaption></figure>
 <p>链表的组成单位是节点（node）对象。每个节点都包含两项数据：节点的“值”和指向下一节点的“引用”（指针）。</p>
 <p>一般而言，一个常见的 C++ 链表结构体定义如下：</p>
 <pre><code>/* 链表节点结构体 */
@@ -93,7 +93,7 @@ n3-&gt;next = n4;</code></pre>
 <h3 id="插入节点">插入节点</h3>
 <p>在链表中插入节点非常容易。如图所示，假设我们想在相邻的两个节点 <code>n0</code> 和 <code>n1</code> 之间插入一个新节点 <code>P</code> ，则只需改变两个节点引用（指针）即可，时间复杂度为 $O(1)$ 。</p>
 <p>相比之下，在数组中插入元素的时间复杂度为 $O(n)$ ，在大数据量下的效率较低。</p>
-<figure><img src="assets/images/insert_node.png" alt="节点的插入"><figcaption>节点的插入</figcaption></figure>
+<figure><img src="assets/images/Linear/insert_node.svg" alt="节点的插入"><figcaption>节点的插入</figcaption></figure>
 <p>C++版本的插入代码如下：</p>
 <pre><code>/* 在链表的节点 n0 之后插入节点 P */
 void insert(ListNode *n0, ListNode *P) {
@@ -104,7 +104,7 @@ void insert(ListNode *n0, ListNode *P) {
 <h3 id="删除节点">删除节点</h3>
 <p>如图所示，在链表中删除节点也非常方便，只需改变一个节点的引用（指针）即可。</p>
 <p>请注意，尽管在删除操作完成后节点 <code>P</code> 仍然指向 <code>n1</code> ，但实际上遍历此链表已经无法访问到 <code>P</code> ，这意味着 <code>P</code> 已经不再属于该链表了。</p>
-<figure><img src="assets/images/delete_node.png" alt="节点的删除"><figcaption>节点的删除</figcaption></figure>
+<figure><img src="assets/images/Linear/delete_node.svg" alt="节点的删除"><figcaption>节点的删除</figcaption></figure>
 <p>C++版本的删除代码如下：</p>
 <pre><code>/* 删除链表的节点 n0 之后的首个节点 */
 void remove(ListNode *n0) {

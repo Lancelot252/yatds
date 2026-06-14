@@ -1,0 +1,93 @@
+<svg viewBox="0 0 1348 688" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="链表定义与存储方式">
+<defs>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="120%"><feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#187990" flood-opacity=".08"/></filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#b7c1c5"/></marker>
+  <marker id="arrowTeal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#187990"/></marker>
+</defs>
+<rect width="1348" height="688" fill="#fff"/>
+<text x="266" y="130" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="28" font-weight="700" fill="#187990" >链表</text>
+<text x="266" y="164" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="600" fill="#1d2a2f" >Linked List</text>
+<circle cx="120" cy="250" r="22" fill="#a8d5c9" stroke="#187990" stroke-width="2" filter="url(#sh)"/>
+<text x="120" y="256" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="700" fill="#fff" >1</text>
+<line x1="148" y1="250" x2="176" y2="250" stroke="#187990" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowTeal)"/>
+<circle cx="204" cy="250" r="22" fill="#a8d5c9" stroke="#187990" stroke-width="2" filter="url(#sh)"/>
+<text x="204" y="256" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="700" fill="#fff" >3</text>
+<line x1="232" y1="250" x2="260" y2="250" stroke="#187990" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowTeal)"/>
+<circle cx="288" cy="250" r="22" fill="#a8d5c9" stroke="#187990" stroke-width="2" filter="url(#sh)"/>
+<text x="288" y="256" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="700" fill="#fff" >2</text>
+<line x1="316" y1="250" x2="344" y2="250" stroke="#187990" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowTeal)"/>
+<circle cx="372" cy="250" r="22" fill="#a8d5c9" stroke="#187990" stroke-width="2" filter="url(#sh)"/>
+<text x="372" y="256" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="700" fill="#fff" >5</text>
+<line x1="400" y1="250" x2="428" y2="250" stroke="#187990" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowTeal)"/>
+<circle cx="456" cy="250" r="22" fill="#a8d5c9" stroke="#187990" stroke-width="2" filter="url(#sh)"/>
+<text x="456" y="256" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="700" fill="#fff" >4</text>
+<text x="575" y="256" text-anchor="start" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="500" fill="#61737c" >None</text>
+<text x="372" y="338" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="600" fill="#61737c" >指向下个节点的</text>
+<text x="372" y="368" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" font-weight="700" fill="#187990" >引用（指针）</text>
+<line x1="500" y1="380" x2="420" y2="284" stroke="#187990" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrowTeal)"/>
+<text x="268" y="470" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" font-weight="700" fill="#187990" >节点</text>
+<text x="268" y="500" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="500" fill="#1d2a2f" >node</text>
+<text x="1008" y="120" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="600" fill="#61737c" >存储顺序的内存空间是分散的</text>
+<rect x="825" y="165" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="867" y="165" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="909" y="165" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="951" y="165" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="993" y="165" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="1035" y="165" width="36" height="36" rx="5" fill="#a8d5c9" stroke="#d8e8ec" stroke-width="1.4"/>
+<text x="1053" y="189" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="700" fill="#fff" >4</text>
+<rect x="1077" y="165" width="36" height="36" rx="5" fill="#7ec8e3" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="1119" y="165" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="825" y="207" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="867" y="207" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="909" y="207" width="36" height="36" rx="5" fill="#a8d5c9" stroke="#d8e8ec" stroke-width="1.4"/>
+<text x="927" y="231" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="700" fill="#fff" >1</text>
+<rect x="951" y="207" width="36" height="36" rx="5" fill="#7ec8e3" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="993" y="207" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="1035" y="207" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="1077" y="207" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="1119" y="207" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="825" y="249" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="867" y="249" width="36" height="36" rx="5" fill="#a8d5c9" stroke="#d8e8ec" stroke-width="1.4"/>
+<text x="885" y="273" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="700" fill="#fff" >3</text>
+<rect x="909" y="249" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="951" y="249" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="993" y="249" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="1035" y="249" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="1077" y="249" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="1119" y="249" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="825" y="291" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="867" y="291" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="909" y="291" width="36" height="36" rx="5" fill="#7ec8e3" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="951" y="291" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="993" y="291" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="1035" y="291" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="1077" y="291" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="1119" y="291" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="825" y="333" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="867" y="333" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="909" y="333" width="36" height="36" rx="5" fill="#a8d5c9" stroke="#d8e8ec" stroke-width="1.4"/>
+<text x="927" y="357" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="700" fill="#fff" >2</text>
+<rect x="951" y="333" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="993" y="333" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="1035" y="333" width="36" height="36" rx="5" fill="#a8d5c9" stroke="#d8e8ec" stroke-width="1.4"/>
+<text x="1053" y="357" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="700" fill="#fff" >5</text>
+<rect x="1077" y="333" width="36" height="36" rx="5" fill="#7ec8e3" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="1119" y="333" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="825" y="375" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="867" y="375" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="909" y="375" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="951" y="375" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="993" y="375" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="1035" y="375" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="1077" y="375" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="1119" y="375" width="36" height="36" rx="5" fill="#fff" stroke="#d8e8ec" stroke-width="1.4"/>
+<rect x="808" y="555" width="28" height="28" rx="8" fill="#fff" stroke="#d8e8ec" stroke-width="1.2"/>
+<text x="822.0" y="574.0" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="700" fill="#1d2a2f" ></text>
+<text x="860" y="576" text-anchor="start" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="500" fill="#61737c" >可用内存空间</text>
+<rect x="808" y="598" width="28" height="28" rx="4" fill="#a8d5c9" stroke="#187990" stroke-width="1.8"/><text x="822.0" y="618.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" ></text>
+<text x="860" y="619" text-anchor="start" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="500" fill="#61737c" >存储节点值</text>
+<rect x="808" y="642" width="28" height="28" rx="4" fill="#7ec8e3" stroke="#187990" stroke-width="1.8"/><text x="822.0" y="662.3" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#fff" ></text>
+<text x="860" y="663" text-anchor="start" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="500" fill="#61737c" >存储节点指针</text>
+<text x="1045" y="621" text-anchor="start" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="500" fill="#61737c" >存储链表节点</text>
+<text x="1045" y="646" text-anchor="start" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="500" fill="#61737c" >的内存空间</text>
+</svg>

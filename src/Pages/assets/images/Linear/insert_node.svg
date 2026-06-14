@@ -1,0 +1,52 @@
+<svg viewBox="0 0 900 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="节点的插入">
+<defs>
+  <filter id="sh" x="-8%" y="-8%" width="116%" height="120%"><feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#187990" flood-opacity=".08"/></filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#b7c1c5"/></marker>
+  <marker id="arrowTeal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#187990"/></marker>
+</defs>
+<rect width="900" height="640" fill="#fff"/>
+<circle cx="466" cy="95" r="22" fill="#a8d5c9" stroke="#187990" stroke-width="2" filter="url(#sh)"/>
+<text x="466" y="101" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="700" fill="#fff" >1</text>
+<line x1="494" y1="95" x2="550" y2="95" stroke="#187990" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowTeal)"/>
+<circle cx="578" cy="95" r="22" fill="#7ec8e3" stroke="#187990" stroke-width="2" filter="url(#sh)"/>
+<text x="578" y="101" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="700" fill="#fff" >0</text>
+<line x1="606" y1="95" x2="662" y2="95" stroke="#187990" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowTeal)"/>
+<circle cx="690" cy="95" r="22" fill="#a8d5c9" stroke="#187990" stroke-width="2" filter="url(#sh)"/>
+<text x="690" y="101" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="700" fill="#fff" >3</text>
+<text x="466" y="142" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="500" fill="#61737c" >n0</text>
+<text x="578" y="142" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="700" fill="#187990" >P</text>
+<text x="690" y="142" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="500" fill="#61737c" >n1</text>
+<text x="762" y="100" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" font-weight="500" fill="#61737c" >···</text>
+<rect x="245" y="204" width="132" height="42" rx="8" fill="#eef6fb" stroke="#d8e8ec" stroke-width="1.2"/>
+<text x="311.0" y="230.0" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="700" fill="#1d2a2f" >P.next = n1</text>
+<text x="250" y="278" text-anchor="start" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="500" fill="#1d2a2f" >命令 P 指向 n1</text>
+<line x1="578" y1="160" x2="578" y2="210" stroke="#b7c1c5" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<circle cx="466" cy="300" r="22" fill="#a8d5c9" stroke="#187990" stroke-width="2" filter="url(#sh)"/>
+<text x="466" y="306" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="700" fill="#fff" >1</text>
+<line x1="494" y1="300" x2="550" y2="300" stroke="#187990" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowTeal)"/>
+<circle cx="578" cy="300" r="22" fill="#7ec8e3" stroke="#187990" stroke-width="2" filter="url(#sh)"/>
+<text x="578" y="306" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="700" fill="#fff" >0</text>
+<line x1="606" y1="300" x2="662" y2="300" stroke="#187990" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowTeal)"/>
+<circle cx="690" cy="300" r="22" fill="#a8d5c9" stroke="#187990" stroke-width="2" filter="url(#sh)"/>
+<text x="690" y="306" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="700" fill="#fff" >3</text>
+<text x="466" y="347" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="500" fill="#61737c" >n0</text>
+<text x="578" y="347" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="700" fill="#187990" >P</text>
+<text x="690" y="347" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="500" fill="#61737c" >n1</text>
+<text x="100" y="400" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="700" fill="#1d2a2f" >示例</text>
+<text x="100" y="432" text-anchor="start" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="500" fill="#1d2a2f" >在链表节点 n0 和 n1 之间插入节点 P</text>
+<rect x="245" y="440" width="132" height="42" rx="8" fill="#eef6fb" stroke="#d8e8ec" stroke-width="1.2"/>
+<text x="311.0" y="466.0" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="700" fill="#1d2a2f" >n0.next = P</text>
+<text x="250" y="514" text-anchor="start" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="500" fill="#1d2a2f" >命令 n0 指向 P</text>
+<line x1="578" y1="365" x2="578" y2="420" stroke="#b7c1c5" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<circle cx="466" cy="545" r="22" fill="#a8d5c9" stroke="#187990" stroke-width="2" filter="url(#sh)"/>
+<text x="466" y="551" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="700" fill="#fff" >1</text>
+<line x1="494" y1="545" x2="550" y2="545" stroke="#187990" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowTeal)"/>
+<circle cx="578" cy="545" r="22" fill="#7ec8e3" stroke="#187990" stroke-width="2" filter="url(#sh)"/>
+<text x="578" y="551" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="700" fill="#fff" >0</text>
+<line x1="606" y1="545" x2="662" y2="545" stroke="#187990" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowTeal)"/>
+<circle cx="690" cy="545" r="22" fill="#a8d5c9" stroke="#187990" stroke-width="2" filter="url(#sh)"/>
+<text x="690" y="551" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="700" fill="#fff" >3</text>
+<text x="466" y="592" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="500" fill="#61737c" >n0</text>
+<text x="578" y="592" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="700" fill="#187990" >P</text>
+<text x="690" y="592" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="500" fill="#61737c" >n1</text>
+</svg>
