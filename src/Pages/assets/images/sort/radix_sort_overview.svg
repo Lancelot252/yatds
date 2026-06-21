@@ -1,74 +1,127 @@
-<svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="基数排序概览">
+<svg viewBox="0 0 1080 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="基数排序概览">
 <defs><filter id="sh" x="-4%" y="-4%" width="108%" height="112%"><feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#187990" flood-opacity=".07"/></filter></defs>
 
-<text x="360" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="17" font-weight="700" fill="#1d2a2f">基数排序 — LSD（最低位优先）</text>
-
-<!-- 初始数组 -->
-<g transform="translate(180, 40)">
-  <text x="-35" y="18" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#187990">初始</text>
-  <rect x="0" y="0" width="380" height="38" rx="8" ry="8" fill="none" stroke="#187990" stroke-width="1.5"/>
-  <rect x="4" y="4" width="48" height="30" rx="5" ry="5" fill="#dff5f7" stroke="#187990" stroke-width="1.2"/><text x="28" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#1d2a2f">329</text>
-  <rect x="56" y="4" width="48" height="30" rx="5" ry="5" fill="#dff5f7" stroke="#187990" stroke-width="1.2"/><text x="80" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#1d2a2f">457</text>
-  <rect x="108" y="4" width="48" height="30" rx="5" ry="5" fill="#dff5f7" stroke="#187990" stroke-width="1.2"/><text x="132" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#1d2a2f">657</text>
-  <rect x="160" y="4" width="48" height="30" rx="5" ry="5" fill="#dff5f7" stroke="#187990" stroke-width="1.2"/><text x="184" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#1d2a2f">839</text>
-  <rect x="212" y="4" width="48" height="30" rx="5" ry="5" fill="#dff5f7" stroke="#187990" stroke-width="1.2"/><text x="236" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#1d2a2f">436</text>
-  <rect x="264" y="4" width="48" height="30" rx="5" ry="5" fill="#dff5f7" stroke="#187990" stroke-width="1.2"/><text x="288" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#1d2a2f">720</text>
-  <rect x="316" y="4" width="54" height="30" rx="5" ry="5" fill="#dff5f7" stroke="#187990" stroke-width="1.2"/><text x="343" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#1d2a2f">355</text>
+<!-- 顶部标题小标签 -->
+<g transform="translate(20, 16)">
+  <rect x="0" y="0" width="170" height="58" rx="8" ry="8" fill="#f7fbfc" stroke="#cfdfe2" stroke-width="1.3"/>
+  <text x="85" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#1d2a2f">输入数组 nums</text>
+  <text x="85" y="46" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#1d2a2f">初始化 k = 1</text>
 </g>
 
-<!-- 第1轮：按个位排序 -->
-<g transform="translate(30, 95)">
-  <text x="330" y="12" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#996600">第 1 轮：按个位数字分配到桶 [0-9]，再收集</text>
-  <rect x="100" y="20" width="460" height="34" rx="6" ry="6" fill="#eaf6f8" stroke="#187990" stroke-width="1.3"/>
-  <text x="110" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">720</text>
-  <text x="175" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">355</text>
-  <text x="240" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">436</text>
-  <text x="305" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">457</text>
-  <text x="370" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">657</text>
-  <text x="435" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">329</text>
-  <text x="500" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">839</text>
+<!-- 标签之间的灰色右箭头 -->
+<polygon points="222,38 234,46 222,54" fill="#b8c4c8"/>
+<rect x="206" y="44" width="20" height="4" fill="#b8c4c8"/>
+
+<g transform="translate(258, 28)">
+  <rect x="0" y="0" width="170" height="38" rx="8" ry="8" fill="#f7fbfc" stroke="#cfdfe2" stroke-width="1.3"/>
+  <text x="85" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#1d2a2f">排序第 <tspan fill="#1d6dd9">1</tspan> 位</text>
 </g>
 
-<!-- 第2轮：按十位排序 -->
-<g transform="translate(30, 150)">
-  <text x="330" y="12" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#996600">第 2 轮：按十位数字分配到桶 [0-9]，再收集</text>
-  <rect x="100" y="20" width="460" height="34" rx="6" ry="6" fill="#eaf6f8" stroke="#187990" stroke-width="1.3"/>
-  <text x="110" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">720</text>
-  <text x="175" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">329</text>
-  <text x="240" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">436</text>
-  <text x="305" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">355</text>
-  <text x="370" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">457</text>
-  <text x="435" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">657</text>
-  <text x="500" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="14" font-weight="700" fill="#187990">839</text>
+<polygon points="460,38 472,46 460,54" fill="#b8c4c8"/>
+<rect x="444" y="44" width="20" height="4" fill="#b8c4c8"/>
+
+<g transform="translate(496, 28)">
+  <rect x="0" y="0" width="170" height="38" rx="8" ry="8" fill="#f7fbfc" stroke="#cfdfe2" stroke-width="1.3"/>
+  <text x="85" y="25" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#1d2a2f">排序第 <tspan fill="#1d6dd9">2</tspan> 位</text>
 </g>
 
-<!-- 第3轮：按百位排序 -->
-<g transform="translate(30, 205)">
-  <text x="330" y="12" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#996600">第 3 轮：按百位数字分配到桶 [0-9]，再收集 → 有序！</text>
-  <rect x="100" y="20" width="460" height="38" rx="8" ry="8" fill="#eaf6f8" stroke="#187990" stroke-width="1.8"/>
-  <text x="115" y="44" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#187990">329</text>
-  <text x="182" y="44" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#187990">355</text>
-  <text x="250" y="44" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#187990">436</text>
-  <text x="318" y="44" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#187990">457</text>
-  <text x="386" y="44" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#187990">657</text>
-  <text x="454" y="44" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#187990">720</text>
-  <text x="520" y="44" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#187990">839</text>
-  <circle cx="555" cy="30" r="12" fill="#eaf6f8" stroke="#187990" stroke-width="1.4"/>
-  <text x="555" y="35" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#187990">&#x2713;</text>
+<polygon points="698,38 710,46 698,54" fill="#b8c4c8"/>
+<rect x="682" y="44" width="20" height="4" fill="#b8c4c8"/>
+
+<g transform="translate(730, 16)">
+  <rect x="0" y="0" width="140" height="58" rx="8" ry="8" fill="#f7fbfc" stroke="#cfdfe2" stroke-width="1.3"/>
+  <text x="70" y="26" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#1d2a2f">以此类推, 排序</text>
+  <text x="70" y="48" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#1d2a2f">第 <tspan fill="#1d6dd9">3</tspan> ~ <tspan fill="#1d6dd9">7</tspan> 位</text>
 </g>
 
-<!-- 特性说明 -->
-<g transform="translate(70, 268)">
-  <rect x="0" y="0" width="600" height="72" rx="8" ry="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>
-  <text x="300" y="19" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#1d2a2f">基数排序特性</text>
-  <text x="15" y="39" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">&#x2022; 时间复杂度：O(d &#xD7; (n+k))，d=位数，k=桶数(10)</text>
-  <text x="15" y="56" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">&#x2022; 空间复杂度：O(n+k)，需要额外桶空间 | 稳定排序 | 非比较排序</text>
-  <text x="15" y="71" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">&#x2022; 适用场景：整数/字符串排序，位数相近时效率高</text>
+<polygon points="896,38 908,46 896,54" fill="#b8c4c8"/>
+<rect x="880" y="44" width="20" height="4" fill="#b8c4c8"/>
+
+<g transform="translate(922, 16)">
+  <rect x="0" y="0" width="125" height="58" rx="8" ry="8" fill="#f7fbfc" stroke="#cfdfe2" stroke-width="1.3"/>
+  <text x="60" y="26" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#1d2a2f">排序第 <tspan fill="#1d6dd9">8</tspan> 位</text>
+  <text x="60" y="48" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#1d2a2f">输出排序结果</text>
 </g>
 
-<!-- 桶示意 -->
-<g transform="translate(200, 350)">
-  <rect x="0" y="0" width="340" height="38" rx="6" ry="6" fill="#fef9ef" stroke="#e6b04a" stroke-width="1.2"/>
-  <text x="170" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#996600">每轮操作：按当前位数字将元素放入 10 个桶 (0-9) → 按顺序收集回数组</text>
+<!-- 通用样式：每列 10 个绿色元素（#a8d5c9 / #6ba87a），最后1位高亮（#1d6dd9） -->
+<!-- 列与列之间用蓝虚线（最后一列左边缘） -->
+
+<!-- ====== 第 1 列：输入数组 nums ====== -->
+<g transform="translate(20, 100)" filter="url(#sh)">
+  <rect x="0" y="0" width="170" height="480" rx="10" ry="10" fill="none" stroke="#cfdfe2" stroke-width="1.3"/>
+  <!-- 10 个绿色数字元素：10546151 35663510 42865989 34862445 81883077 88906420 72429244 30524779 82060337 63832996 -->
+  <g font-family="'Courier New',monospace" font-size="24" font-weight="700" fill="#1d2a2f">
+    <g><rect x="6" y="8"   width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="34">10546151</text></g>
+    <g><rect x="6" y="54"  width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="80">35663510</text></g>
+    <g><rect x="6" y="100" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="126">42865989</text></g>
+    <g><rect x="6" y="146" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="172">34862445</text></g>
+    <g><rect x="6" y="192" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="218">81883077</text></g>
+    <g><rect x="6" y="238" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="264">88906420</text></g>
+    <g><rect x="6" y="284" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="310">72429244</text></g>
+    <g><rect x="6" y="330" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="356">30524779</text></g>
+    <g><rect x="6" y="376" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="402">82060337</text></g>
+    <g><rect x="6" y="422" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="448">63832996</text></g>
+  </g>
 </g>
+
+<!-- ====== 第 2 列：按个位排序 ====== -->
+<g transform="translate(258, 100)" filter="url(#sh)">
+  <rect x="0" y="0" width="170" height="480" rx="10" ry="10" fill="none" stroke="#cfdfe2" stroke-width="1.3"/>
+  <g font-family="'Courier New',monospace" font-size="24" font-weight="700" fill="#1d2a2f">
+    <g><rect x="6" y="8"   width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="34">3566351</text><text x="128" y="34" fill="#1d6dd9" font-weight="700">0</text></g>
+    <g><rect x="6" y="54"  width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="80">8890642</text><text x="128" y="80" fill="#1d6dd9" font-weight="700">0</text></g>
+    <g><rect x="6" y="100" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="126">1054615</text><text x="128" y="126" fill="#1d6dd9" font-weight="700">1</text></g>
+    <g><rect x="6" y="146" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="172">7242924</text><text x="128" y="172" fill="#1d6dd9" font-weight="700">4</text></g>
+    <g><rect x="6" y="192" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="218">3486244</text><text x="128" y="218" fill="#1d6dd9" font-weight="700">5</text></g>
+    <g><rect x="6" y="238" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="264">6383299</text><text x="128" y="264" fill="#1d6dd9" font-weight="700">6</text></g>
+    <g><rect x="6" y="284" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="310">8188307</text><text x="128" y="310" fill="#1d6dd9" font-weight="700">7</text></g>
+    <g><rect x="6" y="330" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="356">8206033</text><text x="128" y="356" fill="#1d6dd9" font-weight="700">7</text></g>
+    <g><rect x="6" y="376" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="402">4286598</text><text x="128" y="402" fill="#1d6dd9" font-weight="700">9</text></g>
+    <g><rect x="6" y="422" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="448">3052477</text><text x="128" y="448" fill="#1d6dd9" font-weight="700">9</text></g>
+  </g>
+  <!-- 蓝虚线：分隔第8位 -->
+  <line x1="126" y1="14" x2="126" y2="466" stroke="#1d6dd9" stroke-width="1.5" stroke-dasharray="4,3"/>
+</g>
+
+<!-- ====== 第 3 列：按十位排序 ====== -->
+<g transform="translate(496, 100)" filter="url(#sh)">
+  <rect x="0" y="0" width="170" height="480" rx="10" ry="10" fill="none" stroke="#cfdfe2" stroke-width="1.3"/>
+  <g font-family="'Courier New',monospace" font-size="24" font-weight="700" fill="#1d2a2f">
+    <g><rect x="6" y="8"   width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="34">356635</text><text x="114" y="34" fill="#1d6dd9" font-weight="700">1</text><text x="128" y="34">0</text></g>
+    <g><rect x="6" y="54"  width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="80">889064</text><text x="114" y="80" fill="#1d6dd9" font-weight="700">2</text><text x="128" y="80">0</text></g>
+    <g><rect x="6" y="100" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="126">820603</text><text x="114" y="126" fill="#1d6dd9" font-weight="700">3</text><text x="128" y="126">7</text></g>
+    <g><rect x="6" y="146" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="172">724292</text><text x="114" y="172" fill="#1d6dd9" font-weight="700">4</text><text x="128" y="172">4</text></g>
+    <g><rect x="6" y="192" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="218">348624</text><text x="114" y="218" fill="#1d6dd9" font-weight="700">4</text><text x="128" y="218">5</text></g>
+    <g><rect x="6" y="238" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="264">105461</text><text x="114" y="264" fill="#1d6dd9" font-weight="700">5</text><text x="128" y="264">1</text></g>
+    <g><rect x="6" y="284" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="310">818830</text><text x="114" y="310" fill="#1d6dd9" font-weight="700">7</text><text x="128" y="310">7</text></g>
+    <g><rect x="6" y="330" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="356">305247</text><text x="114" y="356" fill="#1d6dd9" font-weight="700">7</text><text x="128" y="356">9</text></g>
+    <g><rect x="6" y="376" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="402">428659</text><text x="114" y="402" fill="#1d6dd9" font-weight="700">8</text><text x="128" y="402">9</text></g>
+    <g><rect x="6" y="422" width="158" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="24" y="448">638329</text><text x="114" y="448" fill="#1d6dd9" font-weight="700">9</text><text x="128" y="448">6</text></g>
+  </g>
+  <line x1="112" y1="14" x2="112" y2="466" stroke="#1d6dd9" stroke-width="1.5" stroke-dasharray="4,3"/>
+</g>
+
+<!-- ====== 第 4 列：以此类推 ====== -->
+<g transform="translate(714, 280)">
+  <text x="85" y="40" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="40" font-weight="700" fill="#b8c4c8">···</text>
+</g>
+
+<!-- ====== 第 5 列：排序第 8 位 输出结果 ====== -->
+<g transform="translate(912, 100)" filter="url(#sh)">
+  <rect x="0" y="0" width="150" height="480" rx="10" ry="10" fill="none" stroke="#cfdfe2" stroke-width="1.3"/>
+  <g font-family="'Courier New',monospace" font-size="24" font-weight="700" fill="#1d2a2f">
+    <g><rect x="6" y="8"   width="138" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="17" y="34" fill="#1d6dd9" font-weight="700">1</text><text x="30" y="34">0546151</text></g>
+    <g><rect x="6" y="54"  width="138" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="17" y="80" fill="#1d6dd9" font-weight="700">3</text><text x="30" y="80">0524779</text></g>
+    <g><rect x="6" y="100" width="138" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="17" y="126" fill="#1d6dd9" font-weight="700">3</text><text x="30" y="126">4862445</text></g>
+    <g><rect x="6" y="146" width="138" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="17" y="172" fill="#1d6dd9" font-weight="700">3</text><text x="30" y="172">5663510</text></g>
+    <g><rect x="6" y="192" width="138" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="17" y="218" fill="#1d6dd9" font-weight="700">4</text><text x="30" y="218">2865989</text></g>
+    <g><rect x="6" y="238" width="138" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="17" y="264" fill="#1d6dd9" font-weight="700">6</text><text x="30" y="264">3832996</text></g>
+    <g><rect x="6" y="284" width="138" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="17" y="310" fill="#1d6dd9" font-weight="700">7</text><text x="30" y="310">2429244</text></g>
+    <g><rect x="6" y="330" width="138" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="17" y="356" fill="#1d6dd9" font-weight="700">8</text><text x="30" y="356">1883077</text></g>
+    <g><rect x="6" y="376" width="138" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="17" y="402" fill="#1d6dd9" font-weight="700">8</text><text x="30" y="402">2060337</text></g>
+    <g><rect x="6" y="422" width="138" height="38" rx="6" ry="6" fill="#a8d5c9" stroke="#6ba87a" stroke-width="1"/><text x="17" y="448" fill="#1d6dd9" font-weight="700">8</text><text x="30" y="448">8906420</text></g>
+  </g>
+  <line x1="14" y1="14" x2="14" y2="466" stroke="#1d6dd9" stroke-width="1.5" stroke-dasharray="4,3"/>
+</g>
+
 </svg>

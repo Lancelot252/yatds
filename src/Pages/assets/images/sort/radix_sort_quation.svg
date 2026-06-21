@@ -1,60 +1,36 @@
-<svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="基数排序问题示例">
-<defs><filter id="sh" x="-4%" y="-4%" width="108%" height="112%"><feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#187990" flood-opacity=".07"/></filter></defs>
+<svg viewBox="0 0 620 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="基数排序取位公式">
+  <defs>
+    <filter id="sh" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#187990" flood-opacity=".07"/>
+    </filter>
+  </defs>
 
-<text x="360" y="24" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#1d2a2f">基数排序 — 问题与注意事项</text>
+  <g font-family="'Cambria Math','STIX Two Math','Times New Roman',serif" fill="#1d2a2f" filter="url(#sh)">
 
-<!-- 问题1：负数处理 -->
-<g transform="translate(40, 45)">
-  <rect x="0" y="0" width="310" height="120" rx="10" ry="10" fill="#fdf2f0" stroke="#c75c5c" stroke-width="1.4"/>
-  <text x="155" y="22" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#c75c5c">问题 1：如何处理负数？</text>
-  <text x="15" y="46" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">LSD 基数排序默认只适用于非负整数。</text>
-  <text x="15" y="65" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">解决方案：</text>
-  <text x="25" y="84" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">1. 将所有数加上一个偏移量使其变为正数</text>
-  <text x="25" y="101" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">2. 使用补码表示，分别对符号位和数值位排序</text>
-  <text x="25" y="116" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">3. 将负数和非负数分开，分别排序后合并</text>
-</g>
+    <!-- x_k = -->
+    <text x="110" y="78" font-size="38" font-style="italic" font-weight="600">x</text>
+    <text x="138" y="92" font-size="24" font-style="italic" font-weight="600">k</text>
+    <text x="172" y="78" font-size="38" font-weight="600">=</text>
 
-<!-- 问题2：不等长数据 -->
-<g transform="translate(380, 45)">
-  <rect x="0" y="0" width="300" height="120" rx="10" ry="10" fill="#fef9ef" stroke="#e6b04a" stroke-width="1.4"/>
-  <text x="150" y="22" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#996600">问题 2：不等长数据？</text>
-  <text x="15" y="46" font-family="'Microsoft YaHei',sans-serif" font-size="12" fill="#61737c">当数据位数不一致时：</text>
-  <text x="25" y="66" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">&#x2022; 整数：高位补 0 对齐（如 5 → 005）</text>
-  <text x="25" y="83" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">&#x2022; 字符串：右侧补空格或特殊字符</text>
-  <text x="25" y="100" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">&#x2022; 以最大长度 d 为基准进行 d 轮排序</text>
-  <text x="15" y="116" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#996600">注意：补位时需保持稳定性</text>
-</g>
+    <!-- 左侧下取整符号 ⌊ -->
+    <text x="206" y="78" font-size="50" font-weight="500">&#x230A;</text>
 
-<!-- 示例：补0 -->
-<g transform="translate(140, 185)">
-  <text x="220" y="12" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#187990">示例：不等长整数补 0 对齐</text>
-  <rect x="0" y="20" width="440" height="46" rx="8" ry="8" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.3"/>
+    <!-- 分数：分子 x，分母 d^(k-1) -->
+    <!-- 分数线 -->
+    <line x1="238" y1="62" x2="338" y2="62" stroke="#1d2a2f" stroke-width="2"/>
 
-  <!-- 原始值 -->
-  <text x="20" y="40" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">原始:</text>
-  <rect x="58" y="27" width="36" height="28" rx="4" ry="4" fill="#dff5f7" stroke="#187990" stroke-width="1.1"/><text x="76" y="46" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#1d2a2f">5</text>
-  <rect x="98" y="27" width="36" height="28" rx="4" ry="4" fill="#dff5f7" stroke="#187990" stroke-width="1.1"/><text x="116" y="46" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#1d2a2f">73</text>
-  <rect x="138" y="27" width="36" height="28" rx="4" ry="4" fill="#dff5f7" stroke="#187990" stroke-width="1.1"/><text x="156" y="46" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#1d2a2f">128</text>
-  <rect x="178" y="27" width="36" height="28" rx="4" ry="4" fill="#dff5f7" stroke="#187990" stroke-width="1.1"/><text x="196" y="46" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#1d2a2f">9</text>
+    <!-- 分子 x -->
+    <text x="278" y="52" text-anchor="middle" font-size="34" font-style="italic" font-weight="600">x</text>
 
-  <!-- 箭头 -->
-  <line x1="228" y1="41" x2="260" y2="41" stroke="#187990" stroke-width="1.5"/>
-  <polygon points="256,37 264,41 256,45" fill="#187990"/>
-  <text x="244" y="35" font-family="'Microsoft YaHei',sans-serif" font-size="10" fill="#187990">补0</text>
+    <!-- 分母 d^(k-1) -->
+    <text x="248" y="98" font-size="30" font-style="italic" font-weight="600">d</text>
+    <text x="268" y="86" font-size="20" font-style="italic" font-weight="600">k&#x2212;1</text>
 
-  <!-- 补0后 -->
-  <text x="280" y="40" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">对齐:</text>
-  <rect x="315" y="27" width="48" height="28" rx="4" ry="4" fill="#eaf6f8" stroke="#187990" stroke-width="1.2"/><text x="339" y="46" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" font-weight="700" fill="#187990">005</text>
-  <rect x="367" y="27" width="48" height="28" rx="4" ry="4" fill="#eaf6f8" stroke="#187990" stroke-width="1.2"/><text x="391" y="46" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" font-weight="700" fill="#187990">073</text>
-  <rect x="419" y="27" width="48" height="28" rx="4" ry="4" fill="#fff3cd" stroke="#e6b04a" stroke-width="1.3"/><text x="443" y="46" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="12" font-weight="700" fill="#1d2a2f">128</text>
-</g>
+    <!-- 右侧下取整符号 ⌋ -->
+    <text x="350" y="78" font-size="50" font-weight="500">&#x230B;</text>
 
-<!-- 底部总结 -->
-<g transform="translate(70, 255)">
-  <rect x="0" y="0" width="600" height="85" rx="10" ry="10" fill="#eaf6f8" stroke="#187990" stroke-width="1.3"/>
-  <text x="300" y="20" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="13" font-weight="600" fill="#187990">基数排序核心要点</text>
-  <text x="20" y="42" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">&#x2022; 只能用于可以按「位」拆分的数据类型（整数、字符串、固定格式日期等）</text>
-  <text x="20" y="59" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">&#x2022; LSD 从低位开始，MSD 从高位开始；LSD 更常用且实现更简单</text>
-  <text x="20" y="76" font-family="'Microsoft YaHei',sans-serif" font-size="11" fill="#61737c">&#x2022; 是稳定排序，适合作为其他算法的子过程（如后缀数组构造）</text>
-</g>
+    <!-- mod d -->
+    <text x="400" y="78" font-size="34" font-weight="600">mod</text>
+    <text x="470" y="78" font-size="34" font-style="italic" font-weight="600">d</text>
+  </g>
 </svg>

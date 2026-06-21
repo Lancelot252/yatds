@@ -10,7 +10,7 @@
   <!-- 1 - 已排序(灰) -->
   <rect x="56" y="4" width="48" height="36" rx="6" ry="6" fill="#b8c4cc" stroke="#61737c" stroke-width="1.3"/><text x="80" y="28" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="17" font-weight="700" fill="#fff">1</text>
   <!-- 2 - 普通(i位置) -->
-  <rect x="108" y="4" width="48" height="36" rx="6" ry="6" fill="#a8d5c9" stroke="#187990" stroke-width="1.3"/><text x="132" y="28" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="17" font-weight="700" fill="#fff">2</text>
+  <rect x="108" y="4" width="48" height="36" rx="6" ry="6" fill="#b8c4cc" stroke="#61737c" stroke-width="1.3"/><text x="132" y="28" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="17" font-weight="700" fill="#fff">2</text>
   <!-- 4 - 普通 -->
   <rect x="160" y="4" width="48" height="36" rx="6" ry="6" fill="#a8d5c9" stroke="#187990" stroke-width="1.3"/><text x="184" y="28" text-anchor="middle" font-family="'Microsoft YaHei',sans-serif" font-size="17" font-weight="700" fill="#fff">4</text>
   <!-- 5 - 普通 -->
@@ -24,10 +24,10 @@
 
   <!-- 交换箭头：2和3之间 -->
   <path d="M 132 -2 C 132 -18, 288 -18, 288 -2" stroke="#e6b04a" stroke-width="1.5" fill="none"/>
-  <polygon points="284,-4 292,-4 288,-10" fill="#e6b04a"/>
+  <polygon points="284,-2 292,-2 288,-8" fill="#e6b04a"/>
 
   <path d="M 288 52 C 288 68, 132 68, 132 52" stroke="#e6b04a" stroke-width="1.5" fill="none"/>
-  <polygon points="128,54 136,54 132,60" fill="#e6b04a"/>
+  <polygon points="128,52 136,52 132,58" fill="#e6b04a"/>
 </g>
 
 <!-- 说明文字 -->
