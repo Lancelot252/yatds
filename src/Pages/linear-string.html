@@ -147,7 +147,7 @@ class MyString {
 <h3 id="任务内容">任务内容</h3>
 <ul><li>完成顺序存储的字符串类的实现，要求可以通过给出的测试程序（你在这一部分不可以修改测试程序，需自己基于上述框架补充拼接、查找等基本方法）。</li><li>参考 C++ 标准库中的 <code>&lt;string&gt;</code> 实现，在你的字符串类上添加更多的功能，如查找特定子串、替换子串等（五个更多的功能即可），并比较你的字符串在频繁拼接时与 <code>&lt;string&gt;</code> 库的性能差异。</li><li>分析动态扩容策略对字符串连接（如连续拼接百万次）性能的影响。</li></ul>
 <p>你提交的材料中这部分内容需要包含：</p>
-<ul><li>三个小任务分别的代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对你程序和结果的分析（注：分析需要能够体现你对这些功能的理解，不能仅仅是简单的结果描述）</li><li>你对性能差异的分析（注：分析需要能够体现你对数组扩容等机制的理解，不能仅仅是简单的结果描述）</li></ul>
+<ul><li>三个小任务分别的代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对你程序和结果的分析（注：分析需要能够体现你对这些功能的理解，不能仅仅是简单的结果描述）</li><li>你对性能差异的分析（注：分析需要能够体现你对数组扩容等机制的理解，不能仅仅是简单的结果描述）</li></ul><table><thead><tr><th>类别</th><th>提交要求</th></tr></thead><tbody><tr><td>测试样例</td><td>在 <code>inputs/</code> 中放置 <code>.txt</code> 输入样例，在 <code>outputs/</code> 中放置同名标准输出文件；例如 <code>inputs/case01.txt</code> 对应 <code>outputs/case01.txt</code>。</td></tr><tr><td>测试程序</td><td>提交名为 <code>test</code> 的测试程序，能够自动读取 <code>inputs/</code> 中的样例，并与 <code>outputs/</code> 中的标准输出进行比对。</td></tr><tr><td>实现代码</td><td>提交本题实现所需的 <code>.cpp</code> 源文件，代码结构清晰，并保留必要注释。</td></tr><tr><td>构建文件</td><td>提交 <code>Makefile</code>，支持一条命令完成编译；建议同时提供运行样例测试的目标。</td></tr></tbody></table>
 <details>
   <summary>点击展开：Baseline 任务 1 输入输出格式与样例</summary>
   <p><strong>注：</strong>以下测试样例仅用于说明输入输出格式，不代表完整测试覆盖范围，也不是唯一评测数据。学生需要根据该格式自行设计并生成更多测试样例，用于覆盖边界情况和自定义扩展功能。本任务包含字符串类与 <code>std::string</code>、不同扩容策略的性能差异比较要求，自行生成的测试样例或测试程序输出必须包含可量化的性能统计数据，例如数据规模、操作次数、运行时间（如 <code>time_ms</code>）等。</p>
@@ -220,7 +220,7 @@ vector&lt;int&gt; getNext(const string&amp; pattern) {
 <p>为了更好地理解模式匹配，本练习分为了三个递进的步骤，建议按顺序完成：</p>
 <ul><li><strong>Step 1. 分析与测试朴素算法</strong>：构造极端的测试用例文本（例如主串是由大量重复字符凑成，末尾才失配），在给定的 <code>test_match.cpp</code> 中测试并记录朴素算法在最坏情况下的耗时和表现。</li><li><strong>Step 2. 基础 KMP 算法的实现</strong>：在 <code> match.cpp</code> 中实现完整的 KMP 模式匹配算法（可直接调用前置写好的 <code>getNext</code> 函数）。然后使用在 Step 1 中构造的极端用例，对比它与朴素算法在性能上的巨大差异。</li><li><strong>Step 3. nextval 数组深度优化</strong>：针对原始 <code>next</code> 数组在连续相同字符时依然会多余比较的缺陷，实现优化的 <code>nextval</code> 求解算法。自己设计测试样例结合 <code>nextval</code> 运行终极版的 KMP 匹配，观察其具体区别和常数级性能提升。</li></ul>
 <p>你提交的材料中这部分内容需要包含：</p>
-<ul><li>三个小任务分别的代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对你程序和结果的分析（注：分析需要能够体现你对这些模式匹配算法过程的理解，不能仅仅是简单的结果描述）</li><li>你对性能差异的分析（注：分析需要能够体现你对时间和空间复杂度的理解，不能仅仅是简单的结果描述）</li></ul>
+<ul><li>三个小任务分别的代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对你程序和结果的分析（注：分析需要能够体现你对这些模式匹配算法过程的理解，不能仅仅是简单的结果描述）</li><li>你对性能差异的分析（注：分析需要能够体现你对时间和空间复杂度的理解，不能仅仅是简单的结果描述）</li></ul><table><thead><tr><th>类别</th><th>提交要求</th></tr></thead><tbody><tr><td>测试样例</td><td>在 <code>inputs/</code> 中放置 <code>.txt</code> 输入样例，在 <code>outputs/</code> 中放置同名标准输出文件；例如 <code>inputs/case01.txt</code> 对应 <code>outputs/case01.txt</code>。</td></tr><tr><td>测试程序</td><td>提交名为 <code>test</code> 的测试程序，能够自动读取 <code>inputs/</code> 中的样例，并与 <code>outputs/</code> 中的标准输出进行比对。</td></tr><tr><td>实现代码</td><td>提交本题实现所需的 <code>.cpp</code> 源文件，代码结构清晰，并保留必要注释。</td></tr><tr><td>构建文件</td><td>提交 <code>Makefile</code>，支持一条命令完成编译；建议同时提供运行样例测试的目标。</td></tr></tbody></table>
 <details>
   <summary>点击展开：Baseline 任务 2 输入输出格式与样例</summary>
   <p><strong>注：</strong>以下测试样例仅用于说明输入输出格式，不代表完整测试覆盖范围，也不是唯一评测数据。学生需要根据该格式自行设计并生成更多测试样例，用于覆盖边界情况和自定义扩展功能。本任务包含朴素匹配、KMP 与 nextval 优化的性能差异比较要求，自行生成的测试样例或测试程序输出必须包含可量化的性能统计数据，例如数据规模、操作次数、运行时间（如 <code>time_ms</code>）等。</p>
@@ -304,6 +304,9 @@ MA
   <li>各个核心功能函数的代码原理解释。</li>
   <li>运行说明与时间复杂度分析。</li>
 </ul>
+<h3 id="提交要求">提交要求</h3>
+<p>你提交的材料中这部分内容需要包含：</p>
+<table><thead><tr><th>类别</th><th>提交要求</th></tr></thead><tbody><tr><td>测试样例</td><td>在 <code>inputs/</code> 中放置 <code>.txt</code> 输入样例，在 <code>outputs/</code> 中放置同名标准输出文件；例如 <code>inputs/case01.txt</code> 对应 <code>outputs/case01.txt</code>。</td></tr><tr><td>测试程序</td><td>提交名为 <code>test</code> 的测试程序，能够自动读取 <code>inputs/</code> 中的样例，并与 <code>outputs/</code> 中的标准输出进行比对。</td></tr><tr><td>实现代码</td><td>提交本题实现所需的 <code>.cpp</code> 源文件，代码结构清晰，并保留必要注释。</td></tr><tr><td>构建文件</td><td>提交 <code>Makefile</code>，支持一条命令完成编译；建议同时提供运行样例测试的目标。</td></tr></tbody></table>
 <h3 id="评分标准">评分标准</h3>
 <ul>
   <li><strong>基础匹配实现（30%）</strong>：自主实现了高效的字符串匹配算法（最推荐 KMP），并且完整梳理出 6 条可能阅读框的蛋白质翻译工作；能够按要求输出特征状态数组。如果是粗暴匹配（<code>O(nm)</code> 时间复杂度）或无法给出特征状态，该项只能获得部分分数并可能导致大型测试集不通过。你需要在实验报告中提供匹配算法的设计思路。</li>

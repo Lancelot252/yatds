@@ -18,8 +18,8 @@
 <text x="80" y="392" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" font-weight="700" fill="#1d2a2f" >入队</text>
 <line x1="118" y1="430" x2="118" y2="376" stroke="#187990" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arrowTeal)"/>
 <path d="M480 330 H428" stroke="#b7c1c5" stroke-width="12" stroke-linecap="round" marker-end="url(#arrow)" opacity=".75"/>
-<text x="584" y="318" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="700" fill="#61737c" >底层实现是数组</text>
-<text x="584" y="344" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="700" fill="#61737c" >对外表现为队列</text>
+<text x="584" y="306" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="700" fill="#61737c" >底层实现是数组</text>
+<text x="584" y="350" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" font-weight="700" fill="#61737c" >对外表现为队列</text>
 <text x="190" y="462" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="16" font-weight="700" fill="#1d2a2f" >队列</text>
 <rect x="38" y="642" width="92" height="40" rx="6" fill="#f7fbfc" stroke="#d8e8ec" stroke-width="1.5"/><text x="84" y="668" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="16" font-weight="700" fill="#61737c" >Step 1</text>
 <circle cx="920" cy="155" r="24" fill="#a8d5c9" stroke="#187990" stroke-width="2" filter="url(#sh)"/>

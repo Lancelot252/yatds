@@ -150,7 +150,7 @@ int find(ListNode *head, int target) {
 <ul><li>尝试将链表实现为一个模版类（C++），支持任意数据类型的存储。编写你的测试程序来验证（要求与前一个任务相同）。</li></ul>
 <ul><li>我们在仓库中提供了一个测试程序 <code>testlist.cpp</code>，同学们需要根据这个测试程序来完成链表的基本实现，并在完成后加入在前两个任务中实现的功能。加入新功能后的链表实现需要能够同时正确执行我们给出的测试程序和你自己编写的新测试程序。</li></ul>
 <p>你提交的材料中这部分内容需要包含：</p>
-<ul><li>三个小任务分别的代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对你程序和结果的分析（注：分析需要能够体现你对这些功能的理解，不能仅仅是简单的结果描述）</li></ul>
+<ul><li>三个小任务分别的代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对你程序和结果的分析（注：分析需要能够体现你对这些功能的理解，不能仅仅是简单的结果描述）</li></ul><table><thead><tr><th>类别</th><th>提交要求</th></tr></thead><tbody><tr><td>测试样例</td><td>在 <code>inputs/</code> 中放置 <code>.txt</code> 输入样例，在 <code>outputs/</code> 中放置同名标准输出文件；例如 <code>inputs/case01.txt</code> 对应 <code>outputs/case01.txt</code>。</td></tr><tr><td>测试程序</td><td>提交名为 <code>test</code> 的测试程序，能够自动读取 <code>inputs/</code> 中的样例，并与 <code>outputs/</code> 中的标准输出进行比对。</td></tr><tr><td>实现代码</td><td>提交本题实现所需的 <code>.cpp</code> 源文件，代码结构清晰，并保留必要注释。</td></tr><tr><td>构建文件</td><td>提交 <code>Makefile</code>，支持一条命令完成编译；建议同时提供运行样例测试的目标。</td></tr></tbody></table>
 <details>
   <summary>点击展开：Baseline 任务 1 输入输出格式与样例</summary>
   <p><strong>注：</strong>以下测试样例仅用于说明输入输出格式，不代表完整测试覆盖范围，也不是唯一评测数据。学生需要根据该格式自行设计并生成更多测试样例，用于覆盖边界情况和自定义扩展功能。</p>
@@ -189,7 +189,7 @@ true
 <h3 id="任务内容-2">任务内容</h3>
 <ul><li>设计并实现一个可变数组类，要求该类支持动态扩容、随机访问等功能。你需要编写测试程序来验证你的实现。</li><li>评估你的可变数组实现与 C++ 标准库中的 <code>std::vector</code> 的差异，你需要在实验报告中分析他们的不同并评估优劣。</li><li>参考 C++ 标准库中的 <code>&lt;vector&gt;</code> 实现，优化你的可变数组类，添加更多的功能，如获取数组的长度、判断数组是否为空等（五个更多的功能即可），编写测试程序体现你的可变数组类的特点。</li><li>分析同样作为可以动态扩容的链表和可变数组在不同场景下的性能差异，你需要使用完整的测试程序来体现差异，并在报告中进行分析。</li></ul>
 <p>你提交的材料中这部分内容需要包含：</p>
-<ul><li>你的所有代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>你的可变数组实现设计思路和分析</li><li>你的差异评估和分析</li></ul>
+<ul><li>你的所有代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>你的可变数组实现设计思路和分析</li><li>你的差异评估和分析</li></ul><table><thead><tr><th>类别</th><th>提交要求</th></tr></thead><tbody><tr><td>测试样例</td><td>在 <code>inputs/</code> 中放置 <code>.txt</code> 输入样例，在 <code>outputs/</code> 中放置同名标准输出文件；例如 <code>inputs/case01.txt</code> 对应 <code>outputs/case01.txt</code>。</td></tr><tr><td>测试程序</td><td>提交名为 <code>test</code> 的测试程序，能够自动读取 <code>inputs/</code> 中的样例，并与 <code>outputs/</code> 中的标准输出进行比对。</td></tr><tr><td>实现代码</td><td>提交本题实现所需的 <code>.cpp</code> 源文件，代码结构清晰，并保留必要注释。</td></tr><tr><td>构建文件</td><td>提交 <code>Makefile</code>，支持一条命令完成编译；建议同时提供运行样例测试的目标。</td></tr></tbody></table>
 <details>
   <summary>点击展开：Baseline 任务 2 输入输出格式与样例</summary>
   <p><strong>注：</strong>以下测试样例仅用于说明输入输出格式，不代表完整测试覆盖范围，也不是唯一评测数据。学生需要根据该格式自行设计并生成更多测试样例，用于覆盖边界情况和自定义扩展功能。本任务包含性能差异比较要求，自行生成的测试样例或测试程序输出必须包含可量化的性能统计数据，例如数据规模、操作次数、运行时间（如 <code>time_ms</code>）等。</p>
@@ -236,7 +236,7 @@ PERF linked_list n=100000 ops=200000 time_ms=45.31</code></pre>
 <h3 id="任务内容-3">任务内容</h3>
 <ul><li><strong>算法实现</strong>：编写上述综合题目的求解代码。要求封装为清晰的函数模块（例如 <code>detectAndRemoveCycle</code>、<code>getIntersectionNode</code>、<code>reverseSharedPath</code> 等）。</li><li><strong>测试程序</strong>：设计能够覆盖所有边界情况的测试用例。你需要手动在测试代码中构造：</li><li>存在环的单条测试链表。</li><li>不相交的两条独立无环链表。</li><li>相交的两条无环链表。</li><li>并通过简单直接的可视化输出（命令行即可），验证你各步算法结果的正确性。</li><li><strong>复杂度规定</strong>：你需要尽可能以最高效的方式完成。算法的时间复杂度总体需控制在 $O(n)$，空间复杂度要求为 $O(1)$（不得使用哈希表或额外数组来记录节点）。</li></ul>
 <p>你提交的材料中这部分任务需要包含：</p>
-<ul><li>综合题目的完整代码（注意：代码的文件结构、类的封装以及防泄漏的内存管理规则也是评分的一部分）。</li><li>你的测试用例构造方式以及程序输出截图，用于证明不同情况下的正确性。</li><li>进阶算法的设计思路报告，并在报告中给出你的时间与空间复杂度分析。</li></ul>
+<ul><li>综合题目的完整代码（注意：代码的文件结构、类的封装以及防泄漏的内存管理规则也是评分的一部分）。</li><li>你的测试用例构造方式以及程序输出截图，用于证明不同情况下的正确性。</li><li>进阶算法的设计思路报告，并在报告中给出你的时间与空间复杂度分析。</li></ul><table><thead><tr><th>类别</th><th>提交要求</th></tr></thead><tbody><tr><td>测试样例</td><td>在 <code>inputs/</code> 中放置 <code>.txt</code> 输入样例，在 <code>outputs/</code> 中放置同名标准输出文件；例如 <code>inputs/case01.txt</code> 对应 <code>outputs/case01.txt</code>。</td></tr><tr><td>测试程序</td><td>提交名为 <code>test</code> 的测试程序，能够自动读取 <code>inputs/</code> 中的样例，并与 <code>outputs/</code> 中的标准输出进行比对。</td></tr><tr><td>实现代码</td><td>提交本题实现所需的 <code>.cpp</code> 源文件，代码结构清晰，并保留必要注释。</td></tr><tr><td>构建文件</td><td>提交 <code>Makefile</code>，支持一条命令完成编译；建议同时提供运行样例测试的目标。</td></tr></tbody></table>
 <details>
   <summary>点击展开：Baseline 任务 3 输入输出格式与样例</summary>
   <p><strong>注：</strong>以下测试样例仅用于说明输入输出格式，不代表完整测试覆盖范围，也不是唯一评测数据。学生需要根据该格式自行设计并生成更多测试样例，用于覆盖边界情况和自定义扩展功能。</p>
