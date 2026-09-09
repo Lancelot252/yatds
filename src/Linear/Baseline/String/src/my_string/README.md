@@ -1,6 +1,6 @@
 # 顺序存储的字符串 (MyString)
 
-本组任务是完成 C++ 版基于动态数组的自定义字符串类。`mystring.hpp` 声明并导出 `MyString`，`mystring.cpp` 标示并实现了对应的成员函数，`test_mystring.cpp` 提供基础的运行检查。
+本组任务是完成 C++ 版基于动态数组的自定义字符串类。`mystring.hpp` 声明并导出 `MyString`，`mystring.cpp` 提供部分基础逻辑和待补全接口；测试程序由学生自行编写。
 
 ## 需要完成的内容
 

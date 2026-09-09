@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Graph Project：终端迷宫寻路</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Ccircle cx='18' cy='20' r='6' fill='%23187990'/%3E%3Ccircle cx='46' cy='18' r='6' fill='%23187990'/%3E%3Ccircle cx='32' cy='46' r='6' fill='%23187990'/%3E%3Cpath d='M23 22l18-2M21 25l8 16M43 23L35 41' stroke='%23187990' stroke-width='4'/%3E%3C/svg%3E"><link rel="stylesheet" href="assets/styles.css"></head>
+<body>
+  <header class="topbar"><nav class="nav" aria-label="主导航"><a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a><div class="nav-links"><a href="index.html">首页</a><a href="linear.html">线性结构</a><a href="tree.html">树结构</a><div class="nav-item has-submenu"><a class="active" href="graph.html">图结构</a><div class="submenu" aria-label="图结构子页面"><a href="graph-representation.html">表示、遍历与拓扑排序</a><a href="graph-shortest-path.html">最短路径</a><a href="graph-mst.html">最小生成树</a><a href="graph-project.html">Project</a></div></div><a href="search.html">查找算法</a><a href="sort.html">排序算法</a></div></nav></header>
+  <main class="page-shell">
+    <aside class="toc toc-chapters">
+      <a class="toc-root" href="#终端迷宫寻路"><span class="toc-icon">◎</span><span>终端迷宫寻路</span></a>
+      <a class="toc-chapter" href="#迷宫建模"><span class="toc-icon">01</span><span class="toc-chapter-title">迷宫与图建模</span><span class="toc-arrow">›</span></a>
+      <a class="toc-chapter" href="#功能任务"><span class="toc-icon">02</span><span class="toc-chapter-title">四个功能任务</span><span class="toc-arrow">›</span></a>
+      <a class="toc-chapter" href="#接口工具箱"><span class="toc-icon">03</span><span class="toc-chapter-title">Baseline 工具箱</span><span class="toc-arrow">›</span></a>
+      <a class="toc-chapter" href="#实现与提交"><span class="toc-icon">04</span><span class="toc-chapter-title">实现与提交</span><span class="toc-arrow">›</span></a>
+      <a class="toc-chapter" href="#评分标准"><span class="toc-icon">05</span><span class="toc-chapter-title">评分标准</span><span class="toc-arrow">›</span></a>
+    </aside>
+    <article class="content">
+      <h1 id="终端迷宫寻路">Graph Project：终端迷宫寻路</h1>
+      <blockquote><p>把迷宫转换成图，分析每个目标的本质，再选择自己在 Baseline 中完成的接口。重点是“问题分析 → 算法选择 → 接口调用 → 结果解释”。</p></blockquote>
+
+      <h2 id="迷宫建模">迷宫与图建模</h2>
+      <table><thead><tr><th>符号</th><th>含义</th><th>进入代价</th></tr></thead><tbody><tr><td><code>#</code></td><td>墙，不可通行</td><td>—</td></tr><tr><td><code>.</code></td><td>普通道路</td><td>1</td></tr><tr><td><code>1</code>–<code>9</code></td><td>数字地形</td><td>对应数字</td></tr><tr><td><code>S</code> / <code>K</code> / <code>E</code></td><td>起点 / 钥匙点 / 终点</td><td>1</td></tr><tr><td><code>D</code></td><td>危险门，始终可通过</td><td>8</td></tr></tbody></table>
+      <pre><code>#####################
+#S#.....#...........#
+#.#.###.#.####.####.#
+#.#.#.#...#.......#.#
+#.#.#.#####.#######.#
+#.#.....#...#.....#.#
+#.##..###.###.###.#.#
+#.#...#1112.....#.#.#
+#.#.###.###.#.#####.#
+#..1#..D#.#.#...#...#
+###.#.###...#####.###
+#..9#.#.#K......#.#.#
+#2###.#.#.#####.#.#.#
+#...4.#.......#....E#
+#####################</code></pre>
+      <p>每个非墙格子映射为一个顶点，上下左右相邻的可走格子构成边。是否使用边权以及边权如何定义，取决于任务目标。</p>
+
+      <h2 id="功能任务">四个功能任务</h2>
+      <table><thead><tr><th>任务</th><th>目标</th><th>建议建模与接口</th></tr></thead><tbody>
+        <tr><td>1</td><td>从 S 到 E，移动次数尽量少</td><td>无权图 + <code>ShortestPath</code></td></tr>
+        <tr><td>2</td><td>从 S 到 E，总进入代价尽量低</td><td>非负权图 + <code>Dijkstra</code></td></tr>
+        <tr><td>3</td><td>先到 K，再到 E，移动次数尽量少</td><td>两段无权最短路并拼接</td></tr>
+        <tr><td>4</td><td>先到 K，再到 E，总代价尽量低</td><td>两段 Dijkstra 并拼接</td></tr>
+      </tbody></table>
+      <p>程序界面只显示功能目标，不直接提示算法名称；算法选择必须由你在实现和报告中说明。</p>
+
+      <h2 id="接口工具箱">Baseline 接口工具箱</h2>
+      <h3>无权最短路径</h3>
+      <pre><code>Graph graph = CreateShortestPathGraph(vertex_count, 1);
+AddShortestPathEdge(graph, from, to);
+ShortestPath(graph, start, dist, prev);
+DisposeShortestPathGraph(graph);</code></pre>
+      <h3>带权最短路径</h3>
+      <pre><code>WGraph graph = CreateDijkstraGraph(vertex_count, 1);
+AddDijkstraEdge(graph, from, to, weight);
+Dijkstra(graph, start, dist, prev);
+DisposeDijkstraGraph(graph);</code></pre>
+      <p>BFS、DFS、Prim 和 Kruskal 接口可用于自选扩展；本项目的四个核心任务不要求使用 MST。</p>
+
+      <h2 id="实现与提交">实现、运行与报告</h2>
+      <h3>需要完成</h3>
+      <ul><li><code>BuildUnweightedMazeGraph</code>：建立无权迷宫图。</li><li><code>BuildWeightedMazeGraph</code>：按进入目标格子的代价建立带权图。</li><li><code>RebuildPath</code>：沿 <code>prev[]</code> 回溯并翻转路线。</li><li>四个 <code>Find...</code> 功能函数：建图、调用接口、拼接并整理结果。</li></ul>
+      <h3>编译运行</h3>
+      <pre><code>cd src/Graph/Project
+make
+./graph_project</code></pre>
+      <h3>实验报告</h3>
+      <ul><li>说明迷宫如何抽象成图，以及边权如何定义。</li><li>逐项解释算法选择、适用前提和接口调用。</li><li>解释 <code>dist[]</code>、<code>prev[]</code>、<code>order[]</code> 的含义。</li><li>提供运行输出并分析不同目标产生不同路线的原因。</li><li>提交 PDF 或 Markdown，建议 3–6 页，不粘贴大段完整代码。</li></ul>
+
+      <h2 id="评分标准">评分标准</h2>
+      <table><thead><tr><th>部分</th><th>占比</th><th>重点</th></tr></thead><tbody><tr><td>Baseline 完成度</td><td>40%</td><td>六个模块的接口正确性与公开测试</td></tr><tr><td>问题分析与算法选择</td><td>25%</td><td>目标识别、算法前提和接口复用</td></tr><tr><td>Project 实现与输出</td><td>20%</td><td>建图、路径、代价、边界处理</td></tr><tr><td>实验报告</td><td>15%</td><td>结果解释、对比分析与反思</td></tr></tbody></table>
+    </article>
+  </main>
+  <footer class="footer">内容来源：Graph/Project、score.md 与 report_requirements.md。</footer><script src="assets/slides.js"></script>
+</body></html>

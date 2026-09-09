@@ -22,9 +22,9 @@
             <a href="linear-string.html">字符串</a>
           </div>
         </div>
-        <a href="index.html#tree-placeholder">树结构</a>
-        <a href="index.html#graph-placeholder">图结构</a>
-        <a href="index.html#hash-placeholder">哈希</a>
+        <a href="tree.html">树结构</a>
+        <a href="graph.html">图结构</a>
+        <a href="search.html">查找算法</a>
         <div class="nav-item has-submenu">
           <a class="active" href="sort.html">排序查找</a>
           <div class="submenu" aria-label="排序查找子页面">
@@ -54,6 +54,7 @@
     <article class="content">
       <h1 id="直接插入排序">直接插入排序（Insertion Sort）</h1>
 <blockquote><p><small>插入排序是一种简单的排序算法，它的工作原理与手动整理一副牌的过程非常相似。</small></p></blockquote>
+<h2 id="单次插入操作">单次插入操作</h2>
 <p>具体来说，我们在未排序区间选择一个基准元素，将该元素与其左侧已排序区间的元素逐一比较大小，并将该元素插入到正确的位置。</p>
 <p>下图展示了数组插入元素的操作流程。设基准元素为 base，我们需要将从目标索引到 base 之间的所有元素向右移动一位，然后将 base 赋值给目标索引。</p>
 <figure><img src="assets/images/sort/insertion_sort_operation.svg" alt="单次插入操作"><figcaption>单次插入操作示意图</figcaption></figure>

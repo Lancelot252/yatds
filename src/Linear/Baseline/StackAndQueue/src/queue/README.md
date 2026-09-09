@@ -1,6 +1,6 @@
 # 队列
 
-本组任务是完成 C++ 版循环队列。`queue.hpp` 声明并导出 `CircularQueue<T>`，`queue.cpp` 标示并实现对应成员函数，`testque.cpp` 提供基础运行检查。
+本组任务是完成 C++ 版循环队列。`queue.hpp` 声明并导出 `CircularQueue<T>`；请自行创建 `queue.cpp` 完成成员函数，并编写测试程序。
 
 ## 需要完成的内容
 
@@ -41,4 +41,4 @@ c++ -std=c++17 queue.cpp testque.cpp -o /tmp/testque
 - 操作范围：`PUSH x`、`POP`、`FRONT`、`SIZE`、`EMPTY`、`PRINT`。
 - 输出约定：`POP`、`FRONT`、`SIZE`、`EMPTY`、`PRINT` 逐行输出；空队列访问输出 `ERROR`；空队列打印输出 `EMPTY`；布尔值输出 `true` 或 `false`。
 
-仓库给出的 `testque.cpp` 仍是基础接口检查，不读取标准输入；你的扩展测试应补充上述命令式输入输出格式。
+请自行编写基础接口检查和命令式输入输出测试，覆盖正常操作、空队列、满队列及环形回绕。

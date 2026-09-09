@@ -1,6 +1,6 @@
 # 链式栈
 
-本组任务是完成 C++ 版链式栈。`stackli.hpp` 声明并导出 `LinkedStack<T>`，`stackli.cpp` 标示并实现对应成员函数，`teststkl.cpp` 提供基础运行检查。
+本组任务是完成 C++ 版链式栈。`stackli.hpp` 声明并导出 `LinkedStack<T>`；请自行创建 `stackli.cpp` 完成成员函数，并编写测试程序。
 
 ## 需要完成的内容
 
@@ -39,4 +39,4 @@ c++ -std=c++17 stackli.cpp teststkl.cpp -o /tmp/teststkl
 - 操作范围：`PUSH x`、`POP`、`TOP`、`SIZE`、`EMPTY`、`PRINT`。
 - 输出约定：`POP`、`TOP`、`SIZE`、`EMPTY`、`PRINT` 逐行输出；空栈访问输出 `ERROR`；空栈打印输出 `EMPTY`；布尔值输出 `true` 或 `false`。
 
-仓库给出的 `teststkl.cpp` 仍是基础接口检查，不读取标准输入；你的扩展测试应补充上述命令式输入输出格式。
+请自行编写基础接口检查和命令式输入输出测试，覆盖正常操作、空栈和连续入栈出栈。

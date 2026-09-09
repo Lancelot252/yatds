@@ -29,9 +29,9 @@
             <a href="tree-huffman.html">哈夫曼树</a>
           </div>
         </div>
-        <a href="index.html#graph-placeholder">图结构</a>
-        <a href="index.html#hash-placeholder">哈希</a>
-        <a href="index.html#sort-placeholder">排序查找</a>
+        <a href="graph.html">图结构</a>
+        <a href="search.html">查找算法</a>
+        <a href="sort.html">排序算法</a>
       </div>
     </nav>
   </header>
@@ -218,7 +218,7 @@ vector&lt;int&gt; getNext(const string&amp; pattern) {
 }</code></pre>
 <h3 id="任务内容-2">任务内容</h3>
 <p>为了更好地理解模式匹配，本练习分为了三个递进的步骤，建议按顺序完成：</p>
-<ul><li><strong>Step 1. 分析与测试朴素算法</strong>：构造极端的测试用例文本（例如主串是由大量重复字符凑成，末尾才失配），在给定的 <code>test_match.cpp</code> 中测试并记录朴素算法在最坏情况下的耗时和表现。</li><li><strong>Step 2. 基础 KMP 算法的实现</strong>：在 <code> match.cpp</code> 中实现完整的 KMP 模式匹配算法（可直接调用前置写好的 <code>getNext</code> 函数）。然后使用在 Step 1 中构造的极端用例，对比它与朴素算法在性能上的巨大差异。</li><li><strong>Step 3. nextval 数组深度优化</strong>：针对原始 <code>next</code> 数组在连续相同字符时依然会多余比较的缺陷，实现优化的 <code>nextval</code> 求解算法。自己设计测试样例结合 <code>nextval</code> 运行终极版的 KMP 匹配，观察其具体区别和常数级性能提升。</li></ul>
+<ul><li><strong>Step 1. 分析与测试朴素算法</strong>：构造极端的测试用例文本（例如主串是由大量重复字符凑成，末尾才失配），在自行编写的测试程序中测试并记录朴素算法在最坏情况下的耗时和表现。</li><li><strong>Step 2. 基础 KMP 算法的实现</strong>：在 <code> match.cpp</code> 中实现完整的 KMP 模式匹配算法（可直接调用前置写好的 <code>getNext</code> 函数）。然后使用在 Step 1 中构造的极端用例，对比它与朴素算法在性能上的巨大差异。</li><li><strong>Step 3. nextval 数组深度优化</strong>：针对原始 <code>next</code> 数组在连续相同字符时依然会多余比较的缺陷，实现优化的 <code>nextval</code> 求解算法。自己设计测试样例结合 <code>nextval</code> 运行终极版的 KMP 匹配，观察其具体区别和常数级性能提升。</li></ul>
 <p>你提交的材料中这部分内容需要包含：</p>
 <ul><li>三个小任务分别的代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对你程序和结果的分析（注：分析需要能够体现你对这些模式匹配算法过程的理解，不能仅仅是简单的结果描述）</li><li>你对性能差异的分析（注：分析需要能够体现你对时间和空间复杂度的理解，不能仅仅是简单的结果描述）</li></ul><table><thead><tr><th>类别</th><th>提交要求</th></tr></thead><tbody><tr><td>测试样例</td><td>在 <code>inputs/</code> 中放置 <code>.txt</code> 输入样例，在 <code>outputs/</code> 中放置同名标准输出文件；例如 <code>inputs/case01.txt</code> 对应 <code>outputs/case01.txt</code>。</td></tr><tr><td>测试程序</td><td>提交名为 <code>test</code> 的测试程序，能够自动读取 <code>inputs/</code> 中的样例，并与 <code>outputs/</code> 中的标准输出进行比对。</td></tr><tr><td>实现代码</td><td>提交本题实现所需的 <code>.cpp</code> 源文件，代码结构清晰，并保留必要注释。</td></tr><tr><td>构建文件</td><td>提交 <code>Makefile</code>，支持一条命令完成编译；建议同时提供运行样例测试的目标。</td></tr></tbody></table>
 <details>

@@ -23,8 +23,7 @@
           </div>
         </div>
         <a href="tree.html">树结构</a>
-        <a href="index.html#graph-placeholder">图结构</a>
-        <a href="index.html#hash-placeholder">哈希</a>
+        <a href="graph.html">图结构</a>
         <div class="nav-item has-submenu">
           <a class="active" href="search.html">查找算法</a>
           <div class="submenu" aria-label="查找算法子页面">
@@ -38,7 +37,6 @@
             <a href="search-avl.html">AVL 树</a>
             <a href="search-btree.html">B-树/B+树</a>
             <a href="search-trie.html">Trie</a>
-            <a href="search-hash.html">哈希表</a>
             <a href="search-project.html">Project</a>
           </div>
         </div>
@@ -76,9 +74,9 @@
 </aside>
     <article class="content">
       <h1 id="查找综合项目">查找算法综合项目</h1>
-<blockquote><p><small>本项目包含两大核心任务，旨在帮助学习者深入理解静态查找表、动态查找树、哈希表与 Trie 等查找结构的设计思想、性能差异和工程应用。</small></p></blockquote>
+<blockquote><p><small>本项目包含两大核心任务，旨在帮助学习者深入理解静态查找表、动态查找树与 Trie 等查找结构的设计思想、性能差异和工程应用。</small></p></blockquote>
 
-<p>可使用的查找结构范围：顺序查找、有序表查找、静态树表、索引顺序表、BST、AVL 树、B-树、B+ 树、Trie、哈希表。</p>
+<p>可使用的查找结构范围：顺序查找、有序表查找、静态树表、索引顺序表、BST、AVL 树、B-树、B+ 树和 Trie。</p>
 
 <h2 id="子项目一">子项目一：校园资料智能检索系统</h2>
 <blockquote><p><small>系统面向图书、课程资料、学生信息或校园公告等数据场景，用户可以通过编号、标题、关键词、前缀、分类等条件快速查询目标记录。项目重点不是做复杂的数据库系统，而是让不同查找结构在合适的查询场景中发挥作用。</small></p></blockquote>
@@ -91,7 +89,7 @@
   <tbody>
     <tr><td>1001</td><td>数据结构实验指导</td><td>课程资料</td><td>数据结构, 实验, C++</td><td>95</td></tr>
     <tr><td>1002</td><td>图书馆借阅规则</td><td>校园公告</td><td>图书馆, 借阅</td><td>60</td></tr>
-    <tr><td>1003</td><td>查找算法复习提纲</td><td>课程资料</td><td>查找, 哈希表, AVL</td><td>88</td></tr>
+    <tr><td>1003</td><td>查找算法复习提纲</td><td>课程资料</td><td>查找, Trie, AVL</td><td>88</td></tr>
   </tbody>
 </table>
 
@@ -103,10 +101,10 @@
     <tr><th>查询场景</th><th>适配结构</th><th>理由</th></tr>
   </thead>
   <tbody>
-    <tr><td>精确查找（按 ID）</td><td>哈希表、BST、AVL 树</td><td>O(1)~O(log n) 精确定位</td></tr>
+    <tr><td>精确查找（按 ID）</td><td>BST、AVL 树</td><td>O(log n) 精确定位</td></tr>
     <tr><td>有序查找与范围查询</td><td>有序表、AVL 树、B+ 树</td><td>区间查询效率高</td></tr>
     <tr><td>动态维护（频繁插入删除）</td><td>BST、AVL 树、B-树</td><td>动态平衡结构</td></tr>
-    <tr><td>关键词与前缀检索</td><td>Trie、哈希表、倒排索引</td><td>逐字符路径匹配</td></tr>
+    <tr><td>关键词与前缀检索</td><td>Trie、倒排索引</td><td>逐字符路径匹配</td></tr>
     <tr><td>外存索引模拟</td><td>索引顺序表、B-树、B+ 树</td><td>多级索引、磁盘分块</td></tr>
   </tbody>
 </table>
@@ -130,7 +128,7 @@
   <li><strong>近乎有序：</strong>验证 BST 退化、AVL 平衡效果。</li>
   <li><strong>随机分布：</strong>一般场景平均性能测试。</li>
   <li><strong>大量重复关键字：</strong>冲突处理与重复记录管理。</li>
-  <li><strong>字符串关键字：</strong>Trie、哈希表和字符串查找结构测试。</li>
+  <li><strong>字符串关键字：</strong>Trie 和字符串查找结构测试。</li>
 </ol>
 
 <h3 id="测评指标">测评指标</h3>
@@ -139,7 +137,7 @@
   <li>查找失败平均比较次数或探测次数</li>
   <li>构造索引或建表时间</li>
   <li>插入、删除、修改操作耗时</li>
-  <li>哈希表冲突次数、冲突率和装填因子影响</li>
+  <li>Trie 节点数量、树高与前缀共享率</li>
   <li>树结构高度、旋转次数或节点分裂次数</li>
   <li>空间占用大小</li>
   <li>理论复杂度与实测结果对比</li>

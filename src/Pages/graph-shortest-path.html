@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>图的最短路径</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Ccircle cx='18' cy='20' r='6' fill='%23187990'/%3E%3Ccircle cx='46' cy='18' r='6' fill='%23187990'/%3E%3Ccircle cx='32' cy='46' r='6' fill='%23187990'/%3E%3Cpath d='M23 22l18-2M21 25l8 16M43 23L35 41' stroke='%23187990' stroke-width='4'/%3E%3C/svg%3E"><link rel="stylesheet" href="assets/styles.css"></head>
+<body>
+  <header class="topbar"><nav class="nav" aria-label="主导航"><a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a><div class="nav-links"><a href="index.html">首页</a><a href="linear.html">线性结构</a><a href="tree.html">树结构</a><div class="nav-item has-submenu"><a class="active" href="graph.html">图结构</a><div class="submenu" aria-label="图结构子页面"><a href="graph-representation.html">表示、遍历与拓扑排序</a><a href="graph-shortest-path.html">最短路径</a><a href="graph-mst.html">最小生成树</a><a href="graph-project.html">Project</a></div></div><a href="search.html">查找算法</a><a href="sort.html">排序算法</a></div></nav></header>
+  <main class="page-shell">
+    <aside class="toc toc-chapters">
+      <a class="toc-root" href="#最短路径"><span class="toc-icon">◎</span><span>最短路径</span></a>
+      <a class="toc-chapter" href="#无权最短路"><span class="toc-icon">01</span><span class="toc-chapter-title">无权图最短路</span><span class="toc-arrow">›</span></a>
+      <a class="toc-chapter" href="#dijkstra"><span class="toc-icon">02</span><span class="toc-chapter-title">Dijkstra</span><span class="toc-arrow">›</span></a>
+      <a class="toc-chapter" href="#算法选择"><span class="toc-icon">03</span><span class="toc-chapter-title">算法选择</span><span class="toc-arrow">›</span></a>
+      <a class="toc-chapter" href="#baseline-任务"><span class="toc-icon">04</span><span class="toc-chapter-title">Baseline 任务</span><span class="toc-arrow">›</span></a>
+    </aside>
+    <article class="content">
+      <h1 id="最短路径">图的最短路径</h1>
+      <blockquote><p>“最短”必须先定义：是经过的边最少，还是边权之和最小？目标不同，建模和算法也不同。</p></blockquote>
+
+      <h2 id="无权最短路">无权图：BFS 单源最短路</h2>
+      <p>当每条边代价相同时，BFS 按距离一层层扩展。顶点第一次被访问时，就已经得到从源点出发的最少边数。</p>
+      <pre><code>dist[src] = 0
+queue.push(src)
+while queue 非空:
+    u = queue.pop()
+    for v in u 的邻接点:
+        if dist[v] == -1:
+            dist[v] = dist[u] + 1
+            prev[v] = u
+            queue.push(v)</code></pre>
+      <p><code>dist[v]</code> 保存最少边数；<code>prev[v]</code> 保存最短路径上的前驱。起点及不可达顶点的前驱均为 <code>-1</code>。</p>
+
+      <h2 id="dijkstra">非负权图：Dijkstra</h2>
+      <p>Dijkstra 每轮确定一个当前距离最小的未确定顶点，再使用它的出边进行松弛：</p>
+      <pre><code>if dist[u] + weight(u, v) &lt; dist[v]:
+    dist[v] = dist[u] + weight(u, v)
+    prev[v] = u</code></pre>
+      <p>算法成立的关键是所有边权非负。若允许负权边，一个已经“确定”的最短距离仍可能被后续路径改小。</p>
+
+      <h2 id="算法选择">算法选择</h2>
+      <table><thead><tr><th>问题</th><th>推荐算法</th><th>判断依据</th></tr></thead><tbody>
+        <tr><td>最少经过几条边</td><td>BFS 最短路</td><td>所有边代价相同</td></tr>
+        <tr><td>非负边权总代价最低</td><td>Dijkstra</td><td>路径代价由边权累加</td></tr>
+        <tr><td>还原具体路线</td><td>回溯 <code>prev[]</code></td><td>从终点反向追到源点后翻转</td></tr>
+        <tr><td>不可达顶点</td><td>保留 <code>-1</code></td><td>不能伪造距离或前驱</td></tr>
+      </tbody></table>
+
+      <h2 id="baseline-任务">Baseline 任务</h2>
+      <h3>任务 1：<code>ShortestPath</code></h3>
+      <p>在 <code>unweighted_shortest_path/</code> 中基于 BFS 补全 <code>dist[]</code> 和 <code>prev[]</code>。</p>
+      <pre><code>vertex_count edge_count directed source
+from to
+...</code></pre>
+      <h3>任务 2：<code>Dijkstra</code></h3>
+      <p>在 <code>dijkstra/</code> 中完成最小顶点选择和边松弛，同步更新前驱。</p>
+      <pre><code>vertex_count edge_count directed source
+from to weight
+...</code></pre>
+      <h3>输出与测试</h3>
+      <pre><code>CASE 1
+DIST ...
+PREV ...</code></pre>
+      <p>运行 <code>make test-shortest-path</code> 与 <code>make test-dijkstra</code>。公开测试覆盖有向/无向图、不可达点、单顶点图以及 <code>dist[]</code> 与 <code>prev[]</code> 的一致性。</p>
+    </article>
+  </main>
+  <footer class="footer">内容来源：Graph/Baseline/src/unweighted_shortest_path 与 dijkstra。</footer><script src="assets/slides.js"></script>
+</body></html>

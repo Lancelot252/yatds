@@ -29,22 +29,17 @@
             <a href="tree-huffman.html">哈夫曼树</a>
           </div>
         </div>
-        <a href="index.html#graph-placeholder">图结构</a>
-        <a href="index.html#hash-placeholder">哈希</a>
         <div class="nav-item has-submenu">
-          <a href="sort.html">排序查找</a>
-          <div class="submenu" aria-label="排序查找子页面">
-            <a href="sort-bubble.html">冒泡排序</a>
-            <a href="sort-selection.html">选择排序</a>
-            <a href="sort-insertion.html">插入排序</a>
-            <a href="sort-shell.html">希尔排序</a>
-            <a href="sort-quick.html">快速排序</a>
-            <a href="sort-merge.html">归并排序</a>
-            <a href="sort-heap.html">堆排序</a>
-            <a href="sort-radix.html">基数排序</a>
-            <a href="sort-project.html">Project</a>
+          <a href="graph.html">图结构</a>
+          <div class="submenu" aria-label="图结构子页面">
+            <a href="graph-representation.html">表示、遍历与拓扑排序</a>
+            <a href="graph-shortest-path.html">最短路径</a>
+            <a href="graph-mst.html">最小生成树</a>
+            <a href="graph-project.html">Project</a>
           </div>
         </div>
+        <a href="search.html">查找算法</a>
+        <a href="sort.html">排序算法</a>
       </div>
     </nav>
   </header>
@@ -54,13 +49,13 @@
         <p class="kicker">Data Structures Course Pages</p>
         <h1 id="home-title">教程与任务说明入口</h1>
       </div>
-      <p class="lede">这里集中存放从 src 课程资料整理出的静态网页。Linear 模块已提供完整教程与任务说明，其他模块保留接口与跳转占位，便于后续扩展。</p>
+      <p class="lede">这里集中呈现数据结构课程的完整教程、Baseline 任务与综合项目。从线性结构一路学习到图算法，再通过排序和查找专题建立系统化的算法工具箱。</p>
     </section>
 
     <section class="course-board" aria-label="模块列表">
       <div class="board-heading">
         <span>课程索引</span>
-        <small>Linear ready / Others reserved</small>
+        <small>5 modules / Tutorials &amp; Projects</small>
       </div>
 
       <a class="module-row module-group module-row-ready" id="linear-module" href="linear.html">
@@ -76,33 +71,25 @@
         <span class="module-status">已完成</span>
         <span class="module-action">进入导航</span>
       </a>
-      <div class="module-row module-row-muted" id="graph-placeholder">
+      <a class="module-row module-group module-row-ready" href="graph.html">
         <span class="module-index">03</span>
-        <span class="module-main"><strong>图结构</strong><small>保留图算法教程与任务说明入口</small></span>
-        <span class="module-status">占位接口</span>
-        <span class="module-action">预留</span>
-      </div>
-      <div class="module-row module-row-muted" id="hash-placeholder">
+        <span class="module-main"><strong>图结构</strong><small>图表示、遍历、拓扑排序、最短路径、最小生成树与迷宫项目</small></span>
+        <span class="module-status">已完成</span>
+        <span class="module-action">进入导航</span>
+      </a>
+      <a class="module-row module-group module-row-ready" href="search.html">
         <span class="module-index">04</span>
-        <span class="module-main"><strong>哈希</strong><small>保留哈希表、冲突处理和实验任务入口</small></span>
-        <span class="module-status">占位接口</span>
-        <span class="module-action">预留</span>
-      </div>
-      <div class="module-row module-row-muted" id="search-placeholder">
-        <span class="module-index">05</span>
-        <span class="module-main"><strong>查找</strong><small>保留查找算法与评测任务入口</small></span>
-        <span class="module-status">占位接口</span>
-        <span class="module-action">预留</span>
-      </div>
+        <span class="module-main"><strong>查找算法</strong><small>静态表、树形查找、Trie 与综合检索项目</small></span>
+        <span class="module-status">已完成</span>
+        <span class="module-action">进入导航</span>
+      </a>
       <a class="module-row module-group module-row-ready" href="sort.html">
-        <span class="module-index">06</span>
-        <span class="module-main"><strong>排序查找</strong><small>冒泡、选择、插入、希尔、快速、归并、堆、基数排序及综合项目</small></span>
+        <span class="module-index">05</span>
+        <span class="module-main"><strong>排序算法</strong><small>冒泡、选择、插入、希尔、快速、归并、堆、基数排序及综合项目</small></span>
         <span class="module-status">已完成</span>
         <span class="module-action">进入导航</span>
       </a>
     </section>
-
-    <section class="placeholder-band"><strong>占位说明：</strong>除 Linear 指定内容外，本次只提供接口和跳转占位，不展开其他模块正文。</section>
   </main>
   <footer class="footer">可直接打开本目录下的 HTML 文件浏览，无需构建步骤。</footer>
 </body>

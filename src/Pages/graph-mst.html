@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>图的最小生成树</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Ccircle cx='18' cy='20' r='6' fill='%23187990'/%3E%3Ccircle cx='46' cy='18' r='6' fill='%23187990'/%3E%3Ccircle cx='32' cy='46' r='6' fill='%23187990'/%3E%3Cpath d='M23 22l18-2M21 25l8 16M43 23L35 41' stroke='%23187990' stroke-width='4'/%3E%3C/svg%3E"><link rel="stylesheet" href="assets/styles.css"></head>
+<body>
+  <header class="topbar"><nav class="nav" aria-label="主导航"><a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a><div class="nav-links"><a href="index.html">首页</a><a href="linear.html">线性结构</a><a href="tree.html">树结构</a><div class="nav-item has-submenu"><a class="active" href="graph.html">图结构</a><div class="submenu" aria-label="图结构子页面"><a href="graph-representation.html">表示、遍历与拓扑排序</a><a href="graph-shortest-path.html">最短路径</a><a href="graph-mst.html">最小生成树</a><a href="graph-project.html">Project</a></div></div><a href="search.html">查找算法</a><a href="sort.html">排序算法</a></div></nav></header>
+  <main class="page-shell">
+    <aside class="toc toc-chapters">
+      <a class="toc-root" href="#最小生成树"><span class="toc-icon">◎</span><span>最小生成树</span></a>
+      <a class="toc-chapter" href="#问题定义"><span class="toc-icon">01</span><span class="toc-chapter-title">问题定义</span><span class="toc-arrow">›</span></a>
+      <a class="toc-chapter" href="#prim"><span class="toc-icon">02</span><span class="toc-chapter-title">Prim</span><span class="toc-arrow">›</span></a>
+      <a class="toc-chapter" href="#kruskal"><span class="toc-icon">03</span><span class="toc-chapter-title">Kruskal</span><span class="toc-arrow">›</span></a>
+      <a class="toc-chapter" href="#baseline-任务"><span class="toc-icon">04</span><span class="toc-chapter-title">Baseline 任务</span><span class="toc-arrow">›</span></a>
+    </aside>
+    <article class="content">
+      <h1 id="最小生成树">最小生成树：Prim 与 Kruskal</h1>
+      <blockquote><p>在连通无向带权图中，用 V−1 条边连接全部顶点且总权重最小，这棵树就是最小生成树（MST）。</p></blockquote>
+
+      <h2 id="问题定义">问题定义与边界</h2>
+      <ul><li>MST 不允许成环，最终必须连接所有顶点。</li><li>成功结果恰好包含 <code>vertex_count - 1</code> 条边。</li><li>不连通图不存在生成树，应返回失败。</li><li>单顶点图返回成功，总权重为 0，边数为 0。</li></ul>
+
+      <h2 id="prim">Prim：扩展一棵树</h2>
+      <p>Prim 从 0 号顶点开始，维护“未加入顶点连接到当前生成树的最小代价”，每轮选取代价最小的顶点并记录对应连接边。</p>
+      <table><thead><tr><th>状态</th><th>含义</th></tr></thead><tbody><tr><td><code>in_mst[v]</code></td><td>顶点是否已进入生成树</td></tr><tr><td><code>key[v]</code></td><td>从当前生成树连接到 v 的最小代价</td></tr><tr><td><code>parent[v]</code></td><td>提供该最小代价的树内顶点</td></tr></tbody></table>
+
+      <h2 id="kruskal">Kruskal：筛选一组边</h2>
+      <ol><li>把所有边按权重从小到大排序。</li><li>依次考虑每条边；若两端属于不同连通分量，则选入。</li><li>通过并查集的 <code>Find</code> 与 <code>Union</code> 判断是否会成环。</li><li>选满 V−1 条边时完成。</li></ol>
+      <p>建议同时实现路径压缩与按秩合并，使并查集操作接近常数时间。</p>
+      <table><thead><tr><th>对比</th><th>Prim</th><th>Kruskal</th></tr></thead><tbody><tr><td>观察对象</td><td>顶点与当前树的连接代价</td><td>全局排序后的边</td></tr><tr><td>核心结构</td><td>最小代价数组/优先队列</td><td>排序 + 并查集</td></tr><tr><td>直观优势</td><td>适合从某点逐步扩展</td><td>适合边集清晰的稀疏图</td></tr></tbody></table>
+
+      <h2 id="baseline-任务">Baseline 任务</h2>
+      <p>在 <code>mst_prim/</code> 中补全 <code>Prim</code>；在 <code>mst_kruskal/</code> 中补全并查集和 <code>Kruskal</code>。</p>
+      <h3>输入</h3><pre><code>case_count
+vertex_count edge_count
+from to weight
+...</code></pre>
+      <h3>输出</h3><pre><code>CASE 1
+OK 1
+TOTAL 16
+EDGE_COUNT 4
+from to weight
+...</code></pre>
+      <p>运行 <code>make test-prim</code> 与 <code>make test-kruskal</code>。测试不仅比较总权重，也会检查边数、连通性和是否成环；同权图可能存在多棵合法 MST。</p>
+    </article>
+  </main>
+  <footer class="footer">内容来源：Graph/Baseline/src/mst_prim 与 mst_kruskal。</footer><script src="assets/slides.js"></script>
+</body></html>

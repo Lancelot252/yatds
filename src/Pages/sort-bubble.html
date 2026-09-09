@@ -22,9 +22,9 @@
             <a href="linear-string.html">字符串</a>
           </div>
         </div>
-        <a href="index.html#tree-placeholder">树结构</a>
-        <a href="index.html#graph-placeholder">图结构</a>
-        <a href="index.html#hash-placeholder">哈希</a>
+        <a href="tree.html">树结构</a>
+        <a href="graph.html">图结构</a>
+        <a href="search.html">查找算法</a>
         <div class="nav-item has-submenu">
           <a class="active" href="sort.html">排序查找</a>
           <div class="submenu" aria-label="排序查找子页面">
@@ -57,6 +57,7 @@
     <article class="content">
       <h1 id="冒泡排序">冒泡排序（Bubble Sort）</h1>
 <blockquote><p><small>冒泡排序通过连续地比较与交换相邻元素实现排序。</small></p><p><small>这个过程就像气泡从底部升到顶部一样，因此得名冒泡排序。</small></p></blockquote>
+<h3 id="冒泡过程模拟">冒泡过程模拟</h3>
 <p>如图所示，冒泡过程可以利用元素交换操作来模拟：从数组最左端开始向右遍历，依次比较相邻元素大小，如果"左元素 &gt; 右元素"就交换二者。遍历完成后，最大的元素会被移动到数组的最右端。</p>
 
 <div class="slide-deck">
@@ -90,7 +91,7 @@
 <li>以此类推，经过 n-1 轮"冒泡"后，前 n-1 大的元素都被交换至正确位置。</li>
 <li>仅剩的一个元素必定是最小元素，无须排序，因此数组排序完成。</li>
 </ol>
-<figure><img src="assets/images/sort/bubble_sort_overview.svg" alt="冒泡排序流程"><figcaption>冒泡排序整体流程</figcaption></figure>
+<figure id="整体流程"><img src="assets/images/sort/bubble_sort_overview.svg" alt="冒泡排序流程"><figcaption>冒泡排序整体流程</figcaption></figure>
 
 <h2 id="算法特性">算法特性</h2>
 <ul>

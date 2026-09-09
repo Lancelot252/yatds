@@ -1,6 +1,6 @@
 # 数组栈
 
-本组任务是完成 C++ 版数组栈。`stackar.hpp` 声明并导出 `ArrayStack<T>`，`stackar.cpp` 标示并实现对应成员函数，`teststka.cpp` 提供基础运行检查。
+本组任务是完成 C++ 版数组栈。`stackar.hpp` 声明并导出 `ArrayStack<T>`；请自行创建 `stackar.cpp` 完成成员函数，并编写测试程序。
 
 ## 需要完成的内容
 
@@ -40,4 +40,4 @@ c++ -std=c++17 stackar.cpp teststka.cpp -o /tmp/teststka
 - 操作范围：`PUSH x`、`POP`、`TOP`、`SIZE`、`EMPTY`、`PRINT`。
 - 输出约定：`POP`、`TOP`、`SIZE`、`EMPTY`、`PRINT` 逐行输出；空栈访问输出 `ERROR`；空栈打印输出 `EMPTY`；布尔值输出 `true` 或 `false`。
 
-仓库给出的 `teststka.cpp` 仍是基础接口检查，不读取标准输入；你的扩展测试应补充上述命令式输入输出格式。
+请自行编写基础接口检查和命令式输入输出测试，覆盖正常操作、空栈、满栈及容量边界。

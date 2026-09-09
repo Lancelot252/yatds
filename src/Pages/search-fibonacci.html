@@ -23,8 +23,7 @@
           </div>
         </div>
         <a href="tree.html">树结构</a>
-        <a href="index.html#graph-placeholder">图结构</a>
-        <a href="index.html#hash-placeholder">哈希</a>
+        <a href="graph.html">图结构</a>
         <div class="nav-item has-submenu">
           <a class="active" href="search.html">查找算法</a>
           <div class="submenu" aria-label="查找算法子页面">
@@ -38,7 +37,6 @@
             <a href="search-avl.html">AVL 树</a>
             <a href="search-btree.html">B-树/B+树</a>
             <a href="search-trie.html">Trie</a>
-            <a href="search-hash.html">哈希表</a>
             <a href="search-project.html">Project</a>
           </div>
         </div>
@@ -82,8 +80,8 @@
 <p>对于大小为 n 的有序数组，找到最小的 k 使得 <code>F(k) ≥ n</code>，将数组补充到 F(k) 大小（末尾补最大值）。每次分割：</p>
 <ul>
   <li>探针位置：<code>probe = lo + F(k-2) - 1</code></li>
-  <li>若 <code>A[probe] < target</code>：在右半（F(k-2) 个元素）继续，k = k-2</li>
-  <li>若 <code>A[probe] > target</code>：在左半（F(k-1) 个元素）继续，k = k-1</li>
+  <li>若 <code>A[probe] &lt; target</code>：在右半（F(k-2) 个元素）继续，k = k-2</li>
+  <li>若 <code>A[probe] &gt; target</code>：在左半（F(k-1) 个元素）继续，k = k-1</li>
   <li>若相等：查找成功</li>
 </ul>
 

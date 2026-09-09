@@ -1,6 +1,6 @@
 # 模式匹配算法 (Pattern Match)
 
-本组任务是完成 C++ 版字符串的模式匹配。`match.hpp` 声明并导出了 `naiveMatch`（朴素匹配）、`getNext`（部分匹配表生成）和 `kmpMatch`（KMP匹配算法），`match.cpp` 标示并实现了对应的基础函数，`test_match.cpp` 提供基础的运行检查。
+本组任务是完成 C++ 版字符串的模式匹配。`match.hpp` 声明并导出了 `naiveMatch`（朴素匹配）、`getNext`（部分匹配表生成）和 `kmpMatch`（KMP 匹配算法），`match.cpp` 提供朴素匹配与 `next` 数组等基础逻辑，KMP 和 `nextval` 由学生补全；测试程序由学生自行编写。
 
 ## 需要完成的内容（循序渐进版）
 

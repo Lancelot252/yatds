@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>图结构导航</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Ccircle cx='18' cy='20' r='6' fill='%23187990'/%3E%3Ccircle cx='46' cy='18' r='6' fill='%23187990'/%3E%3Ccircle cx='32' cy='46' r='6' fill='%23187990'/%3E%3Cpath d='M23 22l18-2M21 25l8 16M43 23L35 41' stroke='%23187990' stroke-width='4'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html"><span class="brand-mark">YATDS</span><span class="brand-title">教程与任务</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="linear.html">线性结构</a>
+        <a href="tree.html">树结构</a>
+        <div class="nav-item has-submenu">
+          <a class="active" href="graph.html">图结构</a>
+          <div class="submenu" aria-label="图结构子页面">
+            <a href="graph-representation.html">表示、遍历与拓扑排序</a>
+            <a href="graph-shortest-path.html">最短路径</a>
+            <a href="graph-mst.html">最小生成树</a>
+            <a href="graph-project.html">Project</a>
+          </div>
+        </div>
+        <a href="search.html">查找算法</a>
+        <a href="sort.html">排序算法</a>
+      </div>
+    </nav>
+  </header>
+  <main class="hero home linear-home">
+    <section class="home-intro" aria-labelledby="graph-title">
+      <div>
+        <p class="kicker">Graph Structures &amp; Algorithms</p>
+        <h1 id="graph-title">图结构</h1>
+      </div>
+      <p class="lede">从“点与边”的建模出发，依次掌握图的表示、遍历、拓扑排序、最短路径与最小生成树。完成六个 Baseline 接口后，把算法工具箱用于终端迷宫寻路综合项目。</p>
+    </section>
+
+    <section class="course-board" aria-label="图结构内容导航">
+      <div class="board-heading">
+        <span>学习路线</span>
+        <small>Baseline 4–5 学时 / Project 3–4 学时</small>
+      </div>
+      <a class="module-row module-row-ready" href="graph-representation.html">
+        <span class="module-index">01</span>
+        <span class="module-main"><strong>表示、遍历与拓扑排序</strong><small>邻接表、邻接矩阵、BFS、DFS 与 Kahn 拓扑排序</small></span>
+        <span class="module-status">2 个模块</span>
+        <span class="module-action">进入</span>
+      </a>
+      <a class="module-row module-row-ready" href="graph-shortest-path.html">
+        <span class="module-index">02</span>
+        <span class="module-main"><strong>最短路径</strong><small>无权图 BFS 最短路与非负权图 Dijkstra 算法</small></span>
+        <span class="module-status">2 个模块</span>
+        <span class="module-action">进入</span>
+      </a>
+      <a class="module-row module-row-ready" href="graph-mst.html">
+        <span class="module-index">03</span>
+        <span class="module-main"><strong>最小生成树</strong><small>Prim 的点扩展策略与 Kruskal 的边选择策略</small></span>
+        <span class="module-status">2 个模块</span>
+        <span class="module-action">进入</span>
+      </a>
+      <a class="module-row module-group module-row-ready" href="graph-project.html">
+        <span class="module-index">04</span>
+        <span class="module-main"><strong>Project：终端迷宫寻路</strong><small>图建模、接口复用、算法选择与结果解释</small></span>
+        <span class="module-status">综合项目</span>
+        <span class="module-action">查看</span>
+      </a>
+    </section>
+  </main>
+  <footer class="footer">图结构内容来源于课程资料 Graph 目录。</footer>
+</body>
+</html>
