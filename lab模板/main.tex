@@ -1,0 +1,56 @@
+% 中山大学科技类及IT类实验报告文档类(LaTeX模板)
+\documentclass{sysucseexp}
+\usepackage{fontspec,inconsolata,url}
+\setmainfont{Times New Roman}
+
+% 载入需要的宏包
+\input{settings/packages.tex}
+% 进行必要的设置
+\input{settings/format.tex}
+% 专用术语宏命令进行必要的设置
+\input{settings/terms.tex}
+
+% 设置封面基本信息，\linebreak 前面不要有空格，
+% 中文之间的空格无法消除
+% 另，在\sysucseset中不可以出现空行
+\sysucseset{
+  college = {计算机学院},            % 学院名称
+  projname = {数据结构与算法（人机协作）},       % 实践课程名称
+  title = {这就是个模版},    % 实验报告题目
+  stuno = {2xxxxxxx},              % 学号
+  author = {252},             % 姓名
+  major = {计算机科学与技术},          % 专业
+  adviser = {郑馥丹},                   % 指导教师姓名
+  startdate = {2026年？月？日},        % 实验起始日期
+  enddate = {？月？日},        % 实验结束日期
+  labroom = {实验中心}
+}
+
+\begin{document} %在document环境中撰写文档
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 封面及目录，无需改动此处代码
+\makecover
+% 目录
+\tableofcontents
+\cleardoublepage
+% 设置正文页眉页脚格式，并重新设置页码为1
+\pagestyle{main} % 无页眉，页码在页脚居中
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 排版正文内容
+\section{项目分析与设计}
+
+
+\section{人机协作过程}
+PS：此部分需要截图证明你实际的prompt对话记录
+\subsection{Prompt设计与思路}
+\subsection{审查、测试与优化过程}
+
+\section{最终产物}
+简要介绍你的结果（建议附图）
+
+\section{项目总结}
+
+
+\end{document}

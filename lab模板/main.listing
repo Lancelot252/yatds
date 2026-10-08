@@ -1,0 +1,2 @@
+  cd ~/lab1
+  qemu-system-i386 -kernel linux-6.13.4/arch/x86/boot/bzImage -initrd initramfs-busybox-x86.cpio.gz -nographic -append "console=ttyS0"
